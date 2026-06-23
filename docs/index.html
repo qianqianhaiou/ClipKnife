@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="ClipKnife — 面向创作者的本地素材管理与自然语言检索工具。图片与视频片段混合搜索，全部在本地完成。" />
+  <title>素刀 — 本地素材管理与自然语言检索工具</title>
+  <meta name="theme-color" content="#0a0a0a" />
+  <link rel="icon" type="image/png" href="assets/icon.png" />
+  <link rel="apple-touch-icon" href="assets/icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body class="bg-[#0a0a0a] text-slate-100 antialiased overflow-x-hidden">
+  <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-white focus:text-[#0a0a0a] focus:rounded-md">
+    跳转到主要内容
+  </a>
+
+  <!-- Navbar -->
+  <header class="fixed top-0 inset-x-0 z-40 border-b border-white/10 bg-[#0a0a0a]/70 backdrop-blur-md">
+    <nav class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between" aria-label="主导航">
+      <a href="#" class="flex items-center gap-2 font-bold text-xl tracking-tight" aria-label="ClipKnife 首页">
+        <img src="assets/icon.png" alt="" class="w-8 h-8 rounded-lg" />
+        <span class="bg-clip-text text-transparent bg-gradient-to-r from-[#f95106] to-[#ff7a3c]">素刀-ClipKnife</span>
+      </a>
+
+      <ul class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
+        <li><a href="#features" class="hover:text-white transition-colors">功能特性</a></li>
+        <li><a href="#workflow" class="hover:text-white transition-colors">使用流程</a></li>
+        <li><a href="#audience" class="hover:text-white transition-colors">适用人群</a></li>
+        <li><a href="#faq" class="hover:text-white transition-colors">常见问题</a></li>
+      </ul>
+
+      <div class="hidden md:flex items-center gap-4">
+        <a href="#download" class="px-5 py-2.5 rounded-full bg-[#f95106] hover:bg-[#d94605] text-white text-sm font-semibold transition-all shadow-lg shadow-[#f95106]/20 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#f95106] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0a]">
+          免费下载
+        </a>
+      </div>
+
+      <button id="menuBtn" class="md:hidden p-2 -mr-2 rounded-lg text-slate-300 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-[#f95106]" aria-label="打开菜单" aria-expanded="false" aria-controls="mobileMenu">
+        <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/>
+        </svg>
+      </button>
+    </nav>
+
+    <div id="mobileMenu" class="md:hidden hidden border-t border-white/10 bg-[#0a0a0a]/95 backdrop-blur-md">
+      <ul class="px-6 py-4 space-y-3 text-slate-300">
+        <li><a href="#features" class="block py-2 hover:text-white">功能特性</a></li>
+        <li><a href="#workflow" class="block py-2 hover:text-white">使用流程</a></li>
+        <li><a href="#audience" class="block py-2 hover:text-white">适用人群</a></li>
+        <li><a href="#faq" class="block py-2 hover:text-white">常见问题</a></li>
+        <li class="pt-2"><a href="#download" class="block w-full text-center px-5 py-2.5 rounded-full bg-[#f95106] hover:bg-[#d94605] text-white font-semibold">免费下载</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- Hero -->
+    <section class="relative pt-32 pb-20 md:pt-44 md:pb-32 overflow-hidden" aria-labelledby="heroTitle">
+      <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,#0a0a0a_70%)]"></div>
+      </div>
+
+      <div class="relative max-w-7xl mx-auto px-6 text-center">
+        <!-- <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[#f95106]/30 bg-[#f95106]/10 text-[#ff7a3c] text-xs font-medium mb-6 reveal">
+          <span class="relative flex h-2 w-2">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#f95106] opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-2 w-2 bg-[#f95106]"></span>
+          </span>
+          单机版早期版本开放下载
+        </div> -->
+
+        <h1 id="heroTitle" class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight mb-6 reveal">
+          用一句话，找回你散落在<br class="hidden sm:block" />
+          <span class="bg-clip-text text-transparent bg-gradient-to-r from-[#f95106] via-[#ff7a3c] to-[#ffb380]">硬盘里的每一帧灵感</span>
+        </h1>
+
+
+        <p class="max-w-2xl mx-auto text-lg md:text-xl text-slate-400 leading-relaxed mb-10 reveal">
+          素刀致力成为素材界的瑞士军刀，是面向创作者的生产力工具，支持本地素材管理与自然语言检索，无需上传云端。
+        </p>
+
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 reveal">
+          <a href="#download" class="w-full sm:w-auto px-8 py-4 rounded-full bg-[#f95106] hover:bg-[#d94605] text-white font-semibold text-lg transition-all shadow-xl shadow-[#f95106]/25 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#f95106] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0a]">
+            免费下载
+          </a>
+          <a href="#features" class="w-full sm:w-auto px-8 py-4 rounded-full border border-white/15 hover:border-white/30 hover:bg-white/5 text-slate-200 font-semibold text-lg transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#f95106] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0a]">
+            了解功能
+          </a>
+        </div>
+
+        <div class="mt-12 flex flex-wrap items-center justify-center gap-6 text-sm text-slate-500 reveal">
+          <span class="flex items-center gap-2"><svg class="w-4 h-4 text-[#f95106]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Windows 桌面端</span>
+          <span class="flex items-center gap-2"><svg class="w-4 h-4 text-[#f95106]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>完全本地运行</span>
+          <span class="flex items-center gap-2"><svg class="w-4 h-4 text-[#f95106]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>自然语言搜索</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Value props -->
+    <section class="py-20 md:py-28 border-t border-white/5" aria-labelledby="valuesTitle">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+          <h2 id="valuesTitle" class="text-3xl md:text-4xl font-bold mb-4">为创作者重新设计素材管理</h2>
+          <p class="text-slate-400 text-lg">不再依赖文件夹层级和文件名记忆，让 AI 理解你的画面内容。</p>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <article class="value-card group p-6 rounded-2xl border border-white/10 bg-white/[0.02] hover:bg-white/[0.05] transition-all reveal">
+            <div class="w-12 h-12 rounded-xl bg-[#f95106]/10 text-[#f95106] flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
+              <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            </div>
+            <h3 class="text-lg font-semibold mb-2">本地优先，隐私至上</h3>
+            <p class="text-slate-400 text-sm leading-relaxed">所有索引、分镜与向量计算都在你的电脑上完成，素材原文件永不离开本地硬盘。</p>
+          </article>
+
+          <article class="value-card group p-6 rounded-2xl border border-white/10 bg-white/[0.02] hover:bg-white/[0.05] transition-all reveal">
+            <div class="w-12 h-12 rounded-xl bg-[#f95106]/10 text-[#f95106] flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
+              <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+            </div>
+            <h3 class="text-lg font-semibold mb-2">自然语言搜索</h3>
+            <p class="text-slate-400 text-sm leading-relaxed">输入 "海边日落"、"产品特写" 或 "人物微笑"，即可同时检索图片与视频片段。</p>
+          </article>
+
+          <article class="value-card group p-6 rounded-2xl border border-white/10 bg-white/[0.02] hover:bg-white/[0.05] transition-all reveal">
+            <div class="w-12 h-12 rounded-xl bg-[#f95106]/10 text-[#f95106] flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
+              <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+            </div>
+            <h3 class="text-lg font-semibold mb-2">图片 + 视频混合结果</h3>
+            <p class="text-slate-400 text-sm leading-relaxed">统一的结果视图，既能查看图片原图，也能直达视频片段对应的时间码。</p>
+          </article>
+
+          <article class="value-card group p-6 rounded-2xl border border-white/10 bg-white/[0.02] hover:bg-white/[0.05] transition-all reveal">
+            <div class="w-12 h-12 rounded-xl bg-[#f95106]/10 text-[#f95106] flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
+              <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"/><path d="M16 16h5v5"/></svg>
+            </div>
+            <h3 class="text-lg font-semibold mb-2">自动监听与增量更新</h3>
+            <p class="text-slate-400 text-sm leading-relaxed">添加素材源后自动全量建库，后续文件增删改实时进入后台任务队列，无需手动维护。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features -->
+    <section id="features" class="py-20 md:py-28 relative" aria-labelledby="featuresTitle">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-14 reveal">
+          <div class="max-w-2xl">
+            <h2 id="featuresTitle" class="text-3xl md:text-4xl font-bold mb-4">一条完整的工作流</h2>
+            <p class="text-slate-400 text-lg">从素材源配置到自然语言搜索，素刀把复杂的本地索引过程简化为几步操作。</p>
+          </div>
+          <a href="#workflow" class="inline-flex items-center gap-2 text-[#f95106] hover:text-[#ff7a3c] font-medium transition-colors">
+            看看如何运行
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <article class="feature-card p-6 rounded-2xl border border-white/10 bg-white/[0.02] hover:border-[#f95106]/30 transition-all reveal">
+            <div class="w-10 h-10 rounded-lg bg-[#f95106]/10 text-[#f95106] flex items-center justify-center mb-4">
+              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/></svg>
+            </div>
+            <h3 class="text-base font-semibold mb-2">多素材源管理</h3>
+            <p class="text-slate-400 text-sm leading-relaxed">支持文件夹、整盘符与外接硬盘，自动排除系统目录和开发缓存，避免误扫。</p>
+          </article>
+
+          <article class="feature-card p-6 rounded-2xl border border-white/10 bg-white/[0.02] hover:border-[#f95106]/30 transition-all reveal">
+            <div class="w-10 h-10 rounded-lg bg-[#f95106]/10 text-[#f95106] flex items-center justify-center mb-4">
+              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg>
+            </div>
+            <h3 class="text-base font-semibold mb-2">图片直接入索引</h3>
+            <p class="text-slate-400 text-sm leading-relaxed">JPG、PNG、WebP 等常见格式直接生成语义向量，用描述性文字即可召回。</p>
+          </article>
+
+          <article class="feature-card p-6 rounded-2xl border border-white/10 bg-white/[0.02] hover:border-[#f95106]/30 transition-all reveal">
+            <div class="w-10 h-10 rounded-lg bg-[#f95106]/10 text-[#f95106] flex items-center justify-center mb-4">
+              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m22 8-6 4 6 4V8Z"/><rect width="14" height="12" x="2" y="6" rx="2"/></svg>
+            </div>
+            <h3 class="text-base font-semibold mb-2">视频分镜与抽帧</h3>
+            <p class="text-slate-400 text-sm leading-relaxed">基于 本地AI 自动分镜，配合 ffmpeg 抽取代表帧，让视频内容也能被语义检索。</p>
+          </article>
+
+          <article class="feature-card p-6 rounded-2xl border border-white/10 bg-white/[0.02] hover:border-[#f95106]/30 transition-all reveal">
+            <div class="w-10 h-10 rounded-lg bg-[#f95106]/10 text-[#f95106] flex items-center justify-center mb-4">
+              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <h3 class="text-base font-semibold mb-2">后台任务队列</h3>
+            <p class="text-slate-400 text-sm leading-relaxed">扫描、分镜、抽帧、索引全部队列化，单个任务失败不会阻塞整体建库。</p>
+          </article>
+
+          <article class="feature-card p-6 rounded-2xl border border-white/10 bg-white/[0.02] hover:border-[#f95106]/30 transition-all reveal">
+            <div class="w-10 h-10 rounded-lg bg-[#f95106]/10 text-[#f95106] flex items-center justify-center mb-4">
+              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+            </div>
+            <h3 class="text-base font-semibold mb-2">统一搜索入口</h3>
+            <p class="text-slate-400 text-sm leading-relaxed">一个搜索框同时返回命中的图片与视频片段，可按类型筛选。</p>
+          </article>
+
+          <article class="feature-card p-6 rounded-2xl border border-white/10 bg-white/[0.02] hover:border-[#f95106]/30 transition-all reveal">
+            <div class="w-10 h-10 rounded-lg bg-[#f95106]/10 text-[#f95106] flex items-center justify-center mb-4">
+              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="m10 11 2 2 4-4"/></svg>
+            </div>
+            <h3 class="text-base font-semibold mb-2">结果回连与诊断</h3>
+            <p class="text-slate-400 text-sm leading-relaxed">点击即可打开原文件或定位目录，视频结果直达对应时间段；异常时一键导出诊断包。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Workflow -->
+    <section id="workflow" class="py-20 md:py-28 border-y border-white/5 bg-[#111]/30" aria-labelledby="workflowTitle">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+          <h2 id="workflowTitle" class="text-3xl md:text-4xl font-bold mb-4">四步开始检索你的素材</h2>
+          <p class="text-slate-400 text-lg">无需复杂的导入流程，像添加文件夹一样简单。</p>
+        </div>
+
+        <ol class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 relative">
+          <li class="workflow-step relative p-6 rounded-2xl border border-white/10 bg-white/[0.02] reveal">
+            <span class="absolute -top-4 -left-2 w-10 h-10 rounded-full bg-[#f95106] text-white flex items-center justify-center font-bold shadow-lg">1</span>
+            <h3 class="text-lg font-semibold mt-4 mb-2">初始化本地环境</h3>
+            <p class="text-slate-400 text-sm leading-relaxed">首次启动自动解压加载本地AI服务，并检测组件健康状态。</p>
+          </li>
+          <li class="workflow-step relative p-6 rounded-2xl border border-white/10 bg-white/[0.02] reveal">
+            <span class="absolute -top-4 -left-2 w-10 h-10 rounded-full bg-[#f95106] text-white flex items-center justify-center font-bold shadow-lg">2</span>
+            <h3 class="text-lg font-semibold mt-4 mb-2">添加素材源</h3>
+            <p class="text-slate-400 text-sm leading-relaxed">选择素材目录、盘符或外接硬盘，素刀预检路径、去重并配置排除规则。</p>
+          </li>
+          <li class="workflow-step relative p-6 rounded-2xl border border-white/10 bg-white/[0.02] reveal">
+            <span class="absolute -top-4 -left-2 w-10 h-10 rounded-full bg-[#f95106] text-white flex items-center justify-center font-bold shadow-lg">3</span>
+            <h3 class="text-lg font-semibold mt-4 mb-2">后台自动建库</h3>
+            <p class="text-slate-400 text-sm leading-relaxed">图片直接索引，视频自动分镜抽帧，所有任务在后台队列中稳定执行。</p>
+          </li>
+          <li class="workflow-step relative p-6 rounded-2xl border border-white/10 bg-white/[0.02] reveal">
+            <span class="absolute -top-4 -left-2 w-10 h-10 rounded-full bg-[#f95106] text-white flex items-center justify-center font-bold shadow-lg">4</span>
+            <h3 class="text-lg font-semibold mt-4 mb-2">自然语言搜索</h3>
+            <p class="text-slate-400 text-sm leading-relaxed">输入描述，获取图片与视频片段混合结果，点击即可打开源文件与时间码。</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Audience -->
+    <section id="audience" class="py-20 md:py-28" aria-labelledby="audienceTitle">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+          <h2 id="audienceTitle" class="text-3xl md:text-4xl font-bold mb-4">适合这样的你</h2>
+          <p class="text-slate-400 text-lg">任何被海量本地素材困扰的创作者，都值得拥有更直觉的检索方式。</p>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <article class="audience-card p-6 rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.03] to-transparent hover:border-white/20 transition-all reveal">
+            <svg class="w-8 h-8 text-[#f95106] mb-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m22 8-6 4 6 4V8Z"/><rect width="14" height="12" x="2" y="6" rx="2"/></svg>
+            <h3 class="text-lg font-semibold mb-2">视频剪辑师</h3>
+            <p class="text-slate-400 text-sm">快速定位过往素材中的可用片段，不用逐条浏览文件夹。</p>
+          </article>
+          <article class="audience-card p-6 rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.03] to-transparent hover:border-white/20 transition-all reveal">
+            <svg class="w-8 h-8 text-[#f95106] mb-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8.56 2.75c4.37 6.03 6.02 9.42 8.03 17.72m2.54-15.38c-3.72 4.35-8.94 5.66-16.88 5.85m19.5 1.9c-3.5-.93-6.63-.82-8.94 0-2.58.92-5.01 2.86-7.44 6.32"/></svg>
+            <h3 class="text-lg font-semibold mb-2">Vlogger / 自媒体</h3>
+            <p class="text-slate-400 text-sm">管理日积月累的拍摄素材，一句话找到想要的场景与画面。</p>
+          </article>
+          <article class="audience-card p-6 rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.03] to-transparent hover:border-white/20 transition-all reveal">
+            <svg class="w-8 h-8 text-[#f95106] mb-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+            <h3 class="text-lg font-semibold mb-2">设计师 / 摄影师</h3>
+            <p class="text-slate-400 text-sm">用描述性语言定位参考图与样片，无需依赖严格的命名规范。</p>
+          </article>
+          <article class="audience-card p-6 rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.03] to-transparent hover:border-white/20 transition-all reveal">
+            <svg class="w-8 h-8 text-[#f95106] mb-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            <h3 class="text-lg font-semibold mb-2">内容团队</h3>
+            <p class="text-slate-400 text-sm">团队共享素材盘时，成员可以用自然语言快速共享与复用历史素材。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="py-20 md:py-28 border-y border-white/5 bg-[#111]/30" aria-labelledby="faqTitle">
+      <div class="max-w-3xl mx-auto px-6">
+        <div class="text-center mb-12 reveal">
+          <h2 id="faqTitle" class="text-3xl md:text-4xl font-bold mb-4">常见问题</h2>
+          <p class="text-slate-400 text-lg">关于隐私、格式与使用方式的快速解答。</p>
+        </div>
+
+        <div class="space-y-4">
+          <details class="faq-item group rounded-xl border border-white/10 bg-white/[0.02] open:border-[#f95106]/30 transition-all reveal">
+            <summary class="flex items-center justify-between w-full px-6 py-5 text-left font-semibold cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-[#f95106] focus-visible:rounded-xl">
+              素刀 需要联网吗？
+              <svg class="w-5 h-5 text-slate-400 group-open:rotate-180 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </summary>
+            <p class="px-6 pb-5 text-slate-400 leading-relaxed">核心功能完全离线运行。搜索、索引、视频分镜与抽帧都在本地完成，素材文件不会上传至任何云端服务器。</p>
+          </details>
+
+          <details class="faq-item group rounded-xl border border-white/10 bg-white/[0.02] open:border-[#f95106]/30 transition-all reveal">
+            <summary class="flex items-center justify-between w-full px-6 py-5 text-left font-semibold cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-[#f95106] focus-visible:rounded-xl">
+              支持哪些图片和视频格式？
+              <svg class="w-5 h-5 text-slate-400 group-open:rotate-180 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </summary>
+            <p class="px-6 pb-5 text-slate-400 leading-relaxed">图片支持 JPG、JPEG、PNG、WebP、BMP；视频支持 MP4、MOV、MKV、AVI、WebM。后续版本会持续扩展更多格式。</p>
+          </details>
+
+          <details class="faq-item group rounded-xl border border-white/10 bg-white/[0.02] open:border-[#f95106]/30 transition-all reveal">
+            <summary class="flex items-center justify-between w-full px-6 py-5 text-left font-semibold cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-[#f95106] focus-visible:rounded-xl">
+              视频搜索是怎么实现的？
+              <svg class="w-5 h-5 text-slate-400 group-open:rotate-180 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </summary>
+            <p class="px-6 pb-5 text-slate-400 leading-relaxed">素刀 使用 TransNetV2 对视频进行分镜，再用 ffmpeg 抽取每个分镜的代表帧，最后将代表帧送入本地语义索引。搜索时，你看到的是代表帧，点击即可打开原视频并跳转到对应时间段。</p>
+          </details>
+
+          <details class="faq-item group rounded-xl border border-white/10 bg-white/[0.02] open:border-[#f95106]/30 transition-all reveal">
+            <summary class="flex items-center justify-between w-full px-6 py-5 text-left font-semibold cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-[#f95106] focus-visible:rounded-xl">
+              可以添加整个盘符或外接硬盘吗？
+              <svg class="w-5 h-5 text-slate-400 group-open:rotate-180 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </summary>
+            <p class="px-6 pb-5 text-slate-400 leading-relaxed">可以。素刀 支持文件夹、整盘符以及外接硬盘路径作为素材源，并会针对盘符级扫描提供默认排除规则，避免扫描系统目录。</p>
+          </details>
+
+          <details class="faq-item group rounded-xl border border-white/10 bg-white/[0.02] open:border-[#f95106]/30 transition-all reveal">
+            <summary class="flex items-center justify-between w-full px-6 py-5 text-left font-semibold cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-[#f95106] focus-visible:rounded-xl">
+              我的素材隐私如何保障？
+              <svg class="w-5 h-5 text-slate-400 group-open:rotate-180 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </summary>
+            <p class="px-6 pb-5 text-slate-400 leading-relaxed">所有索引文件、向量与缓存都保存在你的本地应用配置目录中；ClipKnife 不收集素材内容、不上传缩略图、不记录搜索历史到云端。</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- Download CTA -->
+    <section id="download" class="py-20 md:py-28" aria-labelledby="downloadTitle">
+      <div class="max-w-5xl mx-auto px-6">
+        <div class="relative overflow-hidden rounded-3xl border border-[#f95106]/20 bg-gradient-to-br from-orange-900/40 to-[#111]/80 p-10 md:p-16 text-center reveal">
+          <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
+            <div class="absolute -top-24 -right-24 w-64 h-64 bg-[#f95106]/20 rounded-full blur-3xl"></div>
+            <div class="absolute -bottom-24 -left-24 w-64 h-64 bg-[#ff7a3c]/20 rounded-full blur-3xl"></div>
+          </div>
+          <div class="relative">
+            <h2 id="downloadTitle" class="text-3xl md:text-5xl font-bold mb-4">准备好找回你的灵感了吗？</h2>
+            <p class="text-slate-300 text-lg md:text-xl max-w-2xl mx-auto mb-8">下载素刀，让你的图片与视频素材用自然语言搜索。</p>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
+              <a href="https://pan.baidu.com/s/1F0H7sZIXyBLfbdB7qYCaFA?pwd=17gs" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 w-full sm:w-auto px-7 py-3.5 rounded-full bg-[#f95106] hover:bg-[#d94605] text-white font-semibold transition-all shadow-lg shadow-[#f95106]/25 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#f95106] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0a]">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+                百度网盘下载
+              </a>
+              <a href="https://pan.quark.cn/s/90534bc8dc31?pwd=MYhU" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 w-full sm:w-auto px-7 py-3.5 rounded-full bg-[#0a0a0a]/60 border border-white/10 hover:border-[#f95106]/50 hover:bg-[#f95106]/10 text-white font-semibold transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#f95106] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0a]">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+                夸克网盘下载
+              </a>
+              <button id="otherDownloadBtn" type="button" class="inline-flex items-center justify-center gap-2 w-full sm:w-auto px-7 py-3.5 rounded-full bg-[#0a0a0a]/60 border border-white/10 hover:border-[#f95106]/50 hover:bg-[#f95106]/10 text-white font-semibold transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#f95106] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0a]">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" x2="21" y1="14" y2="3"/></svg>
+                其他下载链接
+              </button>
+            </div>
+
+            <div class="mt-8 flex flex-wrap items-center justify-center gap-4 text-sm text-slate-400">
+              <span class="flex items-center gap-2"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="14" x="2" y="3" rx="2"/><line x1="8" x2="16" y1="21" y2="21"/><line x1="12" x2="12" y1="17" y2="21"/></svg>Windows 10 / 11</span>
+              <span class="flex items-center gap-2"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>离线可用</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Other download links modal -->
+  <div id="downloadModal" class="fixed inset-0 z-50 hidden" aria-labelledby="downloadModalTitle" role="dialog" aria-modal="true">
+    <div class="absolute inset-0 bg-black/70 backdrop-blur-sm transition-opacity opacity-0" data-modal-backdrop></div>
+    <div class="relative z-10 flex min-h-full items-center justify-center p-4">
+      <div class="w-full max-w-md transform scale-95 opacity-0 transition-all duration-200 rounded-2xl border border-white/10 bg-[#111] p-6 shadow-2xl" data-modal-panel>
+        <div class="flex items-center justify-between mb-4">
+          <h3 id="downloadModalTitle" class="text-lg font-semibold text-white">其他下载链接</h3>
+          <button type="button" data-modal-close class="p-2 -mr-2 rounded-lg text-slate-400 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-[#f95106]" aria-label="关闭">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="M6 6l12 12"/></svg>
+          </button>
+        </div>
+        <p class="text-slate-400 text-sm mb-4"></p>
+        <a href="https://1857417120.share.123865.com/123pan/8dWuvd-aLMHd?notoken=1&pwd=fkWA" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 w-full px-4 py-3 rounded-xl border border-white/10 bg-white/[0.03] hover:bg-[#f95106]/10 hover:border-[#f95106]/50 transition-all">
+          <svg class="w-5 h-5 text-[#f95106]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+          <span class="text-sm font-medium">123 网盘下载</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="border-t border-white/10 py-12 bg-[#0a0a0a]">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
+      <a href="#" class="flex items-center gap-2 font-bold text-lg" aria-label="ClipKnife 首页">
+        <img src="assets/icon.png" alt="" class="w-6 h-6 rounded-md" />
+        <span class="bg-clip-text text-transparent bg-gradient-to-r from-[#f95106] to-[#ff7a3c]">ClipKnife</span>
+      </a>
+      <nav aria-label="页脚导航">
+        <ul class="flex flex-wrap items-center justify-center gap-6 text-sm text-slate-400">
+          <li><a href="#features" class="hover:text-white transition-colors">功能</a></li>
+          <li><a href="#workflow" class="hover:text-white transition-colors">流程</a></li>
+          <li><a href="#faq" class="hover:text-white transition-colors">FAQ</a></li>
+          <li><a href="#download" class="hover:text-white transition-colors">下载</a></li>
+        </ul>
+      </nav>
+      <p class="text-sm text-slate-500">&copy; <span id="year"></span> ClipKnife. 本地素材检索工具。</p>
+    </div>
+  </footer>
+
+  <script src="assets/app.js"></script>
+</body>
+</html>
