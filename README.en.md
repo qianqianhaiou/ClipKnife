@@ -27,7 +27,7 @@ ClipKnife turns multiple local folders into one searchable media library:
 - Review video shots, adjust time ranges, edit tags and notes, merge, split, delete, and export selected clips.
 - Inspect tasks, indexing status, health checks, repair actions, and diagnostic exports when local dependencies or material sources need attention.
 
-![演示](./assets/demo.gif)
+  ![演示](./assets/demo.gif)
 
 ## Use Cases
 
@@ -55,6 +55,8 @@ ClipKnife turns multiple local folders into one searchable media library:
 ## Privacy and Data
 
 ClipKnife's core asset processing runs locally. Source media files, indexes, scene results, frame caches, task state, and logs are managed around the local application workspace. Diagnostic and update-related features are intended to inspect software status and should not upload original user media files.
+
+![智能搜索](./assets/f3.png)
 
 ## Development Environment
 

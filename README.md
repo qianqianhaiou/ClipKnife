@@ -4,7 +4,7 @@
 
 ![首页](./assets/home.png)
 
-## 素刀是什么？
+## [素刀是什么？](https://qianqianhaiou.github.io/ClipKnife/)
 
 素刀是一款面向视频创作者、设计师和内容运营的本地素材管理与 AI 检索桌面软件。它要解决的问题不是“剪一段视频”，而是让你在大量散落的图片、视频和外接硬盘素材里，快速找到想要的画面。
 
@@ -26,7 +26,7 @@
 - 任务和诊断：提供任务中心、索引状态、健康检查、修复动作和诊断导出，方便定位本地依赖或素材源问题。
 
 
-![演示](./assets/demo.gif)
+  ![演示](./assets/demo.gif)
 
 ## 适合的使用场景
 
@@ -55,61 +55,11 @@
 
 素刀的核心素材处理在本机完成。素材文件、索引、分镜结果、代表帧缓存、任务状态和日志都围绕本地应用目录工作。诊断和更新相关能力用于检查软件运行状态，不应上传用户原始素材文件。
 
-## 开发环境
+![智能搜索](./assets/f3.png)
 
-当前项目主要面向 Windows 桌面端打包。建议环境：
 
-- Node.js 22.22.0
-- pnpm
-- Bun
-- Rust 1.88.0 或更新版本
-- Python 3.11.9
+## [软件下载](https://qianqianhaiou.github.io/ClipKnife/)
 
-安装根目录依赖：
-
-```powershell
-pnpm install
-```
-
-安装 Bun sidecar 依赖：
-
-```powershell
-cd bun
-bun install
-cd ..
-```
-
-## 本地开发
-
-启动 Tauri 开发环境：
-
-```powershell
-pnpm tauri dev
-```
-
-Tauri 的开发命令会先构建 Bun sidecar，再启动 Vite 前端。
-
-也可以单独构建前端：
-
-```powershell
-pnpm build
-```
-
-单独构建 Bun sidecar：
-
-```powershell
-pnpm build:bun-sidecar
-```
-
-## 打包
-
-Windows 一键构建：
-
-```powershell
-.\build.ps1
-```
-
-脚本会检查 Rust 版本，安装根目录依赖，构建 Bun sidecar，把 `ClipKnifeCore` 复制到 Tauri binaries 目录，然后执行 Tauri 打包。`external` 下的离线包是运行环境初始化所需的可选大体积依赖，发布时按需要放到安装包输出目录旁。
 
 ## 项目状态
 
