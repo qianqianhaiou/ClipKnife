@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="ClipKnife 使用手册，介绍初始化、素材源、素材库、智能搜索、视频分镜、项目、任务中心和诊断修复。" />
+  <title>ClipKnife 使用手册</title>
+  <meta name="theme-color" content="#0a0a0a" />
+  <link rel="icon" type="image/png" href="../assets/icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="../assets/styles.css" />
+</head>
+<body class="bg-[#0a0a0a] text-slate-100 antialiased">
+  <header class="doc-header">
+    <a href="../" class="doc-brand" aria-label="返回 ClipKnife 首页">
+      <img src="../assets/icon.png" alt="" />
+      <span>素刀-ClipKnife</span>
+    </a>
+    <nav class="doc-nav" aria-label="文档导航">
+      <a href="../manual/" aria-current="page">使用手册</a>
+      <a href="../changelog/">更新日志</a>
+      <a href="../faq/">常见问题</a>
+      <a href="../#download">下载</a>
+    </nav>
+  </header>
+  <main class="doc-shell">
+    <aside class="doc-sidebar" aria-label="页面目录">
+      <p class="doc-sidebar-title">目录</p>
+      <nav id="docToc"></nav>
+    </aside>
+    <article class="doc-article">
+      <p class="doc-kicker"><a href="../">首页</a> / 使用手册</p>
+      <div id="docStatus" class="doc-status">正在加载使用手册...</div>
+      <div class="doc-content" data-doc-src="../content/manual.md"></div>
+    </article>
+  </main>
+  <script src="../assets/docs.js"></script>
+</body>
+</html>
