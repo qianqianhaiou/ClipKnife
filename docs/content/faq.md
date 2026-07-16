@@ -3,9 +3,7 @@
 更新时间：2026-07-04  
 适用版本：v1.0.1 起
 
-这里整理的是用户最常遇到的问题。截图位置已经预留，你可以后续把图片放到 `docs/assets/faq/`。
-
-![诊断与修复入口示意](../assets/faq/01-diagnostics.png)
+![诊断与修复入口示意](../assets/manual/08-diagnostics.png)
 
 ## ClipKnife 需要联网吗？
 
