@@ -32,8 +32,9 @@
         <span class="bg-clip-text text-transparent bg-gradient-to-r from-[#f95106] to-[#ff7a3c]">素刀-ClipKnife</span>
       </a>
 
-      <ul class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
+      <ul class="hidden md:flex items-center gap-6 text-sm font-medium text-slate-300">
         <li><a href="#features" class="hover:text-white transition-colors">功能特性</a></li>
+        <li><a href="#creation" class="hover:text-white transition-colors">创作能力</a></li>
         <li><a href="#workflow" class="hover:text-white transition-colors">使用流程</a></li>
         <li><a href="manual/" class="hover:text-white transition-colors">使用手册</a></li>
         <li><a href="changelog/" class="hover:text-white transition-colors">更新日志</a></li>
@@ -82,6 +83,7 @@
     <div id="mobileMenu" class="md:hidden hidden border-t border-white/10 bg-[#0a0a0a]/95 backdrop-blur-md">
       <ul class="px-6 py-4 space-y-3 text-slate-300">
         <li><a href="#features" class="block py-2 hover:text-white">功能特性</a></li>
+        <li><a href="#creation" class="block py-2 hover:text-white">创作能力</a></li>
         <li><a href="#workflow" class="block py-2 hover:text-white">使用流程</a></li>
         <li><a href="manual/" class="block py-2 hover:text-white">使用手册</a></li>
         <li><a href="changelog/" class="block py-2 hover:text-white">更新日志</a></li>
@@ -95,14 +97,14 @@
 
   <main id="main">
     <!-- Hero -->
-    <section class="relative pt-32 pb-20 md:pt-44 md:pb-32 overflow-hidden" aria-labelledby="heroTitle">
+    <section class="relative pt-24 pb-20 md:pt-24 md:pb-28 overflow-hidden" aria-labelledby="heroTitle">
       <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
         <div class="blob blob-1"></div>
         <div class="blob blob-2"></div>
         <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,#0a0a0a_70%)]"></div>
       </div>
 
-      <div class="relative max-w-7xl mx-auto px-6 text-center">
+      <div class="relative max-w-7xl mx-auto px-6 text-center mt-[81px]">
         <!-- <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[#f95106]/30 bg-[#f95106]/10 text-[#ff7a3c] text-xs font-medium mb-6 reveal">
           <span class="relative flex h-2 w-2">
             <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#f95106] opacity-75"></span>
@@ -115,7 +117,7 @@
           class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight mb-6 reveal">
           用一句话，找回你散落在<br class="hidden sm:block" />
           <span
-            class="bg-clip-text text-transparent bg-gradient-to-r from-[#f95106] via-[#ff7a3c] to-[#ffb380]">硬盘里的每一帧灵感</span>
+            class="bg-clip-text text-transparent bg-gradient-to-r from-[#f95106] via-[#ff7a3c] to-[#ffb380] inline-block mt-[16px]">硬盘里的每一帧灵感</span>
         </h1>
 
 
@@ -128,9 +130,9 @@
             class="w-full sm:w-auto px-8 py-4 rounded-full bg-[#f95106] hover:bg-[#d94605] text-white font-semibold text-lg transition-all shadow-xl shadow-[#f95106]/25 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#f95106] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0a]">
             免费下载
           </a>
-          <a href="#features"
+          <a href="#creation"
             class="w-full sm:w-auto px-8 py-4 rounded-full border border-white/15 hover:border-white/30 hover:bg-white/5 text-slate-200 font-semibold text-lg transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#f95106] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0a]">
-            了解功能
+            探索创作能力
           </a>
         </div>
 
@@ -142,11 +144,11 @@
           <span class="flex items-center gap-2"><svg class="w-4 h-4 text-[#f95106]" viewBox="0 0 24 24" fill="none"
               stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M20 6 9 17l-5-5" />
-            </svg>完全本地运行</span>
+            </svg>本地素材处理</span>
           <span class="flex items-center gap-2"><svg class="w-4 h-4 text-[#f95106]" viewBox="0 0 24 24" fill="none"
               stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M20 6 9 17l-5-5" />
-            </svg>自然语言搜索</span>
+            </svg>对话式创作</span>
           <span class="flex items-center gap-2"><svg class="w-4 h-4 text-[#f95106]" viewBox="0 0 24 24" fill="none"
               stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M20 6 9 17l-5-5" />
@@ -322,6 +324,105 @@
             <h3 class="text-base font-semibold mb-2">结果回连与诊断</h3>
             <p class="text-slate-400 text-sm leading-relaxed">点击即可打开原文件或定位目录，视频结果直达对应时间段；异常时一键导出诊断包。</p>
           </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Creative assistant and toolbox -->
+    <section id="creation" class="py-20 md:py-28 border-y border-white/5 bg-[#111]/30" aria-labelledby="creationTitle">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="grid lg:grid-cols-12 gap-8 lg:gap-12 items-end mb-14 reveal">
+          <div class="lg:col-span-8">
+            <p class="text-sm font-semibold tracking-[0.18em] text-[#ff7a3c] mb-4">从找到素材到开始创作</p>
+            <h2 id="creationTitle" class="text-3xl md:text-5xl font-bold tracking-tight">让创作助手接住下一步</h2>
+          </div>
+          <p class="lg:col-span-4 text-slate-400 text-lg leading-relaxed">
+            描述目标、选择素材范围，素刀会在同一段对话中组织素材、调用本地工具，并把结果写入可继续编辑的剪映草稿。
+          </p>
+        </div>
+        <!-- 产品截图预留：assets/manual/10-creative-assistant.png -->
+        <!-- 产品截图预留：assets/manual/12-toolbox.png -->
+        <div
+          class="grid lg:grid-cols-12 overflow-hidden rounded-3xl border border-white/10 bg-white/10 shadow-2xl shadow-black/20 reveal">
+          <article class="lg:col-span-7 bg-[#0d0d0d] p-8 md:p-12" aria-labelledby="assistantTitle">
+            <div class="flex flex-wrap items-center gap-3 mb-8 text-sm">
+              <span class="px-3 py-1 rounded-full border border-[#f95106]/30 bg-[#f95106]/10 text-[#ff9a68]">创作助手</span>
+              <span class="text-slate-400">本地素材与剪映草稿工作流</span>
+            </div>
+            <h3 id="assistantTitle" class="max-w-2xl text-3xl md:text-4xl font-bold leading-tight mb-5">
+              不止回答问题，也能实际推进创作
+            </h3>
+            <p class="max-w-2xl text-slate-400 text-lg leading-relaxed mb-10">
+              搜索本地图片、视频和音频，使用明确附加的文件，生成文本或配音，再创建、编辑和保存剪映草稿。你可以随时继续补充要求，让任务沿着新的方向调整。
+            </p>
+
+            <img src="assets/manual/10-creative-assistant.png" />
+            <img src="assets/manual/jianying.png" />
+
+            <ul class="grid sm:grid-cols-2 gap-x-10 border-y border-white/10" aria-label="创作助手主要能力">
+              <li class="py-5 border-b sm:border-b border-white/10">
+                <h4 class="font-semibold mb-1">按范围找素材</h4>
+                <p class="text-sm text-slate-400 leading-relaxed">搜索素材库或限定目录，也能从相似画面继续发现可用内容。</p>
+              </li>
+              <li class="py-5 border-b border-white/10">
+                <h4 class="font-semibold mb-1">创建与编辑草稿</h4>
+                <p class="text-sm text-slate-400 leading-relaxed">处理轨道、时序、字幕、动画、转场、蒙版、关键帧和模板替换。</p>
+              </li>
+              <li class="py-5 border-b sm:border-b-0 border-white/10">
+                <h4 class="font-semibold mb-1">自动或先确认</h4>
+                <p class="text-sm text-slate-400 leading-relaxed">自动模式连续执行，询问模式先确认素材、文案和背景音乐等关键选择。</p>
+              </li>
+              <li class="py-5">
+                <h4 class="font-semibold mb-1">按需补充外部素材</h4>
+                <p class="text-sm text-slate-400 leading-relaxed">获得许可后搜索第三方开放来源，并保留可用的作者与许可信息。</p>
+              </li>
+            </ul>
+
+            <a href="manual/"
+              class="inline-flex items-center mt-8 text-[#ff7a3c] hover:text-[#ffb380] font-semibold transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#f95106] focus-visible:ring-offset-4 focus-visible:ring-offset-[#0d0d0d]">
+              查看创作助手使用方法
+              <span class="ml-2" aria-hidden="true">→</span>
+            </a>
+          </article>
+
+          <aside class="lg:col-span-5 bg-[#141414] p-8 md:p-12" aria-labelledby="toolboxTitle">
+            <p class="text-sm font-semibold tracking-[0.18em] text-[#ff7a3c] mb-4">按需安装，本机处理</p>
+            <h3 id="toolboxTitle" class="text-2xl md:text-3xl font-bold mb-4">工具箱</h3>
+            <p class="text-slate-400 leading-relaxed mb-8">
+              只安装当前需要的能力。输入内容和媒体由本机工具处理，原始文件不会被覆盖。
+            </p>
+
+            <dl class="border-t border-white/10">
+              <div class="py-6 border-b border-white/10">
+                <dt class="font-semibold text-lg mb-2">文本转语音</dt>
+                <dd class="text-sm text-slate-400 leading-relaxed">选择本机可用音色，把最长 50,000 字的文本生成 WAV，也能让创作助手把配音加入草稿。</dd>
+
+                <img src="assets/manual/13-toolbox-tts.png" />
+              </div>
+              <div class="py-6 border-b border-white/10">
+                <dt class="font-semibold text-lg mb-2">图片清晰化</dt>
+                <dd class="text-sm text-slate-400 leading-relaxed">使用 Real-ESRGAN 在本机放大 JPG、PNG 或 WebP 图片，支持照片和动漫模型。
+                </dd>
+
+                <img src="assets/manual/14-toolbox-image-enhance.png" />
+              </div>
+              <div class="py-6 border-b border-white/10">
+                <dt class="font-semibold text-lg mb-2">视频增强</dt>
+                <dd class="text-sm text-slate-400 leading-relaxed">使用 Video2X 提升分辨率或帧率，也可以组合处理并输出 MP4。</dd>
+
+                <img src="assets/manual/15-toolbox-video-enhance.png" />
+              </div>
+            </dl>
+
+            <p class="mt-7 text-sm text-slate-400 leading-relaxed">
+              工具安装和更新需要联网；图片与视频增强需要支持 Vulkan 的显卡。
+            </p>
+            <a href="manual/"
+              class="inline-flex items-center mt-6 text-[#ff7a3c] hover:text-[#ffb380] font-semibold transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#f95106] focus-visible:ring-offset-4 focus-visible:ring-offset-[#141414]">
+              查看工具箱说明
+              <span class="ml-2" aria-hidden="true">→</span>
+            </a>
+          </aside>
         </div>
       </div>
     </section>
@@ -520,8 +621,8 @@
             <p class="text-slate-300 text-lg md:text-xl max-w-2xl mx-auto mb-8">下载素刀，让你的图片与视频素材用自然语言搜索。</p>
 
             <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
-              <a href="https://atomgit.com/gcw_DvNLXsnW/ClipKnife/releases/download/v1.1.6/%E7%B4%A0%E5%88%80_1.1.6_x64-setup.exe" target="_blank"
-                rel="noopener noreferrer"
+              <a href="https://atomgit.com/gcw_DvNLXsnW/ClipKnife/releases/download/v1.1.6/%E7%B4%A0%E5%88%80_1.1.6_x64-setup.exe"
+                target="_blank" rel="noopener noreferrer"
                 class="inline-flex items-center justify-center gap-2 w-full sm:w-auto px-7 py-3.5 rounded-full bg-[#f95106] hover:bg-[#d94605] text-white font-semibold transition-all shadow-lg shadow-[#f95106]/25 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#f95106] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0a]">
                 <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                   stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -570,7 +671,7 @@
             </div>
           </div>
           <div class="relative mt-[36px]">
-            <h2 id="downloadTitle" class="text-xl md:text-xl font-bold mb-4">有问题可以联系作者，或加入交流群</h2>
+            <h2 class="text-xl md:text-xl font-bold mb-4">有问题可以联系作者，或加入交流群</h2>
             <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
               <img class="w-[50%]" src="./assets/wechat.jpg" alt="">
               <img class="w-[50%] rounded-[8px]" src="./assets/qqgroup.jpg" alt="">
@@ -639,6 +740,7 @@
       <nav aria-label="页脚导航">
         <ul class="flex flex-wrap items-center justify-center gap-6 text-sm text-slate-400">
           <li><a href="#features" class="hover:text-white transition-colors">功能</a></li>
+          <li><a href="#creation" class="hover:text-white transition-colors">创作能力</a></li>
           <li><a href="#workflow" class="hover:text-white transition-colors">流程</a></li>
           <li><a href="manual/" class="hover:text-white transition-colors">使用手册</a></li>
           <li><a href="changelog/" class="hover:text-white transition-colors">更新日志</a></li>
@@ -646,7 +748,7 @@
           <li><a href="#download" class="hover:text-white transition-colors">下载</a></li>
         </ul>
       </nav>
-      <p class="text-sm text-slate-500">&copy; <span id="year"></span> ClipKnife. 本地素材检索工具。</p>
+      <p class="text-sm text-slate-500">&copy; <span id="year"></span> ClipKnife. 本地素材检索与创作工具。</p>
     </div>
   </footer>
 

@@ -19,6 +19,8 @@ function Assert-TextContains {
 }
 
 $requiredFiles = @(
+  'manual/product-baseline.md',
+  'docs/index.html',
   'docs/content/manual.md',
   'docs/content/faq.md',
   'docs/content/changelog/v1.0.1.md',
@@ -26,7 +28,8 @@ $requiredFiles = @(
   'docs/faq/index.html',
   'docs/changelog/index.html',
   'docs/changelog/v1.0.1/index.html',
-  'docs/assets/docs.js'
+  'docs/assets/docs.js',
+  'docs/assets/manual/README.md'
 )
 
 foreach ($file in $requiredFiles) {
@@ -39,6 +42,18 @@ $faqTitle = '# ClipKnife ' + [string]([char]0x5E38) + [string]([char]0x89C1) + [
 Assert-TextContains 'docs/index.html' 'href="manual/"'
 Assert-TextContains 'docs/index.html' 'href="changelog/"'
 Assert-TextContains 'docs/index.html' 'href="faq/"'
+Assert-TextContains 'docs/index.html' 'id="creation"'
+Assert-TextContains 'docs/index.html' 'id="assistantTitle"'
+Assert-TextContains 'docs/index.html' 'id="toolboxTitle"'
+Assert-TextContains 'docs/index.html' 'Real-ESRGAN'
+Assert-TextContains 'docs/index.html' 'Video2X'
+Assert-TextContains 'docs/index.html' '50,000'
+
+# Keep published download destinations stable while changing feature copy.
+Assert-TextContains 'docs/index.html' 'releases/download/v1.1.6/'
+Assert-TextContains 'docs/index.html' 'pan.baidu.com/s/1jdUj8FZCE7Td8KqfQAQ3PQ?pwd=kjkc'
+Assert-TextContains 'docs/index.html' 'pan.quark.cn/s/926965d6ffe4?pwd=YV71'
+Assert-TextContains 'docs/index.html' 'github.com/qianqianhaiou/ClipKnife/releases/tag/v1.0.1'
 
 Assert-TextContains 'docs/manual/index.html' 'data-doc-src="../content/manual.md"'
 Assert-TextContains 'docs/faq/index.html' 'data-doc-src="../content/faq.md"'
@@ -49,8 +64,21 @@ Assert-TextContains 'docs/assets/docs.js' 'data-doc-src'
 
 Assert-TextContains 'docs/content/manual.md' $manualTitle
 Assert-TextContains 'docs/content/manual.md' '../assets/manual/01-first-launch.png'
+Assert-TextContains 'docs/content/manual.md' 'Openverse'
+Assert-TextContains 'docs/content/manual.md' 'OpenAI Compatible'
+Assert-TextContains 'docs/content/manual.md' 'Real-ESRGAN'
+Assert-TextContains 'docs/content/manual.md' 'Video2X'
 Assert-TextContains 'docs/content/faq.md' $faqTitle
-Assert-TextContains 'docs/content/faq.md' '../assets/faq/01-diagnostics.png'
+Assert-TextContains 'docs/content/faq.md' '../assets/manual/08-diagnostics.png'
+Assert-TextContains 'docs/content/faq.md' 'Openverse'
+Assert-TextContains 'docs/content/faq.md' 'OpenAI Compatible'
+Assert-TextContains 'docs/content/faq.md' 'Real-ESRGAN'
+Assert-TextContains 'docs/content/faq.md' 'Video2X'
+Assert-TextContains 'manual/product-baseline.md' '### 3.10 '
+Assert-TextContains 'manual/product-baseline.md' '### 3.11 '
+Assert-TextContains 'manual/product-baseline.md' 'Freesound'
+Assert-TextContains 'docs/assets/manual/README.md' '10-creative-assistant.png'
+Assert-TextContains 'docs/assets/manual/README.md' '15-toolbox-video-enhance.png'
 Assert-TextContains 'docs/content/changelog/v1.0.1.md' '# v1.0.1'
 Assert-TextContains 'docs/content/changelog/v1.0.1.md' '2026-06-24'
 
