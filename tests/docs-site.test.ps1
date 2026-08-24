@@ -61,6 +61,7 @@ Assert-TextContains 'docs/changelog/v1.0.1/index.html' 'data-doc-src="../../cont
 
 Assert-TextContains 'docs/assets/docs.js' 'function renderMarkdown'
 Assert-TextContains 'docs/assets/docs.js' 'data-doc-src'
+Assert-TextContains 'docs/assets/docs.js' 'function scrollToLocationHash'
 
 Assert-TextContains 'docs/content/manual.md' $manualTitle
 Assert-TextContains 'docs/content/manual.md' '../assets/manual/01-first-launch.png'
@@ -81,5 +82,10 @@ Assert-TextContains 'docs/assets/manual/README.md' '10-creative-assistant.png'
 Assert-TextContains 'docs/assets/manual/README.md' '15-toolbox-video-enhance.png'
 Assert-TextContains 'docs/content/changelog/v1.0.1.md' '# v1.0.1'
 Assert-TextContains 'docs/content/changelog/v1.0.1.md' '2026-06-24'
+
+& node --test 'tests/docs-anchor.test.cjs'
+if ($LASTEXITCODE -ne 0) {
+  throw "Documentation anchor tests failed with exit code $LASTEXITCODE"
+}
 
 Write-Host 'docs-site validation passed'

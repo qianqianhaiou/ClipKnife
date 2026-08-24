@@ -145,6 +145,95 @@
     }
   }
 
+  function scrollToLocationHash(root) {
+    const rawId = window.location.hash.slice(1);
+    if (!rawId) return false;
+
+    let id = rawId;
+    try {
+      id = decodeURIComponent(rawId);
+    } catch (_) {
+      // Keep the literal fragment so a malformed escape cannot break document loading.
+    }
+
+    const target = document.getElementById(id);
+    if (!target || !root.contains(target)) return false;
+    target.scrollIntoView();
+    return true;
+  }
+
+  function waitForImage(image) {
+    if (image.complete) return Promise.resolve();
+
+    return new Promise(function (resolve) {
+      function finish() {
+        image.removeEventListener('load', finish);
+        image.removeEventListener('error', finish);
+        resolve();
+      }
+
+      image.addEventListener('load', finish);
+      image.addEventListener('error', finish);
+    });
+  }
+
+  function settleLocationHash(root) {
+    const rawHash = window.location.hash;
+    if (!rawHash) return Promise.resolve(false);
+
+    let id = rawHash.slice(1);
+    try {
+      id = decodeURIComponent(id);
+    } catch (_) {
+      // Keep the literal fragment so a malformed escape cannot break document loading.
+    }
+
+    const target = document.getElementById(id);
+    if (!target || !root.contains(target)) return Promise.resolve(false);
+
+    const imagesBeforeTarget = Array.from(root.querySelectorAll('img'))
+      .filter(function (image) {
+        return image.compareDocumentPosition(target) & Node.DOCUMENT_POSITION_FOLLOWING;
+      });
+
+    imagesBeforeTarget.forEach(function (image) {
+      image.loading = 'eager';
+    });
+
+    const pending = imagesBeforeTarget
+      .filter(function (image) {
+        return !image.complete;
+      })
+      .map(waitForImage);
+
+    if (document.fonts && document.fonts.status === 'loading' && document.fonts.ready) {
+      pending.push(document.fonts.ready);
+    }
+
+    if (!pending.length) return Promise.resolve(false);
+
+    return new Promise(function (resolve) {
+      let finished = false;
+      const timeout = window.setTimeout(finish, 2500);
+
+      function finish() {
+        if (finished) return;
+        finished = true;
+        window.clearTimeout(timeout);
+        resolve();
+      }
+
+      Promise.allSettled(pending).then(finish);
+    }).then(function () {
+      return new Promise(function (resolve) {
+        window.requestAnimationFrame(resolve);
+      });
+    }).then(function () {
+      if (window.location.hash !== rawHash) return false;
+      return scrollToLocationHash(root);
+    });
+  }
+
   function loadDocument() {
     const mount = document.querySelector('[data-doc-src]');
     if (!mount) return;
@@ -165,6 +254,8 @@
         prepareImageFallbacks(mount);
         setTitleFromContent(mount);
         if (status) status.hidden = true;
+        scrollToLocationHash(mount);
+        settleLocationHash(mount);
       })
       .catch(function (error) {
         if (status) {
@@ -175,5 +266,7 @@
   }
 
   window.renderMarkdown = renderMarkdown;
+  window.scrollToLocationHash = scrollToLocationHash;
+  window.settleLocationHash = settleLocationHash;
   loadDocument();
 })();

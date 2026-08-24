@@ -294,6 +294,7 @@ body {
 }
 
 .doc-content h1 {
+  scroll-margin-top: 84px;
   margin: 0 0 22px;
   color: #fff;
   font-size: clamp(38px, 6vw, 72px);
@@ -302,6 +303,7 @@ body {
 }
 
 .doc-content h2 {
+  scroll-margin-top: 84px;
   margin: 58px 0 18px;
   padding-top: 10px;
   color: #fff;
@@ -311,6 +313,7 @@ body {
 }
 
 .doc-content h3 {
+  scroll-margin-top: 84px;
   margin: 34px 0 12px;
   color: rgba(255, 255, 255, 0.94);
   font-size: 21px;
