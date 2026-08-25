@@ -3,6 +3,16 @@
 
 <head>
   <meta charset="UTF-8" />
+  <script>
+    const redirectHosts = new Set([
+      "qianqianhaiou.github.io",
+      "clipknife.netlify.app",
+    ]);
+
+    if (redirectHosts.has(window.location.hostname.toLowerCase())) {
+      window.location.replace("https://clipknife.cn/");
+    }
+  </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="素刀 ClipKnife — 面向创作者的本地素材管理与自然语言检索工具。图片与视频片段混合搜索，全部在本地完成。" />
   <title>素刀 — 本地素材管理与自然语言检索工具</title>
@@ -33,7 +43,6 @@
   <meta name="twitter:description" content="面向创作者的本地素材管理与自然语言检索工具。图片与视频片段混合搜索，全部在本地完成。" />
   <meta name="twitter:image" content="https://clipknife.cn/assets/icon.png" />
   <link rel="canonical" href="https://clipknife.cn/" />
-  <meta http-equiv="refresh" content="5;url=https://clipknife.cn/" />
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
