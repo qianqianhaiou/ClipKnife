@@ -1,0 +1,8 @@
+﻿# clipknife.cn robots.txt
+# https://clipknife.cn/robots.txt
+
+User-agent: *
+Allow: /
+Disallow: /assets/
+
+Sitemap: https://clipknife.cn/sitemap.xml

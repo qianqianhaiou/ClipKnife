@@ -1,19 +1,77 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="ClipKnife 常见问题，解答本地运行、隐私、素材源、索引、搜索、分镜、项目和诊断相关问题。" />
-  <title>ClipKnife 常见问题</title>
+  <meta name="description" content="素刀 ClipKnife 常见问题解答，覆盖安装配置、素材源管理、AI 索引与搜索、视频分镜、语音转写、隐私保护与诊断修复。" />
+  <title>素刀 ClipKnife 常见问题 — 安装、索引、搜索、隐私</title>
   <meta name="theme-color" content="#0a0a0a" />
   <link rel="icon" type="image/png" href="../assets/icon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet" />
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="../assets/styles.css" />
+  <link rel="canonical" href="https://clipknife.cn/faq/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="素刀 ClipKnife 常见问题" />
+  <meta property="og:description" content="安装配置、素材源管理、AI 索引与搜索、视频分镜、语音转写、隐私保护等常见问题解答。" />
+  <meta property="og:url" content="https://clipknife.cn/faq/" />
+  <meta property="og:image" content="https://clipknife.cn/assets/icon.png" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "素刀 ClipKnife 需要联网使用吗？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "素刀的核心功能（素材扫描、AI 索引、智能搜索、视频分镜、语音转写）全部在本地完成，不需要联网。仅在检查更新、拉取通知和可选的外部视觉描述时需要网络连接。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "素刀会上传我的素材文件吗？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "不会。素材文件始终保留在你的电脑中。素刀只创建索引和缩略图用于本地搜索，不会将你的素材上传到任何服务器。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "素刀支持哪些类型的素材？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "目前支持图片（JPG、PNG、WebP 等）、视频（MP4、AVI、MOV 等）和音频（MP3、WAV、FLAC 等）文件。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "视频分镜是什么意思？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "素刀会自动将长视频按场景变化切分成多个片段（分镜），每个分镜有独立的代表帧和可编辑信息。这样你就可以通过搜索找到视频中的某个具体片段，而不是整个视频。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "素刀的本地 AI 需要什么样的硬件？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "视觉搜索和语音转写功能在 CPU 上也可运行，但 NVIDIA GPU会大幅提升索引速度。建议至少 8GB 内存，推荐 16GB+和具备 CUDA 的 GPU。"
+        }
+      }
+    ]
+  }
+  </script>
 </head>
+
 <body class="bg-[#0a0a0a] text-slate-100 antialiased">
+  <h1 style="display:none;">素刀 ClipKnife 常见问题</h1>
   <header class="doc-header">
     <a href="../" class="doc-brand" aria-label="返回 ClipKnife 首页">
       <img src="../assets/icon.png" alt="" />
@@ -39,4 +97,5 @@
   </main>
   <script src="../assets/docs.js"></script>
 </body>
+
 </html>

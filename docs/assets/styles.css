@@ -130,6 +130,110 @@ body {
   transform: translateY(0);
 }
 
+/* Generated product visuals */
+.site-visual {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 18px;
+  background: #0d0d0d;
+  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.34);
+}
+
+.site-visual::after {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  content: "";
+  pointer-events: none;
+}
+
+.site-visual img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.site-visual-hero {
+  width: min(100%, 1120px);
+  margin-inline: auto;
+  border-color: rgba(249, 81, 6, 0.22);
+  box-shadow:
+    0 36px 110px rgba(0, 0, 0, 0.48),
+    0 0 80px rgba(249, 81, 6, 0.08);
+  transform: perspective(1400px) rotateX(1.6deg);
+  transform-origin: center top;
+}
+
+.feature-visuals {
+  display: grid;
+  gap: 42px;
+}
+
+.feature-visual figcaption {
+  display: grid;
+  grid-template-columns: minmax(190px, 0.42fr) minmax(0, 0.58fr);
+  gap: 32px;
+  padding: 22px 4px 0;
+  text-align: left;
+}
+
+.feature-visual figcaption span {
+  color: rgba(255, 255, 255, 0.96);
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.feature-visual figcaption p {
+  margin: 0;
+  color: rgba(148, 163, 184, 0.9);
+  line-height: 1.7;
+}
+
+.creation-visual {
+  border-radius: 14px;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.36);
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .feature-visual .site-visual,
+  .creation-visual {
+    transition: transform 360ms ease, border-color 360ms ease;
+  }
+
+  .feature-visual:hover .site-visual,
+  .creation-visual:hover {
+    transform: translateY(-4px);
+    border-color: rgba(249, 81, 6, 0.28);
+  }
+}
+
+@media (min-width: 1024px) {
+  .feature-visuals {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .site-visual {
+    border-radius: 12px;
+  }
+
+  .site-visual-hero {
+    width: calc(100% + 24px);
+    margin-left: -12px;
+    transform: none;
+  }
+
+  .feature-visual figcaption {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    padding-top: 16px;
+  }
+}
+
 /* Stagger children within grids/lists */
 .value-card:nth-child(1) { transition-delay: 0ms; }
 .value-card:nth-child(2) { transition-delay: 80ms; }

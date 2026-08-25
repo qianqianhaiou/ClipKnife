@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="ClipKnife — 面向创作者的本地素材管理与自然语言检索工具。图片与视频片段混合搜索，全部在本地完成。" />
+  <meta name="description" content="素刀 ClipKnife — 面向创作者的本地素材管理与自然语言检索工具。图片与视频片段混合搜索，全部在本地完成。" />
   <title>素刀 — 本地素材管理与自然语言检索工具</title>
   <meta name="theme-color" content="#0a0a0a" />
   <meta http-equiv="origin-trial"
@@ -18,6 +18,45 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="assets/styles.css" />
   <meta name="msvalidate.01" content="1808C42E407C60B9A38C8FC1255A2801" />
+  <link rel="canonical" href="https://clipknife.cn/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="zh_CN" />
+  <meta property="og:site_name" content="素刀 ClipKnife" />
+  <meta property="og:title" content="素刀 — 本地素材管理与自然语言检索工具" />
+  <meta property="og:description" content="面向创作者的本地素材管理与自然语言检索工具。图片与视频片段混合搜索，全部在本地完成。" />
+  <meta property="og:url" content="https://clipknife.cn/" />
+  <meta property="og:image" content="https://clipknife.cn/assets/icon.png" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="素刀 — 本地素材管理与自然语言检索工具" />
+  <meta name="twitter:description" content="面向创作者的本地素材管理与自然语言检索工具。图片与视频片段混合搜索，全部在本地完成。" />
+  <meta name="twitter:image" content="https://clipknife.cn/assets/icon.png" />
+  <link rel="canonical" href="https://clipknife.cn/" />
+  <meta http-equiv="refresh" content="5;url=https://clipknife.cn/" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "素刀 ClipKnife",
+    "alternateName": "ClipKnife",
+    "url": "https://clipknife.cn",
+    "description": "面向创作者的本地素材管理与自然语言检索工具。图片与视频片段混合搜索，全部在本地完成。",
+    "applicationCategory": "UtilityApplication",
+    "operatingSystem": "Windows",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "CNY"
+    },
+    "author": {
+      "@type": "Person",
+      "name": "qianqianhaiou",
+      "url": "https://github.com/qianqianhaiou"
+    },
+    "softwareVersion": "1.1.6"
+  }
+  </script>
 </head>
 
 <body class="bg-[#0a0a0a] text-slate-100 antialiased overflow-x-hidden">
@@ -156,6 +195,14 @@
               <path d="M20 6 9 17l-5-5" />
             </svg>完全免费</span>
         </div>
+
+        <figure class="site-visual site-visual-hero mt-14 md:mt-16 reveal">
+          <picture>
+            <source srcset="assets/site/effects/02-media-library-effect.webp" type="image/webp" />
+            <img src="assets/site/effects/02-media-library-effect.png" width="1620" height="971"
+              alt="抽象化的本地素材库效果图，媒体网格通过橙色索引路径汇聚到本地库状态" fetchpriority="high" decoding="async" />
+          </picture>
+        </figure>
       </div>
     </section>
 
@@ -327,6 +374,32 @@
             <p class="text-slate-400 text-sm leading-relaxed">点击即可打开原文件或定位目录，视频结果直达对应时间段；异常时一键导出诊断包。</p>
           </article>
         </div>
+
+        <div class="feature-visuals mt-16 md:mt-20">
+          <figure class="feature-visual reveal">
+            <picture class="site-visual">
+              <source srcset="assets/site/effects/04-semantic-search-results-effect.webp" type="image/webp" />
+              <img src="assets/site/effects/04-semantic-search-results-effect.png" width="1536" height="1024"
+                alt="抽象化的智能搜索效果图，以橙色语义连线连接搜索框与六个匿名媒体结果" loading="lazy" decoding="async" />
+            </picture>
+            <figcaption>
+              <span>一句描述，跨类型命中</span>
+              <p>图片与视频片段在同一结果视图中返回，筛选、预览和定位保持连贯。</p>
+            </figcaption>
+          </figure>
+
+          <figure class="feature-visual reveal">
+            <picture class="site-visual">
+              <source srcset="assets/site/effects/03-video-scene-splitting-effect.webp" type="image/webp" />
+              <img src="assets/site/effects/03-video-scene-splitting-effect.png" width="1536" height="1024"
+                alt="抽象化的视频分镜效果图，以切点连线对应预览画面和六个分镜片段" loading="lazy" decoding="async" />
+            </picture>
+            <figcaption>
+              <span>长视频自动拆成可搜索镜头</span>
+              <p>场景边界、代表帧与时间线集中呈现，检索命中后可以直接回到对应片段。</p>
+            </figcaption>
+          </figure>
+        </div>
       </div>
     </section>
 
@@ -342,8 +415,6 @@
             描述目标、选择素材范围，素刀会在同一段对话中组织素材、调用本地工具，并把结果写入可继续编辑的剪映草稿。
           </p>
         </div>
-        <!-- 产品截图预留：assets/manual/10-creative-assistant.png -->
-        <!-- 产品截图预留：assets/manual/12-toolbox.png -->
         <div
           class="grid lg:grid-cols-12 overflow-hidden rounded-3xl border border-white/10 bg-white/10 shadow-2xl shadow-black/20 reveal">
           <article class="lg:col-span-7 bg-[#0d0d0d] p-8 md:p-12" aria-labelledby="assistantTitle">
@@ -358,8 +429,11 @@
               搜索本地图片、视频和音频，使用明确附加的文件，生成文本或配音，再创建、编辑和保存剪映草稿。你可以随时继续补充要求，让任务沿着新的方向调整。
             </p>
 
-            <img src="assets/manual/10-creative-assistant.png" />
-            <img src="assets/manual/jianying.png" />
+            <picture class="site-visual creation-visual mb-10">
+              <source srcset="assets/site/effects/05-creative-assistant-effect.webp" type="image/webp" />
+              <img src="assets/site/effects/05-creative-assistant-effect.png" width="1536" height="1024"
+                alt="抽象化的创作助手效果图，指令栏连接多轨时间线与五个连续故事板" loading="lazy" decoding="async" />
+            </picture>
 
             <ul class="grid sm:grid-cols-2 gap-x-10 border-y border-white/10" aria-label="创作助手主要能力">
               <li class="py-5 border-b sm:border-b border-white/10">
@@ -394,25 +468,25 @@
               只安装当前需要的能力。输入内容和媒体由本机工具处理，原始文件不会被覆盖。
             </p>
 
+            <picture class="site-visual creation-visual mb-8">
+              <source srcset="assets/site/effects/01-toolbox-overview-effect.webp" type="image/webp" />
+              <img src="assets/site/effects/01-toolbox-overview-effect.png" width="1536" height="1024"
+                alt="抽象化的本地工具箱效果图，展示配音、图片增强、视频增强与视频分镜能力" loading="lazy" decoding="async" />
+            </picture>
+
             <dl class="border-t border-white/10">
               <div class="py-6 border-b border-white/10">
                 <dt class="font-semibold text-lg mb-2">文本转语音</dt>
                 <dd class="text-sm text-slate-400 leading-relaxed">选择本机可用音色，把最长 50,000 字的文本生成 WAV，也能让创作助手把配音加入草稿。</dd>
-
-                <img src="assets/manual/13-toolbox-tts.png" />
               </div>
               <div class="py-6 border-b border-white/10">
                 <dt class="font-semibold text-lg mb-2">图片清晰化</dt>
                 <dd class="text-sm text-slate-400 leading-relaxed">使用 Real-ESRGAN 在本机放大 JPG、PNG 或 WebP 图片，支持照片和动漫模型。
                 </dd>
-
-                <img src="assets/manual/14-toolbox-image-enhance.png" />
               </div>
               <div class="py-6 border-b border-white/10">
                 <dt class="font-semibold text-lg mb-2">视频增强</dt>
                 <dd class="text-sm text-slate-400 leading-relaxed">使用 Video2X 提升分辨率或帧率，也可以组合处理并输出 MP4。</dd>
-
-                <img src="assets/manual/15-toolbox-video-enhance.png" />
               </div>
             </dl>
 
