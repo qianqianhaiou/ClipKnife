@@ -29,6 +29,9 @@ $requiredFiles = @(
   'docs/changelog/index.html',
   'docs/changelog/v1.0.1/index.html',
   'docs/assets/docs.js',
+  'docs/assets/home-particle-scroll.js',
+  'docs/assets/particle-scroll.js',
+  'docs/assets/canvas-ui-LICENSE.md',
   'docs/assets/manual/README.md'
 )
 
@@ -48,6 +51,42 @@ Assert-TextContains 'docs/index.html' 'id="toolboxTitle"'
 Assert-TextContains 'docs/index.html' 'Real-ESRGAN'
 Assert-TextContains 'docs/index.html' 'Video2X'
 Assert-TextContains 'docs/index.html' '50,000'
+Assert-TextContains 'docs/index.html' 'http-equiv="origin-trial"'
+Assert-TextContains 'docs/index.html' 'src="assets/home-particle-scroll.js"'
+Assert-TextContains 'docs/assets/home-particle-scroll.js' 'supportsHtmlInCanvas'
+Assert-TextContains 'docs/assets/home-particle-scroll.js' '(max-width: 767px)'
+
+$homeContent = Get-Content -Raw -Encoding UTF8 -LiteralPath 'docs/index.html'
+$originTrialMatch = [regex]::Match(
+  $homeContent,
+  'http-equiv="origin-trial"\s+content="([^"]+)"'
+)
+if (-not $originTrialMatch.Success) {
+  throw 'Expected a valid Origin Trial meta token on the homepage'
+}
+$originTrialPayload = [Text.Encoding]::UTF8.GetString(
+  [Convert]::FromBase64String($originTrialMatch.Groups[1].Value)
+)
+if (-not $originTrialPayload.Contains('https://clipknife.cn:443')) {
+  throw 'Origin Trial token is not bound to https://clipknife.cn:443'
+}
+
+$nonHomePages = @(
+  'docs/manual/index.html',
+  'docs/faq/index.html',
+  'docs/changelog/index.html',
+  'docs/changelog/v1.0.1/index.html'
+)
+
+foreach ($page in $nonHomePages) {
+  $content = Get-Content -Raw -Encoding UTF8 -LiteralPath $page
+  if ($content.Contains('home-particle-scroll.js')) {
+    throw "Particle Scroll must only load on the homepage: $page"
+  }
+  if ($content.Contains('http-equiv="origin-trial"')) {
+    throw "Origin Trial token must only load on the homepage: $page"
+  }
+}
 
 # Keep published download destinations stable while changing feature copy.
 Assert-TextContains 'docs/index.html' 'releases/download/v1.1.6/'

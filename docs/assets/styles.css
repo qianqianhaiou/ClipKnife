@@ -17,6 +17,48 @@ body {
   font-family: "Inter", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
+/* Canvas UI Particle Scroll is mounted by the homepage-only module. */
+.home-particle-scroll,
+.home-particle-scroll body {
+  height: 100%;
+  overflow: hidden;
+}
+
+.particle-scroll-host,
+.particle-scroll-source,
+.particle-scroll-output {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.particle-scroll-host {
+  z-index: 0;
+  background: #0a0a0a;
+}
+
+.particle-scroll-source {
+  border: 0;
+}
+
+.particle-scroll-content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior-y: contain;
+  scrollbar-gutter: stable;
+  background: #0a0a0a;
+}
+
+.particle-scroll-output {
+  z-index: 30;
+  border: 0;
+  pointer-events: none;
+}
+
 /* Selection */
 ::selection {
   background: rgba(249, 81, 6, 0.35);
