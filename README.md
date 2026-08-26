@@ -65,7 +65,7 @@
 ## 联系作者
 有问题可以联系作者，或加入交流群
 ![](./assets/wechat.jpg)
-![](./assets/qqgroup.jpg)
+![](./assets/wechatgroup.jpg)
 
 ## 项目状态
 
