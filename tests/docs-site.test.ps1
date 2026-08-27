@@ -19,15 +19,16 @@ function Assert-TextContains {
 }
 
 $requiredFiles = @(
-  'manual/product-baseline.md',
   'docs/index.html',
   'docs/content/manual.md',
   'docs/content/faq.md',
   'docs/content/changelog/v1.0.1.md',
+  'docs/content/changelog/v2.0.0.md',
   'docs/manual/index.html',
   'docs/faq/index.html',
   'docs/changelog/index.html',
   'docs/changelog/v1.0.1/index.html',
+  'docs/changelog/v2.0.0/index.html',
   'docs/assets/docs.js',
   'docs/assets/home-particle-scroll.js',
   'docs/assets/particle-scroll.js',
@@ -75,7 +76,8 @@ $nonHomePages = @(
   'docs/manual/index.html',
   'docs/faq/index.html',
   'docs/changelog/index.html',
-  'docs/changelog/v1.0.1/index.html'
+  'docs/changelog/v1.0.1/index.html',
+  'docs/changelog/v2.0.0/index.html'
 )
 
 foreach ($page in $nonHomePages) {
@@ -97,6 +99,9 @@ Assert-TextContains 'docs/index.html' 'github.com/qianqianhaiou/ClipKnife/releas
 Assert-TextContains 'docs/manual/index.html' 'data-doc-src="../content/manual.md"'
 Assert-TextContains 'docs/faq/index.html' 'data-doc-src="../content/faq.md"'
 Assert-TextContains 'docs/changelog/v1.0.1/index.html' 'data-doc-src="../../content/changelog/v1.0.1.md"'
+Assert-TextContains 'docs/changelog/v2.0.0/index.html' 'data-doc-src="../../content/changelog/v2.0.0.md"'
+Assert-TextContains 'docs/changelog/index.html' 'href="v2.0.0/"'
+Assert-TextContains 'docs/sitemap.xml' 'https://clipknife.cn/changelog/v2.0.0/'
 
 Assert-TextContains 'docs/assets/docs.js' 'function renderMarkdown'
 Assert-TextContains 'docs/assets/docs.js' 'data-doc-src'
@@ -114,13 +119,16 @@ Assert-TextContains 'docs/content/faq.md' 'Openverse'
 Assert-TextContains 'docs/content/faq.md' 'OpenAI Compatible'
 Assert-TextContains 'docs/content/faq.md' 'Real-ESRGAN'
 Assert-TextContains 'docs/content/faq.md' 'Video2X'
-Assert-TextContains 'manual/product-baseline.md' '### 3.10 '
-Assert-TextContains 'manual/product-baseline.md' '### 3.11 '
-Assert-TextContains 'manual/product-baseline.md' 'Freesound'
 Assert-TextContains 'docs/assets/manual/README.md' '10-creative-assistant.png'
 Assert-TextContains 'docs/assets/manual/README.md' '15-toolbox-video-enhance.png'
 Assert-TextContains 'docs/content/changelog/v1.0.1.md' '# v1.0.1'
 Assert-TextContains 'docs/content/changelog/v1.0.1.md' '2026-06-24'
+Assert-TextContains 'docs/content/changelog/v2.0.0.md' '# v2.0.0'
+Assert-TextContains 'docs/content/changelog/v2.0.0.md' 'Openverse'
+Assert-TextContains 'docs/content/changelog/v2.0.0.md' 'Real-ESRGAN'
+Assert-TextContains 'docs/content/changelog/v2.0.0.md' 'Video2X'
+Assert-TextContains 'docs/content/changelog/v2.0.0.md' '50,000'
+Assert-TextContains 'docs/content/changelog/v2.0.0.md' 'Vulkan'
 
 & node --test 'tests/docs-anchor.test.cjs'
 if ($LASTEXITCODE -ne 0) {
