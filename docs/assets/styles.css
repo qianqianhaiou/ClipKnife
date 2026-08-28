@@ -167,6 +167,172 @@ body {
   transform-origin: center top;
 }
 
+/* Homepage hero stage: the single retained effect from the scroll-story study. */
+.hero-stage {
+  position: relative;
+  width: min(100%, 1120px);
+  margin: 3.5rem auto 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 20px;
+  background: var(--color-bg);
+  box-shadow: 0 40px 120px rgba(0, 0, 0, 0.5);
+  transform-origin: center;
+}
+
+.hero-stage.reveal {
+  transform: translateY(20px) rotate(1.6deg);
+}
+
+.hero-stage.reveal.is-visible {
+  transform: rotate(1.6deg);
+}
+
+.hero-stage::before,
+.hero-stage::after {
+  position: absolute;
+  z-index: 2;
+  content: "";
+  pointer-events: none;
+}
+
+.hero-stage::before {
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.hero-stage::after {
+  top: -18px;
+  right: 42px;
+  width: 84px;
+  height: 36px;
+  border-top: 1px solid var(--color-primary);
+  border-right: 1px solid var(--color-primary);
+}
+
+.hero-media,
+.hero-media img {
+  display: block;
+  width: 100%;
+  border-radius: inherit;
+}
+
+.hero-media img {
+  aspect-ratio: 1.665;
+  object-fit: cover;
+}
+
+.demo-window {
+  position: absolute;
+  right: -4%;
+  bottom: -9%;
+  width: min(38%, 300px);
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid rgba(249, 81, 6, 0.7);
+  border-radius: 14px;
+  background: var(--color-surface);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.46);
+  transform: rotate(-2.2deg);
+}
+
+.demo-window img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.demo-window figcaption {
+  padding: 8px 11px;
+  color: #d8d0c6;
+  font: 9px/1.4 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  letter-spacing: 0.08em;
+  text-align: left;
+}
+
+.hero-index {
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  background: rgba(10, 10, 10, 0.76);
+  backdrop-filter: blur(12px);
+  color: #d8d0c6;
+  font: 9px/1 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+.hero-index b {
+  color: var(--color-primary-light);
+  font-weight: 500;
+}
+
+@media (min-width: 641px) and (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .hero-stage.is-visible {
+    animation: hero-stage-breathe 7s ease-in-out 650ms infinite;
+  }
+
+  .hero-stage.is-visible .demo-window {
+    animation: hero-demo-float 5.5s ease-in-out 650ms infinite;
+  }
+}
+
+@keyframes hero-stage-breathe {
+  0%, 100% { transform: rotate(1.6deg) translateY(0); }
+  50% { transform: rotate(0.8deg) translateY(-8px); }
+}
+
+@keyframes hero-demo-float {
+  0%, 100% { transform: rotate(-2.2deg) translateY(0); }
+  50% { transform: rotate(-1deg) translateY(-9px); }
+}
+
+@media (max-width: 640px) {
+  .hero-stage {
+    width: calc(100% + 24px);
+    margin-left: -12px;
+    margin-bottom: 2.75rem;
+    border-radius: 12px;
+  }
+
+  .hero-stage.reveal {
+    transform: translateY(20px);
+  }
+
+  .hero-stage.reveal.is-visible {
+    transform: none;
+  }
+
+  .hero-stage::after,
+  .hero-index {
+    display: none;
+  }
+
+  .demo-window {
+    right: 8px;
+    bottom: -36px;
+    width: 46%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-stage.reveal,
+  .hero-stage.reveal.is-visible {
+    opacity: 1;
+    transform: rotate(1.6deg);
+    transition: none;
+  }
+
+  .demo-window {
+    animation: none;
+  }
+}
+
 .feature-visuals {
   display: grid;
   gap: 42px;

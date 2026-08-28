@@ -190,7 +190,7 @@
           <span class="flex items-center gap-2"><svg class="w-4 h-4 text-[#f95106]" viewBox="0 0 24 24" fill="none"
               stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M20 6 9 17l-5-5" />
-            </svg>目前仅支持Windows</span>
+            </svg>支持Windows</span>
           <span class="flex items-center gap-2"><svg class="w-4 h-4 text-[#f95106]" viewBox="0 0 24 24" fill="none"
               stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M20 6 9 17l-5-5" />
@@ -202,16 +202,24 @@
           <span class="flex items-center gap-2"><svg class="w-4 h-4 text-[#f95106]" viewBox="0 0 24 24" fill="none"
               stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M20 6 9 17l-5-5" />
-            </svg>完全免费</span>
+            </svg>V1完全免费</span>
         </div>
 
-        <figure class="site-visual site-visual-hero mt-14 md:mt-16 reveal">
-          <picture>
-            <source srcset="assets/site/effects/02-media-library-effect.webp" type="image/webp" />
-            <img src="assets/site/effects/02-media-library-effect.png" width="1620" height="971"
-              alt="抽象化的本地素材库效果图，媒体网格通过橙色索引路径汇聚到本地库状态" fetchpriority="high" decoding="async" />
+        <div class="hero-stage reveal" aria-label="素刀本地素材库效果预览">
+          <picture class="hero-media">
+            <source srcset="assets/manual/smart-search.png" type="image/webp" />
+            <img src="assets/manual/smart-search.png" width="1620" height="971" alt="素刀本地素材库效果图，素材网格通过橙色索引路径汇聚到本地库"
+              fetchpriority="high" decoding="async" />
           </picture>
-        </figure>
+          <figure class="demo-window">
+            <img src="assets/demo.gif" width="512" height="287" alt="素刀真实界面演示，展示本地素材库与搜索操作" />
+            <figcaption>界面演示</figcaption>
+          </figure>
+          <!-- <div class="hero-index" aria-hidden="true">
+            <span>MEDIA INDEX</span>
+            <b>LOCAL</b>
+          </div> -->
+        </div>
       </div>
     </section>
 
@@ -387,8 +395,8 @@
         <div class="feature-visuals mt-16 md:mt-20">
           <figure class="feature-visual reveal">
             <picture class="site-visual">
-              <source srcset="assets/site/effects/04-semantic-search-results-effect.webp" type="image/webp" />
-              <img src="assets/site/effects/04-semantic-search-results-effect.png" width="1536" height="1024"
+              <source srcset="assets/manual/smart-search2.png" type="image/webp" />
+              <img src="assets/manual/smart-search2.png" width="1536" height="1024"
                 alt="抽象化的智能搜索效果图，以橙色语义连线连接搜索框与六个匿名媒体结果" loading="lazy" decoding="async" />
             </picture>
             <figcaption>
@@ -399,9 +407,9 @@
 
           <figure class="feature-visual reveal">
             <picture class="site-visual">
-              <source srcset="assets/site/effects/03-video-scene-splitting-effect.webp" type="image/webp" />
-              <img src="assets/site/effects/03-video-scene-splitting-effect.png" width="1536" height="1024"
-                alt="抽象化的视频分镜效果图，以切点连线对应预览画面和六个分镜片段" loading="lazy" decoding="async" />
+              <source srcset="assets/manual/video-detail.png" type="image/webp" />
+              <img src="assets/manual/video-detail.png" width="1536" height="1024" alt="抽象化的视频分镜效果图，以切点连线对应预览画面和六个分镜片段"
+                loading="lazy" decoding="async" />
             </picture>
             <figcaption>
               <span>长视频自动拆成可搜索镜头</span>
@@ -414,7 +422,8 @@
 
     <!-- Creative assistant and toolbox -->
     <section id="creation" class="py-20 md:py-28 border-y border-white/5 bg-[#111]/30" aria-labelledby="creationTitle">
-      <div class="max-w-7xl mx-auto px-6">
+
+      <div class="max-w-7xl mx-auto px-6 relative">
         <div class="grid lg:grid-cols-12 gap-8 lg:gap-12 items-end mb-14 reveal">
           <div class="lg:col-span-8">
             <p class="text-sm font-semibold tracking-[0.18em] text-[#ff7a3c] mb-4">从找到素材到开始创作</p>
@@ -425,7 +434,9 @@
           </p>
         </div>
         <div
-          class="grid lg:grid-cols-12 overflow-hidden rounded-3xl border border-white/10 bg-white/10 shadow-2xl shadow-black/20 reveal">
+          class="grid lg:grid-cols-12 overflow-hidden rounded-3xl border border-white/10 bg-white/10 shadow-2xl shadow-black/20 reveal relative">
+          
+        <div class="absolute pt-[13px] pb-[9px] px-[87px] rounded-[4px] bg-[#f95106] text-[20px] left-[-75px] top-[-6px]" style="transform: rotate(325deg)">V2</div>
           <article class="lg:col-span-7 bg-[#0d0d0d] p-8 md:p-12" aria-labelledby="assistantTitle">
             <div class="flex flex-wrap items-center gap-3 mb-8 text-sm">
               <span class="px-3 py-1 rounded-full border border-[#f95106]/30 bg-[#f95106]/10 text-[#ff9a68]">创作助手</span>
@@ -439,8 +450,8 @@
             </p>
 
             <picture class="site-visual creation-visual mb-10">
-              <source srcset="assets/site/effects/05-creative-assistant-effect.webp" type="image/webp" />
-              <img src="assets/site/effects/05-creative-assistant-effect.png" width="1536" height="1024"
+              <source srcset="assets/manual/10-creative-assistant.png" type="image/webp" />
+              <img src="assets/manual/10-creative-assistant.png" width="1536" height="1024"
                 alt="抽象化的创作助手效果图，指令栏连接多轨时间线与五个连续故事板" loading="lazy" decoding="async" />
             </picture>
 
@@ -478,8 +489,8 @@
             </p>
 
             <picture class="site-visual creation-visual mb-8">
-              <source srcset="assets/site/effects/01-toolbox-overview-effect.webp" type="image/webp" />
-              <img src="assets/site/effects/01-toolbox-overview-effect.png" width="1536" height="1024"
+              <source srcset="assets/manual/12-toolbox.png" type="image/webp" />
+              <img src="assets/manual/12-toolbox.png" width="1536" height="1024"
                 alt="抽象化的本地工具箱效果图，展示配音、图片增强、视频增强与视频分镜能力" loading="lazy" decoding="async" />
             </picture>
 
@@ -704,42 +715,43 @@
           <div class="relative">
             <h2 id="downloadTitle" class="text-3xl md:text-5xl font-bold mb-4">准备好找回你的灵感了吗？</h2>
             <p class="text-slate-300 text-lg md:text-xl max-w-2xl mx-auto mb-8">下载素刀，让你的图片与视频素材用自然语言搜索。</p>
-
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
-              <a href="https://atomgit.com/gcw_DvNLXsnW/ClipKnife/releases/download/v1.1.6/%E7%B4%A0%E5%88%80_1.1.6_x64-setup.exe"
-                target="_blank" rel="noopener noreferrer"
-                class="inline-flex items-center justify-center gap-2 w-full sm:w-auto px-7 py-3.5 rounded-full bg-[#f95106] hover:bg-[#d94605] text-white font-semibold transition-all shadow-lg shadow-[#f95106]/25 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#f95106] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0a]">
-                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                  <polyline points="7 10 12 15 17 10" />
-                  <line x1="12" x2="12" y1="15" y2="3" />
-                </svg>
-                极速下载
-              </a>
-              <a href="https://pan.baidu.com/s/1jdUj8FZCE7Td8KqfQAQ3PQ?pwd=kjkc" target="_blank"
-                rel="noopener noreferrer"
-                class="inline-flex items-center justify-center gap-2 w-full sm:w-auto px-7 py-3.5 rounded-full hover:bg-[#d94605] text-white font-semibold transition-all bg-[#0a0a0a]/60 shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-[#f95106] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0a]">
-                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                  <polyline points="7 10 12 15 17 10" />
-                  <line x1="12" x2="12" y1="15" y2="3" />
-                </svg>
-                百度网盘下载
-              </a>
-              <button id="otherDownloadBtn" type="button"
-                class="inline-flex items-center justify-center gap-2 w-full sm:w-auto px-7 py-3.5 rounded-full bg-[#0a0a0a]/60 border border-white/10 hover:border-[#f95106]/50 hover:bg-[#f95106]/10 text-white font-semibold transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#f95106] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0a]">
-                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-                  <polyline points="15 3 21 3 21 9" />
-                  <line x1="10" x2="21" y1="14" y2="3" />
-                </svg>
-                其他下载链接
-              </button>
+            <div>
+              <div class="rounded-[10px] mb-[16px] bg-[#f95106] py-[16px]">素刀V2版本已发布，内测期间完全免费！暂时没有收费计划</div>
+              <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
+                <a href="https://atomgit.com/gcw_DvNLXsnW/ClipKnife/releases/download/v2.0.0/%E7%B4%A0%E5%88%80_2.0.0_x64-setup.exe"
+                  target="_blank" rel="noopener noreferrer"
+                  class="inline-flex items-center justify-center gap-2 w-full sm:w-auto px-7 py-3.5 rounded-full bg-[#f95106] hover:bg-[#d94605] text-white font-semibold transition-all shadow-lg shadow-[#f95106]/25 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#f95106] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0a]">
+                  <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                    <polyline points="7 10 12 15 17 10" />
+                    <line x1="12" x2="12" y1="15" y2="3" />
+                  </svg>
+                  V2版本下载（内测中）
+                </a>
+                <a href="https://atomgit.com/gcw_DvNLXsnW/ClipKnife/releases/download/v1.1.6/%E7%B4%A0%E5%88%80_1.1.6_x64-setup.exe"
+                  target="_blank" rel="noopener noreferrer"
+                  class="inline-flex items-center justify-center gap-2 w-full sm:w-auto px-7 py-3.5 rounded-full hover:bg-[#d94605] text-white font-semibold transition-all bg-[#0a0a0a]/60 shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-[#f95106] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0a]">
+                  <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                    <polyline points="7 10 12 15 17 10" />
+                    <line x1="12" x2="12" y1="15" y2="3" />
+                  </svg>
+                  V1版本下载（永久免费）
+                </a>
+                <button id="otherDownloadBtn" type="button"
+                  class="inline-flex items-center justify-center gap-2 w-full sm:w-auto px-7 py-3.5 rounded-full bg-[#0a0a0a]/60 border border-white/10 hover:border-[#f95106]/50 hover:bg-[#f95106]/10 text-white font-semibold transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#f95106] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0a]">
+                  <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                    <polyline points="15 3 21 3 21 9" />
+                    <line x1="10" x2="21" y1="14" y2="3" />
+                  </svg>
+                  其他下载链接
+                </button>
+              </div>
             </div>
-
             <div class="mt-8 flex flex-wrap items-center justify-center gap-4 text-sm text-slate-400">
               <span class="flex items-center gap-2"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none"
                   stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -752,7 +764,7 @@
                   stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                   aria-hidden="true">
                   <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
-                </svg>离线可用</span>
+                </svg>V1版本永久免费</span>
             </div>
           </div>
           <div class="relative mt-[36px]">
@@ -788,7 +800,7 @@
           </button>
         </div>
         <p class="text-slate-400 text-sm mb-4"></p>
-        <a href="https://pan.quark.cn/s/926965d6ffe4?pwd=YV71" target="_blank" rel="noopener noreferrer"
+        <a href="https://pan.baidu.com/s/1jdUj8FZCE7Td8KqfQAQ3PQ?pwd=kjkc" target="_blank" rel="noopener noreferrer"
           class="flex items-center gap-3 w-full px-4 py-3 rounded-xl border border-white/10 bg-white/[0.03] hover:bg-[#f95106]/10 hover:border-[#f95106]/50 transition-all">
           <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
             stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -796,7 +808,7 @@
             <polyline points="7 10 12 15 17 10" />
             <line x1="12" x2="12" y1="15" y2="3" />
           </svg>
-          夸克网盘下载
+          百度网盘下载
         </a>
         <p class="text-slate-400 text-sm mb-4"></p>
         <a href="https://github.com/qianqianhaiou/ClipKnife/releases/tag/v1.0.1" target="_blank"
@@ -820,7 +832,7 @@
     <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
       <a href="#" class="flex items-center gap-2 font-bold text-lg" aria-label="ClipKnife 首页">
         <img src="assets/icon.png" alt="" class="w-6 h-6 rounded-md" />
-        <span class="bg-clip-text text-transparent bg-gradient-to-r from-[#f95106] to-[#ff7a3c]">ClipKnife</span>
+        <span class="bg-clip-text text-transparent bg-gradient-to-r from-[#f95106] to-[#ff7a3c]">素刀</span>
       </a>
       <nav aria-label="页脚导航">
         <ul class="flex flex-wrap items-center justify-center gap-6 text-sm text-slate-400">
@@ -833,7 +845,7 @@
           <li><a href="#download" class="hover:text-white transition-colors">下载</a></li>
         </ul>
       </nav>
-      <p class="text-sm text-slate-500">&copy; <span id="year"></span> ClipKnife. 本地素材检索与创作工具。</p>
+      <p class="text-sm text-slate-500">&copy; <span id="year"></span> 素刀，创作者的生产力工具，素材界的瑞士军刀。</p>
     </div>
   </footer>
 
