@@ -42,6 +42,8 @@ foreach ($file in $requiredFiles) {
 
 $manualTitle = '# ClipKnife ' + [string]([char]0x4F7F) + [string]([char]0x7528) + [string]([char]0x624B) + [string]([char]0x518C)
 $faqTitle = '# ClipKnife ' + [string]([char]0x5E38) + [string]([char]0x89C1) + [string]([char]0x95EE) + [string]([char]0x9898)
+$memoryRequirement = [string]([char]0x8FD0) + [string]([char]0x884C) + [string]([char]0x5185) + [string]([char]0x5B58) + [string]([char]0xFF1A) + '16GB ' + [string]([char]0x53CA) + [string]([char]0x4EE5) + [string]([char]0x4E0A)
+$minimumMemoryRequirement = [string]([char]0x8FD0) + [string]([char]0x884C) + [string]([char]0x5185) + [string]([char]0x5B58) + [string]([char]0x81F3) + [string]([char]0x5C11) + [string]([char]0x9700) + [string]([char]0x8981) + ' 16GB'
 
 Assert-TextContains 'docs/index.html' 'href="manual/"'
 Assert-TextContains 'docs/index.html' 'href="changelog/"'
@@ -52,6 +54,9 @@ Assert-TextContains 'docs/index.html' 'id="toolboxTitle"'
 Assert-TextContains 'docs/index.html' 'Real-ESRGAN'
 Assert-TextContains 'docs/index.html' 'Video2X'
 Assert-TextContains 'docs/index.html' '50,000'
+Assert-TextContains 'docs/index.html' $memoryRequirement
+Assert-TextContains 'docs/index.html' '"memoryRequirements": "16 GB RAM or more"'
+Assert-TextContains 'docs/faq/index.html' $minimumMemoryRequirement
 Assert-TextContains 'docs/index.html' 'http-equiv="origin-trial"'
 Assert-TextContains 'docs/index.html' 'src="assets/home-particle-scroll.js"'
 Assert-TextContains 'docs/assets/home-particle-scroll.js' 'supportsHtmlInCanvas'
