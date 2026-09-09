@@ -24,11 +24,15 @@ $requiredFiles = @(
   'docs/content/faq.md',
   'docs/content/changelog/v1.0.1.md',
   'docs/content/changelog/v2.0.0.md',
+  'docs/content/changelog/v2.0.1.md',
+  'docs/content/changelog/v2.1.0.md',
   'docs/manual/index.html',
   'docs/faq/index.html',
   'docs/changelog/index.html',
   'docs/changelog/v1.0.1/index.html',
   'docs/changelog/v2.0.0/index.html',
+  'docs/changelog/v2.0.1/index.html',
+  'docs/changelog/v2.1.0/index.html',
   'docs/assets/docs.js',
   'docs/assets/home-particle-scroll.js',
   'docs/assets/particle-scroll.js',
@@ -82,7 +86,9 @@ $nonHomePages = @(
   'docs/faq/index.html',
   'docs/changelog/index.html',
   'docs/changelog/v1.0.1/index.html',
-  'docs/changelog/v2.0.0/index.html'
+  'docs/changelog/v2.0.0/index.html',
+  'docs/changelog/v2.0.1/index.html',
+  'docs/changelog/v2.1.0/index.html'
 )
 
 foreach ($page in $nonHomePages) {
@@ -135,9 +141,9 @@ Assert-TextContains 'docs/content/changelog/v2.0.0.md' 'Video2X'
 Assert-TextContains 'docs/content/changelog/v2.0.0.md' '50,000'
 Assert-TextContains 'docs/content/changelog/v2.0.0.md' 'Vulkan'
 
-& node --test 'tests/docs-anchor.test.cjs'
+& node --test 'tests/docs-anchor.test.cjs' 'tests/docs-changelog.test.cjs'
 if ($LASTEXITCODE -ne 0) {
-  throw "Documentation anchor tests failed with exit code $LASTEXITCODE"
+  throw "Documentation tests failed with exit code $LASTEXITCODE"
 }
 
 Write-Host 'docs-site validation passed'
