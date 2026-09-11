@@ -45,9 +45,10 @@ foreach ($file in $requiredFiles) {
 }
 
 $manualTitle = '# ClipKnife ' + [string]([char]0x4F7F) + [string]([char]0x7528) + [string]([char]0x624B) + [string]([char]0x518C)
-$faqTitle = '# ClipKnife ' + [string]([char]0x5E38) + [string]([char]0x89C1) + [string]([char]0x95EE) + [string]([char]0x9898)
+$faqTitle = '# ' + [string]([char]0x7D20) + [string]([char]0x5200) + ' ' + [string]([char]0x5E38) + [string]([char]0x89C1) + [string]([char]0x95EE) + [string]([char]0x9898)
 $memoryRequirement = [string]([char]0x8FD0) + [string]([char]0x884C) + [string]([char]0x5185) + [string]([char]0x5B58) + [string]([char]0xFF1A) + '16GB ' + [string]([char]0x53CA) + [string]([char]0x4EE5) + [string]([char]0x4E0A)
 $minimumMemoryRequirement = [string]([char]0x8FD0) + [string]([char]0x884C) + [string]([char]0x5185) + [string]([char]0x5B58) + [string]([char]0x81F3) + [string]([char]0x5C11) + [string]([char]0x9700) + [string]([char]0x8981) + ' 16GB'
+$gpuRequirement = [string]([char]0x663E) + [string]([char]0x5361)
 
 Assert-TextContains 'docs/index.html' 'href="manual/"'
 Assert-TextContains 'docs/index.html' 'href="changelog/"'
@@ -102,9 +103,8 @@ foreach ($page in $nonHomePages) {
 }
 
 # Keep published download destinations stable while changing feature copy.
-Assert-TextContains 'docs/index.html' 'releases/download/v1.1.6/'
+Assert-TextContains 'docs/index.html' 'releases/download/v2.0.0/'
 Assert-TextContains 'docs/index.html' 'pan.baidu.com/s/1jdUj8FZCE7Td8KqfQAQ3PQ?pwd=kjkc'
-Assert-TextContains 'docs/index.html' 'pan.quark.cn/s/926965d6ffe4?pwd=YV71'
 Assert-TextContains 'docs/index.html' 'github.com/qianqianhaiou/ClipKnife/releases/tag/v1.0.1'
 
 Assert-TextContains 'docs/manual/index.html' 'data-doc-src="../content/manual.md"'
@@ -119,12 +119,16 @@ Assert-TextContains 'docs/assets/docs.js' 'data-doc-src'
 Assert-TextContains 'docs/assets/docs.js' 'function scrollToLocationHash'
 
 Assert-TextContains 'docs/content/manual.md' $manualTitle
+Assert-TextContains 'docs/content/manual.md' 'Qwen3-ASR-0.6B Q8_0'
+Assert-TextContains 'docs/content/manual.md' 'Qwen3-ForcedAligner-0.6B Q8_0'
 Assert-TextContains 'docs/content/manual.md' '../assets/manual/01-first-launch.png'
 Assert-TextContains 'docs/content/manual.md' 'Openverse'
 Assert-TextContains 'docs/content/manual.md' 'OpenAI Compatible'
 Assert-TextContains 'docs/content/manual.md' 'Real-ESRGAN'
 Assert-TextContains 'docs/content/manual.md' 'Video2X'
 Assert-TextContains 'docs/content/faq.md' $faqTitle
+Assert-TextContains 'docs/content/faq.md' 'Qwen3-ASR-0.6B Q8_0'
+Assert-TextContains 'docs/content/faq.md' 'ASR/Aligner'
 Assert-TextContains 'docs/content/faq.md' '../assets/manual/08-diagnostics.png'
 Assert-TextContains 'docs/content/faq.md' 'Openverse'
 Assert-TextContains 'docs/content/faq.md' 'OpenAI Compatible'
@@ -139,7 +143,7 @@ Assert-TextContains 'docs/content/changelog/v2.0.0.md' 'Openverse'
 Assert-TextContains 'docs/content/changelog/v2.0.0.md' 'Real-ESRGAN'
 Assert-TextContains 'docs/content/changelog/v2.0.0.md' 'Video2X'
 Assert-TextContains 'docs/content/changelog/v2.0.0.md' '50,000'
-Assert-TextContains 'docs/content/changelog/v2.0.0.md' 'Vulkan'
+Assert-TextContains 'docs/content/changelog/v2.0.0.md' $gpuRequirement
 
 & node --test 'tests/docs-anchor.test.cjs' 'tests/docs-changelog.test.cjs'
 if ($LASTEXITCODE -ne 0) {
