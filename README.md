@@ -60,7 +60,7 @@
 ![智能搜索](./assets/f4.png)
 
 
-### [软件下载地址: https://qianqianhaiou.github.io/ClipKnife/](https://qianqianhaiou.github.io/ClipKnife/)
+### [软件下载地址: https://clipknife.cn/](https://clipknife.cn/)
 
 ## 联系作者
 有问题可以联系作者，或加入交流群
