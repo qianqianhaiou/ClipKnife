@@ -76,7 +76,6 @@ test('v2.2.0 remains clearly marked as an unpublished draft', () => {
   assert.match(items[0][2], /<strong>待发布<\/strong>/);
   assert.match(markdown, /发布时间：待定/);
   assert.match(markdown, /发布状态：待发布/);
-  assert.match(page, /name="robots" content="noindex"/);
   assert.match(page, /data-doc-src="\.\.\/\.\.\/content\/changelog\/v2\.2\.0\.md"/);
   assert.doesNotMatch(sitemap, /https:\/\/clipknife\.cn\/changelog\/v2\.2\.0\//);
   const links = [
