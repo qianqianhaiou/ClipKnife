@@ -52,7 +52,6 @@
 
   function setModalOpen(open) {
     if (!downloadModal) return;
-    const pageScroller = document.querySelector('[data-particle-scroll-content]');
     if (open) {
       downloadModal.classList.remove('hidden');
       // Force reflow to enable the enter transition
@@ -63,7 +62,6 @@
         modalPanel.classList.add('scale-100', 'opacity-100');
       }
       document.body.style.overflow = 'hidden';
-      if (pageScroller) pageScroller.style.overflowY = 'hidden';
     } else {
       if (modalBackdrop) modalBackdrop.classList.add('opacity-0');
       if (modalPanel) {
@@ -73,7 +71,6 @@
       setTimeout(function () {
         downloadModal.classList.add('hidden');
         document.body.style.overflow = '';
-        if (pageScroller) pageScroller.style.overflowY = '';
       }, 200);
     }
   }
@@ -109,11 +106,9 @@
     anchor.addEventListener('click', function (e) {
       const href = anchor.getAttribute('href');
       if (!href) return;
-      const pageScroller = document.querySelector('[data-particle-scroll-content]');
       if (href === '#') {
-        if (!pageScroller) return;
         e.preventDefault();
-        pageScroller.scrollTo({ top: 0, behavior: 'smooth' });
+        window.scrollTo({ top: 0, behavior: 'smooth' });
         return;
       }
       const target = document.querySelector(href);
@@ -121,15 +116,8 @@
       e.preventDefault();
       const headerOffset = 80;
       const elementPosition = target.getBoundingClientRect().top;
-      const scrollRootTop = pageScroller
-        ? pageScroller.getBoundingClientRect().top
-        : 0;
-      const currentScroll = pageScroller
-        ? pageScroller.scrollTop
-        : window.pageYOffset;
-      const offsetPosition = elementPosition - scrollRootTop + currentScroll - headerOffset;
-      const scrollTarget = pageScroller || window;
-      scrollTarget.scrollTo({
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+      window.scrollTo({
         top: offsetPosition,
         behavior: 'smooth'
       });

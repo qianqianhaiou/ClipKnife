@@ -38,9 +38,6 @@ $requiredFiles = @(
   'docs/changelog/v2.2.0/index.html',
   'docs/changelog/v2.2.1/index.html',
   'docs/assets/docs.js',
-  'docs/assets/home-particle-scroll.js',
-  'docs/assets/particle-scroll.js',
-  'docs/assets/canvas-ui-LICENSE.md',
   'docs/assets/manual/README.md'
 )
 
@@ -66,24 +63,11 @@ Assert-TextContains 'docs/index.html' '50,000'
 Assert-TextContains 'docs/index.html' $memoryRequirement
 Assert-TextContains 'docs/index.html' '"memoryRequirements": "16 GB RAM or more"'
 Assert-TextContains 'docs/faq/index.html' $minimumMemoryRequirement
-Assert-TextContains 'docs/index.html' 'http-equiv="origin-trial"'
-Assert-TextContains 'docs/index.html' 'src="assets/home-particle-scroll.js"'
-Assert-TextContains 'docs/assets/home-particle-scroll.js' 'supportsHtmlInCanvas'
-Assert-TextContains 'docs/assets/home-particle-scroll.js' '(max-width: 767px)'
-
 $homeContent = Get-Content -Raw -Encoding UTF8 -LiteralPath 'docs/index.html'
-$originTrialMatch = [regex]::Match(
-  $homeContent,
-  'http-equiv="origin-trial"\s+content="([^"]+)"'
-)
-if (-not $originTrialMatch.Success) {
-  throw 'Expected a valid Origin Trial meta token on the homepage'
-}
-$originTrialPayload = [Text.Encoding]::UTF8.GetString(
-  [Convert]::FromBase64String($originTrialMatch.Groups[1].Value)
-)
-if (-not $originTrialPayload.Contains('https://clipknife.cn:443')) {
-  throw 'Origin Trial token is not bound to https://clipknife.cn:443'
+if ($homeContent.Contains('home-particle-scroll.js') -or
+    $homeContent.Contains('http-equiv="origin-trial"') -or
+    $homeContent.Contains('particle-scroll-source')) {
+  throw 'The homepage must keep its interactive content outside Particle Scroll canvas'
 }
 
 $nonHomePages = @(
@@ -153,7 +137,7 @@ Assert-TextContains 'docs/content/changelog/v2.0.0.md' 'Video2X'
 Assert-TextContains 'docs/content/changelog/v2.0.0.md' '50,000'
 Assert-TextContains 'docs/content/changelog/v2.0.0.md' $gpuRequirement
 
-& node --test 'tests/docs-anchor.test.cjs' 'tests/docs-changelog.test.cjs'
+& node --test 'tests/docs-anchor.test.cjs' 'tests/docs-changelog.test.cjs' 'tests/home-interaction.test.cjs'
 if ($LASTEXITCODE -ne 0) {
   throw "Documentation tests failed with exit code $LASTEXITCODE"
 }
