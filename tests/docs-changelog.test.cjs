@@ -4,7 +4,7 @@ const path = require('node:path');
 const test = require('node:test');
 
 const docsRoot = path.join(__dirname, '..', 'docs');
-const publishedVersions = ['v2.1.0', 'v2.0.1'];
+const publishedVersions = ['v2.2.1', 'v2.2.0', 'v2.1.0', 'v2.0.1'];
 const releaseIndex = fs.readFileSync(path.join(docsRoot, 'changelog', 'index.html'), 'utf8');
 const sitemap = fs.readFileSync(path.join(docsRoot, 'sitemap.xml'), 'utf8');
 const releaseItems = [...releaseIndex.matchAll(/<a class="release-item" href="([^"]+)">([\s\S]*?)<\/a>/g)];
@@ -62,34 +62,8 @@ for (const version of publishedVersions) {
   });
 }
 
-test('the release index puts the draft before published versions', () => {
-  assert.deepEqual(releaseItems.slice(0, 4).map((item) => item[1]), ['v2.2.0/', 'v2.1.0/', 'v2.0.1/', 'v2.0.0/']);
-  assert.match(releaseIndex, /<meta name="description" content="[^"]*v2\.2\.0/);
-  assert.match(releaseIndex, /<meta property="og:description" content="[^"]*v2\.2\.0/);
-});
-
-test('v2.2.0 remains clearly marked as an unpublished draft', () => {
-  const page = fs.readFileSync(path.join(docsRoot, 'changelog', 'v2.2.0', 'index.html'), 'utf8');
-  const markdown = fs.readFileSync(path.join(docsRoot, 'content', 'changelog', 'v2.2.0.md'), 'utf8');
-  const items = releaseItems.filter((item) => item[1] === 'v2.2.0/');
-  assert.equal(items.length, 1);
-  assert.match(items[0][2], /<strong>待发布<\/strong>/);
-  assert.match(markdown, /发布时间：待定/);
-  assert.match(markdown, /发布状态：待发布/);
-  assert.match(page, /data-doc-src="\.\.\/\.\.\/content\/changelog\/v2\.2\.0\.md"/);
-  assert.doesNotMatch(sitemap, /https:\/\/clipknife\.cn\/changelog\/v2\.2\.0\//);
-  const links = [
-    ...[...page.matchAll(/(?:href|src|data-doc-src)="([^"]+)"/g)].map((match) => match[1]),
-    ...[...markdown.matchAll(/\]\(([^)]+)\)/g)].map((match) => match[1]),
-  ];
-  for (const link of links) {
-    const url = new URL(link, 'https://clipknife.cn/changelog/v2.2.0/');
-    if (url.origin !== 'https://clipknife.cn') continue;
-    const target = path.join(docsRoot, decodeURIComponent(url.pathname));
-    const file = url.pathname.endsWith('/') ? path.join(target, 'index.html') : target;
-    assert.ok(fs.statSync(file).isFile(), `Missing local destination: ${link}`);
-    if (url.hash) {
-      assert.ok(fs.readFileSync(file, 'utf8').includes(`id="${decodeURIComponent(url.hash.slice(1))}"`));
-    }
-  }
+test('the release index lists the newest published versions first', () => {
+  assert.deepEqual(releaseItems.slice(0, 5).map((item) => item[1]), ['v2.2.1/', 'v2.2.0/', 'v2.1.0/', 'v2.0.1/', 'v2.0.0/']);
+  assert.match(releaseIndex, /<meta name="description" content="[^"]*v2\.2\.1/);
+  assert.match(releaseIndex, /<meta property="og:description" content="[^"]*v2\.2\.1/);
 });

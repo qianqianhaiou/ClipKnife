@@ -27,6 +27,7 @@ $requiredFiles = @(
   'docs/content/changelog/v2.0.1.md',
   'docs/content/changelog/v2.1.0.md',
   'docs/content/changelog/v2.2.0.md',
+  'docs/content/changelog/v2.2.1.md',
   'docs/manual/index.html',
   'docs/faq/index.html',
   'docs/changelog/index.html',
@@ -35,6 +36,7 @@ $requiredFiles = @(
   'docs/changelog/v2.0.1/index.html',
   'docs/changelog/v2.1.0/index.html',
   'docs/changelog/v2.2.0/index.html',
+  'docs/changelog/v2.2.1/index.html',
   'docs/assets/docs.js',
   'docs/assets/home-particle-scroll.js',
   'docs/assets/particle-scroll.js',
@@ -92,7 +94,8 @@ $nonHomePages = @(
   'docs/changelog/v2.0.0/index.html',
   'docs/changelog/v2.0.1/index.html',
   'docs/changelog/v2.1.0/index.html',
-  'docs/changelog/v2.2.0/index.html'
+  'docs/changelog/v2.2.0/index.html',
+  'docs/changelog/v2.2.1/index.html'
 )
 
 foreach ($page in $nonHomePages) {
@@ -105,17 +108,19 @@ foreach ($page in $nonHomePages) {
   }
 }
 
-# Keep published download destinations stable while changing feature copy.
+# Keep existing homepage destinations stable while changing feature copy.
 Assert-TextContains 'docs/index.html' 'releases/download/v2.0.0/'
 Assert-TextContains 'docs/index.html' 'pan.baidu.com/s/1jdUj8FZCE7Td8KqfQAQ3PQ?pwd=kjkc'
-Assert-TextContains 'docs/index.html' 'github.com/qianqianhaiou/ClipKnife/releases/tag/v1.0.1'
+Assert-TextContains 'docs/index.html' 'href="https://github.com/qianqianhaiou/ClipKnife"'
 
 Assert-TextContains 'docs/manual/index.html' 'data-doc-src="../content/manual.md"'
 Assert-TextContains 'docs/faq/index.html' 'data-doc-src="../content/faq.md"'
 Assert-TextContains 'docs/changelog/v1.0.1/index.html' 'data-doc-src="../../content/changelog/v1.0.1.md"'
 Assert-TextContains 'docs/changelog/v2.0.0/index.html' 'data-doc-src="../../content/changelog/v2.0.0.md"'
 Assert-TextContains 'docs/changelog/index.html' 'href="v2.0.0/"'
+Assert-TextContains 'docs/changelog/index.html' 'href="v2.2.1/"'
 Assert-TextContains 'docs/sitemap.xml' 'https://clipknife.cn/changelog/v2.0.0/'
+Assert-TextContains 'docs/sitemap.xml' 'https://clipknife.cn/changelog/v2.2.1/'
 
 Assert-TextContains 'docs/assets/docs.js' 'function renderMarkdown'
 Assert-TextContains 'docs/assets/docs.js' 'data-doc-src'
