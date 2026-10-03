@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="视频素材积累到几千个，按文件名和文件夹已经找不动？用自然语言搜索本地图片和视频：搜“海边日落”“有人敲键盘的镜头”，定位到具体视频片段和时间码。素刀 ClipKnife 是本地运行的 AI 素材管理工具（Windows x64）。" />
+  <title>怎么管理几千个视频素材？按内容搜索本地视频 — 素刀 ClipKnife</title>
+  <meta name="theme-color" content="#0a0a0a" />
+  <link rel="icon" type="image/png" href="../../assets/icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="../../assets/styles.css" />
+  <link rel="canonical" href="https://clipknife.cn/scenes/search-video-content/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="怎么管理几千个视频素材？按内容搜索本地视频 — 素刀 ClipKnife" />
+  <meta property="og:description" content="用自然语言搜索本地图片和视频：搜“海边日落”，定位到具体视频片段和时间码。本地运行，素材不出电脑。" />
+  <meta property="og:url" content="https://clipknife.cn/scenes/search-video-content/" />
+  <meta property="og:image" content="https://clipknife.cn/assets/icon.png" />
+</head>
+
+<body class="bg-[#0a0a0a] text-slate-100 antialiased">
+  <h1>怎么管理几千个视频素材？按内容搜索本地视频和图片</h1>
+  <header class="doc-header">
+    <a href="../../" class="doc-brand" aria-label="返回 ClipKnife 首页">
+      <img src="../../assets/icon.png" alt="" />
+      <span>素刀-ClipKnife</span>
+    </a>
+    <nav class="doc-nav" aria-label="文档导航">
+      <a href="../../manual/">使用手册</a>
+      <a href="../../changelog/">更新日志</a>
+      <a href="../../faq/">常见问题</a>
+      <a href="../../#download">下载</a>
+    </nav>
+  </header>
+  <main class="doc-shell">
+    <article class="doc-article" style="max-width:760px;margin:0 auto;">
+      <p class="doc-kicker"><a href="../../">首页</a> / 使用手册 / 按内容搜索视频素材</p>
+      <p>视频素材积累到几千个之后，大多数人的管理方式是文件夹加文件名。这个方式在素材少的时候够用，素材一多就失效：文件名记的是拍摄时间或编号，不是画面内容；要找“傍晚逆光里车灯开过去的那段”，只能一个个打开预览、拖动时间轴。</p>
+      <p>素刀（ClipKnife）解决的就是这一步：<strong>用一句自然语言搜索本地视频和图片，返回的不是文件，是具体片段和时间码。</strong>搜“海边日落”、“有人敲键盘的镜头”、“雨夜街头走路的人”，结果直接定位到视频中的对应位置，点进去从那个时间点播放。</p>
+
+      <h2>它是怎么按内容找的</h2>
+      <p>视频文件本身没有“内容描述”字段——MP4 头里只有编码、时长、分辨率。要让视频能被内容搜索，需要先把画面“读懂”。素刀的链路是：</p>
+      <p><strong>分镜 → 代表帧 → 视觉索引 → 自然语言匹配。</strong>入库时把每个视频自动切分成多个分镜（镜头），每个分镜抽取代表帧进入本地视觉索引。搜索时把你的描述和代表帧做语义匹配，命中的是片段而不是整条视频，所以结果带起止时间码。</p>
+      <p>音频走另一条路：转写成文本后进入语音检索索引，搜“说过‘谢谢’的那段嘉宾”这种台词也能定位（视频语音转写默认关闭，需要时可以在设置里打开）。人物画面可以按人脸分组（人物索引默认关闭，涉及人脸数据，需要时再开）。</p>
+
+      <h2>剪视频找素材慢，用自然语言搜图片和视频</h2>
+      <p>典型的用法：写文案时定了一组镜头描述（“办公室加班”“深夜回家”“海边空镜”），不用在网盘和素材网站里翻，直接在本地素材库逐个描述搜索；每个需求换几种表达多搜一轮，把候选片段加进项目，再拖到剪映或 Premiere 里粗选。素材库负责找，剪辑软件负责成片，两条链路各管一段。</p>
+      <p>图片同理：本地图片（含常见位图和相机 RAW 格式）加入素材源后即可用自然语言搜索；也支持以图搜图，丢一张参考图找出本地所有相似画面。</p>
+
+      <h2>本地运行，素材不出电脑</h2>
+      <p>素刀是 Windows x64 桌面软件。素材源可以是指定文件夹、整个盘符或外接硬盘路径，原文件保留在原位置，不搬家、不上传；索引和检索模型在本地运行，CPU 也能跑，有支持 Vulkan 的显卡时自动加速。首次建索引要扫描全库，时间随素材量而定，之后增量监听，新落盘的素材自动入库。</p>
+
+      <h2>边界，照实说</h2>
+      <p>只有 Windows 版，没有 Mac 版。单人工具，不做多人协作——需要团队协作的云端素材库走网盘或专业 MAM。建索引需要时间，冷启动全库扫描是真实的成本。分镜目前只提供镜头级标签，分镜本身不可再编辑。剪映 6 及以上版本的加密草稿可能无法读写，老版本草稿正常。素材量大到几万级时，索引和检索速度受硬盘影响明显，机械硬盘会明显更慢。</p>
+
+      <h2>相关</h2>
+      <p><a href="../../manual/">使用手册</a>：初始化、素材源配置、智能搜索、分镜、项目的完整步骤。　<a href="../../changelog/">更新日志</a>：版本变更与功能时间线。　<a href="../../faq/">常见问题</a>。</p>
+    </article>
+  </main>
+</body>
+
+</html>
