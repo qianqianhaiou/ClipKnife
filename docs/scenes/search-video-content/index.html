@@ -20,6 +20,51 @@
   <meta property="og:description" content="用自然语言搜索本地图片和视频：搜“海边日落”，定位到具体视频片段和时间码。本地运行，素材不出电脑。" />
   <meta property="og:url" content="https://clipknife.cn/scenes/search-video-content/" />
   <meta property="og:image" content="https://clipknife.cn/assets/icon.png" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Article",
+        "@id": "https://clipknife.cn/scenes/search-video-content/#article",
+        "headline": "怎么管理几千个视频素材？按内容搜索本地视频和图片",
+        "description": "视频素材积累到几千个，按文件名和文件夹已经找不动？用自然语言搜索本地图片和视频，定位到具体视频片段和时间码。素刀 ClipKnife 是本地运行的 AI 素材管理工具（Windows x64）。",
+        "inLanguage": "zh-CN",
+        "datePublished": "2026-10-03",
+        "dateModified": "2026-10-03",
+        "mainEntityOfPage": "https://clipknife.cn/scenes/search-video-content/",
+        "author": { "@type": "Organization", "name": "素刀 ClipKnife", "url": "https://clipknife.cn/" },
+        "publisher": { "@type": "Organization", "name": "素刀 ClipKnife", "url": "https://clipknife.cn/", "logo": { "@type": "ImageObject", "url": "https://clipknife.cn/assets/icon.png" } },
+        "image": "https://clipknife.cn/assets/icon.png"
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "智能搜索和素材库搜索有什么区别？",
+            "acceptedAnswer": { "@type": "Answer", "text": "素材库搜索主要搜索文件名、路径和标签等元信息。智能搜索使用自然语言检索图片、视频片段和音频/视频语音内容。比如你可以输入“海边日落”“红色包装特写”或“会议里提到预算调整”。" }
+          },
+          {
+            "@type": "Question",
+            "name": "视频搜索是搜索整个视频吗？",
+            "acceptedAnswer": { "@type": "Answer", "text": "视频视觉搜索主要基于分镜代表帧。ClipKnife 会把视频切分成分镜，再抽取代表帧进入视觉索引，搜索结果会回连到原视频和对应时间段。这意味着 ClipKnife 不承诺自动理解完整视频语义，搜索质量会依赖分镜和代表帧索引质量。" }
+          },
+          {
+            "@type": "Question",
+            "name": "可以搜索视频里的说话内容吗？",
+            "acceptedAnswer": { "@type": "Answer", "text": "可以，但需要开启视频语音转写。音频和视频语音转写是两个独立开关，默认均关闭；开启对应开关后，才会为该类素材生成语音转写任务。开启后，视频中的语音内容可以进入语音检索索引，搜索结果仍会保留视频身份，方便回到视频上下文。" }
+          },
+          {
+            "@type": "Question",
+            "name": "为什么刚添加素材后搜索不到？",
+            "acceptedAnswer": { "@type": "Answer", "text": "素材需要先完成扫描、入库和索引。图片通常直接进入视觉索引；视频需要先分镜、抽取代表帧，再建立索引；音频需要生成转写后才能参与语音搜索。如果刚添加素材就搜索不到，可以先到任务中心查看是否还有等待中、处理中或失败任务。" }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
 </head>
 
 <body class="bg-[#0a0a0a] text-slate-100 antialiased">
