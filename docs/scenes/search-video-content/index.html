@@ -31,7 +31,7 @@
         "description": "视频素材积累到几千个，按文件名和文件夹已经找不动？用自然语言搜索本地图片和视频，定位到具体视频片段和时间码。素刀 ClipKnife 是本地运行的 AI 素材管理工具（Windows x64）。",
         "inLanguage": "zh-CN",
         "datePublished": "2026-10-03",
-        "dateModified": "2026-10-03",
+        "dateModified": "2026-10-09",
         "mainEntityOfPage": "https://clipknife.cn/scenes/search-video-content/",
         "author": { "@type": "Organization", "name": "素刀 ClipKnife", "url": "https://clipknife.cn/" },
         "publisher": { "@type": "Organization", "name": "素刀 ClipKnife", "url": "https://clipknife.cn/", "logo": { "@type": "ImageObject", "url": "https://clipknife.cn/assets/icon.png" } },
@@ -48,7 +48,7 @@
           {
             "@type": "Question",
             "name": "视频搜索是搜索整个视频吗？",
-            "acceptedAnswer": { "@type": "Answer", "text": "视频视觉搜索主要基于分镜代表帧。ClipKnife 会把视频切分成分镜，再抽取代表帧进入视觉索引，搜索结果会回连到原视频和对应时间段。这意味着 ClipKnife 不承诺自动理解完整视频语义，搜索质量会依赖分镜和代表帧索引质量。" }
+            "acceptedAnswer": { "@type": "Answer", "text": "视频视觉搜索主要基于分镜代表帧。ClipKnife 会把视频切分成分镜，再抽取代表帧进入视觉索引。搜索结果会回连到原视频和对应时间段。这意味着 ClipKnife 不承诺自动理解完整视频语义，搜索质量会依赖分镜和代表帧索引质量。" }
           },
           {
             "@type": "Question",
@@ -68,7 +68,6 @@
 </head>
 
 <body class="bg-[#0a0a0a] text-slate-100 antialiased">
-  <h1>怎么管理几千个视频素材？按内容搜索本地视频和图片</h1>
   <header class="doc-header">
     <a href="../../" class="doc-brand" aria-label="返回 ClipKnife 首页">
       <img src="../../assets/icon.png" alt="" />
@@ -81,9 +80,10 @@
       <a href="../../#download">下载</a>
     </nav>
   </header>
-  <main class="doc-shell">
-    <article class="doc-article" style="max-width:760px;margin:0 auto;">
+  <main class="doc-shell" style="display:block;">
+    <article class="doc-article doc-content" style="max-width:760px;margin:0 auto;">
       <p class="doc-kicker"><a href="../../">首页</a> / 使用手册 / 按内容搜索视频素材</p>
+      <h1>怎么管理几千个视频素材？按内容搜索本地视频和图片</h1>
       <p>视频素材积累到几千个之后，大多数人的管理方式是文件夹加文件名。这个方式在素材少的时候够用，素材一多就失效：文件名记的是拍摄时间或编号，不是画面内容；要找“傍晚逆光里车灯开过去的那段”，只能一个个打开预览、拖动时间轴。</p>
       <p>素刀（ClipKnife）解决的就是这一步：<strong>用一句自然语言搜索本地视频和图片，返回的不是文件，是具体片段和时间码。</strong>搜“海边日落”、“有人敲键盘的镜头”、“雨夜街头走路的人”，结果直接定位到视频中的对应位置，点进去从那个时间点播放。</p>
 
@@ -101,6 +101,16 @@
 
       <h2>边界，照实说</h2>
       <p>只有 Windows 版，没有 Mac 版。单人工具，不做多人协作——需要团队协作的云端素材库走网盘或专业 MAM。建索引需要时间，冷启动全库扫描是真实的成本。分镜目前只提供镜头级标签，分镜本身不可再编辑。剪映 6 及以上版本的加密草稿可能无法读写，老版本草稿正常。素材量大到几万级时，索引和检索速度受硬盘影响明显，机械硬盘会明显更慢。</p>
+
+      <h2>搜索时常见的几个问题</h2>
+      <h3>智能搜索和素材库搜索有什么区别？</h3>
+      <p>素材库搜索主要搜索文件名、路径和标签等元信息。智能搜索使用自然语言检索图片、视频片段和音频/视频语音内容。比如你可以输入“海边日落”“红色包装特写”或“会议里提到预算调整”。</p>
+      <h3>视频搜索是搜索整个视频吗？</h3>
+      <p>视频视觉搜索主要基于分镜代表帧。ClipKnife 会把视频切分成分镜，再抽取代表帧进入视觉索引。搜索结果会回连到原视频和对应时间段。这意味着 ClipKnife 不承诺自动理解完整视频语义，搜索质量会依赖分镜和代表帧索引质量。</p>
+      <h3>可以搜索视频里的说话内容吗？</h3>
+      <p>可以，但需要开启视频语音转写。音频和视频语音转写是两个独立开关，默认均关闭；开启对应开关后，才会为该类素材生成语音转写任务。开启后，视频中的语音内容可以进入语音检索索引，搜索结果仍会保留视频身份，方便回到视频上下文。</p>
+      <h3>为什么刚添加素材后搜索不到？</h3>
+      <p>素材需要先完成扫描、入库和索引。图片通常直接进入视觉索引；视频需要先分镜、抽取代表帧，再建立索引；音频需要生成转写后才能参与语音搜索。如果刚添加素材就搜索不到，可以先到任务中心查看是否还有等待中、处理中或失败任务。</p>
 
       <h2>相关</h2>
       <p><a href="../../manual/">使用手册</a>：初始化、素材源配置、智能搜索、分镜、项目的完整步骤。　<a href="../../changelog/">更新日志</a>：版本变更与功能时间线。　<a href="../../faq/">常见问题</a>。</p>

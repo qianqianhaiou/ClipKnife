@@ -3,6 +3,10 @@
 
 User-agent: *
 Allow: /
+# Public resources required to render the documentation and homepage.
+Allow: /assets/app.js
+Allow: /assets/docs.js
+Allow: /assets/styles.css
 Disallow: /assets/
 
 Sitemap: https://clipknife.cn/sitemap.xml
