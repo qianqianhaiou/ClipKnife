@@ -30,12 +30,57 @@
   <main class="doc-shell">
     <aside class="doc-sidebar" aria-label="页面目录">
       <p class="doc-sidebar-title">目录</p>
-      <nav id="docToc"></nav>
+      <nav id="docToc"><a class="toc-link toc-level-2" href="#%E7%89%88%E6%9C%AC%E6%A6%82%E8%A7%88">版本概览</a>
+<a class="toc-link toc-level-2" href="#%E7%81%B5%E6%84%9F%E6%BC%AB%E6%B8%B8">灵感漫游</a>
+<a class="toc-link toc-level-2" href="#%E5%A4%A7%E7%B4%A0%E6%9D%90%E5%BA%93%E4%B8%8E%E5%BB%BA%E5%BA%93%E6%80%A7%E8%83%BD%EF%BC%88%E9%87%8D%E7%82%B9%EF%BC%89">大素材库与建库性能（重点）</a>
+<a class="toc-link toc-level-2" href="#%E4%BB%BB%E5%8A%A1%E4%B8%AD%E5%BF%83%E4%B8%8E%E5%A4%B1%E8%B4%A5%E7%B4%A0%E6%9D%90">任务中心与失败素材</a>
+<a class="toc-link toc-level-2" href="#%E5%85%B6%E4%BB%96%E4%BF%AE%E5%A4%8D">其他修复</a>
+<a class="toc-link toc-level-2" href="#%E4%B8%8B%E8%BD%BD%E4%B8%8E%E5%8D%87%E7%BA%A7">下载与升级</a></nav>
     </aside>
     <article class="doc-article">
       <p class="doc-kicker"><a href="../../">首页</a> / <a href="../">更新日志</a> / v2.1.0</p>
-      <div id="docStatus" class="doc-status">正在加载更新日志...</div>
-      <div class="doc-content" data-doc-src="../../content/changelog/v2.1.0.md"></div>
+      <div id="docStatus" class="doc-status" hidden>正在加载更新日志...</div>
+      <div class="doc-content" data-doc-src="../../content/changelog/v2.1.0.md" data-doc-prerendered="true" data-doc-source-sha256="89d8ea1b6125d4227a78abaec9fb8257b56d7dfa3eb6290b409bba6e2a28bb0e">
+<h1 id="v2.1.0">v2.1.0</h1>
+<p>发布时间：2026-09-09</p>
+<p>适用系统：Windows x64</p>
+<p>发布通道：stable</p>
+<p>发布状态：已发布</p>
+<h2 id="版本概览">版本概览</h2>
+<p>v2.1.0 为素刀（ClipKnife）新增“灵感漫游”素材浏览模式，并集中改善大素材库的建库、浏览与内存使用体验。任务中心也提供更清晰的关联素材和失败信息，便于跟进处理进度、定位问题文件。</p>
+<h2 id="灵感漫游">灵感漫游</h2>
+<ol>
+<li>素材库新增“时间线”和“灵感漫游”视图切换。灵感漫游以瀑布流随机展示图片和视频，适合在没有明确搜索目标时发现可用素材。</li>
+<li>支持按图片、视频、关键词和素材目录筛选，也可以点击“换一批”浏览新的随机组合；普通刷新保留当前批次顺序。</li>
+<li>两种视图分别保留筛选条件和滚动位置，并记住上次选择的视图。漫游中可预览图片、打开视频详情、查看所在目录、拖拽素材或加入项目。</li>
+<li>采用按需加载的瀑布流，改善大量素材下的浏览体验，并修复大数据量时漫游加载超时的问题。当前漫游只包含图片和视频，视频卡片使用已有静态代表帧，不自动播放。</li>
+</ol>
+<h2 id="大素材库与建库性能（重点）">大素材库与建库性能（重点）</h2>
+<ol>
+<li>优化大量素材下的目录扫描、素材统计、索引写入与批量索引清理，减少长时间建库时的等待和资源占用。</li>
+<li>修复多处持续运行和批量处理时的内存增长问题，改善图像处理与任务队列的资源释放。</li>
+<li>增加建库期间的内存保护：可用内存不足时等待资源恢复，再继续处理，降低内存压力导致任务失败的概率。</li>
+<li>改善目录权限不足时的扫描处理，以及首次建库期间智能搜索组件状态检查超时的问题。</li>
+<li>图像模型默认休眠策略调整为“永不休眠”，减少连续使用时反复加载模型的等待；仍可在系统设置中调整休眠策略。</li>
+</ol>
+<h2 id="任务中心与失败素材">任务中心与失败素材</h2>
+<ol>
+<li>任务中心和任务提示可展示批量任务关联的具体素材，方便确认正在处理哪些文件。</li>
+<li>遇到损坏或无法解码的图片时，单独记录为不可索引素材，继续处理同批次中的其他图片，避免单个问题文件阻塞整批建库。</li>
+<li>任务中心区分可重试的索引失败与不可索引图片，并支持定位对应文件，便于检查和整理素材。</li>
+</ol>
+<h2 id="其他修复">其他修复</h2>
+<ol>
+<li>改善创作助手长对话的上下文限制处理；会话过长且自动整理后仍无法继续时，明确提示新建会话、精简自定义提示词或切换支持更长上下文的模型。</li>
+<li>修复首次初始化尚未完成组件准备时，自动更新检查过早运行的问题。</li>
+</ol>
+<h2 id="下载与升级">下载与升级</h2>
+<ul>
+<li>已支持一键更新的版本，可在“系统设置”中检查更新并按提示完成升级；首次安装入口见<a href="../../#download">官网首页下载区</a>。</li>
+<li>升级时请一并安装更新提示中列出的配套组件，以获得对应的建库与检索改进。</li>
+<li>升级前可在“系统设置”中备份应用数据，并保持素材源与索引目录所在磁盘可正常访问。</li>
+</ul>
+</div>
     </article>
   </main>
   <script src="../../assets/docs.js"></script>

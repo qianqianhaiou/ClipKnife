@@ -12,6 +12,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="../../assets/styles.css" />
+  <link rel="canonical" href="https://clipknife.cn/changelog/v1.1.2/" />
 </head>
 <body class="bg-[#0a0a0a] text-slate-100 antialiased">
   <header class="doc-header">
@@ -29,12 +30,40 @@
   <main class="doc-shell">
     <aside class="doc-sidebar" aria-label="页面目录">
       <p class="doc-sidebar-title">目录</p>
-      <nav id="docToc"></nav>
+      <nav id="docToc"><a class="toc-link toc-level-2" href="#%E9%87%8D%E8%A6%81%E6%9B%B4%E6%96%B0">重要更新</a>
+<a class="toc-link toc-level-2" href="#%E6%9C%AC%E4%BD%93%E6%9B%B4%E6%96%B0">本体更新</a>
+<a class="toc-link toc-level-2" href="#%E4%B8%8B%E8%BD%BD%E4%B8%8E%E5%8D%87%E7%BA%A7">下载与升级</a></nav>
     </aside>
     <article class="doc-article">
       <p class="doc-kicker"><a href="../../">首页</a> / <a href="../">更新日志</a> / v1.1.2</p>
-      <div id="docStatus" class="doc-status">正在加载更新日志...</div>
-      <div class="doc-content" data-doc-src="../../content/changelog/v1.1.2.md"></div>
+      <div id="docStatus" class="doc-status" hidden>正在加载更新日志...</div>
+      <div class="doc-content" data-doc-src="../../content/changelog/v1.1.2.md" data-doc-prerendered="true" data-doc-source-sha256="91d40398c6c8d9f90f8540936b92bf6db47ca7628878302ed9a86651d25c68be">
+<h1 id="v1.1.2">v1.1.2</h1>
+<p>发布日期：2026-08-01</p>
+<p>适用系统：Windows</p>
+<p>发布通道：stable</p>
+<h2 id="重要更新">重要更新</h2>
+<ol>
+<li>优化底层检索模式，支持混合检索、视觉优先、文本优先和自定义标签。</li>
+<li>新增素材盘模式；外接素材盘可在不同电脑上快速检索，无需重复建库。</li>
+<li>修复超时、大数据量异常、HEVC 视频预览失败等已知问题。</li>
+</ol>
+<h2 id="本体更新">本体更新</h2>
+<ol>
+<li>新增组件替换功能，本体与组件可分别更新，保护本地数据。</li>
+<li>智能检索时可指定素材源或文件，缩小检索范围。</li>
+<li>新增“补全缺失索引”功能，无需全量重建。</li>
+<li>新增自定义数据文件存放位置。</li>
+<li>优化交互样式、以图搜图和素材对账等功能。</li>
+</ol>
+<h2 id="下载与升级">下载与升级</h2>
+<ul>
+<li>增量安装包：<a href="https://gitee.com/qianqianhaiou/clip-knife-doc/releases/download/v1.1.2/%E7%B4%A0%E5%88%80_1.1.2_x64-setup.exe">素刀 v1.1.2 x64 安装程序</a></li>
+<li>全量安装包：<a href="https://pan.baidu.com/s/1siqtqe_1p0KLItu944sflQ?pwd=i5ja">百度网盘</a></li>
+</ul>
+<blockquote>本次 <code>imsearch</code> 和 <code>transnetv2</code> 组件也有更新。请从网盘的 <code>external</code> 目录下载组件包，然后在“系统设置 → 组件管理”中依次替换。</blockquote>
+<blockquote>从低于 v1.1.0 的版本升级时，请下载全量安装包；安装前请完全卸载旧版，并在卸载时勾选删除应用数据。</blockquote>
+</div>
     </article>
   </main>
   <script src="../../assets/docs.js"></script>

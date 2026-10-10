@@ -30,12 +30,40 @@
   <main class="doc-shell">
     <aside class="doc-sidebar" aria-label="页面目录">
       <p class="doc-sidebar-title">目录</p>
-      <nav id="docToc"></nav>
+      <nav id="docToc"><a class="toc-link toc-level-2" href="#%E7%89%88%E6%9C%AC%E6%A6%82%E8%A7%88">版本概览</a>
+<a class="toc-link toc-level-2" href="#%E5%BA%94%E7%94%A8%E6%95%B0%E6%8D%AE%E8%BF%81%E7%A7%BB">应用数据迁移</a>
+<a class="toc-link toc-level-2" href="#%E5%9B%BE%E7%89%87%E6%B8%85%E6%99%B0%E5%8C%96%E4%B8%8E%E4%BB%BB%E5%8A%A1%E4%B8%AD%E5%BF%83">图片清晰化与任务中心</a>
+<a class="toc-link toc-level-2" href="#%E5%8D%87%E7%BA%A7%E6%8F%90%E7%A4%BA">升级提示</a></nav>
     </aside>
     <article class="doc-article">
       <p class="doc-kicker"><a href="../../">首页</a> / <a href="../">更新日志</a> / v2.2.1</p>
-      <div id="docStatus" class="doc-status">正在加载更新日志...</div>
-      <div class="doc-content" data-doc-src="../../content/changelog/v2.2.1.md"></div>
+      <div id="docStatus" class="doc-status" hidden>正在加载更新日志...</div>
+      <div class="doc-content" data-doc-src="../../content/changelog/v2.2.1.md" data-doc-prerendered="true" data-doc-source-sha256="bdfe44bb58c1a0ee7c9df02ed8b2d6052210ed75ebd69ad212bed8708045d200">
+<h1 id="v2.2.1">v2.2.1</h1>
+<p>发布时间：2026-09-28</p>
+<p>适用系统：Windows x64</p>
+<p>发布通道：stable</p>
+<p>发布状态：已发布</p>
+<h2 id="版本概览">版本概览</h2>
+<p>v2.2.1 为素刀（ClipKnife）加入建库后的应用数据迁移，并修复图片清晰化的倍率处理问题。任务中心也调整了已结束任务的排序，方便查看最近的处理结果。</p>
+<h2 id="应用数据迁移">应用数据迁移</h2>
+<ul>
+<li>在“系统设置 → 数据与备份”中，可以把应用数据迁移到其他本地固定磁盘上的空目录。数据库、AI 组件、搜索索引、缓存、项目和日志会一起迁移；原始图片、视频和音频仍留在各自的素材源。</li>
+<li>迁移会等待正在进行的任务暂停，并显示复制与校验进度。切换前可以取消；全部校验完成后，点击“切换并重启”才会启用新目录。</li>
+<li>新目录首次启动验证失败时，应用会继续使用旧目录，并保留目标副本以便排查。验证成功后，应用会在后台确认旧目录内容未变化，再尝试清理；无法安全确认的旧目录会保留。独立存放在旧根目录之外的组件目录也会保留。</li>
+</ul>
+<h2 id="图片清晰化与任务中心">图片清晰化与任务中心</h2>
+<ul>
+<li>修复图片清晰化使用 2×、3× 倍率时可能出现的分块错位。图片清晰化界面现在固定使用模型原生的 4× 放大；视频增强的倍率设置不受影响。</li>
+<li>任务中心将已完成、失败和取消的任务按结束时间从近到远排列，最近处理的任务更容易找到。</li>
+</ul>
+<h2 id="升级提示">升级提示</h2>
+<ul>
+<li>可在“系统设置”中检查更新。</li>
+<li>迁移前请确认目标磁盘有足够空间，并保持素材源和应用数据所在磁盘可访问。迁移应用数据不会移动原始素材。</li>
+<li>取消或失败后，目标磁盘上的暂存副本可能保留，可按页面提示查看其位置。</li>
+</ul>
+</div>
     </article>
   </main>
   <script src="../../assets/docs.js"></script>

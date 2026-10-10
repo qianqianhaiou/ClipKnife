@@ -23,12 +23,20 @@
     return count === 1 ? slug : `${slug}-${count}`;
   }
 
+  function safeUrl(value) {
+    const url = value.trim();
+    if (!url || /[\u0000-\u0020\u007f]/.test(url) || url.startsWith('//') || url.includes('\\')) return '';
+    const scheme = /^([a-z][a-z0-9+.-]*):/i.exec(url);
+    return scheme && !/^(https?|mailto)$/i.test(scheme[1]) ? '' : url;
+  }
+
   function renderInline(text) {
     return escapeHtml(text)
       .replace(/`([^`]+)`/g, '<code>$1</code>')
       .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
       .replace(/\[([^\]]+)\]\(([^)]+)\)/g, function (_, label, href) {
-        const safeHref = href.replace(/"/g, '&quot;');
+        const safeHref = safeUrl(href).replace(/"/g, '&quot;');
+        if (!safeHref) return label;
         return `<a href="${safeHref}">${label}</a>`;
       });
   }
@@ -61,7 +69,7 @@
         const level = heading[1].length;
         const text = heading[2].trim();
         const id = slugify(text);
-        html.push(`<h${level} id="${id}">${renderInline(text)}</h${level}>`);
+        html.push(`<h${level} id="${escapeHtml(id)}">${renderInline(text)}</h${level}>`);
         toc.push({ level, text, id });
         return;
       }
@@ -70,7 +78,11 @@
       if (image) {
         closeList(state, html);
         const alt = escapeHtml(image[1] || '文档图片');
-        const src = image[2].replace(/"/g, '&quot;');
+        const src = escapeHtml(safeUrl(image[2]));
+        if (!src) {
+          html.push(`<p>${alt}</p>`);
+          return;
+        }
         html.push(`<figure class="doc-image"><img src="${src}" alt="${alt}" loading="lazy" data-placeholder="${src}"><figcaption>${alt}</figcaption></figure>`);
         return;
       }
@@ -120,7 +132,7 @@
       return;
     }
     tocEl.innerHTML = items.map(function (entry) {
-      return `<a class="toc-link toc-level-${entry.level}" href="#${entry.id}">${escapeHtml(entry.text)}</a>`;
+      return `<a class="toc-link toc-level-${entry.level}" href="#${encodeURIComponent(entry.id)}">${escapeHtml(entry.text)}</a>`;
     }).join('');
   }
 
@@ -240,6 +252,19 @@
     const src = mount.getAttribute('data-doc-src');
     const status = document.getElementById('docStatus');
 
+    if (mount.getAttribute('data-doc-prerendered') === 'true' && mount.querySelector('h1')) {
+      const toc = Array.from(mount.querySelectorAll('h1, h2, h3')).map(function (heading) {
+        return { level: Number(heading.tagName.slice(1)), text: heading.textContent, id: heading.id };
+      });
+      renderToc(toc);
+      prepareImageFallbacks(mount);
+      setTitleFromContent(mount);
+      if (status) status.hidden = true;
+      scrollToLocationHash(mount);
+      settleLocationHash(mount);
+      return;
+    }
+
     fetch(src)
       .then(function (response) {
         if (!response.ok) {
@@ -264,6 +289,11 @@
         }
       });
   }
+
+  if (typeof module !== 'undefined' && module.exports) {
+    module.exports = { renderMarkdown };
+  }
+  if (typeof window === 'undefined' || typeof document === 'undefined') return;
 
   window.renderMarkdown = renderMarkdown;
   window.scrollToLocationHash = scrollToLocationHash;

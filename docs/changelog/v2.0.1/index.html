@@ -30,12 +30,41 @@
   <main class="doc-shell">
     <aside class="doc-sidebar" aria-label="页面目录">
       <p class="doc-sidebar-title">目录</p>
-      <nav id="docToc"></nav>
+      <nav id="docToc"><a class="toc-link toc-level-2" href="#%E7%89%88%E6%9C%AC%E6%A6%82%E8%A7%88">版本概览</a>
+<a class="toc-link toc-level-2" href="#%E4%B8%80%E9%94%AE%E6%9B%B4%E6%96%B0">一键更新</a>
+<a class="toc-link toc-level-2" href="#%E5%BB%BA%E5%BA%93%E4%B8%8E%E6%90%9C%E7%B4%A2">建库与搜索</a>
+<a class="toc-link toc-level-2" href="#%E4%B8%8B%E8%BD%BD%E4%B8%8E%E5%8D%87%E7%BA%A7">下载与升级</a></nav>
     </aside>
     <article class="doc-article">
       <p class="doc-kicker"><a href="../../">首页</a> / <a href="../">更新日志</a> / v2.0.1</p>
-      <div id="docStatus" class="doc-status">正在加载更新日志...</div>
-      <div class="doc-content" data-doc-src="../../content/changelog/v2.0.1.md"></div>
+      <div id="docStatus" class="doc-status" hidden>正在加载更新日志...</div>
+      <div class="doc-content" data-doc-src="../../content/changelog/v2.0.1.md" data-doc-prerendered="true" data-doc-source-sha256="60bf41c9edc371f9178fcd7b4c8e477f4060312924f5d7cd83c3987e01f58cc1">
+<h1 id="v2.0.1">v2.0.1</h1>
+<p>发布时间：2026-09-02</p>
+<p>适用系统：Windows x64</p>
+<p>发布通道：stable</p>
+<p>发布状态：已发布</p>
+<h2 id="版本概览">版本概览</h2>
+<p>v2.0.1 为素刀（ClipKnife）带来一键更新和首次建库期间的部分搜索能力，让安装、升级和开始检索更加顺畅。</p>
+<h2 id="一键更新">一键更新</h2>
+<ol>
+<li>在更新提示中点击一次“立即更新”，即可依次完成所需组件的下载与替换、软件安装包下载、校验、安装和重新启动，无需再手动打开安装程序。</li>
+<li>每个版本统一使用一个 Windows 安装包，不再区分全量包与增量包；跨版本升级时，更新提示会汇总期间各版本的更新说明。</li>
+<li>智能搜索与视频分镜组件可在线更新，也保留手动选择配套组件压缩包的方式。组件替换会等待相关任务结束，新组件验证失败时恢复旧组件。</li>
+<li>组件更新失败、下载取消或安装包校验失败时，会停止软件安装并给出提示；软件安装开始前可以取消下载。</li>
+</ol>
+<h2 id="建库与搜索">建库与搜索</h2>
+<ol>
+<li>首次建库期间，只要已有素材完成索引，即可在智能搜索中检索这部分素材，无需等待整个素材库处理完成。</li>
+<li>搜索界面会提示索引仍在构建，可检索范围随建库进度逐步扩大。继续建库后重新搜索即可获得更多结果，当前结果列表不会自动跳动刷新。</li>
+<li>修复智能搜索组件多次解压运行造成磁盘空间持续占用的问题，并完善组件检查与修复流程。</li>
+</ol>
+<h2 id="下载与升级">下载与升级</h2>
+<ul>
+<li>安装入口见<a href="../../#download">官网首页下载区</a>。从尚不具备一键更新能力的V1旧版本升级时，需要先手动安装一次支持该能力的版本，后续更新即可在应用内完成。</li>
+<li>升级前可在“系统设置”中备份应用数据，并保持素材源与索引目录所在磁盘可正常访问。</li>
+</ul>
+</div>
     </article>
   </main>
   <script src="../../assets/docs.js"></script>
