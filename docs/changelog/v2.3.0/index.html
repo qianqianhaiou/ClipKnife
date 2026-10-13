@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="素刀 ClipKnife v2.3.0 更新日志，发布于 2026 年 10 月 13 日：新版创作助手、局域网素材共享、本地视觉描述与画面分类、批量视频拆分镜，以及建库和任务稳定性改进。" />
+  <title>素刀 ClipKnife v2.3.0 更新日志</title>
+  <meta name="theme-color" content="#0a0a0a" />
+  <link rel="icon" type="image/png" href="../../assets/icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="../../assets/styles.css" />
+  <link rel="canonical" href="https://clipknife.cn/changelog/v2.3.0/" />
+</head>
+<body class="bg-[#0a0a0a] text-slate-100 antialiased">
+  <header class="doc-header">
+    <a href="../../" class="doc-brand" aria-label="返回 ClipKnife 首页">
+      <img src="../../assets/icon.png" alt="" />
+      <span>素刀-ClipKnife</span>
+    </a>
+    <nav class="doc-nav" aria-label="文档导航">
+      <a href="../../manual/">使用手册</a>
+      <a href="../../changelog/" aria-current="page">更新日志</a>
+      <a href="../../faq/">常见问题</a>
+      <a href="../../#download">下载</a>
+    </nav>
+  </header>
+  <main class="doc-shell">
+    <aside class="doc-sidebar" aria-label="页面目录">
+      <p class="doc-sidebar-title">目录</p>
+      <nav id="docToc"><a class="toc-link toc-level-2" href="#%E7%89%88%E6%9C%AC%E6%A6%82%E8%A7%88">版本概览</a>
+<a class="toc-link toc-level-2" href="#%E6%96%B0%E7%89%88%E5%88%9B%E4%BD%9C%E5%8A%A9%E6%89%8B">新版创作助手</a>
+<a class="toc-link toc-level-2" href="#%E5%B1%80%E5%9F%9F%E7%BD%91%E7%B4%A0%E6%9D%90%E5%85%B1%E4%BA%AB">局域网素材共享</a>
+<a class="toc-link toc-level-2" href="#%E6%9C%AC%E5%9C%B0%E8%A7%86%E8%A7%89%E6%8F%8F%E8%BF%B0%E4%B8%8E%E7%94%BB%E9%9D%A2%E5%88%86%E7%B1%BB">本地视觉描述与画面分类</a>
+<a class="toc-link toc-level-2" href="#%E6%89%B9%E9%87%8F%E8%A7%86%E9%A2%91%E6%8B%86%E5%88%86%E9%95%9C">批量视频拆分镜</a>
+<a class="toc-link toc-level-2" href="#%E5%BB%BA%E5%BA%93%E6%80%A7%E8%83%BD%E4%B8%8E%E7%BB%84%E4%BB%B6%E6%9B%B4%E6%96%B0">建库性能与组件更新</a>
+<a class="toc-link toc-level-2" href="#%E4%BB%BB%E5%8A%A1%E8%AF%8A%E6%96%AD%E4%B8%8E%E9%A2%84%E8%A7%88%E4%BF%AE%E5%A4%8D">任务、诊断与预览修复</a>
+<a class="toc-link toc-level-2" href="#%E5%8D%87%E7%BA%A7%E6%8F%90%E7%A4%BA">升级提示</a></nav>
+    </aside>
+    <article class="doc-article">
+      <p class="doc-kicker"><a href="../../">首页</a> / <a href="../">更新日志</a> / v2.3.0</p>
+      <div id="docStatus" class="doc-status" hidden>正在加载更新日志...</div>
+      <div class="doc-content" data-doc-src="../../content/changelog/v2.3.0.md" data-doc-prerendered="true" data-doc-source-sha256="42e8a8f7fc8c6095e05d8f236c09a1bc9e3222fe768d1bfae3cb951d8e5f81a0">
+<h1 id="v2.3.0">v2.3.0</h1>
+<p>发布时间：2026-10-13</p>
+<p>对比版本：v2.2.1</p>
+<p>适用系统：Windows x64</p>
+<p>发布通道：stable</p>
+<p>发布状态：已发布</p>
+<h2 id="版本概览">版本概览</h2>
+<p>本次更新带来新版创作助手、局域网素材共享、本地视觉描述与画面分类检索，并将视频拆分镜升级为批量自动处理。同时改进建库调度、视频预览、任务恢复和组件更新。</p>
+<h2 id="新版创作助手">新版创作助手</h2>
+<ul>
+<li>创作助手采用独立工作区，提供“智能口播”和“通用专家”两个入口。智能口播衔接文案、分段配音、画面匹配与草稿组装；通用专家处理素材检索、媒体分析和自由剪辑。历史会话继续保留，并归入通用专家。</li>
+<li>智能口播可选择自动执行，或在询问模式下确认文案与分镜；支持预览配音和候选画面，修改文案时只重做受影响的部分，更换画面时保留已有配音。</li>
+<li>新增“专家与技能”页面，可以为不同专家分别配置技能、修改技能描述并恢复默认，也可为单次创作附加一个自定义技能。长期流程调整统一在该页面完成，对话中的助手不再直接修改技能文件。</li>
+<li>优化专家选择、历史创作、素材侧栏和对话状态展示。切换默认模型可继续沿用当前及历史会话的上下文，从下一次模型请求开始生效。</li>
+<li>创作结果统一为可继续编辑的剪映草稿，移除助手直接导出成片的流程。需要生成视频文件时，请在剪映中完成检查和导出。</li>
+</ul>
+<h2 id="局域网素材共享">局域网素材共享</h2>
+<ul>
+<li>在“系统设置 → 局域网共享”中，可将选定素材源共享给同一局域网内的其他电脑，支持本机目录及共享端可访问的 NAS / SMB 目录。通过配对码建立连接，并可随时撤销已配对设备。</li>
+<li>智能搜索可切换本机或一个共享库，使用对方已有索引进行自然语言搜索、相似搜索和以图搜图，无需在访问端重复建库。首次初始化也可选择“仅使用共享素材库”，跳过本机 AI 组件安装和建库。</li>
+<li>支持共享图片、音频和视频的只读预览；视频详情可查看分镜、画面描述、字幕并定位命中片段。改进长视频持续预览和分镜加载体验。</li>
+<li>“使用原文件”可将文件下载到本机，支持在任务中心查看进度、暂停、取消和重试；也可设置 NAS / SMB 路径映射，优先使用本机已能访问且版本匹配的原文件。</li>
+<li>共享默认关闭。搜索词、主动选择的查询图片及预览数据会按操作在设备间传输，数据仅在局域网内传输。共享结果暂不支持远程编辑标签、导出分镜或加入本机项目。</li>
+</ul>
+<h2 id="本地视觉描述与画面分类">本地视觉描述与画面分类</h2>
+<ul>
+<li>“视觉辅助模型”新增本地 MiniCPM-V 4.6，可在本机生成图片和视频分镜描述，也可继续使用已配置的外部视觉 API。设置页支持按需联网下载模型及依赖、查看安装进度、取消安装和安装后自检。</li>
+<li>本地视觉模型适用于 Windows x64 与兼容的 NVIDIA 显卡，至少需要 4 GB 显存，推荐 6 GB，不提供 CPU 推理。无需自行安装 Python 或完整 CUDA Toolkit；本地处理失败时不会自动切换到外部 API 上传图片。</li>
+<li>智能搜索新增“画面分类”，可按主体、动作、场景和氛围组合筛选，查看当前范围内的高频分类及素材数量。选择分类后，即使不输入关键词，也能浏览匹配的图片和视频分镜；共享库也支持对应筛选。</li>
+<li>改进描述格式校验与历史补建，跳过已有有效新版描述和正在处理的任务，减少重复生成。兼容迁移旧版描述正文；缺少新版分类字段的历史素材，需补建描述后才能完整参与画面分类。</li>
+<li>本地与外部视觉描述均在素材源扫描和各类索引任务结束后执行，优先完成建库。新增扫描或索引任务时，当前描述保存完成后会让出处理资源。</li>
+<li>本地描述按图片、视频分别调整并发，并复用已测得的配置，减少反复试跑和模型加载。修复生成视觉描述期间智能搜索不可用的问题。</li>
+</ul>
+<h2 id="批量视频拆分镜">批量视频拆分镜</h2>
+<ul>
+<li>工具箱中的视频拆分镜改为批量自动处理：一次选择或拖入多个视频，自动排队识别并精确导出全部镜头，处理期间可以继续追加视频。</li>
+<li>新增“导出设置”，可保存到视频同级目录或指定文件夹，并记住本机选择。每个视频的片段存放在独立的同名子文件夹中；遇到已有同名输出时跳过并提示。</li>
+<li>每个视频独立显示处理进度和结果，支持“取消全部”“重试失败”，以及对失败或取消任务单独重试。重试沿用该任务原来的导出位置。</li>
+<li>完善取消、失败和重启中断后的处理，保留原视频与已有输出；中断任务可手动重试。工具复用素刀自带的分镜组件，无需另行安装视频增强工具。</li>
+</ul>
+<h2 id="建库性能与组件更新">建库性能与组件更新</h2>
+<ul>
+<li>优化大量积压任务时的队列领取，减少反复扫描任务记录造成的阻塞。</li>
+<li>优化视频抽帧及分镜检测后的任务衔接，修复检测完成后后续抽帧调度和进度显示不正确的问题。</li>
+<li>配套 NVIDIA 组件支持分镜检测与人物索引复用兼容的 CUDA 运行环境，并优化处理调度；通用组件继续支持 DirectML / CPU。</li>
+<li>搜索与分镜组件支持在线程序小包更新：本机运行库完整且兼容时，只下载需要更新的程序部分；首次安装、依赖变化或运行库损坏时仍使用完整包。</li>
+<li>修复人脸模型下载、配套组件版本识别等问题，完善初始化失败详情和许可状态提示。</li>
+</ul>
+<h2 id="任务诊断与预览修复">任务、诊断与预览修复</h2>
+<ul>
+<li>完善单条任务的暂停、继续和取消操作，修复任务中断被误记为失败、取消状态被迟到结果覆盖，以及恢复时丢失进度的问题。</li>
+<li>整理“诊断与修复”入口，将索引差异修复、压缩等维护操作纳入任务中心，提供进度与失败反馈。</li>
+<li>高级维护新增“清除非素材源索引”和“清除所有视觉描述”。清理范围与确认提示更明确，原始素材不受影响；清除视觉描述后，可手动补建。</li>
+<li>修复搜索索引对账与素材不可用提示，改进历史缓存清理，避免清理仍被任务引用的数据。</li>
+<li>修复智能搜索跳转到视频后部命中分镜时定位不准确的问题；视频详情按完整视频连续播放，并改进分镜列表滚动和共享视频预览。</li>
+<li>改进 Windows 底栏的 GPU 利用率和专用显存占用显示，以及搜索筛选、右键菜单等界面细节。</li>
+</ul>
+<h2 id="升级提示">升级提示</h2>
+<ul>
+<li>可在“系统设置”中检查更新。升级前可备份应用数据，并保持素材源及数据磁盘可访问。</li>
+<li>本地视觉模型、CUDA 加速和程序小包更新需要匹配的组件与发布清单，仅更新桌面程序不能让旧组件具备新能力。</li>
+<li>使用旧开发版局域网共享的设备，需要双方升级并重新配对、配置共享目录与路径映射。共享端需保持运行、授权有效且素材源在线。</li>
+<li>创作助手仍需要用户配置可用的模型供应商。本地视觉描述只表示画面在本机处理，生成的描述文字仍可能用于创作模型上下文；主动选择外部视觉 API 时，图片或分镜采样帧会发送给对应供应商。</li>
+</ul>
+</div>
+    </article>
+  </main>
+  <script src="../../assets/docs.js"></script>
+</body>
+</html>
