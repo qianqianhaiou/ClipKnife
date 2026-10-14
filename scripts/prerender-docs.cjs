@@ -72,11 +72,33 @@ function canonicalLinks(tags, head) {
 
 function renderPage(template, markdown, pageUrl) {
   if (!/^https:\/\/clipknife\.cn\/changelog\/v\d+\.\d+\.\d+\/$/.test(pageUrl)) throw new Error('Only version-log pages are eligible');
+  return renderDocument(normalize(template), markdown, pageUrl);
+}
+
+function renderGuidePage(template, markdown, pageUrl) {
+  const titles = {
+    'https://clipknife.cn/faq/': '常见问题',
+    'https://clipknife.cn/manual/': '使用手册',
+  };
+  if (!Object.hasOwn(titles, pageUrl)) throw new Error('Only FAQ and manual pages are eligible');
+  // Remove only the known shell heading immediately after the real body tag.
+  // Never rewrite the head/schema, another hidden heading, or the Markdown H1.
+  const body = htmlTags(template).find((tag) => tag.name === 'body' && !tag.closing && tag.templateDepth === 0 && tag.foreignDepth === 0);
+  if (body) {
+    const shell = new RegExp(`^(\\s*)<h1 style="display:none;">素刀 ClipKnife ${titles[pageUrl]}</h1>`);
+    const bodyContent = template.slice(body.end).replace(shell, '$1')
+      .replace(/^[ \t\r\n]+/, (whitespace) => whitespace.replace(/[ \t]+(?=\r?\n|$)/g, ''));
+    template = template.slice(0, body.end) + bodyContent;
+  }
+  return renderDocument(template, markdown, pageUrl);
+}
+
+function renderDocument(template, markdown, pageUrl) {
   const rendered = renderMarkdown(normalize(markdown));
   if (rendered.toc.filter((entry) => entry.level === 1).length !== 1) throw new Error('Expected exactly one source H1');
   const mount = /<div\b([^>]*\bdata-doc-src="[^"]+"[^>]*)>[\s\S]*?<\/div>/g;
   if ([...template.matchAll(mount)].length !== 1) throw new Error('Expected exactly one document mount');
-  let html = normalize(template).replace(mount, (_, attributes) => {
+  let html = template.replace(mount, (_, attributes) => {
     const clean = attributes.replace(/\s+data-doc-(?:prerendered|source-sha256)="[^"]*"/g, '');
     return `<div${clean} data-doc-prerendered="true" data-doc-source-sha256="${sha256(markdown)}">\n${rendered.html}\n</div>`;
   });
@@ -166,7 +188,7 @@ function run(args) {
   console.log(JSON.stringify({ checked_pages: plans.length, updated_pages: changed.map((plan) => plan.page), source_markdown_modified: false, excluded_pages: ['docs/manual/index.html', 'docs/faq/index.html'] }, null, 2));
 }
 
-module.exports = { renderPage, run };
+module.exports = { renderPage, renderGuidePage, run };
 if (require.main === module) {
   try { run(process.argv.slice(2)); }
   catch (error) { console.error(error.message); process.exitCode = 1; }
