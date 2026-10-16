@@ -444,7 +444,8 @@ test('historical log dates stay unchanged while newly optimized pages have valid
     assert.match(date, /^\d{4}-\d{2}-\d{2}$/);
     assert.equal(new Date(date).toISOString().slice(0, 10), date);
     assert.ok(date <= today, 'Sitemap cannot claim a future modification');
-    if (version === 'v2.3.0') assert.ok(date >= '2026-10-14', 'New log was generated in the third optimization batch');
+    if (version === 'v2.4.0') assert.equal(date, '2026-10-16', 'The latest release page uses its publication date');
+    else if (version === 'v2.3.0') assert.ok(date >= '2026-10-14', 'New log was generated in the third optimization batch');
     else assert.equal(date, '2026-10-10', 'Untouched historical logs retain their audited batch date');
   }
   for (const name of ['manual', 'faq']) {

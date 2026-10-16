@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="素刀 ClipKnife v2.4.0 更新日志，发布于 2026 年 10 月 16 日：智能分类与词云、素材直送剪映和 Adobe Premiere Pro、最近标签与分镜循环播放，以及视觉描述、索引恢复和 CUDA 13 兼容性说明。" />
+  <title>素刀 ClipKnife v2.4.0 更新日志</title>
+  <meta name="theme-color" content="#0a0a0a" />
+  <link rel="icon" type="image/png" href="../../assets/icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="../../assets/styles.css" />
+  <link rel="canonical" href="https://clipknife.cn/changelog/v2.4.0/" />
+</head>
+<body class="bg-[#0a0a0a] text-slate-100 antialiased">
+  <header class="doc-header">
+    <a href="../../" class="doc-brand" aria-label="返回 ClipKnife 首页">
+      <img src="../../assets/icon.png" alt="" />
+      <span>素刀-ClipKnife</span>
+    </a>
+    <nav class="doc-nav" aria-label="文档导航">
+      <a href="../../manual/">使用手册</a>
+      <a href="../../changelog/" aria-current="page">更新日志</a>
+      <a href="../../faq/">常见问题</a>
+      <a href="../../#download">下载</a>
+    </nav>
+  </header>
+  <main class="doc-shell">
+    <aside class="doc-sidebar" aria-label="页面目录">
+      <p class="doc-sidebar-title">目录</p>
+      <nav id="docToc"><a class="toc-link toc-level-2" href="#%E7%89%88%E6%9C%AC%E6%A6%82%E8%A7%88">版本概览</a>
+<a class="toc-link toc-level-2" href="#%E6%99%BA%E8%83%BD%E5%88%86%E7%B1%BB%E4%B8%8E%E8%AF%8D%E4%BA%91">智能分类与词云</a>
+<a class="toc-link toc-level-2" href="#%E4%B8%80%E9%94%AE%E6%B7%BB%E5%8A%A0%E5%88%B0%E5%89%AA%E8%BE%91%E8%BD%AF%E4%BB%B6">一键添加到剪辑软件</a>
+<a class="toc-link toc-level-3" href="#%E5%89%AA%E6%98%A0">剪映</a>
+<a class="toc-link toc-level-3" href="#adobe-premiere-pro">Adobe Premiere Pro</a>
+<a class="toc-link toc-level-2" href="#%E6%9C%80%E8%BF%91%E6%A0%87%E7%AD%BE%E4%B8%8E%E5%88%86%E9%95%9C%E9%A2%84%E8%A7%88">最近标签与分镜预览</a>
+<a class="toc-link toc-level-2" href="#%E8%A7%86%E8%A7%89%E6%8F%8F%E8%BF%B0%E4%B8%8E%E7%BB%84%E4%BB%B6%E6%9B%B4%E6%96%B0">视觉描述与组件更新</a>
+<a class="toc-link toc-level-2" href="#%E7%B4%A2%E5%BC%95%E6%81%A2%E5%A4%8D%E4%B8%8E%E7%A8%B3%E5%AE%9A%E6%80%A7">索引恢复与稳定性</a>
+<a class="toc-link toc-level-2" href="#%E5%8D%87%E7%BA%A7%E4%B8%8E%E5%85%BC%E5%AE%B9%E6%80%A7">升级与兼容性</a></nav>
+    </aside>
+    <article class="doc-article">
+      <p class="doc-kicker"><a href="../../">首页</a> / <a href="../">更新日志</a> / v2.4.0</p>
+      <div id="docStatus" class="doc-status" hidden>正在加载更新日志...</div>
+      <div class="doc-content" data-doc-src="../../content/changelog/v2.4.0.md" data-doc-prerendered="true" data-doc-source-sha256="e5edb7ef0d99a3e7b6dec88ca4667ed38751405d9112226a0ab841d95dcc1eae">
+<h1 id="v2.4.0">v2.4.0</h1>
+<p>发布时间：2026-10-16</p>
+<p>对比版本：v2.3.0</p>
+<p>适用系统：Windows x64</p>
+<p>发布通道：stable</p>
+<p>发布状态：已发布</p>
+<h2 id="版本概览">版本概览</h2>
+<p>本次更新新增智能分类与词云，支持将本地图片、完整视频和视频分镜直接添加到剪映或 Adobe Premiere Pro，并加入最近标签与分镜循环播放。同时改进视觉描述、异常关机后的索引恢复和组件更新。</p>
+<p><strong>升级前请留意显卡兼容变化：</strong> NVIDIA 搜索与本地视觉描述改用 CUDA 13，GTX 1050 Ti 等旧架构显卡的搜索会回退 CPU，无法使用新版本地视觉描述。具体要求见下方“升级与兼容性”。</p>
+<h2 id="智能分类与词云">智能分类与词云</h2>
+<ul>
+<li>素材库新增“智能分类”入口，按主体、动作、场景、氛围展示已有视觉描述中的高频词。可限定目录和素材类型，组合词条筛选图片与视频分镜。</li>
+<li>支持创建自己的分类：可保存词云组合为分类规则，也可按分类名称或库内参考图片查找候选，查看匹配依据后确认归类。同一视频的不同分镜可以分别归入不同分类，也可以属于多个分类。</li>
+<li>浏览时可直接预览图片或定位视频分镜；点击“编辑”后，可批量归类、确认或忽略候选，并调整、合并、拆分、隐藏或恢复词条。整理不会覆盖 AI 原始描述，也不会移动、重命名或删除原始文件。</li>
+<li>改进大素材库的统计、分页与批量处理，每张图片和每个分镜独立计数，减少同一分镜多帧带来的重复统计。统计和批量操作进入任务中心，可查看进度、暂停、取消或重试。</li>
+<li>智能分类目前面向本机图片和视频分镜；词云依赖已有视觉描述，名称与参考图候选需要配套新版图像组件。候选需由用户确认，不会仅凭相似画面自动归类。</li>
+</ul>
+<h2 id="一键添加到剪辑软件">一键添加到剪辑软件</h2>
+<p>本地素材的右键“添加到”菜单新增剪映与 Adobe Premiere Pro 入口。每次添加一张图片、一个完整视频或一个分镜，追加到当前时间线末尾的新轨道。分镜引用完整原视频及选定范围，进入剪辑软件后仍可在原素材范围内调整首尾，无需先导出裁短的文件。</p>
+<h3 id="剪映">剪映</h3>
+<ul>
+<li>打开目标草稿后，在素材库、智能搜索结果或视频详情中右键选择“添加到 → 剪映”；有多个可用目标时，可选择要添加的草稿。</li>
+<li>当前适配 Windows 剪映 5.9 与 11.6，不代表兼容所有剪映版本。需要配套新版分镜组件；未打开草稿、组件缺失或版本不适配时会提示原因。</li>
+</ul>
+<h3 id="adobe-premiere-pro">Adobe Premiere Pro</h3>
+<ul>
+<li>配合“素刀连接”0.2.0 或更新插件，打开 PR 项目与活动序列，并保持“素刀连接”面板打开，即可从右键菜单添加素材，无需手动复制配对信息。</li>
+<li>可在“系统设置 → 剪辑软件”查看连接状态、暂停或重新连接；素刀服务重启后，插件可自动恢复连接。支持 Windows Premiere Pro 26.0 及以上，已在 26.0.0 实机验证，其他版本尚未逐版验证；首版不支持 PR 25.x 和 macOS。</li>
+<li>插件安装、连接与分镜首尾调整方法见 <a href="../../faq/#%E5%A6%82%E4%BD%95%E4%B8%80%E9%94%AE%E6%B7%BB%E5%8A%A0%E5%88%86%E9%95%9C%E5%88%B0-adobe-premiere-pro%EF%BC%88pr%EF%BC%89">Premiere Pro 使用说明</a>。</li>
+</ul>
+<p>两种联动均暂不支持单独添加音频或直接添加共享库素材，也不会自动新建草稿、项目或序列。添加结果可在任务中心查看；若提示结果未确认，请先检查剪辑软件中的时间线，再决定是否重试，避免重复添加。</p>
+<h2 id="最近标签与分镜预览">最近标签与分镜预览</h2>
+<ul>
+<li>图片和视频分镜共用本机最近使用的标签，下拉选中即可添加，也可继续手动输入。最多保留 100 个最近标签，重启后继续可用；当前素材已有的标签不会重复列出。</li>
+<li>视频详情新增“分镜循环”开关，可反复播放当前分镜，包括视频末尾的最后一个分镜；切换分镜时同步切换循环范围。开关默认关闭，关闭后从当前位置继续正常播放。</li>
+<li>修复视频播放与暂停状态不同步的问题，改善打开标签编辑弹窗及关闭后的播放状态恢复。</li>
+</ul>
+<h2 id="视觉描述与组件更新">视觉描述与组件更新</h2>
+<ul>
+<li>改进中文描述、标点和常见术语的识别与校验，减少有效描述被误判为格式错误。需要纠错时优先处理有问题的字段，保留可用内容，减少重复生成。</li>
+<li>本地视觉模型支持优先使用完整、匹配的离线组件；缺少可用离线包时，经用户确认后再联网下载。改进安装检查与失败反馈，已有有效描述不因组件升级而要求全库重建。</li>
+<li>搜索与本地视觉复用匹配的 CUDA 运行依赖，减少重复占用；改进搜索及剪映相关组件的程序小包更新。本机依赖不完整或不兼容时，仍需使用完整组件包。</li>
+</ul>
+<h2 id="索引恢复与稳定性">索引恢复与稳定性</h2>
+<ul>
+<li>增强异常关机后的搜索索引写入保护与恢复能力。“诊断与修复 → 高级维护”新增“断电恢复检查”，可先检查索引状态，再按结果分别确认恢复当前索引、切换可用旧索引或保留原索引后重建。原始素材不受影响，恢复备份不会自动删除。</li>
+<li>修复部分标称 16GB 内存的电脑因硬件保留内存、系统报告容量略低于 16GB 而无法启用 CPU 语音转写的问题；运行时仍会检查实际可用内存。</li>
+</ul>
+<h2 id="升级与兼容性">升级与兼容性</h2>
+<ul>
+<li>可在“系统设置”中检查更新，并同步检查配套组件。智能分类候选、剪映联动、本地视觉描述和程序小包更新需要匹配的组件；Premiere Pro 联动还需要单独安装配套插件。</li>
+<li>新版 NVIDIA 搜索与本地视觉使用 CUDA 13，要求显卡计算能力至少 7.5、Windows 驱动至少 580.88。本地视觉仍至少需要 4GB 显存，推荐 6GB，不提供 CPU 推理。</li>
+<li>Maxwell、Pascal、Volta 架构显卡（包括 GTX 1050 Ti）不再用于新版搜索的 CUDA 加速，搜索会回退 CPU；这些显卡无法运行新版本地视觉描述。CPU 与 AMD 搜索组件不适用这组 NVIDIA 门槛，分镜、人脸和语音组件按各自运行要求启用。</li>
+<li>升级前可备份应用数据，并保持素材源和数据磁盘可访问。仅更新运行组件不会使已有搜索索引或视觉描述失效；本地视觉失败时也不会自动切换到外部 API 上传图片。</li>
+</ul>
+</div>
+    </article>
+  </main>
+  <script src="../../assets/docs.js"></script>
+</body>
+</html>
