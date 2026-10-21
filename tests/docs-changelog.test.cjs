@@ -4,7 +4,7 @@ const path = require('node:path');
 const test = require('node:test');
 
 const docsRoot = path.join(__dirname, '..', 'docs');
-const publishedVersions = ['v2.4.0', 'v2.3.0', 'v2.2.1', 'v2.2.0', 'v2.1.0', 'v2.0.1'];
+const publishedVersions = ['v2.4.4', 'v2.4.0', 'v2.3.0', 'v2.2.1', 'v2.2.0', 'v2.1.0', 'v2.0.1'];
 const releaseIndex = fs.readFileSync(path.join(docsRoot, 'changelog', 'index.html'), 'utf8');
 const sitemap = fs.readFileSync(path.join(docsRoot, 'sitemap.xml'), 'utf8');
 const releaseItems = [...releaseIndex.matchAll(/<a class="release-item" href="([^"]+)">([\s\S]*?)<\/a>/g)];
@@ -63,7 +63,7 @@ for (const version of publishedVersions) {
 }
 
 test('the release index lists the newest published versions first', () => {
-  assert.deepEqual(releaseItems.slice(0, 7).map((item) => item[1]), ['v2.4.0/', 'v2.3.0/', 'v2.2.1/', 'v2.2.0/', 'v2.1.0/', 'v2.0.1/', 'v2.0.0/']);
-  assert.match(releaseIndex, /<meta name="description" content="[^"]*v2\.4\.0/);
-  assert.match(releaseIndex, /<meta property="og:description" content="[^"]*v2\.4\.0/);
+  assert.deepEqual(releaseItems.slice(0, 8).map((item) => item[1]), ['v2.4.4/', 'v2.4.0/', 'v2.3.0/', 'v2.2.1/', 'v2.2.0/', 'v2.1.0/', 'v2.0.1/', 'v2.0.0/']);
+  assert.match(releaseIndex, /<meta name="description" content="[^"]*v2\.4\.4/);
+  assert.match(releaseIndex, /<meta property="og:description" content="[^"]*v2\.4\.4/);
 });

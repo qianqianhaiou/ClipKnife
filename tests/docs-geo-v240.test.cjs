@@ -20,9 +20,9 @@ test('homepage schema follows its actual installer and records this metadata upd
   assert.ok(entry[1].includes('<lastmod>2026-10-17</lastmod>'));
 });
 
-test('root changelog leads with the published v2.4.0 facts and scoped CUDA migration', () => {
+test('root changelog preserves the published v2.4.0 facts and scoped CUDA migration', () => {
   const changelog = read('CHANGELOG.md');
-  const heading = changelog.match(/^## .+$/m);
+  const heading = changelog.match(/^## v2\.4\.0 .+$/m);
   assert.equal(heading?.[0], '## v2.4.0 — 2026-10-16');
   const release = changelog.split('## v2.4.0 — 2026-10-16')[1].split('## v2.3.0')[0];
   for (const required of [

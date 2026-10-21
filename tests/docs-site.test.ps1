@@ -30,6 +30,7 @@ $requiredFiles = @(
   'docs/content/changelog/v2.2.1.md',
   'docs/content/changelog/v2.3.0.md',
   'docs/content/changelog/v2.4.0.md',
+  'docs/content/changelog/v2.4.4.md',
   'docs/manual/index.html',
   'docs/faq/index.html',
   'docs/changelog/index.html',
@@ -41,6 +42,7 @@ $requiredFiles = @(
   'docs/changelog/v2.2.1/index.html',
   'docs/changelog/v2.3.0/index.html',
   'docs/changelog/v2.4.0/index.html',
+  'docs/changelog/v2.4.4/index.html',
   'docs/assets/docs.js',
   'docs/assets/manual/README.md'
 )
@@ -85,7 +87,8 @@ $nonHomePages = @(
   'docs/changelog/v2.2.0/index.html',
   'docs/changelog/v2.2.1/index.html',
   'docs/changelog/v2.3.0/index.html',
-  'docs/changelog/v2.4.0/index.html'
+  'docs/changelog/v2.4.0/index.html',
+  'docs/changelog/v2.4.4/index.html'
 )
 
 foreach ($page in $nonHomePages) {
@@ -111,12 +114,15 @@ Assert-TextContains 'docs/changelog/index.html' 'href="v2.0.0/"'
 Assert-TextContains 'docs/changelog/index.html' 'href="v2.2.1/"'
 Assert-TextContains 'docs/changelog/index.html' 'href="v2.3.0/"'
 Assert-TextContains 'docs/changelog/index.html' 'href="v2.4.0/"'
+Assert-TextContains 'docs/changelog/index.html' 'href="v2.4.4/"'
 Assert-TextContains 'docs/changelog/v2.3.0/index.html' 'data-doc-src="../../content/changelog/v2.3.0.md"'
 Assert-TextContains 'docs/changelog/v2.4.0/index.html' 'data-doc-src="../../content/changelog/v2.4.0.md"'
+Assert-TextContains 'docs/changelog/v2.4.4/index.html' 'data-doc-src="../../content/changelog/v2.4.4.md"'
 Assert-TextContains 'docs/sitemap.xml' 'https://clipknife.cn/changelog/v2.0.0/'
 Assert-TextContains 'docs/sitemap.xml' 'https://clipknife.cn/changelog/v2.2.1/'
 Assert-TextContains 'docs/sitemap.xml' 'https://clipknife.cn/changelog/v2.3.0/'
 Assert-TextContains 'docs/sitemap.xml' 'https://clipknife.cn/changelog/v2.4.0/'
+Assert-TextContains 'docs/sitemap.xml' 'https://clipknife.cn/changelog/v2.4.4/'
 
 Assert-TextContains 'docs/assets/docs.js' 'function renderMarkdown'
 Assert-TextContains 'docs/assets/docs.js' 'data-doc-src'
