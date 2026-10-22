@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="素刀 ClipKnife v2.5.0 更新日志，发布于 2026 年 10 月 22 日：开放独立 Agent 的 MCP 创作能力，支持自适应多帧检索、后台准备更新和下次启动安装，并改进人物分析与启动恢复。" />
+  <title>素刀 ClipKnife v2.5.0 更新日志</title>
+  <meta name="theme-color" content="#0a0a0a" />
+  <link rel="icon" type="image/png" href="../../assets/icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="../../assets/styles.css" />
+  <link rel="canonical" href="https://clipknife.cn/changelog/v2.5.0/" />
+</head>
+<body class="bg-[#0a0a0a] text-slate-100 antialiased">
+  <header class="doc-header">
+    <a href="../../" class="doc-brand" aria-label="返回 ClipKnife 首页">
+      <img src="../../assets/icon.png" alt="" />
+      <span>素刀-ClipKnife</span>
+    </a>
+    <nav class="doc-nav" aria-label="文档导航">
+      <a href="../../manual/">使用手册</a>
+      <a href="../../changelog/" aria-current="page">更新日志</a>
+      <a href="../../faq/">常见问题</a>
+      <a href="../../#download">下载</a>
+    </nav>
+  </header>
+  <main class="doc-shell">
+    <aside class="doc-sidebar" aria-label="页面目录">
+      <p class="doc-sidebar-title">目录</p>
+      <nav id="docToc"><a class="toc-link toc-level-2" href="#mcp%E8%AE%A9%E5%A4%96%E9%83%A8-agent-%E8%B0%83%E7%94%A8%E7%B4%A0%E5%88%80%E8%83%BD%E5%8A%9B">MCP：让外部 Agent 调用素刀能力</a>
+<a class="toc-link toc-level-2" href="#%E8%A7%86%E9%A2%91%E6%A3%80%E7%B4%A2%E8%87%AA%E9%80%82%E5%BA%94%E5%A4%9A%E5%B8%A7%E7%B4%A2%E5%BC%95">视频检索：自适应多帧索引</a>
+<a class="toc-link toc-level-2" href="#%E6%9B%B4%E6%96%B0%E4%BD%93%E9%AA%8C%E5%90%8E%E5%8F%B0%E5%87%86%E5%A4%87%E4%B8%8B%E6%AC%A1%E5%90%AF%E5%8A%A8%E5%AE%89%E8%A3%85">更新体验：后台准备，下次启动安装</a>
+<a class="toc-link toc-level-2" href="#%E7%A8%B3%E5%AE%9A%E6%80%A7%E4%B8%8E%E6%97%A5%E5%B8%B8%E4%BD%BF%E7%94%A8">稳定性与日常使用</a>
+<a class="toc-link toc-level-2" href="#%E5%8D%87%E7%BA%A7%E8%AF%B4%E6%98%8E">升级说明</a></nav>
+    </aside>
+    <article class="doc-article">
+      <p class="doc-kicker"><a href="../../">首页</a> / <a href="../">更新日志</a> / v2.5.0</p>
+      <div id="docStatus" class="doc-status" hidden>正在加载更新日志...</div>
+      <div class="doc-content" data-doc-src="../../content/changelog/v2.5.0.md" data-doc-prerendered="true" data-doc-source-sha256="168290e4e94a57e505974fe8375a4471c555cc83367d88ba00e3ee2272e3609f">
+<h1 id="v2.5.0">v2.5.0</h1>
+<p>发布时间：2026-10-22</p>
+<p>适用系统：Windows x64</p>
+<p>发布通道：stable</p>
+<p>发布状态：已发布</p>
+<p>本次更新开放独立 Agent 的 MCP 创作能力，改进视频分镜检索，并支持后台准备更新、下次启动安装。</p>
+<h2 id="mcp让外部-agent-调用素刀能力">MCP：让外部 Agent 调用素刀能力</h2>
+<ul>
+<li>重建 MCP 创作接口。受信任的本机 Agent 可按授权独立调用素材搜索、分类词云、语音转写、视觉描述、人物分析、分镜分析、配音、剪映草稿及外部素材检索等能力，由 Agent 或自定义 Skill 组织工作流。</li>
+<li>系统设置提供 MCP 总开关与独立授权管理，服务默认关闭。可分别选择能力、素材源和剪映草稿目录，每个 Agent 使用独立凭据，可单独撤销；完整凭据仅在创建时显示一次。</li>
+<li>素材源授权控制库内访问，Agent 也可直接读取本机媒体文件进行分析。普通分析结果、配音和下载素材自动保存在应用数据目录；本地转写、视觉和人物分析不会自动回退到外部模型。</li>
+<li>长任务支持查询进度、取消和显式重试；剪映修改结果不明确时不会自动重复执行。使用旧 MCP 接入的用户，需要重新创建授权并更新客户端工具配置。</li>
+</ul>
+<h2 id="视频检索自适应多帧索引">视频检索：自适应多帧索引</h2>
+<ul>
+<li>配套新版图像检索组件后，较长分镜会比较中间及靠近首尾的画面，保留有明显差异的样本，每个分镜最多索引 3 帧；不超过 3 秒的分镜仍使用中间帧。</li>
+<li>搜索结果按分镜合并，预览对应实际命中的采样画面，减少只看中间帧时遗漏首尾内容的情况。分镜数量、标签和字幕仍以分镜为单位。</li>
+<li>旧索引不会自动补帧；需要对选定视频重新索引，才能使用多帧结果。旧组件仍沿用单中间帧方式，此能力不代表逐帧检索或完整理解视频。</li>
+</ul>
+<h2 id="更新体验后台准备下次启动安装">更新体验：后台准备，下次启动安装</h2>
+<ul>
+<li>新增默认开启的“自动更新”开关，位于“系统设置 → 关于软件”。发现更新仍会弹出说明；关闭提示后，开关开启时才在后台下载安装包和必需组件，准备期间可继续使用当前版本。</li>
+<li>下载与校验完成后等待下次启动安装，不主动重启；从托盘恢复窗口不会触发安装。关闭开关会停止自动下载并阻止下次自动安装，手动“立即更新”仍可使用。</li>
+<li>加快日常版本检查；手动更新显示下载、文件校验和运行库准备状态，启动安装显示组件进度。兼容的程序小包可复用已有运行库，缺失或损坏时补下载基础包。</li>
+<li>安装前仍会联网复核发布状态并校验文件与签名；断网或复核超时继续启动现有版本。修复组件更新重复重启、批量安装失败等问题。</li>
+</ul>
+<h2 id="稳定性与日常使用">稳定性与日常使用</h2>
+<ul>
+<li>修复人脸组件在中文路径下初始化失败的问题，改善人物详情查询和人物复核时的响应，减少对本地服务其他请求的阻塞。</li>
+<li>改进许可检查暂时不可用后的恢复与搜索诊断，区分许可状态和搜索进程状态，避免把暂时的连接问题误判为搜索服务退出。</li>
+<li>修复首次建库激活、组件导入恢复及旧版索引队列相关问题，完善应用重置后的状态清理。</li>
+<li>使用统计按小时汇总固定功能次数与脱敏硬件信息，可在隐私设置中关闭；不包含原始素材、完整本机路径、搜索词或转写文本。</li>
+</ul>
+<h2 id="升级说明">升级说明</h2>
+<ul>
+<li>在“系统设置”中检查软件及配套组件更新。多帧索引等能力需要匹配的组件；自动后台准备从升级至本版本后生效，可选工具和语音、视觉模型仍按需安装。</li>
+<li>升级前可备份应用数据，并保持素材源与数据磁盘可访问。本版本不改变此前的 <a href="../v2.4.0/">CUDA 13 显卡兼容要求</a>。</li>
+</ul>
+</div>
+    </article>
+  </main>
+  <script src="../../assets/docs.js"></script>
+</body>
+</html>

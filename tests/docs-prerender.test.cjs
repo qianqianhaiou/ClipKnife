@@ -444,7 +444,8 @@ test('historical log dates stay unchanged while newly optimized pages have valid
     assert.match(date, /^\d{4}-\d{2}-\d{2}$/);
     assert.equal(new Date(date).toISOString().slice(0, 10), date);
     assert.ok(date <= today, 'Sitemap cannot claim a future modification');
-    if (version === 'v2.4.4') assert.equal(date, '2026-10-21');
+    if (version === 'v2.5.0') assert.equal(date, '2026-10-22');
+    else if (version === 'v2.4.4') assert.equal(date, '2026-10-21');
     else if (version === 'v2.4.0') {
       assert.equal(date, '2026-10-17', 'Sitemap records the static-body repair date, not publication');
       const source = fs.readFileSync(path.join(docsRoot, 'content/changelog/v2.4.0.md'), 'utf8');
