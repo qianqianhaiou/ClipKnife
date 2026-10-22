@@ -17,7 +17,7 @@ test('homepage schema follows its actual installer and records this metadata upd
   assert.equal(app.softwareVersion, versions[0]);
   const entry = read('docs/sitemap.xml').match(/<url>\s*<loc>https:\/\/clipknife.cn\/<\/loc>([\s\S]*?)<\/url>/);
   assert.ok(entry);
-  assert.ok(entry[1].includes('<lastmod>2026-10-17</lastmod>'));
+  assert.ok(entry[1].includes('<lastmod>2026-10-22</lastmod>'));
 });
 
 test('root changelog preserves the published v2.4.0 facts and scoped CUDA migration', () => {

@@ -1,119 +1,74 @@
-# ClipKnife
+# ClipKnife（素刀）
 
-> Language: [中文](./README.md) | English
+> Find images and video moments on your own drives by describing what you remember.
+>
+> [中文](./README.md) | English
 
-![首页](./assets/home.png)
+ClipKnife is a Windows desktop app for local media management and natural-language search. Add folders or external drives, build the local index, then describe a scene to find relevant images or video shots. Open the original media to check each result before using it.
 
-## What Is ClipKnife?
+**This repository contains the website, documentation, release notes and issue tracker. It does not contain the desktop application source code.** Download the app from the official website; cloning this repository or setting up a development toolchain is not required.
 
-ClipKnife is a local-first desktop app for media asset management and AI visual search. It is built for video creators, designers, and content operators who need to find useful images and video moments inside large local asset libraries.
+- [Official download](https://clipknife.cn/)
+- [User manual](https://clipknife.cn/manual/) · [FAQ](https://clipknife.cn/faq/) · [Release notes](https://clipknife.cn/changelog/) — currently in Chinese
+- [Finding local videos by their content](https://clipknife.cn/scenes/search-video-content/)
 
-It is not mainly a video trimmer. Its core purpose is to help you find the right visual material from scattered folders, project directories, drives, and external disks.
+## When it helps
 
-In simple terms: add your asset folders to ClipKnife, let it scan and index them locally, then search your images and video clips with natural language queries such as "sunset by the sea", "red product close-up", or "person walking into an office".
+- You remember a scene but not a filename: for example, “sunset by the sea” or “red product close-up”. These illustrate query styles, not measured success rates.
+- Media is scattered across folders, projects and drives.
+- You need to locate a shot within a long video, rather than just find the file.
+- You want to organize found media into a project or continue editing in another application.
 
-![首页](./assets/init.png)
+ClipKnife is not a full video editor. It does not provide cloud synchronization or collaborative online editing. Representative frames can miss brief events, and automatic grouping or classification can be wrong; review the source media yourself.
 
-## What It Does
+## Basic workflow
 
-ClipKnife turns multiple local folders into one searchable media library:
+1. Install the official download, complete online activation, and initialize the required components.
+2. Start with a small folder and confirm that its files are accessible before adding more sources.
+3. Wait for scanning and indexing. Images enter the visual index; videos are divided into shots with representative frames linked to source time ranges. Initial indexing time depends on the media and hardware.
+4. Search using a description or an image. For spoken-content search, enable the relevant transcription option and let its index finish first.
+5. Play the matching shot to confirm it, then open the original file, export clips or organize results into a project. Check the documented versions and target timeline before sending media to Jianying or Premiere Pro.
 
-- Manage multiple material sources, including folders, drive roots, external disks, and project directories.
-- Scan local assets and record file paths, source information, file type, status, and indexing progress.
-- Watch for file changes so newly added, modified, or deleted assets can enter the background processing queue.
-- Index images for text-to-image search through the local visual search service.
-- Split videos into scenes or shots, extract representative frames with ffmpeg, index those frames, and link results back to the original video time range.
-- Search with natural language in Chinese or English and return mixed image and video-clip results.
-- Review video shots, adjust time ranges, edit tags and notes, merge, split, delete, and export selected clips.
-- Inspect tasks, indexing status, health checks, repair actions, and diagnostic exports when local dependencies or material sources need attention.
+## Features and limits
 
-  ![演示](./assets/demo.gif)
+| Area | Available workflow | Important limit |
+|---|---|---|
+| Local library | Manage image, video and audio sources and inspect scanning/indexing tasks | Original files may be unavailable when their drive or source is offline |
+| Visual search | Find local images and video shots using natural language or an image | Requires a completed index; it does not examine every video frame or guarantee a match |
+| Speech search | Search transcribed speech with corresponding time ranges | Audio and video transcription are separate options, both disabled by default; first use downloads components |
+| Video shots | Preview shots, edit their tags and export selected or all clips | The shot editor supports tag editing only: no notes, manual boundary changes, merging, splitting or deleting shots |
+| Project management | Organize found media and shots into a working collection | Not a cloud collaboration project; shared-library results cannot be added directly to a local project |
+| Creative assistant | Organize media, generate text or voice-over, and create or edit Jianying drafts | Requires a configured model service; inspect and export the final video in Jianying, not directly from the assistant |
+| Toolbox | Text-to-speech, image upscaling, video enhancement and batch video shot export | Install the required tools/components; automatic batch shot export is separate from manual shot editing |
+| LAN sharing | Read-only search and use of media published by another computer on a trusted LAN | Disabled by default; the host must stay running with a valid license and accessible media; this is not cloud sync |
 
-## Use Cases
+“Add to Jianying / PR” sends one local image, whole video or shot at a time to an existing timeline. It does not create a draft, project or sequence, and does not add shared-library media directly. See the [v2.4.0 release notes](https://clipknife.cn/changelog/v2.4.0/) for supported versions and connector requirements; support has not been verified for every editor version.
 
-- Your assets are spread across many folders, projects, drives, or external disks, and filenames are no longer enough.
-- You have long video files and need to search by shot or scene instead of by the whole video file.
-- You want to find visuals by describing the image, such as "night aerial shot", "white background product photo", or "medium shot interview".
-- You want the core scan, indexing, and search workflow to run locally instead of uploading original media files to the cloud.
+## System requirements
 
-![素材库](./assets/f1.png)
+The current public download targets **Windows 11 (x64)** with **at least 16GB RAM**. There are no macOS or Linux installers. Refer to the official download page for current requirements.
 
-## Core Workflow
+- **Core local search can run on a CPU**; compatible GPUs can accelerate it. This does not mean every optional feature supports CPU execution.
+- **Local visual description** requires a compatible NVIDIA GPU with at least 4GB VRAM, with 6GB recommended, and has no CPU inference. The current CUDA 13 components require compute capability 7.5 or newer and a Windows driver of at least 580.88. Older incompatible cards cannot run this local vision component. These NVIDIA requirements do not apply to CPU or AMD core-search components.
+- **Image and video enhancement** require a Vulkan-capable GPU. CPU support for core search does not extend to these tools.
 
-1. Initialize the local runtime environment on first launch.
-2. Add one or more material sources.
-3. Run the initial library build to scan images and videos.
-4. Images are sent directly to the local visual search index.
-5. Videos are split into shots or scenes, then representative frames are extracted with ffmpeg.
-6. Representative frames are indexed and linked to the original video path, shot ID, start time, and end time.
-7. Search from the search page with a natural language query.
-8. Open the original file, locate it in the file system, or continue working in the video detail view.
+Components, indexes and media processing require additional disk space. Actual compatibility depends on the release and component checks; no processing-speed or search-accuracy guarantees are made.
 
+## Privacy and connectivity
 
-![智能搜索](./assets/f2.png)
+**Local-first does not mean every feature is fully offline.**
 
-## Privacy and Data
+- **Local processing:** core indexing, search, shot detection and transcription with installed components run on your computer. These operations do not upload original media to ClipKnife's public service.
+- **LAN sharing:** disabled by default and intended only for trusted local networks. It uses unencrypted HTTP. Search text, images explicitly selected for search, previews and requested original files travel between the two computers, not through ClipKnife's public service. Do not expose the sharing port to the public internet.
+- **External models:** when an external vision API is enabled, selected images or sampled video frames are sent to your configured provider. A remote creative model receives relevant conversation and description text. These are not offline-only features.
+- **Product services:** online activation, license verification, update checks, notifications and component downloads need access to their services. Confirm that the required license and components are available before use.
 
-ClipKnife's core asset processing runs locally. Source media files, indexes, scene results, frame caches, task state, and logs are managed around the local application workspace. Diagnostic and update-related features are intended to inspect software status and should not upload original user media files.
+See the [manual](https://clipknife.cn/manual/) for detailed controls and data-transfer boundaries.
 
-![智能搜索](./assets/f3.png)
+## Download, pricing and feedback
 
-## Development Environment
+ClipKnife is currently free during its public beta. Future pricing and licensing follow the official website. Check the [release notes](https://clipknife.cn/changelog/) for the current version and changes.
 
-The project currently targets Windows desktop packaging. Recommended environment:
+Report problems through [GitHub Issues](https://github.com/qianqianhaiou/ClipKnife/issues). Include the app and Windows versions, relevant hardware, reproduction steps, expected and actual behavior, and redacted diagnostics where useful.
 
-- Node.js 22.22.0
-- pnpm
-- Bun
-- Rust 1.88.0 or newer
-- Python 3.11.9
-
-Install root dependencies:
-
-```powershell
-pnpm install
-```
-
-Install Bun sidecar dependencies:
-
-```powershell
-cd bun
-bun install
-cd ..
-```
-
-## Local Development
-
-Start the Tauri development environment:
-
-```powershell
-pnpm tauri dev
-```
-
-The Tauri dev command builds the Bun sidecar first, then starts the Vite frontend.
-
-Build the frontend only:
-
-```powershell
-pnpm build
-```
-
-Build the Bun sidecar only:
-
-```powershell
-pnpm build:bun-sidecar
-```
-
-## Packaging
-
-Run the Windows build script:
-
-```powershell
-.\build.ps1
-```
-
-The script checks the Rust version, installs root dependencies, builds the Bun sidecar, copies `ClipKnifeCore` into the Tauri binaries directory, and then runs the Tauri package build. Offline packages under `external` are optional large runtime dependencies used during local environment initialization. Place them beside the installer output when needed.
-
-## Project Status
-
-This repository is implementing the ClipKnife MVP: local environment initialization, material source management, full scans, incremental watching, image indexing, video shot indexing, unified natural language search, video detail workflows, task center, and diagnostics. The `project` and `toolbox` entries are currently reserved pages.
+Do not post API keys, activation credentials, private media or unredacted personal paths in public issues.
