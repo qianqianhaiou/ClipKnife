@@ -61,7 +61,7 @@ test('search-to-edit guidance scopes v2.4.0 delivery and its compatibility bound
   const schema = JSON.parse(html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1]);
   const article = schema['@graph'].find(node => node['@type'] === 'Article');
   assert.equal(article.datePublished, '2026-10-03');
-  assert.equal(article.dateModified, '2026-10-17');
+  assert.equal(article.dateModified, '2026-10-23');
   const entry = read('docs/sitemap.xml').match(/<url>\s*<loc>https:\/\/clipknife.cn\/scenes\/search-video-content\/<\/loc>([\s\S]*?)<\/url>/);
   assert.ok(entry);
   assert.ok(entry[1].includes(`<lastmod>${article.dateModified}</lastmod>`));

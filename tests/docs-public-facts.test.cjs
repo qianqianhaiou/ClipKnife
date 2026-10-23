@@ -52,3 +52,44 @@ test('homepage scopes CPU support and separates local, LAN and external-model da
   const schema = JSON.parse(html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1]);
   assert.ok(descriptions.every(text => text === schema.description));
 });
+
+test('scene privacy distinguishes local processing, optional LAN sharing and external vision', () => {
+  const html = read('docs/scenes/search-video-content/index.html');
+  const section = html.match(/<h2>本机搜索与可选功能的数据边界<\/h2>([\s\S]*?)<h2>/)?.[1];
+  assert.ok(section, 'Missing scoped privacy section');
+  const faq = read('docs/content/faq.md');
+  const manual = read('docs/content/manual.md');
+  const localFact = '本机建库、搜索、分镜或转写不会向素刀公网服务上传原始素材。';
+  const lanFact = '主动启用局域网共享并配对后，搜索词会发送给你选定的共享端；使用共享库的“以图搜图”时，你主动选择的查询图片也会发送至该共享端，临时查询文件在处理结束后清理。';
+  const visionFact = '本地来源的图片在本机处理；外部来源每次发送一张图片、一个指定时间点的帧，或分镜最多三张采样帧给你配置的供应商；完整视频不会发送。';
+  for (const fact of [localFact, lanFact]) {
+    assert.ok(faq.includes(fact), 'Fact must exist in the FAQ source');
+    assert.ok(section.includes(fact), `Missing scoped fact: ${fact}`);
+  }
+  assert.ok(manual.includes(visionFact), 'Fact must exist in the manual source');
+  assert.ok(section.includes(visionFact));
+  for (const fact of ['共享默认关闭', '已授权设备', '原文件', '不经素刀公网服务中转', '外部视觉 API', '不再逐次确认']) {
+    assert.ok(section.includes(fact), `Missing optional-data boundary: ${fact}`);
+  }
+  for (const href of ['../../faq/', '../../manual/']) assert.ok(section.includes(`href="${href}"`));
+  assert.doesNotMatch(html, /素材不出电脑|不搬家、不上传|任何数据都不离开电脑|CPU 也能跑/);
+});
+
+test('scene hardware text uses the FAQ distinction between basic CPU search and local vision', () => {
+  const html = read('docs/scenes/search-video-content/index.html');
+  const faq = read('docs/content/faq.md');
+  const fact = faq.match(/## 素刀的本地 AI 需要什么样的硬件？\s+([^\r\n]+)/)?.[1];
+  assert.ok(fact);
+  assert.ok(html.includes(`<p>${fact}</p>`), 'Hardware paragraph must match its fact source');
+  assert.doesNotMatch(html, /有支持 Vulkan 的显卡时自动加速/);
+  assert.ok(html.includes('href="../../changelog/v2.4.0/"'));
+});
+
+test('scene social summary scopes data handling without adding performance claims', () => {
+  const html = read('docs/scenes/search-video-content/index.html');
+  const og = html.match(/<meta property="og:description" content="([^"]*)"\s*\/>/)?.[1];
+  assert.ok(og);
+  assert.ok(og.includes('本机建库与搜索在本机完成'));
+  assert.ok(og.includes('共享与外部模型的数据范围按功能说明'));
+  assert.doesNotMatch(og, /素材不出电脑|完全离线|永久免费|3\s*秒|8\.5T/);
+});

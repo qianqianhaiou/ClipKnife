@@ -17,7 +17,7 @@
   <link rel="canonical" href="https://clipknife.cn/scenes/search-video-content/" />
   <meta property="og:type" content="article" />
   <meta property="og:title" content="怎么管理几千个视频素材？按内容搜索本地视频 — 素刀 ClipKnife" />
-  <meta property="og:description" content="用自然语言搜索本地图片和视频：搜“海边日落”，定位到具体视频片段和时间码。本地运行，素材不出电脑。" />
+  <meta property="og:description" content="用自然语言搜索本地图片和视频，核对候选分镜与原视频时间范围。本机建库与搜索在本机完成；共享与外部模型的数据范围按功能说明。" />
   <meta property="og:url" content="https://clipknife.cn/scenes/search-video-content/" />
   <meta property="og:image" content="https://clipknife.cn/assets/icon.png" />
   <script type="application/ld+json">
@@ -31,7 +31,7 @@
         "description": "视频素材积累到几千个，按文件名和文件夹已经找不动？用自然语言搜索本地图片和视频，定位到具体视频片段和时间码。素刀 ClipKnife 是本地运行的 AI 素材管理工具（Windows x64）。",
         "inLanguage": "zh-CN",
         "datePublished": "2026-10-03",
-        "dateModified": "2026-10-17",
+        "dateModified": "2026-10-23",
         "mainEntityOfPage": "https://clipknife.cn/scenes/search-video-content/",
         "author": { "@type": "Organization", "name": "素刀 ClipKnife", "url": "https://clipknife.cn/" },
         "publisher": { "@type": "Organization", "name": "素刀 ClipKnife", "url": "https://clipknife.cn/", "logo": { "@type": "ImageObject", "url": "https://clipknife.cn/assets/icon.png" } },
@@ -120,8 +120,12 @@
       <p>典型的用法：写文案时定了一组镜头描述（“办公室加班”“深夜回家”“海边空镜”），在本地素材库逐个描述搜索；每个需求换几种表达多搜一轮，核对候选分镜后，按上节 v2.4.0 的兼容条件逐项添加到已有剪映或 Premiere 时间线。素材库负责找，剪辑软件负责继续剪辑和导出成片。</p>
       <p>图片同理：本地图片（含常见位图和相机 RAW 格式）加入素材源后即可用自然语言搜索；也支持以图搜图，丢一张参考图，在已完成索引的素材中查找相似画面。</p>
 
-      <h2>本地运行，素材不出电脑</h2>
-      <p>素刀是 Windows x64 桌面软件。素材源可以是指定文件夹、整个盘符或外接硬盘路径，原文件保留在原位置，不搬家、不上传；索引和检索模型在本地运行，CPU 也能跑，有支持 Vulkan 的显卡时自动加速。首次建索引要扫描全库，时间随素材量而定，之后增量监听，新落盘的素材自动入库。</p>
+      <h2>本机搜索与可选功能的数据边界</h2>
+      <p>本机建库、搜索、分镜或转写不会向素刀公网服务上传原始素材。素材文件保存在用户电脑中，诊断包也默认不复制素材源文件。</p>
+      <p>主动启用局域网共享并配对后，搜索词会发送给你选定的共享端；使用共享库的“以图搜图”时，你主动选择的查询图片也会发送至该共享端，临时查询文件在处理结束后清理。共享端会向已授权设备提供所选素材源的搜索结果、分镜、字幕、缩略图、预览和按需下载的原文件。这些数据在局域网设备间传输，不经素刀公网服务中转。共享默认关闭，可随时关闭或撤销设备连接。</p>
+      <p>在“设置 → 视觉辅助模型”中可选择本地 MiniCPM-V 4.6 或外部视觉 API。启用视觉辅助模型代表允许创作助手在需要理解画面时自主调用它，不再逐次确认。本地来源的图片在本机处理；外部来源每次发送一张图片、一个指定时间点的帧，或分镜最多三张采样帧给你配置的供应商；完整视频不会发送。</p>
+      <p>运行内存至少需要 16GB。基础图像检索与本地视觉描述不是同一功能：基础图像检索可以使用 CPU；MiniCPM-V 4.6 本地视觉描述需要兼容的 NVIDIA 显卡，至少 4GB 显存、推荐 6GB，不提供 CPU 推理。语音转写按其单独的后端和自检要求启用，不能把视觉描述的显卡门槛套到全部功能。</p>
+      <p>联网与数据范围见<a href="../../faq/">常见问题</a>和<a href="../../manual/">使用手册</a>；硬件、驱动与组件兼容要求见<a href="../../changelog/v2.4.0/">v2.4.0 版本说明</a>。</p>
 
       <h2>边界，照实说</h2>
       <p>只有 Windows x64 版，没有 Mac 版。v2.3.0 支持同一可信局域网中的只读素材共享，不做云同步或多人在线编辑；共享端需运行、授权有效且素材源在线。建索引需要时间，未完成的素材可能还不能参与检索。视频详情编辑仅限镜头级标签，不提供手工调整分镜边界、合并或拆分；工具箱批量视频拆分镜另算。剪映 6 及以上的既有加密草稿可能无法读取或修改，实际兼容性需要核对。</p>
