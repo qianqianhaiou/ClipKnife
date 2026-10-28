@@ -1,0 +1,955 @@
+[
+  {
+    "run": "library-library-final",
+    "scenario": "library",
+    "width": 1440,
+    "height": 900,
+    "dpr": 1,
+    "errors": [],
+    "interactions": [
+      {
+        "name": "initial library has 24 fixtures",
+        "passed": true
+      },
+      {
+        "name": "type labels stay on one line",
+        "passed": true
+      },
+      {
+        "name": "summary has no conditional zero",
+        "passed": true
+      },
+      {
+        "name": "no horizontal page overflow",
+        "passed": true
+      }
+    ],
+    "reducedMotion": false,
+    "imageCount": 22,
+    "imageFailures": []
+  },
+  {
+    "run": "workflow-workflow-final",
+    "scenario": "workflow",
+    "width": 1440,
+    "height": 900,
+    "dpr": 1,
+    "errors": [],
+    "interactions": [
+      {
+        "name": "initial library has 24 fixtures",
+        "passed": true
+      },
+      {
+        "name": "type labels stay on one line",
+        "passed": true
+      },
+      {
+        "name": "summary has no conditional zero",
+        "passed": true
+      },
+      {
+        "name": "detail opens",
+        "passed": true
+      },
+      {
+        "name": "Escape closes detail",
+        "passed": true
+      },
+      {
+        "name": "detail restores focus",
+        "passed": true
+      },
+      {
+        "name": "preview advances still frame",
+        "passed": true
+      },
+      {
+        "name": "dialog traps forward Tab",
+        "passed": true
+      },
+      {
+        "name": "repeated add is idempotent",
+        "passed": true
+      },
+      {
+        "name": "nested focus restoration",
+        "passed": true
+      },
+      {
+        "name": "preview closed",
+        "passed": true
+      },
+      {
+        "name": "relevant results",
+        "passed": true
+      },
+      {
+        "name": "Radix select updates state",
+        "passed": true
+      },
+      {
+        "name": "portrait filter intersects query",
+        "passed": true
+      },
+      {
+        "name": "unmatched query is recoverable",
+        "passed": true
+      },
+      {
+        "name": "empty state recovery",
+        "passed": true
+      },
+      {
+        "name": "blank group cannot submit",
+        "passed": true
+      },
+      {
+        "name": "new group is selected and empty",
+        "passed": true
+      },
+      {
+        "name": "sample import adds exactly three",
+        "passed": true
+      },
+      {
+        "name": "repeat import disabled",
+        "passed": true
+      },
+      {
+        "name": "reset restores fixture data",
+        "passed": true
+      },
+      {
+        "name": "no horizontal page overflow",
+        "passed": true
+      }
+    ],
+    "reducedMotion": false,
+    "imageCount": 22,
+    "imageFailures": []
+  },
+  {
+    "run": "workflow-narrow-final",
+    "scenario": "workflow",
+    "width": 1024,
+    "height": 768,
+    "dpr": 1,
+    "errors": [],
+    "interactions": [
+      {
+        "name": "initial library has 24 fixtures",
+        "passed": true
+      },
+      {
+        "name": "type labels stay on one line",
+        "passed": true
+      },
+      {
+        "name": "summary has no conditional zero",
+        "passed": true
+      },
+      {
+        "name": "detail opens",
+        "passed": true
+      },
+      {
+        "name": "Escape closes detail",
+        "passed": true
+      },
+      {
+        "name": "detail restores focus",
+        "passed": true
+      },
+      {
+        "name": "preview advances still frame",
+        "passed": true
+      },
+      {
+        "name": "dialog traps forward Tab",
+        "passed": true
+      },
+      {
+        "name": "repeated add is idempotent",
+        "passed": true
+      },
+      {
+        "name": "nested focus restoration",
+        "passed": true
+      },
+      {
+        "name": "preview closed",
+        "passed": true
+      },
+      {
+        "name": "relevant results",
+        "passed": true
+      },
+      {
+        "name": "Radix select updates state",
+        "passed": true
+      },
+      {
+        "name": "portrait filter intersects query",
+        "passed": true
+      },
+      {
+        "name": "unmatched query is recoverable",
+        "passed": true
+      },
+      {
+        "name": "empty state recovery",
+        "passed": true
+      },
+      {
+        "name": "blank group cannot submit",
+        "passed": true
+      },
+      {
+        "name": "new group is selected and empty",
+        "passed": true
+      },
+      {
+        "name": "sample import adds exactly three",
+        "passed": true
+      },
+      {
+        "name": "repeat import disabled",
+        "passed": true
+      },
+      {
+        "name": "reset restores fixture data",
+        "passed": true
+      },
+      {
+        "name": "no horizontal page overflow",
+        "passed": true
+      }
+    ],
+    "reducedMotion": false,
+    "imageCount": 22,
+    "imageFailures": []
+  },
+  {
+    "run": "library-scaled",
+    "scenario": "library",
+    "width": 1280,
+    "height": 800,
+    "dpr": 1.25,
+    "errors": [],
+    "interactions": [
+      {
+        "name": "initial library has 24 fixtures",
+        "passed": true
+      },
+      {
+        "name": "type labels stay on one line",
+        "passed": true
+      },
+      {
+        "name": "summary has no conditional zero",
+        "passed": true
+      },
+      {
+        "name": "no horizontal page overflow",
+        "passed": true
+      }
+    ],
+    "reducedMotion": false,
+    "imageCount": 22,
+    "imageFailures": []
+  },
+  {
+    "run": "detail-detail",
+    "scenario": "detail",
+    "width": 1440,
+    "height": 900,
+    "dpr": 1,
+    "errors": [],
+    "interactions": [
+      {
+        "name": "initial library has 24 fixtures",
+        "passed": true
+      },
+      {
+        "name": "no horizontal page overflow",
+        "passed": true
+      }
+    ],
+    "reducedMotion": false,
+    "imageCount": 27,
+    "imageFailures": []
+  },
+  {
+    "run": "detail-detail-1024",
+    "scenario": "detail",
+    "width": 1024,
+    "height": 768,
+    "dpr": 1,
+    "errors": [],
+    "interactions": [
+      {
+        "name": "initial library has 24 fixtures",
+        "passed": true
+      },
+      {
+        "name": "no horizontal page overflow",
+        "passed": true
+      }
+    ],
+    "reducedMotion": false,
+    "imageCount": 27,
+    "imageFailures": []
+  },
+  {
+    "run": "search-landing-compressed-final",
+    "scenario": "search-landing",
+    "width": 1440,
+    "height": 900,
+    "dpr": 1,
+    "errors": [],
+    "interactions": [
+      {
+        "name": "initial library has 24 fixtures",
+        "passed": true
+      },
+      {
+        "name": "type labels stay on one line",
+        "passed": true
+      },
+      {
+        "name": "summary has no conditional zero",
+        "passed": true
+      },
+      {
+        "name": "no horizontal page overflow",
+        "passed": true
+      }
+    ],
+    "reducedMotion": false,
+    "imageCount": 5,
+    "imageFailures": []
+  },
+  {
+    "run": "search-portrait-final",
+    "scenario": "search",
+    "width": 1440,
+    "height": 900,
+    "dpr": 1,
+    "errors": [],
+    "interactions": [
+      {
+        "name": "initial library has 24 fixtures",
+        "passed": true
+      },
+      {
+        "name": "type labels stay on one line",
+        "passed": true
+      },
+      {
+        "name": "summary has no conditional zero",
+        "passed": true
+      },
+      {
+        "name": "no horizontal page overflow",
+        "passed": true
+      }
+    ],
+    "reducedMotion": false,
+    "imageCount": 5,
+    "imageFailures": []
+  },
+  {
+    "run": "preview-preview",
+    "scenario": "preview",
+    "width": 1440,
+    "height": 900,
+    "dpr": 1,
+    "errors": [],
+    "interactions": [
+      {
+        "name": "initial library has 24 fixtures",
+        "passed": true
+      },
+      {
+        "name": "second shot selected",
+        "passed": true
+      },
+      {
+        "name": "no horizontal page overflow",
+        "passed": true
+      }
+    ],
+    "reducedMotion": false,
+    "imageCount": 27,
+    "imageFailures": []
+  },
+  {
+    "run": "nested-nested",
+    "scenario": "nested",
+    "width": 1440,
+    "height": 900,
+    "dpr": 1,
+    "errors": [],
+    "interactions": [
+      {
+        "name": "initial library has 24 fixtures",
+        "passed": true
+      },
+      {
+        "name": "second shot selected",
+        "passed": true
+      },
+      {
+        "name": "nested group picker opens",
+        "passed": true
+      },
+      {
+        "name": "Escape closes top dialog only",
+        "passed": true
+      },
+      {
+        "name": "focus restored inside preview",
+        "passed": true
+      },
+      {
+        "name": "no horizontal page overflow",
+        "passed": true
+      }
+    ],
+    "reducedMotion": false,
+    "imageCount": 27,
+    "imageFailures": []
+  },
+  {
+    "run": "advanced-advanced",
+    "scenario": "advanced",
+    "width": 1440,
+    "height": 900,
+    "dpr": 1,
+    "errors": [],
+    "interactions": [
+      {
+        "name": "initial library has 24 fixtures",
+        "passed": true
+      },
+      {
+        "name": "no horizontal page overflow",
+        "passed": true
+      }
+    ],
+    "reducedMotion": false,
+    "imageCount": 5,
+    "imageFailures": []
+  },
+  {
+    "run": "groups-groups-1920",
+    "scenario": "groups",
+    "width": 1920,
+    "height": 1080,
+    "dpr": 1,
+    "errors": [],
+    "interactions": [
+      {
+        "name": "initial library has 24 fixtures",
+        "passed": true
+      },
+      {
+        "name": "no horizontal page overflow",
+        "passed": true
+      }
+    ],
+    "reducedMotion": false,
+    "imageCount": 3,
+    "imageFailures": []
+  },
+  {
+    "run": "empty-empty-final",
+    "scenario": "empty",
+    "width": 1440,
+    "height": 900,
+    "dpr": 1,
+    "errors": [],
+    "interactions": [
+      {
+        "name": "initial library has 24 fixtures",
+        "passed": true
+      },
+      {
+        "name": "type labels stay on one line",
+        "passed": true
+      },
+      {
+        "name": "summary has no conditional zero",
+        "passed": true
+      },
+      {
+        "name": "empty state visible",
+        "passed": true
+      },
+      {
+        "name": "no horizontal page overflow",
+        "passed": true
+      }
+    ],
+    "reducedMotion": false,
+    "imageCount": 0,
+    "imageFailures": []
+  },
+  {
+    "run": "image-error-image-error-1440",
+    "scenario": "image-error",
+    "width": 1440,
+    "height": 900,
+    "dpr": 1,
+    "errors": [],
+    "interactions": [
+      {
+        "name": "initial library has 24 fixtures",
+        "passed": true
+      },
+      {
+        "name": "second shot selected",
+        "passed": true
+      },
+      {
+        "name": "image failure shows fallback",
+        "passed": true
+      },
+      {
+        "name": "image retry recovers",
+        "passed": true
+      },
+      {
+        "name": "no horizontal page overflow",
+        "passed": true
+      }
+    ],
+    "reducedMotion": false,
+    "imageCount": 27,
+    "imageFailures": []
+  },
+  {
+    "run": "storage-denied-storage-denied-final",
+    "scenario": "storage-denied",
+    "width": 1440,
+    "height": 900,
+    "dpr": 1,
+    "errors": [],
+    "interactions": [
+      {
+        "name": "initial library has 24 fixtures",
+        "passed": true
+      },
+      {
+        "name": "type labels stay on one line",
+        "passed": true
+      },
+      {
+        "name": "summary has no conditional zero",
+        "passed": true
+      },
+      {
+        "name": "search survives unavailable or corrupt storage",
+        "passed": true
+      },
+      {
+        "name": "no horizontal page overflow",
+        "passed": true
+      }
+    ],
+    "reducedMotion": false,
+    "imageCount": 5,
+    "imageFailures": []
+  },
+  {
+    "run": "corrupt-session-corrupt-session-final",
+    "scenario": "corrupt-session",
+    "width": 1440,
+    "height": 900,
+    "dpr": 1,
+    "errors": [],
+    "interactions": [
+      {
+        "name": "initial library has 24 fixtures",
+        "passed": true
+      },
+      {
+        "name": "type labels stay on one line",
+        "passed": true
+      },
+      {
+        "name": "summary has no conditional zero",
+        "passed": true
+      },
+      {
+        "name": "search survives unavailable or corrupt storage",
+        "passed": true
+      },
+      {
+        "name": "no horizontal page overflow",
+        "passed": true
+      }
+    ],
+    "reducedMotion": false,
+    "imageCount": 5,
+    "imageFailures": []
+  },
+  {
+    "run": "session-persisted",
+    "scenario": "session",
+    "width": 1440,
+    "height": 900,
+    "dpr": 1,
+    "errors": [],
+    "interactions": [
+      {
+        "name": "import survives a real reload",
+        "passed": true
+      },
+      {
+        "name": "custom group survives a real reload",
+        "passed": true
+      },
+      {
+        "name": "selected group restored",
+        "passed": true
+      },
+      {
+        "name": "no horizontal page overflow",
+        "passed": true
+      }
+    ],
+    "reducedMotion": false,
+    "imageCount": 0,
+    "imageFailures": []
+  },
+  {
+    "run": "reduced-motion-reduced",
+    "scenario": "reduced-motion",
+    "width": 1440,
+    "height": 900,
+    "dpr": 1,
+    "errors": [],
+    "interactions": [
+      {
+        "name": "initial library has 24 fixtures",
+        "passed": true
+      },
+      {
+        "name": "type labels stay on one line",
+        "passed": true
+      },
+      {
+        "name": "summary has no conditional zero",
+        "passed": true
+      },
+      {
+        "name": "system reduced motion is enabled",
+        "passed": true
+      },
+      {
+        "name": "card animation disabled",
+        "passed": true
+      },
+      {
+        "name": "dialog animation disabled",
+        "passed": true
+      },
+      {
+        "name": "no horizontal page overflow",
+        "passed": true
+      }
+    ],
+    "reducedMotion": true,
+    "imageCount": 27,
+    "imageFailures": []
+  },
+  {
+    "run": "mobile-actual-poster",
+    "scenario": "mobile",
+    "width": 390,
+    "height": 844,
+    "dpr": 1,
+    "errors": [],
+    "interactions": [
+      {
+        "name": "static mobile preview",
+        "passed": true
+      },
+      {
+        "name": "React chunk not fetched on mobile",
+        "passed": true
+      },
+      {
+        "name": "no horizontal page overflow",
+        "passed": true
+      }
+    ],
+    "reducedMotion": false,
+    "imageCount": 1,
+    "imageFailures": []
+  },
+  {
+    "run": "mobile-mobile-768",
+    "scenario": "mobile",
+    "width": 768,
+    "height": 1024,
+    "dpr": 1,
+    "errors": [],
+    "interactions": [
+      {
+        "name": "static mobile preview",
+        "passed": true
+      },
+      {
+        "name": "React chunk not fetched on mobile",
+        "passed": true
+      },
+      {
+        "name": "no horizontal page overflow",
+        "passed": true
+      }
+    ],
+    "reducedMotion": false,
+    "imageCount": 1,
+    "imageFailures": []
+  },
+  {
+    "run": "home-nav-final-1024",
+    "scenario": "home",
+    "width": 1024,
+    "height": 900,
+    "dpr": 1,
+    "errors": [],
+    "interactions": [
+      {
+        "name": "narrow homepage uses compact navigation",
+        "passed": true
+      },
+      {
+        "name": "compact menu opens",
+        "passed": true
+      },
+      {
+        "name": "compact menu closes",
+        "passed": true
+      },
+      {
+        "name": "embedded demo mounted",
+        "passed": true
+      },
+      {
+        "name": "embedded search responds",
+        "passed": true
+      },
+      {
+        "name": "no horizontal page overflow",
+        "passed": true
+      }
+    ],
+    "reducedMotion": false,
+    "imageCount": 9,
+    "imageFailures": []
+  },
+  {
+    "run": "home-nav-final-1200",
+    "scenario": "home",
+    "width": 1200,
+    "height": 900,
+    "dpr": 1,
+    "errors": [],
+    "interactions": [
+      {
+        "name": "embedded demo mounted",
+        "passed": true
+      },
+      {
+        "name": "embedded search responds",
+        "passed": true
+      },
+      {
+        "name": "no horizontal page overflow",
+        "passed": true
+      }
+    ],
+    "reducedMotion": false,
+    "imageCount": 9,
+    "imageFailures": []
+  },
+  {
+    "run": "home-embedded-final",
+    "scenario": "home",
+    "width": 1440,
+    "height": 900,
+    "dpr": 1,
+    "errors": [],
+    "interactions": [
+      {
+        "name": "embedded demo mounted",
+        "passed": true
+      },
+      {
+        "name": "embedded search responds",
+        "passed": true
+      },
+      {
+        "name": "no horizontal page overflow",
+        "passed": true
+      }
+    ],
+    "reducedMotion": false,
+    "imageCount": 9,
+    "imageFailures": []
+  },
+  {
+    "run": "home-mobile-home-mobile-390",
+    "scenario": "home-mobile",
+    "width": 390,
+    "height": 844,
+    "dpr": 1,
+    "errors": [],
+    "interactions": [
+      {
+        "name": "mobile has no iframe",
+        "passed": true
+      },
+      {
+        "name": "no horizontal page overflow",
+        "passed": true
+      }
+    ],
+    "reducedMotion": false,
+    "imageCount": 9,
+    "imageFailures": []
+  },
+  {
+    "run": "home-mobile-nav-final-768",
+    "scenario": "home-mobile",
+    "width": 768,
+    "height": 900,
+    "dpr": 1,
+    "errors": [],
+    "interactions": [
+      {
+        "name": "narrow homepage uses compact navigation",
+        "passed": true
+      },
+      {
+        "name": "compact menu opens",
+        "passed": true
+      },
+      {
+        "name": "compact menu closes",
+        "passed": true
+      },
+      {
+        "name": "mobile has no iframe",
+        "passed": true
+      },
+      {
+        "name": "no horizontal page overflow",
+        "passed": true
+      }
+    ],
+    "reducedMotion": false,
+    "imageCount": 9,
+    "imageFailures": []
+  },
+  {
+    "run": "module-error-retry-fixed",
+    "scenario": "module-error",
+    "width": 1440,
+    "height": 900,
+    "dpr": 1,
+    "errors": [],
+    "interactions": [
+      {
+        "name": "module error offers retry",
+        "passed": true
+      },
+      {
+        "name": "retry is visible without scrolling",
+        "passed": true
+      },
+      {
+        "name": "module error keeps preview",
+        "passed": true
+      },
+      {
+        "name": "module failure was observed",
+        "passed": true
+      },
+      {
+        "name": "no horizontal page overflow",
+        "passed": true
+      }
+    ],
+    "reducedMotion": false,
+    "imageCount": 1,
+    "imageFailures": []
+  },
+  {
+    "run": "document-manual",
+    "scenario": "document",
+    "width": 1440,
+    "height": 900,
+    "dpr": 1,
+    "errors": [],
+    "interactions": [
+      {
+        "name": "document loaded over HTTP",
+        "passed": true
+      },
+      {
+        "name": "no horizontal page overflow",
+        "passed": true
+      }
+    ],
+    "reducedMotion": false,
+    "imageCount": 20,
+    "imageFailures": []
+  },
+  {
+    "run": "document-faq",
+    "scenario": "document",
+    "width": 1440,
+    "height": 900,
+    "dpr": 1,
+    "errors": [],
+    "interactions": [
+      {
+        "name": "document loaded over HTTP",
+        "passed": true
+      },
+      {
+        "name": "no horizontal page overflow",
+        "passed": true
+      }
+    ],
+    "reducedMotion": false,
+    "imageCount": 6,
+    "imageFailures": []
+  },
+  {
+    "run": "document-changelog",
+    "scenario": "document",
+    "width": 1440,
+    "height": 900,
+    "dpr": 1,
+    "errors": [],
+    "interactions": [
+      {
+        "name": "document loaded over HTTP",
+        "passed": true
+      },
+      {
+        "name": "no horizontal page overflow",
+        "passed": true
+      }
+    ],
+    "reducedMotion": false,
+    "imageCount": 1,
+    "imageFailures": []
+  }
+]

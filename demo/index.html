@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#000000" />
+    <title>在线体验素刀 — 素材浏览、智能搜索与分镜预览</title>
+    <meta name="description" content="直接在官网体验素刀的素材工作流：浏览示例素材库，用画面描述搜索图片与视频分镜，查看静帧预览，再把素材添加到分组。演示采用示例数据，不读取本机文件。完整功能请下载 Windows 桌面版。" />
+    <meta property="og:title" content="在线体验素刀 — 素材浏览、智能搜索与分镜预览" />
+    <meta property="og:description" content="直接在官网浏览示例素材、搜索画面、预览分镜并整理分组。" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://clipknife.cn/demo/" />
+    <link rel="canonical" href="https://clipknife.cn/demo/" />
+    <link rel="icon" href="../assets/icon.png" />
+  </head>
+  <body>
+    <div id="root">
+      <main class="demo-fallback">
+        <a class="fallback-brand" href="../">素刀 <span>ClipKnife</span></a>
+        <span class="eyebrow">交互体验 · 示例数据</span>
+        <h1>先试着，找回一帧灵感。</h1>
+        <p>浏览素材、搜索画面、查看分镜，再把喜欢的素材放进分组。</p>
+        <div class="fallback-visual"><img src="./src/assets/preview.webp" width="1440" height="900" alt="素刀交互演示的素材库总览，包含类型筛选、目录树和照片网格" /></div>
+        <p class="mobile-message">请在电脑上打开此页，体验完整操作。</p>
+        <p class="fallback-loading" role="status">正在准备演示…</p>
+        <button class="fallback-retry" type="button" hidden>重新加载演示</button>
+        <a class="fallback-download" href="../#download">下载 Windows 版 <span aria-hidden="true">↗</span></a>
+        <p class="fallback-note">示例素材与静帧预览 · 不读取本机文件</p>
+        <noscript><p>开启 JavaScript 即可在电脑上操作演示，或下载桌面版体验。</p></noscript>
+      </main>
+    </div>
+    <script type="module" src="./src/entry.ts"></script>
+  </body>
+</html>

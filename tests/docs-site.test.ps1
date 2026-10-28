@@ -161,7 +161,11 @@ Assert-TextContains 'docs/content/changelog/v2.0.0.md' 'Video2X'
 Assert-TextContains 'docs/content/changelog/v2.0.0.md' '50,000'
 Assert-TextContains 'docs/content/changelog/v2.0.0.md' $gpuRequirement
 
-& node --test 'tests/docs-anchor.test.cjs' 'tests/docs-changelog.test.cjs' 'tests/home-interaction.test.cjs'
+Assert-TextContains 'docs/index.html' 'assets/demo-host.js'
+Assert-TextContains 'docs/sitemap.xml' 'https://clipknife.cn/demo/'
+Assert-TextContains 'docs/robots.txt' 'Allow: /assets/demo/'
+
+& node --test 'tests/docs-anchor.test.cjs' 'tests/docs-changelog.test.cjs' 'tests/home-interaction.test.cjs' 'tests/demo-host.test.cjs' 'tests/demo-site.test.cjs'
 if ($LASTEXITCODE -ne 0) {
   throw "Documentation tests failed with exit code $LASTEXITCODE"
 }

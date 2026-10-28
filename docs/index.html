@@ -25,6 +25,7 @@
     rel="stylesheet" />
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="assets/styles.css" />
+  <link rel="stylesheet" href="assets/demo-host.css" />
   <meta name="msvalidate.01" content="1808C42E407C60B9A38C8FC1255A2801" />
   <link rel="canonical" href="https://clipknife.cn/" />
 
@@ -73,7 +74,7 @@
   </a>
 
   <!-- Navbar -->
-  <header class="fixed top-0 inset-x-0 z-40 border-b border-white/10 bg-[#0a0a0a]/70 backdrop-blur-md">
+  <header class="site-header fixed top-0 inset-x-0 z-40 border-b border-white/10 bg-[#0a0a0a]/70 backdrop-blur-md">
     <nav class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between" aria-label="主导航">
       <a href="#" class="flex items-center gap-2 font-bold text-xl tracking-tight" aria-label="ClipKnife 首页">
         <img src="assets/icon.png" alt="" class="w-8 h-8 rounded-lg" />
@@ -81,6 +82,7 @@
       </a>
 
       <ul class="hidden md:flex items-center gap-6 text-sm font-medium text-slate-300">
+        <li><a href="#demo" class="hover:text-white transition-colors demo-nav-link">在线体验</a></li>
         <li><a href="#features" class="hover:text-white transition-colors">功能特性</a></li>
         <li><a href="#creation" class="hover:text-white transition-colors">创作能力</a></li>
         <li><a href="#workflow" class="hover:text-white transition-colors">使用流程</a></li>
@@ -131,6 +133,7 @@
 
     <div id="mobileMenu" class="md:hidden hidden border-t border-white/10 bg-[#0a0a0a]/95 backdrop-blur-md">
       <ul class="px-6 py-4 space-y-3 text-slate-300">
+        <li><a href="#demo" class="block py-2 hover:text-white">在线体验</a></li>
         <li><a href="#features" class="block py-2 hover:text-white">功能特性</a></li>
         <li><a href="#creation" class="block py-2 hover:text-white">创作能力</a></li>
         <li><a href="#workflow" class="block py-2 hover:text-white">使用流程</a></li>
@@ -206,21 +209,18 @@
 
         </div>
 
-        <div class="hero-stage reveal" aria-label="素刀本地素材库效果预览">
-          <picture class="hero-media">
-            <source srcset="assets/manual/smart-search.png" type="image/webp" />
-            <img src="assets/manual/smart-search.png" width="1620" height="971" alt="素刀本地素材库效果图，素材网格通过橙色索引路径汇聚到本地库"
-              fetchpriority="high" decoding="async" />
-          </picture>
-          <figure class="demo-window">
-            <img src="assets/demo.gif" width="512" height="287" alt="素刀真实界面演示，展示本地素材库与搜索操作" />
-            <figcaption>界面演示</figcaption>
-          </figure>
-          <!-- <div class="hero-index" aria-hidden="true">
-            <span>MEDIA INDEX</span>
-            <b>LOCAL</b>
-          </div> -->
-        </div>
+        <section id="demo" class="site-demo" aria-labelledby="demoTitle">
+          <div class="site-demo-heading"><div><span class="demo-eyebrow">从浏览到找到，再到整理</span><h2 id="demoTitle">你的下一份灵感，试着找找看。</h2></div><a href="demo/" class="demo-expand">展开体验 <span aria-hidden="true">↗</span></a></div>
+          <div class="site-demo-frame" data-demo-host>
+            <div class="site-demo-poster">
+              <img src="assets/demo/preview.webp" width="1440" height="900" alt="素刀示例素材库，包含文件夹目录、类型筛选和可查看详情的照片网格" loading="lazy" decoding="async" />
+              <div class="site-demo-start"><span class="demo-start-label">素材浏览 · 智能搜索 · 分镜预览</span><button type="button" data-demo-start>开始体验 <span aria-hidden="true">→</span></button><p data-demo-message>示例素材已准备好，点击即可操作</p><p class="demo-mobile-hint">在电脑上打开官网，即可模拟使用素刀。</p></div>
+            </div>
+            <div class="site-demo-live" data-demo-live></div>
+          </div>
+          <div class="site-demo-caption"><span>真实界面 · 示例数据 · 可随时重置</span><span>试试搜索“海边日落”，把喜欢的分镜加入分组</span></div>
+          <noscript><p>开启 JavaScript 可操作演示，也可以<a href="demo/">查看体验页</a>。</p></noscript>
+        </section>
       </div>
     </section>
 
@@ -835,6 +835,7 @@
   </footer>
 
   <script src="assets/app.js"></script>
+  <script src="assets/demo-host.js" defer></script>
 </body>
 
 </html>

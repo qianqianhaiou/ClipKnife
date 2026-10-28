@@ -7,6 +7,9 @@ Allow: /
 Allow: /assets/app.js
 Allow: /assets/docs.js
 Allow: /assets/styles.css
+Allow: /assets/demo-host.js
+Allow: /assets/demo-host.css
+Allow: /assets/demo/
 Disallow: /assets/
 
 Sitemap: https://clipknife.cn/sitemap.xml

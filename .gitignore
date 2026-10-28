@@ -1,1 +1,5 @@
 /产品基线手册/
+node_modules/
+.cache/
+demo/.build/
+demo/coverage/
