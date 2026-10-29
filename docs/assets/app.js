@@ -102,13 +102,17 @@
   });
 
   // Smooth scroll with offset for fixed header
+  function scrollBehavior() {
+    return window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth';
+  }
+
   document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
     anchor.addEventListener('click', function (e) {
       const href = anchor.getAttribute('href');
       if (!href) return;
       if (href === '#') {
         e.preventDefault();
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        window.scrollTo({ top: 0, behavior: scrollBehavior() });
         return;
       }
       const target = document.querySelector(href);
@@ -119,7 +123,7 @@
       const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
       window.scrollTo({
         top: offsetPosition,
-        behavior: 'smooth'
+        behavior: scrollBehavior()
       });
     });
   });

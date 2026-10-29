@@ -147,53 +147,54 @@
 
   <main id="main">
     <!-- Hero -->
-    <section class="home-hero relative pt-24 pb-20 md:pb-28" aria-labelledby="heroTitle">
-      <div class="relative max-w-7xl mx-auto px-6 text-center">
-        <h1 id="heroTitle"
-          class="text-4xl sm:text-5xl md:text-5xl lg:text-6xl font-extrabold tracking-tight mb-6 reveal">
-          用一句话，找回你散落在<br class="hidden sm:block" />
-          <span
-            class="text-[#f95106] inline-block mt-[16px]">硬盘里的每一帧灵感</span>
-        </h1>
-
-
-        <p class="max-w-2xl mx-auto text-lg md:text-xl text-[#9ca0a9] leading-relaxed mb-10 reveal">
-          统一管理散落在硬盘里的图片、视频与音频，用画面描述找到需要的素材和分镜。
-        </p>
-
-        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 reveal">
-          <a href="#download"
-            class="w-full sm:w-auto px-8 py-4 rounded-full bg-[#f95106] hover:bg-[#d94605] text-white font-semibold text-lg transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#f95106] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0a]">
-            免费下载
-          </a>
-          <a href="#demo"
-            class="w-full sm:w-auto px-8 py-4 rounded-full border border-white/15 hover:border-white/30 hover:bg-white/5 text-slate-200 font-semibold text-lg transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#f95106] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0a]">
-            在线体验
-          </a>
+    <section class="home-hero" aria-labelledby="heroTitle">
+      <div class="home-shell">
+        <div class="hero-intro">
+          <div class="hero-copy">
+            <p class="hero-kicker"><span>本地素材管理</span><span>自然语言检索</span></p>
+            <h1 id="heroTitle">用一句话，<span class="hero-title-phrase">找回你散落在</span><br /><span class="hero-title-accent">硬盘里的每一帧灵感</span></h1>
+            <p class="hero-description">统一管理散落在硬盘里的图片、视频与音频。用画面描述，找到需要的素材和分镜。</p>
+            <div class="hero-actions">
+              <a class="home-button home-button-primary" href="#download">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                  <polyline points="7 10 12 15 17 10" />
+                  <line x1="12" x2="12" y1="15" y2="3" />
+                </svg>
+                免费下载
+              </a>
+              <a class="home-button home-button-secondary" href="#demo">在线体验
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M5 12h14" />
+                  <path d="m12 5 7 7-7 7" />
+                </svg>
+              </a>
+            </div>
+          </div>
+          <figure class="hero-visual" data-hero-reel aria-label="画面描述示例">
+            <div class="hero-reel">
+              <div class="hero-photo" id="heroSunset" data-hero-photo data-position="front">
+                <img src="assets/demo/sunset.webp" width="1280" height="720" alt="夕阳落在海面，海浪拍打岸边礁石的示例画面" fetchpriority="high" decoding="async" />
+              </div>
+              <div class="hero-photo" id="heroStreet" data-hero-photo data-position="left" aria-hidden="true">
+                <img src="assets/demo/street.webp" width="1280" height="720" alt="雨后街道映着橱窗暖光的示例画面" decoding="async" />
+              </div>
+              <div class="hero-photo" id="heroForest" data-hero-photo data-position="right" aria-hidden="true">
+                <img src="assets/demo/forest.webp" width="1280" height="720" alt="阳光穿过树林，照亮林间小径的示例画面" decoding="async" />
+              </div>
+            </div>
+            <figcaption class="hero-visual-caption">
+              <div class="hero-scene-controls" role="group" aria-label="切换示例画面" hidden>
+                <button type="button" data-hero-scene aria-controls="heroSunset" aria-pressed="true" data-description="海边日落，海浪拍打岸边礁石">海边日落</button>
+                <button type="button" data-hero-scene aria-controls="heroStreet" aria-pressed="false" data-description="雨后的城市街道，橱窗透出暖光">雨后街头</button>
+                <button type="button" data-hero-scene aria-controls="heroForest" aria-pressed="false" data-description="阳光穿过树林，照亮林间小径">林间光影</button>
+              </div>
+              <p class="hero-scene-description"><span>示例画面</span><q data-hero-description aria-live="polite">海边日落，海浪拍打岸边礁石</q></p>
+            </figcaption>
+          </figure>
         </div>
-
-        <div class="mt-12 flex flex-wrap items-center justify-center gap-6 text-sm text-[#7c818c] reveal">
-          <span class="flex items-center gap-2"><svg class="w-4 h-4 text-[#f95106]" viewBox="0 0 24 24" fill="none"
-              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M20 6 9 17l-5-5" />
-            </svg>支持Windows</span>
-          <span class="flex items-center gap-2"><svg class="w-4 h-4 text-[#f95106]" viewBox="0 0 24 24" fill="none"
-              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M20 6 9 17l-5-5" />
-            </svg>本地素材处理</span>
-          <span class="flex items-center gap-2"><svg class="w-4 h-4 text-[#f95106]" viewBox="0 0 24 24" fill="none"
-              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M20 6 9 17l-5-5" />
-            </svg>本机核心检索可用 CPU</span>
-          <span class="flex items-center gap-2"><svg class="w-4 h-4 text-[#f95106]" viewBox="0 0 24 24" fill="none"
-              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M20 6 9 17l-5-5" />
-            </svg>按需使用本地工具</span>
-
-        </div>
-
         <section id="demo" class="site-demo" aria-labelledby="demoTitle">
-          <div class="site-demo-heading"><div><span class="demo-eyebrow">从浏览到找到，再到整理</span><h2 id="demoTitle">你的下一份灵感，试着找找看。</h2></div><a href="demo/index.html" class="demo-expand">展开体验 <span aria-hidden="true">↗</span></a></div>
+          <div class="site-demo-heading"><h2 id="demoTitle">在示例素材库里，试着找找看。</h2><a href="demo/index.html" class="demo-expand">展开体验 <span aria-hidden="true">↗</span></a></div>
           <div class="site-demo-frame" data-demo-host>
             <div class="site-demo-poster">
               <img src="assets/screenshots/material-library.webp" width="1440" height="900" alt="新版素刀素材总览，包含目录侧栏、素材类型筛选和图片视频网格" loading="lazy" decoding="async" />
@@ -208,7 +209,7 @@
     </section>
 
     <!-- Value props -->
-    <section class="py-20 md:py-28 border-t border-white/5" aria-labelledby="valuesTitle">
+    <section class="home-values home-section" aria-labelledby="valuesTitle">
       <div class="max-w-7xl mx-auto px-6">
         <div class="text-center max-w-3xl mx-auto mb-16 reveal">
           <h2 id="valuesTitle" class="text-3xl md:text-4xl font-bold mb-4">为创作者重新设计素材管理</h2>
@@ -279,7 +280,7 @@
       </div>
     </section>
     <!-- Features -->
-    <section id="features" class="py-20 md:py-28 relative" aria-labelledby="featuresTitle">
+    <section id="features" class="home-section home-features" aria-labelledby="featuresTitle">
       <div class="max-w-7xl mx-auto px-6">
         <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-14 reveal">
           <div class="max-w-2xl">
@@ -297,7 +298,36 @@
           </a>
         </div>
 
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="home-showcase" data-home-showcase>
+          <div class="showcase-tabs" role="tablist" aria-label="查看产品界面" hidden>
+            <button id="searchTab" type="button" role="tab" aria-controls="searchPanel" aria-selected="true">智能搜索 <span>用描述找到画面</span></button>
+            <button id="storyboardTab" type="button" role="tab" aria-controls="storyboardPanel" aria-selected="false" tabindex="-1">视频分镜 <span>从视频定位镜头</span></button>
+          </div>
+          <div class="feature-visuals home-screenshots">
+            <figure id="searchPanel" class="feature-visual showcase-panel" data-showcase-panel>
+              <a class="site-visual screenshot-link" href="assets/screenshots/smart-search.webp" target="_blank" rel="noopener noreferrer" aria-label="查看智能搜索截图原图（新窗口）">
+                <img src="assets/screenshots/smart-search.webp" width="1440" height="900"
+                  alt="新版智能搜索结果：海边日落查询、类型筛选、命中依据与图片视频混合结果" loading="lazy" decoding="async" />
+              </a>
+              <figcaption>
+                <div><span>一句描述，找到需要的画面</span><p>按图片、视频或音频筛选，查看命中依据，再打开对应素材。</p></div>
+                <a href="assets/screenshots/smart-search.webp" target="_blank" rel="noopener noreferrer" class="screenshot-original">查看原图 <span aria-hidden="true">↗</span></a>
+              </figcaption>
+            </figure>
+            <figure id="storyboardPanel" class="feature-visual showcase-panel" data-showcase-panel>
+              <a class="site-visual screenshot-link" href="assets/screenshots/video-storyboard.webp" target="_blank" rel="noopener noreferrer" aria-label="查看视频分镜截图原图（新窗口）">
+                <img src="assets/screenshots/video-storyboard.webp" width="1440" height="900"
+                  alt="新版视频分镜详情：视频预览、分镜缩略图、片段时间、画面描述和导出入口" loading="lazy" decoding="async" />
+              </a>
+              <figcaption>
+                <div><span>从整段视频，定位到一个镜头</span><p>预览分镜、查看时间范围和已有描述，找到合适的片段后继续使用。</p></div>
+                <a href="assets/screenshots/video-storyboard.webp" target="_blank" rel="noopener noreferrer" class="screenshot-original">查看原图 <span aria-hidden="true">↗</span></a>
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+        <p class="screenshot-note">截图来自新版素刀，素材、搜索结果与运行状态均为示例。</p>
+        <div class="home-feature-list grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           <article
             class="feature-card p-6 rounded-2xl border border-white/10 bg-white/[0.02] hover:border-[#f95106]/30 transition-all reveal">
             <div class="w-10 h-10 rounded-lg bg-[#f95106]/10 text-[#f95106] flex items-center justify-center mb-4">
@@ -376,38 +406,14 @@
             <p class="text-[#9ca0a9] text-sm leading-relaxed">点击即可打开原文件或定位目录，视频结果直达对应时间段；异常时一键导出诊断包。</p>
           </article>
         </div>
-
-        <div class="feature-visuals home-screenshots mt-16 md:mt-20">
-          <figure class="feature-visual reveal">
-            <a class="site-visual screenshot-link" href="assets/screenshots/smart-search.webp" target="_blank" rel="noopener noreferrer" aria-label="查看智能搜索截图原图（新窗口）">
-              <img src="assets/screenshots/smart-search.webp" width="1440" height="900"
-                alt="新版智能搜索结果：海边日落查询、类型筛选、命中依据与图片视频混合结果" loading="lazy" decoding="async" />
-            </a>
-            <figcaption>
-              <div><span>一句描述，找到需要的画面</span><p>按图片、视频或音频筛选，查看命中依据，再打开对应素材。</p></div>
-              <a href="assets/screenshots/smart-search.webp" target="_blank" rel="noopener noreferrer" class="screenshot-original">查看原图 <span aria-hidden="true">↗</span></a>
-            </figcaption>
-          </figure>
-          <figure class="feature-visual reveal">
-            <a class="site-visual screenshot-link" href="assets/screenshots/video-storyboard.webp" target="_blank" rel="noopener noreferrer" aria-label="查看视频分镜截图原图（新窗口）">
-              <img src="assets/screenshots/video-storyboard.webp" width="1440" height="900"
-                alt="新版视频分镜详情：视频预览、分镜缩略图、片段时间、画面描述和导出入口" loading="lazy" decoding="async" />
-            </a>
-            <figcaption>
-              <div><span>从整段视频，定位到一个镜头</span><p>预览分镜、查看时间范围和已有描述，找到合适的片段后继续使用。</p></div>
-              <a href="assets/screenshots/video-storyboard.webp" target="_blank" rel="noopener noreferrer" class="screenshot-original">查看原图 <span aria-hidden="true">↗</span></a>
-            </figcaption>
-          </figure>
-        </div>
-        <p class="screenshot-note">截图来自新版素刀，素材、搜索结果与运行状态均为示例。</p>
       </div>
     </section>
 
     <!-- Local creative tools -->
-    <section id="creation" class="py-20 md:py-28 border-y border-white/5" aria-labelledby="toolboxTitle">
-      <div class="max-w-7xl mx-auto px-6">
+    <section id="creation" class="home-section home-toolbox" aria-labelledby="toolboxTitle">
+      <div class="max-w-7xl mx-auto px-6 home-toolbox-layout">
         <div class="home-toolbox-heading reveal">
-          <h2 id="toolboxTitle" class="text-3xl md:text-4xl font-bold mb-4">创作工具，按需使用</h2>
+          <h2 id="toolboxTitle" class="text-3xl md:text-4xl font-bold mb-4">创作工具，<br class="toolbox-title-break" />按需使用。</h2>
           <p class="text-[#9ca0a9] text-lg">配音、图片清晰化与视频增强集中在一处，按需安装，在本机处理。</p>
         </div>
         <figure class="feature-visual home-toolbox-visual reveal">
@@ -433,7 +439,7 @@
     </section>
 
     <!-- Workflow -->
-    <section id="workflow" class="py-20 md:py-28 border-y border-white/5 bg-[#111]/30" aria-labelledby="workflowTitle">
+    <section id="workflow" class="home-section home-workflow" aria-labelledby="workflowTitle">
       <div class="max-w-7xl mx-auto px-6">
         <div class="text-center max-w-3xl mx-auto mb-16 reveal">
           <h2 id="workflowTitle" class="text-3xl md:text-4xl font-bold mb-4">四步开始检索你的素材</h2>
@@ -470,7 +476,7 @@
     </section>
 
     <!-- Audience -->
-    <section id="audience" class="py-20 md:py-28" aria-labelledby="audienceTitle">
+    <section id="audience" class="home-section home-audience" aria-labelledby="audienceTitle">
       <div class="max-w-7xl mx-auto px-6">
         <div class="text-center max-w-3xl mx-auto mb-16 reveal">
           <h2 id="audienceTitle" class="text-3xl md:text-4xl font-bold mb-4">适合这样的你</h2>
@@ -527,14 +533,14 @@
     </section>
 
     <!-- FAQ -->
-    <section id="faq" class="py-20 md:py-28 border-y border-white/5 bg-[#111]/30" aria-labelledby="faqTitle">
-      <div class="max-w-3xl mx-auto px-6">
-        <div class="text-center mb-12 reveal">
+    <section id="faq" class="home-section home-faq" aria-labelledby="faqTitle">
+      <div class="home-shell home-faq-layout">
+        <div class="home-faq-heading reveal">
           <h2 id="faqTitle" class="text-3xl md:text-4xl font-bold mb-4">常见问题</h2>
           <p class="text-[#9ca0a9] text-lg">关于隐私、格式与使用方式的快速解答。</p>
         </div>
 
-        <div class="space-y-4">
+        <div class="home-faq-list">
           <details
             class="faq-item group rounded-xl border border-white/10 bg-white/[0.02] open:border-[#f95106]/30 transition-all reveal">
             <summary
@@ -612,15 +618,15 @@
     </section>
 
     <!-- Download CTA -->
-    <section id="download" class="py-20 md:py-28" aria-labelledby="downloadTitle">
-      <div class="max-w-5xl mx-auto px-6">
+    <section id="download" class="home-section home-download" aria-labelledby="downloadTitle">
+      <div class="home-shell">
         <div
-          class="relative overflow-hidden rounded-3xl border border-[#f95106]/20 bg-[#101113] p-10 md:p-16 text-center reveal">
-          <div class="relative">
-            <h2 id="downloadTitle" class="text-3xl md:text-5xl font-bold mb-4">准备好找回你的灵感了吗？</h2>
+          class="home-download-panel reveal">
+          <div class="home-download-content">
+            <h2 id="downloadTitle" class="text-3xl md:text-5xl font-bold mb-4"><span class="download-title-part">准备好找回</span><span class="download-title-part">你的灵感了吗？</span></h2>
             <p class="text-[#c5c8d0] text-lg md:text-xl max-w-2xl mx-auto mb-8">下载素刀，让你的图片与视频素材用自然语言搜索。</p>
             <div>
-              <div class="rounded-[10px] mb-[16px] bg-[#f95106] py-[16px]">素刀V2版本已发布，公测期间完全免费！暂时没有收费计划</div>
+              <div class="home-release-note">素刀V2版本已发布，公测期间完全免费！暂时没有收费计划</div>
               <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
                 <a href="https://atomgit.com/gcw_DvNLXsnW/ClipKnife/releases/download/v2.0.0/%E7%B4%A0%E5%88%80_2.5.0_x64-setup.exe"
                   target="_blank" rel="noopener noreferrer"
@@ -663,11 +669,11 @@
 
             </div>
           </div>
-          <div class="relative mt-[36px]">
+          <div class="home-contact">
             <h2 class="text-xl md:text-xl font-bold mb-4">有问题可以联系作者，或加入交流群</h2>
             <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
-              <img class="w-[30%]" src="./assets/wechat.jpg" alt="素刀作者微信二维码">
-              <img class="w-[30%] rounded-[8px]" src="./assets/wechatgroup1030.jpg" alt="素刀用户交流群二维码">
+              <a href="assets/wechat.jpg" target="_blank" rel="noopener noreferrer"><img src="assets/wechat.jpg" alt="素刀作者微信二维码" loading="lazy" decoding="async"><span>联系作者 ↗</span></a>
+              <a href="assets/wechatgroup1030.jpg" target="_blank" rel="noopener noreferrer"><img src="assets/wechatgroup1030.jpg" alt="素刀用户交流群二维码" loading="lazy" decoding="async"><span>加入交流群 ↗</span></a>
             </div>
           </div>
         </div>
@@ -737,6 +743,7 @@
 
   <script src="assets/app.js"></script>
   <script src="assets/demo-host.js" defer></script>
+  <script src="assets/home.js" defer></script>
 </body>
 
 </html>

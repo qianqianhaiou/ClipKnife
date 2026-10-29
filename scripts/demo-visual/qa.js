@@ -46,6 +46,8 @@
   async function run() {
     if (scenario.startsWith('homepage-')) {
       await until(() => $('.home-page'), 'homepage content');
+      // Capture a stable section after exercising focus, independently of smooth scrolling.
+      document.documentElement.style.scrollBehavior = 'auto';
       check('creative assistant section is removed', !$('#assistantTitle') && !$('#creationTitle'));
       const screenshots = $$('img[src^="assets/screenshots/"]');
       check('four current interface screenshots', screenshots.length === 4);
@@ -59,19 +61,76 @@
         await key('Escape', $('#menuBtn'));
         check('mobile navigation closes on Escape', $('#menuBtn').getAttribute('aria-expanded') === 'false');
       }
+      await until(() => $('[data-hero-reel][data-enhanced]'), 'hero scene controls');
+      await Promise.all($$('[data-hero-photo] img').map(image => image.decode()));
+      check('hero uses three local sample images', $$('[data-hero-photo] img').length === 3 && $$('[data-hero-photo] img').every(image => image.naturalWidth === 1280 && image.naturalHeight === 720));
+      await click('[data-hero-scene][aria-controls="heroStreet"]');
+      check('scene selection brings the matching photo forward', $('#heroStreet').dataset.position === 'front' && $('[data-hero-description]').textContent.includes('雨后'));
+      await key('ArrowRight');
+      check('scene arrow navigation changes photo and focus', document.activeElement.getAttribute('aria-controls') === 'heroForest' && $('#heroForest').dataset.position === 'front');
+      await key('Home');
+      check('scene Home key restores the first sample', $('#heroSunset').dataset.position === 'front' && $$('[data-hero-scene][aria-pressed="true"]').length === 1);
+      await until(() => $('[data-home-showcase][data-enhanced]'), 'screenshot tabs');
+      check('search panel is the initial selection', !$('#searchPanel').hidden && $('#storyboardPanel').hidden && $('#searchTab').getAttribute('aria-selected') === 'true');
+      await click('#storyboardTab');
+      check('click selects the storyboard panel', $('#searchPanel').hidden && !$('#storyboardPanel').hidden && $('#storyboardTab').tabIndex === 0);
+      await key('ArrowLeft', $('#storyboardTab'));
+      check('arrow key selects search and moves focus', document.activeElement === $('#searchTab') && !$('#searchPanel').hidden && $('#storyboardPanel').hidden);
+      await key('End', $('#searchTab'));
+      check('End selects the last screenshot', document.activeElement === $('#storyboardTab') && !$('#storyboardPanel').hidden);
+      await key('Home', $('#storyboardTab'));
+      check('Home restores the first screenshot', document.activeElement === $('#searchTab') && !$('#searchPanel').hidden);
+      if (scenario === 'homepage-scene') await click('[data-hero-scene][aria-controls="heroStreet"]');
+      if (scenario === 'homepage-video') await click('#storyboardTab');
+      if (scenario === 'homepage-reduced') {
+        check('reduced-motion preference applied', matchMedia('(prefers-reduced-motion: reduce)').matches);
+        check('hero and screenshot animations are disabled', ['.hero-copy', '.hero-visual', '.site-demo', '#searchPanel'].every(selector => getComputedStyle($(selector)).animationName === 'none'));
+      }
+      if (scenario === 'homepage-download' || scenario === 'homepage-modal') {
+        await click('#otherDownloadBtn');
+        check('offline download dialog opens', !$('#downloadModal').classList.contains('hidden') && document.body.style.overflow === 'hidden');
+        await key('Escape');
+        await pause(250);
+        check('Escape closes the dialog and restores scrolling', $('#downloadModal').classList.contains('hidden') && document.body.style.overflow === '');
+      }
+      if (scenario === 'homepage-faq') {
+        await click('.faq-item summary');
+        check('FAQ answer can be expanded', $('.faq-item').open);
+      }
       const target = {
         'homepage-top': '.home-hero',
-        'homepage-search': '.home-screenshots .feature-visual:first-child',
-        'homepage-video': '.home-screenshots .feature-visual:nth-child(2)',
+        'homepage-scene': '.home-hero',
+        'homepage-reduced': '.home-hero',
+        'homepage-faq': '#faq',
+        'homepage-values': '.home-values',
+        'homepage-workflow': '#workflow',
+        'homepage-search': '.home-showcase',
+        'homepage-video': '.home-showcase',
         'homepage-tools': '#creation',
-        'homepage-download': '#download'
+        'homepage-download': '#download',
+        'homepage-modal': '#download'
       }[scenario];
       if (!target) throw new Error('Unknown homepage screenshot scenario: ' + scenario);
-      const top = scenario === 'homepage-top' ? 0 : $(target).getBoundingClientRect().top + scrollY - 84;
+      const top = ['homepage-top', 'homepage-reduced', 'homepage-scene'].includes(scenario) ? 0 : $(target).getBoundingClientRect().top + scrollY - 84;
       window.scrollTo({ top, behavior: 'instant' });
       document.activeElement?.blur();
-      await pause(400);
+      await pause(650);
+      if (!['homepage-top', 'homepage-reduced', 'homepage-scene'].includes(scenario)) {
+        window.scrollTo({ top: $(target).getBoundingClientRect().top + scrollY - 84, behavior: 'instant' });
+        await pause(200);
+        check('captured section begins below the fixed header', Math.abs($(target).getBoundingClientRect().top - 84) < 3 || scrollY + innerHeight >= document.documentElement.scrollHeight - 2);
+      }
       check('screenshot sections fit the viewport width', screenshots.every(image => image.getBoundingClientRect().right <= innerWidth + 1));
+      check('hero actions fit inside the first viewport', $('.hero-actions').getBoundingClientRect().bottom + scrollY < innerHeight);
+      check('hero frames remain inside the viewport', $$('[data-hero-photo]').every(photo => { const bounds = photo.getBoundingClientRect(); return bounds.left >= 0 && bounds.right <= innerWidth; }));
+      check('scene controls do not overlap the front photo', $('.hero-scene-controls').getBoundingClientRect().top >= $('[data-hero-photo][data-position="front"]').getBoundingClientRect().bottom);
+      check('page uses a compact vertical rhythm', $$('.home-section').every(section => parseFloat(getComputedStyle(section).paddingTop) <= 56));
+      if (scenario === 'homepage-modal') {
+        await click('#otherDownloadBtn');
+        await pause(300);
+        const panel = $('#downloadModal [data-modal-panel]').getBoundingClientRect();
+        check('download dialog fits the viewport', panel.left >= 0 && panel.right <= innerWidth && panel.top >= 0 && panel.bottom <= innerHeight);
+      }
       return;
     }
 
@@ -108,7 +167,8 @@
         const inside = frame.contentDocument;
         await click('[data-asset="coast-film"] .preview-button', inside);
         await until(() => $('.video-preview', inside)?.dataset.playing === 'true', 'embedded playback');
-        const before = Number($('.video-progress', inside).value); await pause(350);
+        const before = Number($('.video-progress', inside).value);
+        await until(() => Number($('.video-progress', inside).value) > before, 'embedded timeline advances', 3000);
         check('embedded player advances', Number($('.video-progress', inside).value) > before);
         check('embedded player keeps footer reachable', $('.preview-footer', inside).getBoundingClientRect().bottom <= frame.clientHeight);
         await click('.playback-toggle', inside);

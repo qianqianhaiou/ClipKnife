@@ -60,3 +60,29 @@ test('homepage download navigation and modal work with ordinary page scrolling',
   assert.equal(modal.classList.contains('hidden'), false);
   assert.equal(document.body.style.overflow, 'hidden');
 });
+
+test('homepage anchor navigation respects the reduced-motion preference', () => {
+  const anchor = element();
+  anchor.getAttribute = () => '#download';
+  const calls = [];
+  const document = {
+    body: { style: {} },
+    getElementById: () => null,
+    querySelector: () => ({ getBoundingClientRect: () => ({ top: 600 }) }),
+    querySelectorAll: selector => selector === 'a[href^="#"]' ? [anchor] : [],
+    addEventListener() {},
+  };
+  const window = {
+    pageYOffset: 0,
+    matchMedia: () => ({ matches: true }),
+    scrollTo: options => calls.push(options),
+  };
+  vm.runInNewContext(script, { document, window, setTimeout });
+  anchor.listeners.get('click')({ preventDefault() {} });
+  assert.equal(calls[0].behavior, 'auto');
+  assert.equal(calls[0].top, 520);
+  anchor.getAttribute = () => '#';
+  anchor.listeners.get('click')({ preventDefault() {} });
+  assert.equal(calls[1].behavior, 'auto');
+  assert.equal(calls[1].top, 0);
+});
