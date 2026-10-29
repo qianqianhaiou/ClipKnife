@@ -44,6 +44,37 @@
   const state = () => JSON.parse(sessionStorage.getItem('clipknife:website-demo:v1'));
 
   async function run() {
+    if (scenario.startsWith('homepage-')) {
+      await until(() => $('.home-page'), 'homepage content');
+      check('creative assistant section is removed', !$('#assistantTitle') && !$('#creationTitle'));
+      const screenshots = $$('img[src^="assets/screenshots/"]');
+      check('four current interface screenshots', screenshots.length === 4);
+      await Promise.all(screenshots.map(async image => { image.loading = 'eager'; await image.decode(); }));
+      check('screenshots have full source dimensions', screenshots.every(image => image.naturalWidth === Number(image.getAttribute('width')) && image.naturalHeight === Number(image.getAttribute('height'))));
+      check('homepage anchors resolve', $$('a[href^="#"]').every(link => link.hash === '' || link.hash === '#' || document.getElementById(link.hash.slice(1))));
+      check('original-image links resolve to the displayed images', $$('.screenshot-link').every(link => link.href === $('img', link).src));
+      if (getComputedStyle($('#menuBtn')).display !== 'none') {
+        await click('#menuBtn');
+        check('mobile navigation opens', $('#menuBtn').getAttribute('aria-expanded') === 'true' && getComputedStyle($('#mobileMenu')).display !== 'none');
+        await key('Escape', $('#menuBtn'));
+        check('mobile navigation closes on Escape', $('#menuBtn').getAttribute('aria-expanded') === 'false');
+      }
+      const target = {
+        'homepage-top': '.home-hero',
+        'homepage-search': '.home-screenshots .feature-visual:first-child',
+        'homepage-video': '.home-screenshots .feature-visual:nth-child(2)',
+        'homepage-tools': '#creation',
+        'homepage-download': '#download'
+      }[scenario];
+      if (!target) throw new Error('Unknown homepage screenshot scenario: ' + scenario);
+      const top = scenario === 'homepage-top' ? 0 : $(target).getBoundingClientRect().top + scrollY - 84;
+      window.scrollTo({ top, behavior: 'instant' });
+      document.activeElement?.blur();
+      await pause(400);
+      check('screenshot sections fit the viewport width', screenshots.every(image => image.getBoundingClientRect().right <= innerWidth + 1));
+      return;
+    }
+
     if (scenario === 'document') {
       await until(() => !$('.doc-content') || $('.doc-content').textContent.length > 200, 'document markdown');
       await pause(600);

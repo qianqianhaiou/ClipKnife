@@ -1,0 +1,56 @@
+{
+  "capturedOn": "2026-10-29",
+  "sourceRepository": "clip-knife",
+  "sourceRevision": "0cad41ad2f5de88b1f5652e05139c982bfecc78f",
+  "renderer": "Wry / WebView2 native window",
+  "devicePixelRatio": 1,
+  "data": "Isolated example fixtures; no user materials or live services.",
+  "encoding": "Lossless WebP, original pixel dimensions; no retouching or cropping.",
+  "limitations": "Screenshots document appearance. Search results, timing, hardware and installation states are examples. The storyboard uses still-image preview fixtures, not live media decoding.",
+  "photos": {
+    "library": "User-approved J5-C reference fixture in the workspace.",
+    "search": "Existing generated website demo photos: traveler.webp, sunset.webp, coast.webp (see demo/ASSETS.md)."
+  },
+  "images": [
+    {
+      "file": "material-library.webp",
+      "width": 1440,
+      "height": 900,
+      "bytes": 527112,
+      "sha256": "5b7b26493d489df30c13bedf217d502467b809700c0deed0b7ab0fc63483602f",
+      "sourcePngSha256": "5d4ca6f3f4a3aadf7815e66596864585ea4e0958dd44c9cc2478279488a219f2",
+      "fixture": "material-library-visual",
+      "scenario": "overview"
+    },
+    {
+      "file": "smart-search.webp",
+      "width": 1440,
+      "height": 900,
+      "bytes": 596526,
+      "sha256": "adff56f51b8fc1b5e0352869ea7e583f07121e086ed6800a2ba75bb24f0a87f8",
+      "sourcePngSha256": "b4deb6f1e1277081c6b0ac82d60485069278d0bc8278fc49853c81a67f8921fb",
+      "fixture": "search-visual",
+      "scenario": "gallery"
+    },
+    {
+      "file": "video-storyboard.webp",
+      "width": 1440,
+      "height": 900,
+      "bytes": 497676,
+      "sha256": "16dc7922a0033a490cd141d2fdc4ba1df113190d8926ad485a09adb085b2a9f5",
+      "sourcePngSha256": "5ff26abc3f0e196ec1f839dd28a6c60551572d06fa6194b8a71a71f89c636c91",
+      "fixture": "search-visual",
+      "scenario": "roaming-video-dialog"
+    },
+    {
+      "file": "creative-tools.webp",
+      "width": 1440,
+      "height": 1080,
+      "bytes": 170754,
+      "sha256": "20315ee275bc0a487dd0c8701a12c77208348060dcd325acac07de73c2d52fe5",
+      "sourcePngSha256": "84f45bef1d761222f29ae740ae0c4d9d539099d482f3c7318fa32bd036f7d467",
+      "fixture": "settings-visual",
+      "scenario": "toolbox-home / ready"
+    }
+  ]
+}

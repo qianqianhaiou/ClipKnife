@@ -63,7 +63,14 @@ Assert-TextContains 'docs/index.html' 'href="manual/"'
 Assert-TextContains 'docs/index.html' 'href="changelog/"'
 Assert-TextContains 'docs/index.html' 'href="faq/"'
 Assert-TextContains 'docs/index.html' 'id="creation"'
-Assert-TextContains 'docs/index.html' 'id="assistantTitle"'
+$homepage = Get-Content -Raw -Encoding UTF8 -LiteralPath 'docs/index.html'
+foreach ($retired in @('id="assistantTitle"', '10-creative-assistant.png', 'smart-search2.png', 'assets/manual/video-detail.png', 'assets/manual/12-toolbox.png')) {
+  if ($homepage.Contains($retired)) { throw "Homepage still references retired content: $retired" }
+}
+foreach ($screenshot in @('material-library.webp', 'smart-search.webp', 'video-storyboard.webp', 'creative-tools.webp')) {
+  Assert-FileExists "docs/assets/screenshots/$screenshot"
+  Assert-TextContains 'docs/index.html' "assets/screenshots/$screenshot"
+}
 Assert-TextContains 'docs/index.html' 'id="toolboxTitle"'
 Assert-TextContains 'docs/index.html' 'Real-ESRGAN'
 Assert-TextContains 'docs/index.html' 'Video2X'

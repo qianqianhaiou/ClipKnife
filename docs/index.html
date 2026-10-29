@@ -16,16 +16,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="素刀是 Windows x64 本地素材管理与自然语言检索工具，面向视频创作者。统一管理文件夹、盘符和外接硬盘中的图片、视频与音频，用画面描述定位图片和视频分镜；语音检索需先转写。本机核心建库与搜索在本机完成；局域网共享和外部模型按功能传输数据，激活与组件下载需要联网。首次索引需等待，公测阶段可从官网下载。" />
   <title>素刀 — 本地素材管理与自然语言检索工具</title>
-  <meta name="theme-color" content="#0a0a0a" />
+  <meta name="theme-color" content="#000000" />
   <link rel="icon" type="image/png" href="assets/icon.png" />
   <link rel="apple-touch-icon" href="assets/icon.png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
-    rel="stylesheet" />
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="assets/styles.css" />
   <link rel="stylesheet" href="assets/demo-host.css" />
+  <link rel="stylesheet" href="assets/home.css" />
   <meta name="msvalidate.01" content="1808C42E407C60B9A38C8FC1255A2801" />
   <link rel="canonical" href="https://clipknife.cn/" />
 
@@ -67,24 +64,24 @@
   </script>
 </head>
 
-<body class="bg-[#0a0a0a] text-slate-100 antialiased overflow-x-hidden">
+<body class="home-page bg-black text-slate-100 antialiased overflow-x-hidden">
   <a href="#main"
     class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-white focus:text-[#0a0a0a] focus:rounded-md">
     跳转到主要内容
   </a>
 
   <!-- Navbar -->
-  <header class="site-header fixed top-0 inset-x-0 z-40 border-b border-white/10 bg-[#0a0a0a]/70 backdrop-blur-md">
+  <header class="site-header fixed top-0 inset-x-0 z-40 border-b border-white/10 bg-[#161718]">
     <nav class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between" aria-label="主导航">
       <a href="#" class="flex items-center gap-2 font-bold text-xl tracking-tight" aria-label="ClipKnife 首页">
         <img src="assets/icon.png" alt="" class="w-8 h-8 rounded-lg" />
-        <span class="bg-clip-text text-transparent bg-gradient-to-r from-[#f95106] to-[#ff7a3c]">素刀-ClipKnife</span>
+        <span class="text-[#f95106]">素刀-ClipKnife</span>
       </a>
 
-      <ul class="hidden md:flex items-center gap-6 text-sm font-medium text-slate-300">
+      <ul class="hidden md:flex items-center gap-6 text-sm font-medium text-[#c5c8d0]">
         <li><a href="#demo" class="hover:text-white transition-colors demo-nav-link">在线体验</a></li>
         <li><a href="#features" class="hover:text-white transition-colors">功能特性</a></li>
-        <li><a href="#creation" class="hover:text-white transition-colors">创作能力</a></li>
+        <li><a href="#creation" class="hover:text-white transition-colors">创作工具</a></li>
         <li><a href="#workflow" class="hover:text-white transition-colors">使用流程</a></li>
         <li><a href="manual/" class="hover:text-white transition-colors">使用手册</a></li>
         <li><a href="scenes/search-video-content/" class="hover:text-white transition-colors">按内容搜索</a></li>
@@ -94,7 +91,7 @@
 
       <div class="hidden md:flex items-center gap-3">
         <a href="https://github.com/qianqianhaiou/ClipKnife" target="_blank" rel="noopener noreferrer"
-          class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/[0.03] text-slate-300 transition-colors hover:border-white/25 hover:bg-white/[0.08] hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-[#f95106] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0a]"
+          class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/[0.03] text-[#c5c8d0] transition-colors hover:border-white/25 hover:bg-white/[0.08] hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-[#f95106] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0a]"
           aria-label="View ClipKnife on GitHub" title="GitHub">
           <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
             <path fill-rule="evenodd" clip-rule="evenodd"
@@ -102,7 +99,7 @@
           </svg>
         </a>
         <a href="#download"
-          class="px-5 py-2.5 rounded-full bg-[#f95106] hover:bg-[#d94605] text-white text-sm font-semibold transition-all shadow-lg shadow-[#f95106]/20 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#f95106] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0a]">
+          class="px-5 py-2.5 rounded-full bg-[#f95106] hover:bg-[#d94605] text-white text-sm font-semibold transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#f95106] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0a]">
           免费下载
         </a>
 
@@ -110,7 +107,7 @@
 
       <div class="md:hidden flex items-center gap-2">
         <a href="https://github.com/qianqianhaiou/ClipKnife" target="_blank" rel="noopener noreferrer"
-          class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/[0.03] text-slate-300 transition-colors hover:border-white/25 hover:bg-white/[0.08] hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-[#f95106] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0a]"
+          class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/[0.03] text-[#c5c8d0] transition-colors hover:border-white/25 hover:bg-white/[0.08] hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-[#f95106] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0a]"
           aria-label="View ClipKnife on GitHub" title="GitHub">
           <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
             <path fill-rule="evenodd" clip-rule="evenodd"
@@ -119,7 +116,7 @@
         </a>
 
         <button id="menuBtn"
-          class="md:hidden p-2 -mr-2 rounded-lg text-slate-300 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-[#f95106]"
+          class="md:hidden p-2 -mr-2 rounded-lg text-[#c5c8d0] hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-[#f95106]"
           aria-label="打开菜单" aria-expanded="false" aria-controls="mobileMenu">
           <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
             stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -131,11 +128,11 @@
       </div>
     </nav>
 
-    <div id="mobileMenu" class="md:hidden hidden border-t border-white/10 bg-[#0a0a0a]/95 backdrop-blur-md">
-      <ul class="px-6 py-4 space-y-3 text-slate-300">
+    <div id="mobileMenu" class="md:hidden hidden border-t border-white/10 bg-[#161718]">
+      <ul class="px-6 py-4 space-y-3 text-[#c5c8d0]">
         <li><a href="#demo" class="block py-2 hover:text-white">在线体验</a></li>
         <li><a href="#features" class="block py-2 hover:text-white">功能特性</a></li>
-        <li><a href="#creation" class="block py-2 hover:text-white">创作能力</a></li>
+        <li><a href="#creation" class="block py-2 hover:text-white">创作工具</a></li>
         <li><a href="#workflow" class="block py-2 hover:text-white">使用流程</a></li>
         <li><a href="manual/" class="block py-2 hover:text-white">使用手册</a></li>
         <li><a href="scenes/search-video-content/" class="block py-2 hover:text-white">按内容搜索</a></li>
@@ -150,46 +147,32 @@
 
   <main id="main">
     <!-- Hero -->
-    <section class="relative pt-24 pb-20 md:pt-24 md:pb-28 overflow-hidden" aria-labelledby="heroTitle">
-      <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
-        <div class="blob blob-1"></div>
-        <div class="blob blob-2"></div>
-        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,#0a0a0a_70%)]"></div>
-      </div>
-
-      <div class="relative max-w-7xl mx-auto px-6 text-center mt-[81px]">
-        <!-- <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[#f95106]/30 bg-[#f95106]/10 text-[#ff7a3c] text-xs font-medium mb-6 reveal">
-          <span class="relative flex h-2 w-2">
-            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#f95106] opacity-75"></span>
-            <span class="relative inline-flex rounded-full h-2 w-2 bg-[#f95106]"></span>
-          </span>
-          单机版早期版本开放下载
-        </div> -->
-
+    <section class="home-hero relative pt-24 pb-20 md:pb-28" aria-labelledby="heroTitle">
+      <div class="relative max-w-7xl mx-auto px-6 text-center">
         <h1 id="heroTitle"
-          class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight mb-6 reveal">
+          class="text-4xl sm:text-5xl md:text-5xl lg:text-6xl font-extrabold tracking-tight mb-6 reveal">
           用一句话，找回你散落在<br class="hidden sm:block" />
           <span
-            class="bg-clip-text text-transparent bg-gradient-to-r from-[#f95106] via-[#ff7a3c] to-[#ffb380] inline-block mt-[16px]">硬盘里的每一帧灵感</span>
+            class="text-[#f95106] inline-block mt-[16px]">硬盘里的每一帧灵感</span>
         </h1>
 
 
-        <p class="max-w-2xl mx-auto text-lg md:text-xl text-slate-400 leading-relaxed mb-10 reveal">
-          素刀致力成为素材界的瑞士军刀，是面向创作者的生产力工具，支持本地素材管理与自然语言检索，无需上传云端。
+        <p class="max-w-2xl mx-auto text-lg md:text-xl text-[#9ca0a9] leading-relaxed mb-10 reveal">
+          统一管理散落在硬盘里的图片、视频与音频，用画面描述找到需要的素材和分镜。
         </p>
 
         <div class="flex flex-col sm:flex-row items-center justify-center gap-4 reveal">
           <a href="#download"
-            class="w-full sm:w-auto px-8 py-4 rounded-full bg-[#f95106] hover:bg-[#d94605] text-white font-semibold text-lg transition-all shadow-xl shadow-[#f95106]/25 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#f95106] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0a]">
+            class="w-full sm:w-auto px-8 py-4 rounded-full bg-[#f95106] hover:bg-[#d94605] text-white font-semibold text-lg transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#f95106] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0a]">
             免费下载
           </a>
-          <a href="#creation"
+          <a href="#demo"
             class="w-full sm:w-auto px-8 py-4 rounded-full border border-white/15 hover:border-white/30 hover:bg-white/5 text-slate-200 font-semibold text-lg transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#f95106] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0a]">
-            探索创作能力
+            在线体验
           </a>
         </div>
 
-        <div class="mt-12 flex flex-wrap items-center justify-center gap-6 text-sm text-slate-500 reveal">
+        <div class="mt-12 flex flex-wrap items-center justify-center gap-6 text-sm text-[#7c818c] reveal">
           <span class="flex items-center gap-2"><svg class="w-4 h-4 text-[#f95106]" viewBox="0 0 24 24" fill="none"
               stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M20 6 9 17l-5-5" />
@@ -205,7 +188,7 @@
           <span class="flex items-center gap-2"><svg class="w-4 h-4 text-[#f95106]" viewBox="0 0 24 24" fill="none"
               stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M20 6 9 17l-5-5" />
-            </svg>对话式创作</span>
+            </svg>按需使用本地工具</span>
 
         </div>
 
@@ -213,12 +196,12 @@
           <div class="site-demo-heading"><div><span class="demo-eyebrow">从浏览到找到，再到整理</span><h2 id="demoTitle">你的下一份灵感，试着找找看。</h2></div><a href="demo/index.html" class="demo-expand">展开体验 <span aria-hidden="true">↗</span></a></div>
           <div class="site-demo-frame" data-demo-host>
             <div class="site-demo-poster">
-              <img src="assets/demo/preview.webp" width="1440" height="900" alt="素刀示例素材库，包含文件夹目录、类型筛选和可查看详情的照片网格" loading="lazy" decoding="async" />
+              <img src="assets/screenshots/material-library.webp" width="1440" height="900" alt="新版素刀素材总览，包含目录侧栏、素材类型筛选和图片视频网格" loading="lazy" decoding="async" />
               <div class="site-demo-start"><span class="demo-start-label">素材浏览 · 智能搜索 · 分镜预览</span><button type="button" data-demo-start>开始体验 <span aria-hidden="true">→</span></button><p data-demo-message>示例素材已准备好，点击即可操作</p><p class="demo-mobile-hint">在电脑上打开官网，即可模拟使用素刀。</p></div>
             </div>
             <div class="site-demo-live" data-demo-live></div>
           </div>
-          <div class="site-demo-caption"><span>真实界面 · 示例数据 · 可随时重置</span><span>试试搜索“海边日落”，把喜欢的分镜加入分组</span></div>
+          <div class="site-demo-caption"><span>新版界面截图 · 示例素材</span><span>在线演示支持搜索、预览和分组</span></div>
           <noscript><p>开启 JavaScript 可操作演示，也可以<a href="demo/index.html">查看体验页</a>。</p></noscript>
         </section>
       </div>
@@ -229,7 +212,7 @@
       <div class="max-w-7xl mx-auto px-6">
         <div class="text-center max-w-3xl mx-auto mb-16 reveal">
           <h2 id="valuesTitle" class="text-3xl md:text-4xl font-bold mb-4">为创作者重新设计素材管理</h2>
-          <p class="text-slate-400 text-lg">不再依赖文件夹层级和文件名记忆，让 AI 理解你的画面内容。</p>
+          <p class="text-[#9ca0a9] text-lg">不再依赖文件夹层级和文件名记忆，让 AI 理解你的画面内容。</p>
         </div>
 
         <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -244,7 +227,7 @@
               </svg>
             </div>
             <h3 class="text-lg font-semibold mb-2">本机处理与数据边界</h3>
-            <p class="text-slate-400 text-sm leading-relaxed">本机建库、索引、分镜与搜索在电脑上完成，不向素刀公网服务上传原始素材。可选局域网共享与外部模型会按功能传输数据，详见下方联网与隐私说明。</p>
+            <p class="text-[#9ca0a9] text-sm leading-relaxed">本机建库、索引、分镜与搜索在电脑上完成，不向素刀公网服务上传原始素材。可选局域网共享与外部模型会按功能传输数据，详见下方联网与隐私说明。</p>
           </article>
 
           <article
@@ -258,7 +241,7 @@
               </svg>
             </div>
             <h3 class="text-lg font-semibold mb-2">自然语言搜索</h3>
-            <p class="text-slate-400 text-sm leading-relaxed">输入 "海边日落"、"产品特写" 或 "人物微笑"，即可同时检索图片与视频片段，支持以图搜图。</p>
+            <p class="text-[#9ca0a9] text-sm leading-relaxed">输入 "海边日落"、"产品特写" 或 "人物微笑"，即可同时检索图片与视频片段，支持以图搜图。</p>
           </article>
 
           <article
@@ -274,7 +257,7 @@
               </svg>
             </div>
             <h3 class="text-lg font-semibold mb-2">人脸自动分组</h3>
-            <p class="text-slate-400 text-sm leading-relaxed">启用人物索引后，在本机分析图片与视频分镜中的人脸并自动归组，支持命名、合并和手动整理。</p>
+            <p class="text-[#9ca0a9] text-sm leading-relaxed">启用人物索引后，在本机分析图片与视频分镜中的人脸并自动归组，支持命名、合并和手动整理。</p>
           </article>
 
           <article
@@ -290,7 +273,7 @@
               </svg>
             </div>
             <h3 class="text-lg font-semibold mb-2">自动监听与增量更新</h3>
-            <p class="text-slate-400 text-sm leading-relaxed">添加素材源后自动全量建库，后续文件增删改实时进入后台任务队列，无需手动维护。</p>
+            <p class="text-[#9ca0a9] text-sm leading-relaxed">添加素材源后自动全量建库，后续文件增删改实时进入后台任务队列，无需手动维护。</p>
           </article>
         </div>
       </div>
@@ -301,7 +284,7 @@
         <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-14 reveal">
           <div class="max-w-2xl">
             <h2 id="featuresTitle" class="text-3xl md:text-4xl font-bold mb-4">一条完整的工作流</h2>
-            <p class="text-slate-400 text-lg">从素材源配置到自然语言搜索，素刀把复杂的本地索引过程简化为几步操作。</p>
+            <p class="text-[#9ca0a9] text-lg">从素材源配置到自然语言搜索，素刀把复杂的本地索引过程简化为几步操作。</p>
           </div>
           <a href="#workflow"
             class="inline-flex items-center gap-2 text-[#f95106] hover:text-[#ff7a3c] font-medium transition-colors">
@@ -325,7 +308,7 @@
               </svg>
             </div>
             <h3 class="text-base font-semibold mb-2">多素材源管理</h3>
-            <p class="text-slate-400 text-sm leading-relaxed">支持文件夹、整盘符与外接硬盘，自动排除系统目录和开发缓存，避免误扫。</p>
+            <p class="text-[#9ca0a9] text-sm leading-relaxed">支持文件夹、整盘符与外接硬盘，自动排除系统目录和开发缓存，避免误扫。</p>
           </article>
 
           <article
@@ -338,7 +321,7 @@
               </svg>
             </div>
             <h3 class="text-base font-semibold mb-2">图片直接入索引</h3>
-            <p class="text-slate-400 text-sm leading-relaxed">JPG、PNG、WebP、CRW、DNG、SRF、SR2、RAW 等常见格式直接生成语义向量，用描述性文字即可召回。</p>
+            <p class="text-[#9ca0a9] text-sm leading-relaxed">支持常见位图与 CR2、CR3、NEF、ARW、DNG 等相机 RAW 格式，建立索引后用画面描述查找。</p>
           </article>
 
           <article
@@ -351,7 +334,7 @@
               </svg>
             </div>
             <h3 class="text-base font-semibold mb-2">视频分镜与抽帧</h3>
-            <p class="text-slate-400 text-sm leading-relaxed">基于 本地AI 自动分镜，配合 ffmpeg 抽取代表帧，让视频内容也能被语义检索。</p>
+            <p class="text-[#9ca0a9] text-sm leading-relaxed">基于 本地AI 自动分镜，配合 ffmpeg 抽取代表帧，让视频内容也能被语义检索。</p>
           </article>
 
           <article
@@ -363,7 +346,7 @@
               </svg>
             </div>
             <h3 class="text-base font-semibold mb-2">后台任务队列</h3>
-            <p class="text-slate-400 text-sm leading-relaxed">扫描、分镜、抽帧、索引全部队列化，单个任务失败不会阻塞整体建库。</p>
+            <p class="text-[#9ca0a9] text-sm leading-relaxed">扫描、分镜、抽帧、索引全部队列化，单个任务失败不会阻塞整体建库。</p>
           </article>
 
           <article
@@ -376,7 +359,7 @@
               </svg>
             </div>
             <h3 class="text-base font-semibold mb-2">统一搜索入口</h3>
-            <p class="text-slate-400 text-sm leading-relaxed">一个搜索框同时返回命中的图片与视频片段，可按类型筛选。</p>
+            <p class="text-[#9ca0a9] text-sm leading-relaxed">一个搜索框同时返回命中的图片与视频片段，可按类型筛选。</p>
           </article>
 
           <article
@@ -390,139 +373,61 @@
               </svg>
             </div>
             <h3 class="text-base font-semibold mb-2">结果回连与诊断</h3>
-            <p class="text-slate-400 text-sm leading-relaxed">点击即可打开原文件或定位目录，视频结果直达对应时间段；异常时一键导出诊断包。</p>
+            <p class="text-[#9ca0a9] text-sm leading-relaxed">点击即可打开原文件或定位目录，视频结果直达对应时间段；异常时一键导出诊断包。</p>
           </article>
         </div>
 
-        <div class="feature-visuals mt-16 md:mt-20">
+        <div class="feature-visuals home-screenshots mt-16 md:mt-20">
           <figure class="feature-visual reveal">
-            <picture class="site-visual">
-              <source srcset="assets/manual/smart-search2.png" type="image/webp" />
-              <img src="assets/manual/smart-search2.png" width="1536" height="1024"
-                alt="抽象化的智能搜索效果图，以橙色语义连线连接搜索框与六个匿名媒体结果" loading="lazy" decoding="async" />
-            </picture>
+            <a class="site-visual screenshot-link" href="assets/screenshots/smart-search.webp" target="_blank" rel="noopener noreferrer" aria-label="查看智能搜索截图原图（新窗口）">
+              <img src="assets/screenshots/smart-search.webp" width="1440" height="900"
+                alt="新版智能搜索结果：海边日落查询、类型筛选、命中依据与图片视频混合结果" loading="lazy" decoding="async" />
+            </a>
             <figcaption>
-              <span>一句描述，跨类型命中</span>
-              <p>图片与视频片段在同一结果视图中返回，筛选、预览和定位保持连贯。</p>
+              <div><span>一句描述，找到需要的画面</span><p>按图片、视频或音频筛选，查看命中依据，再打开对应素材。</p></div>
+              <a href="assets/screenshots/smart-search.webp" target="_blank" rel="noopener noreferrer" class="screenshot-original">查看原图 <span aria-hidden="true">↗</span></a>
             </figcaption>
           </figure>
-
           <figure class="feature-visual reveal">
-            <picture class="site-visual">
-              <source srcset="assets/manual/video-detail.png" type="image/webp" />
-              <img src="assets/manual/video-detail.png" width="1536" height="1024" alt="抽象化的视频分镜效果图，以切点连线对应预览画面和六个分镜片段"
-                loading="lazy" decoding="async" />
-            </picture>
+            <a class="site-visual screenshot-link" href="assets/screenshots/video-storyboard.webp" target="_blank" rel="noopener noreferrer" aria-label="查看视频分镜截图原图（新窗口）">
+              <img src="assets/screenshots/video-storyboard.webp" width="1440" height="900"
+                alt="新版视频分镜详情：视频预览、分镜缩略图、片段时间、画面描述和导出入口" loading="lazy" decoding="async" />
+            </a>
             <figcaption>
-              <span>长视频自动拆成可搜索镜头</span>
-              <p>场景边界、代表帧与时间线集中呈现，检索命中后可以直接回到对应片段。</p>
+              <div><span>从整段视频，定位到一个镜头</span><p>预览分镜、查看时间范围和已有描述，找到合适的片段后继续使用。</p></div>
+              <a href="assets/screenshots/video-storyboard.webp" target="_blank" rel="noopener noreferrer" class="screenshot-original">查看原图 <span aria-hidden="true">↗</span></a>
             </figcaption>
           </figure>
         </div>
+        <p class="screenshot-note">截图来自新版素刀，素材、搜索结果与运行状态均为示例。</p>
       </div>
     </section>
 
-    <!-- Creative assistant and toolbox -->
-    <section id="creation" class="py-20 md:py-28 border-y border-white/5 bg-[#111]/30" aria-labelledby="creationTitle">
-
-      <div class="max-w-7xl mx-auto px-6 relative">
-        <div class="grid lg:grid-cols-12 gap-8 lg:gap-12 items-end mb-14 reveal">
-          <div class="lg:col-span-8">
-            <p class="text-sm font-semibold tracking-[0.18em] text-[#ff7a3c] mb-4">从找到素材到开始创作</p>
-            <h2 id="creationTitle" class="text-3xl md:text-5xl font-bold tracking-tight">让创作助手接住下一步</h2>
-          </div>
-          <p class="lg:col-span-4 text-slate-400 text-lg leading-relaxed">
-            描述目标、选择素材范围，素刀会在同一段对话中组织素材、调用本地工具，并把结果写入可继续编辑的剪映草稿。
-          </p>
+    <!-- Local creative tools -->
+    <section id="creation" class="py-20 md:py-28 border-y border-white/5" aria-labelledby="toolboxTitle">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="home-toolbox-heading reveal">
+          <h2 id="toolboxTitle" class="text-3xl md:text-4xl font-bold mb-4">创作工具，按需使用</h2>
+          <p class="text-[#9ca0a9] text-lg">配音、图片清晰化与视频增强集中在一处，按需安装，在本机处理。</p>
         </div>
-        <div
-          class="grid lg:grid-cols-12 overflow-hidden rounded-3xl border border-white/10 bg-white/10 shadow-2xl shadow-black/20 reveal relative">
-
-          <div
-            class="absolute pt-[13px] pb-[9px] px-[87px] rounded-[4px] bg-[#f95106] text-[20px] left-[-75px] top-[-6px]"
-            style="transform: rotate(325deg)">V2</div>
-          <article class="lg:col-span-7 bg-[#0d0d0d] p-8 md:p-12" aria-labelledby="assistantTitle">
-            <div class="flex flex-wrap items-center gap-3 mb-8 text-sm">
-              <span class="px-3 py-1 rounded-full border border-[#f95106]/30 bg-[#f95106]/10 text-[#ff9a68]">创作助手</span>
-              <span class="text-slate-400">本地素材与剪映草稿工作流</span>
-            </div>
-            <h3 id="assistantTitle" class="max-w-2xl text-3xl md:text-4xl font-bold leading-tight mb-5">
-              不止回答问题，也能实际推进创作
-            </h3>
-            <p class="max-w-2xl text-slate-400 text-lg leading-relaxed mb-10">
-              智能口播衔接文案、分段配音、画面匹配与草稿组装；通用专家处理素材检索、媒体分析和自由剪辑。结果是可继续编辑的剪映草稿，需要视频文件时在剪映中检查并导出。
-            </p>
-
-            <picture class="site-visual creation-visual mb-10">
-              <source srcset="assets/manual/10-creative-assistant.png" type="image/webp" />
-              <img src="assets/manual/10-creative-assistant.png" width="1536" height="1024"
-                alt="抽象化的创作助手效果图，指令栏连接多轨时间线与五个连续故事板" loading="lazy" decoding="async" />
-            </picture>
-
-            <ul class="grid sm:grid-cols-2 gap-x-10 border-y border-white/10" aria-label="创作助手主要能力">
-              <li class="py-5 border-b sm:border-b border-white/10">
-                <h4 class="font-semibold mb-1">按范围找素材</h4>
-                <p class="text-sm text-slate-400 leading-relaxed">搜索素材库或限定目录，也能从相似画面继续发现可用内容。</p>
-              </li>
-              <li class="py-5 border-b border-white/10">
-                <h4 class="font-semibold mb-1">创建与编辑草稿</h4>
-                <p class="text-sm text-slate-400 leading-relaxed">处理轨道、时序、字幕、动画、转场、蒙版、关键帧和模板替换。</p>
-              </li>
-              <li class="py-5 border-b sm:border-b-0 border-white/10">
-                <h4 class="font-semibold mb-1">自动或先确认</h4>
-                <p class="text-sm text-slate-400 leading-relaxed">自动模式连续执行；智能口播的询问模式在文案和分镜两个检查点等待确认。</p>
-              </li>
-              <li class="py-5">
-                <h4 class="font-semibold mb-1">按需补充外部素材</h4>
-                <p class="text-sm text-slate-400 leading-relaxed">获得许可后搜索第三方开放来源，并保留可用的作者与许可信息。</p>
-              </li>
-            </ul>
-
-            <a href="manual/"
-              class="inline-flex items-center mt-8 text-[#ff7a3c] hover:text-[#ffb380] font-semibold transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#f95106] focus-visible:ring-offset-4 focus-visible:ring-offset-[#0d0d0d]">
-              查看创作助手使用方法
-              <span class="ml-2" aria-hidden="true">→</span>
-            </a>
-          </article>
-
-          <aside class="lg:col-span-5 bg-[#141414] p-8 md:p-12" aria-labelledby="toolboxTitle">
-            <p class="text-sm font-semibold tracking-[0.18em] text-[#ff7a3c] mb-4">按需安装，本机处理</p>
-            <h3 id="toolboxTitle" class="text-2xl md:text-3xl font-bold mb-4">工具箱</h3>
-            <p class="text-slate-400 leading-relaxed mb-8">
-              只安装当前需要的能力。输入内容和媒体由本机工具处理，原始文件不会被覆盖。
-            </p>
-
-            <picture class="site-visual creation-visual mb-8">
-              <source srcset="assets/manual/12-toolbox.png" type="image/webp" />
-              <img src="assets/manual/12-toolbox.png" width="1536" height="1024"
-                alt="抽象化的本地工具箱效果图，展示配音、图片增强、视频增强与视频分镜能力" loading="lazy" decoding="async" />
-            </picture>
-
-            <dl class="border-t border-white/10">
-              <div class="py-6 border-b border-white/10">
-                <dt class="font-semibold text-lg mb-2">文本转语音</dt>
-                <dd class="text-sm text-slate-400 leading-relaxed">选择本机可用音色，把最长 50,000 字的文本生成 WAV，也能让创作助手把配音加入草稿。</dd>
-              </div>
-              <div class="py-6 border-b border-white/10">
-                <dt class="font-semibold text-lg mb-2">图片清晰化</dt>
-                <dd class="text-sm text-slate-400 leading-relaxed">使用 Real-ESRGAN 在本机放大 JPG、PNG 或 WebP 图片，支持照片和动漫模型。
-                </dd>
-              </div>
-              <div class="py-6 border-b border-white/10">
-                <dt class="font-semibold text-lg mb-2">视频增强</dt>
-                <dd class="text-sm text-slate-400 leading-relaxed">使用 Video2X 提升分辨率或帧率，也可以组合处理并输出 MP4。</dd>
-              </div>
-            </dl>
-
-            <p class="mt-7 text-sm text-slate-400 leading-relaxed">
-              工具安装和更新需要联网；图片与视频增强需要支持 Vulkan 的显卡。
-            </p>
-            <a href="manual/"
-              class="inline-flex items-center mt-6 text-[#ff7a3c] hover:text-[#ffb380] font-semibold transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#f95106] focus-visible:ring-offset-4 focus-visible:ring-offset-[#141414]">
-              查看工具箱说明
-              <span class="ml-2" aria-hidden="true">→</span>
-            </a>
-          </aside>
+        <figure class="feature-visual home-toolbox-visual reveal">
+          <a class="site-visual screenshot-link" href="assets/screenshots/creative-tools.webp" target="_blank" rel="noopener noreferrer" aria-label="查看创作工具截图原图（新窗口）">
+            <img src="assets/screenshots/creative-tools.webp" width="1440" height="1080"
+              alt="新版创作工具总览：视频理解与高光、文本转语音、图片清晰化、视频增强和批量视频拆分镜入口" loading="lazy" decoding="async" />
+          </a>
+          <figcaption class="toolbox-caption">
+            <p>新版创作工具总览，安装与运行状态为示例。</p>
+            <a href="assets/screenshots/creative-tools.webp" target="_blank" rel="noopener noreferrer" class="screenshot-original">查看原图 <span aria-hidden="true">↗</span></a>
+          </figcaption>
+        </figure>
+        <dl class="home-toolbox-details">
+          <div><dt>文本转语音</dt><dd>选择本机可用音色，将最长 50,000 字符的文本生成为 WAV 音频。</dd></div>
+          <div><dt>图片清晰化</dt><dd>使用 Real-ESRGAN 在本机放大图片，支持照片和动漫模型。</dd></div>
+          <div><dt>视频增强</dt><dd>使用 Video2X 提升分辨率或帧率，处理结果保存为新文件。</dd></div>
+        </dl>
+        <div class="home-toolbox-footer">
+          <p>工具目录、安装和更新需要联网；图片与视频增强需要支持 Vulkan 的显卡。</p>
+          <a href="manual/">查看工具使用说明 <span aria-hidden="true">→</span></a>
         </div>
       </div>
     </section>
@@ -532,7 +437,7 @@
       <div class="max-w-7xl mx-auto px-6">
         <div class="text-center max-w-3xl mx-auto mb-16 reveal">
           <h2 id="workflowTitle" class="text-3xl md:text-4xl font-bold mb-4">四步开始检索你的素材</h2>
-          <p class="text-slate-400 text-lg">无需复杂的导入流程，像添加文件夹一样简单。</p>
+          <p class="text-[#9ca0a9] text-lg">无需复杂的导入流程，像添加文件夹一样简单。</p>
         </div>
 
         <ol class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 relative">
@@ -540,25 +445,25 @@
             <span
               class="absolute -top-4 -left-2 w-10 h-10 rounded-full bg-[#f95106] text-white flex items-center justify-center font-bold shadow-lg">1</span>
             <h3 class="text-lg font-semibold mt-4 mb-2">初始化本地环境</h3>
-            <p class="text-slate-400 text-sm leading-relaxed">首次启动自动解压加载本地AI服务，并检测组件健康状态。</p>
+            <p class="text-[#9ca0a9] text-sm leading-relaxed">首次启动自动解压加载本地AI服务，并检测组件健康状态。</p>
           </li>
           <li class="workflow-step relative p-6 rounded-2xl border border-white/10 bg-white/[0.02] reveal">
             <span
               class="absolute -top-4 -left-2 w-10 h-10 rounded-full bg-[#f95106] text-white flex items-center justify-center font-bold shadow-lg">2</span>
             <h3 class="text-lg font-semibold mt-4 mb-2">添加素材源</h3>
-            <p class="text-slate-400 text-sm leading-relaxed">选择素材目录、盘符或外接硬盘，素刀预检路径、去重并配置排除规则。</p>
+            <p class="text-[#9ca0a9] text-sm leading-relaxed">选择素材目录、盘符或外接硬盘，素刀预检路径、去重并配置排除规则。</p>
           </li>
           <li class="workflow-step relative p-6 rounded-2xl border border-white/10 bg-white/[0.02] reveal">
             <span
               class="absolute -top-4 -left-2 w-10 h-10 rounded-full bg-[#f95106] text-white flex items-center justify-center font-bold shadow-lg">3</span>
             <h3 class="text-lg font-semibold mt-4 mb-2">后台自动建库</h3>
-            <p class="text-slate-400 text-sm leading-relaxed">图片直接索引，视频自动分镜抽帧，所有任务在后台队列中稳定执行。</p>
+            <p class="text-[#9ca0a9] text-sm leading-relaxed">图片直接索引，视频自动分镜抽帧，所有任务在后台队列中稳定执行。</p>
           </li>
           <li class="workflow-step relative p-6 rounded-2xl border border-white/10 bg-white/[0.02] reveal">
             <span
               class="absolute -top-4 -left-2 w-10 h-10 rounded-full bg-[#f95106] text-white flex items-center justify-center font-bold shadow-lg">4</span>
             <h3 class="text-lg font-semibold mt-4 mb-2">自然语言搜索</h3>
-            <p class="text-slate-400 text-sm leading-relaxed">输入描述，获取图片与视频片段混合结果，点击即可打开源文件与时间码。</p>
+            <p class="text-[#9ca0a9] text-sm leading-relaxed">输入描述，获取图片与视频片段混合结果，点击即可打开源文件与时间码。</p>
           </li>
         </ol>
       </div>
@@ -569,22 +474,22 @@
       <div class="max-w-7xl mx-auto px-6">
         <div class="text-center max-w-3xl mx-auto mb-16 reveal">
           <h2 id="audienceTitle" class="text-3xl md:text-4xl font-bold mb-4">适合这样的你</h2>
-          <p class="text-slate-400 text-lg">任何被海量本地素材困扰的创作者，都值得拥有更直觉的检索方式。</p>
+          <p class="text-[#9ca0a9] text-lg">任何被海量本地素材困扰的创作者，都值得拥有更直觉的检索方式。</p>
         </div>
 
         <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           <article
-            class="audience-card p-6 rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.03] to-transparent hover:border-white/20 transition-all reveal">
+            class="audience-card p-6 rounded-2xl border border-white/10 bg-[#101113] hover:border-white/20 transition-all reveal">
             <svg class="w-8 h-8 text-[#f95106] mb-4" viewBox="0 0 24 24" fill="none" stroke="currentColor"
               stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="m22 8-6 4 6 4V8Z" />
               <rect width="14" height="12" x="2" y="6" rx="2" />
             </svg>
             <h3 class="text-lg font-semibold mb-2">视频剪辑师</h3>
-            <p class="text-slate-400 text-sm">快速定位过往素材中的可用片段，不用逐条浏览文件夹。</p>
+            <p class="text-[#9ca0a9] text-sm">快速定位过往素材中的可用片段，不用逐条浏览文件夹。</p>
           </article>
           <article
-            class="audience-card p-6 rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.03] to-transparent hover:border-white/20 transition-all reveal">
+            class="audience-card p-6 rounded-2xl border border-white/10 bg-[#101113] hover:border-white/20 transition-all reveal">
             <svg class="w-8 h-8 text-[#f95106] mb-4" viewBox="0 0 24 24" fill="none" stroke="currentColor"
               stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <circle cx="12" cy="12" r="10" />
@@ -592,10 +497,10 @@
                 d="M8.56 2.75c4.37 6.03 6.02 9.42 8.03 17.72m2.54-15.38c-3.72 4.35-8.94 5.66-16.88 5.85m19.5 1.9c-3.5-.93-6.63-.82-8.94 0-2.58.92-5.01 2.86-7.44 6.32" />
             </svg>
             <h3 class="text-lg font-semibold mb-2">Vlogger / 自媒体</h3>
-            <p class="text-slate-400 text-sm">管理日积月累的拍摄素材，一句话找到想要的场景与画面。</p>
+            <p class="text-[#9ca0a9] text-sm">管理日积月累的拍摄素材，一句话找到想要的场景与画面。</p>
           </article>
           <article
-            class="audience-card p-6 rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.03] to-transparent hover:border-white/20 transition-all reveal">
+            class="audience-card p-6 rounded-2xl border border-white/10 bg-[#101113] hover:border-white/20 transition-all reveal">
             <svg class="w-8 h-8 text-[#f95106] mb-4" viewBox="0 0 24 24" fill="none" stroke="currentColor"
               stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <rect width="18" height="18" x="3" y="3" rx="2" />
@@ -603,10 +508,10 @@
               <path d="M9 21V9" />
             </svg>
             <h3 class="text-lg font-semibold mb-2">设计师 / 摄影师</h3>
-            <p class="text-slate-400 text-sm">用描述性语言定位参考图与样片，无需依赖严格的命名规范。</p>
+            <p class="text-[#9ca0a9] text-sm">用描述性语言定位参考图与样片，无需依赖严格的命名规范。</p>
           </article>
           <article
-            class="audience-card p-6 rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.03] to-transparent hover:border-white/20 transition-all reveal">
+            class="audience-card p-6 rounded-2xl border border-white/10 bg-[#101113] hover:border-white/20 transition-all reveal">
             <svg class="w-8 h-8 text-[#f95106] mb-4" viewBox="0 0 24 24" fill="none" stroke="currentColor"
               stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
@@ -615,7 +520,7 @@
               <path d="M16 3.13a4 4 0 0 1 0 7.75" />
             </svg>
             <h3 class="text-lg font-semibold mb-2">内容团队</h3>
-            <p class="text-slate-400 text-sm">团队共享素材盘时，成员可以用自然语言快速共享与复用历史素材。</p>
+            <p class="text-[#9ca0a9] text-sm">团队共享素材盘时，成员可以用自然语言快速共享与复用历史素材。</p>
           </article>
         </div>
       </div>
@@ -626,7 +531,7 @@
       <div class="max-w-3xl mx-auto px-6">
         <div class="text-center mb-12 reveal">
           <h2 id="faqTitle" class="text-3xl md:text-4xl font-bold mb-4">常见问题</h2>
-          <p class="text-slate-400 text-lg">关于隐私、格式与使用方式的快速解答。</p>
+          <p class="text-[#9ca0a9] text-lg">关于隐私、格式与使用方式的快速解答。</p>
         </div>
 
         <div class="space-y-4">
@@ -635,13 +540,13 @@
             <summary
               class="flex items-center justify-between w-full px-6 py-5 text-left font-semibold cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-[#f95106] focus-visible:rounded-xl">
               素刀 需要联网吗？
-              <svg class="w-5 h-5 text-slate-400 group-open:rotate-180 transition-transform" viewBox="0 0 24 24"
+              <svg class="w-5 h-5 text-[#9ca0a9] group-open:rotate-180 transition-transform" viewBox="0 0 24 24"
                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                 aria-hidden="true">
                 <path d="m6 9 6 6 6-6" />
               </svg>
             </summary>
-            <p class="px-6 pb-5 text-slate-400 leading-relaxed">本机建库、索引、搜索、分镜与抽帧在本机完成。首次激活、许可验证、组件下载和更新检查等需要联网；完成所需组件安装并保持有效许可后，核心本机处理不依赖云端推理。可选局域网共享使用局域网；创作助手和外部视觉模型需要访问你配置的模型服务。</p>
+            <p class="px-6 pb-5 text-[#9ca0a9] leading-relaxed">本机建库、索引、搜索、分镜与抽帧在本机完成。首次激活、许可验证、组件下载和更新检查等需要联网；完成所需组件安装并保持有效许可后，核心本机处理不依赖云端推理。可选局域网共享使用局域网；创作助手和外部视觉模型需要访问你配置的模型服务。</p>
           </details>
 
           <details
@@ -649,13 +554,13 @@
             <summary
               class="flex items-center justify-between w-full px-6 py-5 text-left font-semibold cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-[#f95106] focus-visible:rounded-xl">
               支持哪些图片和视频格式？
-              <svg class="w-5 h-5 text-slate-400 group-open:rotate-180 transition-transform" viewBox="0 0 24 24"
+              <svg class="w-5 h-5 text-[#9ca0a9] group-open:rotate-180 transition-transform" viewBox="0 0 24 24"
                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                 aria-hidden="true">
                 <path d="m6 9 6 6 6-6" />
               </svg>
             </summary>
-            <p class="px-6 pb-5 text-slate-400 leading-relaxed">图片支持 JPG、JPEG、PNG、WebP及CRW、DNG、SRF、SR2、RAW等常见的相机格式；视频支持
+            <p class="px-6 pb-5 text-[#9ca0a9] leading-relaxed">图片支持 JPG、JPEG、PNG、WebP，以及 CR2、CR3、NEF、ARW、DNG 等相机 RAW 格式；视频支持
               MP4、MOV、MKV、AVI、WebM。后续版本会持续扩展更多格式。</p>
           </details>
 
@@ -664,13 +569,13 @@
             <summary
               class="flex items-center justify-between w-full px-6 py-5 text-left font-semibold cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-[#f95106] focus-visible:rounded-xl">
               视频搜索是怎么实现的？
-              <svg class="w-5 h-5 text-slate-400 group-open:rotate-180 transition-transform" viewBox="0 0 24 24"
+              <svg class="w-5 h-5 text-[#9ca0a9] group-open:rotate-180 transition-transform" viewBox="0 0 24 24"
                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                 aria-hidden="true">
                 <path d="m6 9 6 6 6-6" />
               </svg>
             </summary>
-            <p class="px-6 pb-5 text-slate-400 leading-relaxed">素刀 使用 TransNetV2 对视频进行分镜，再用 ffmpeg
+            <p class="px-6 pb-5 text-[#9ca0a9] leading-relaxed">素刀 使用 TransNetV2 对视频进行分镜，再用 ffmpeg
               抽取每个分镜的代表帧，最后将代表帧送入本地语义索引。搜索时，你看到的是代表帧，点击即可打开原视频并跳转到对应时间段。</p>
           </details>
 
@@ -679,13 +584,13 @@
             <summary
               class="flex items-center justify-between w-full px-6 py-5 text-left font-semibold cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-[#f95106] focus-visible:rounded-xl">
               可以添加整个盘符或外接硬盘吗？
-              <svg class="w-5 h-5 text-slate-400 group-open:rotate-180 transition-transform" viewBox="0 0 24 24"
+              <svg class="w-5 h-5 text-[#9ca0a9] group-open:rotate-180 transition-transform" viewBox="0 0 24 24"
                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                 aria-hidden="true">
                 <path d="m6 9 6 6 6-6" />
               </svg>
             </summary>
-            <p class="px-6 pb-5 text-slate-400 leading-relaxed">可以。素刀 支持文件夹、整盘符以及外接硬盘路径作为素材源，并会针对盘符级扫描提供默认排除规则，避免扫描系统目录。
+            <p class="px-6 pb-5 text-[#9ca0a9] leading-relaxed">可以。素刀 支持文件夹、整盘符以及外接硬盘路径作为素材源，并会针对盘符级扫描提供默认排除规则，避免扫描系统目录。
             </p>
           </details>
 
@@ -694,13 +599,13 @@
             <summary
               class="flex items-center justify-between w-full px-6 py-5 text-left font-semibold cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-[#f95106] focus-visible:rounded-xl">
               我的素材隐私如何保障？
-              <svg class="w-5 h-5 text-slate-400 group-open:rotate-180 transition-transform" viewBox="0 0 24 24"
+              <svg class="w-5 h-5 text-[#9ca0a9] group-open:rotate-180 transition-transform" viewBox="0 0 24 24"
                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                 aria-hidden="true">
                 <path d="m6 9 6 6 6-6" />
               </svg>
             </summary>
-            <p class="px-6 pb-5 text-slate-400 leading-relaxed">本机索引与缓存保存在本机，不向素刀公网服务上传原始素材。局域网共享默认关闭，仅用于可信局域网，使用 HTTP 明文传输搜索词、主动选择的查询图片、预览和按需原文件。启用外部视觉 API 时会发送选定图片或视频采样帧，创作模型会收到相关对话和描述文字；这些可选功能不是完全离线处理。</p>
+            <p class="px-6 pb-5 text-[#9ca0a9] leading-relaxed">本机索引与缓存保存在本机，不向素刀公网服务上传原始素材。局域网共享默认关闭，仅用于可信局域网，使用 HTTP 明文传输搜索词、主动选择的查询图片、预览和按需原文件。启用外部视觉 API 时会发送选定图片或视频采样帧，创作模型会收到相关对话和描述文字；这些可选功能不是完全离线处理。</p>
           </details>
         </div>
       </div>
@@ -710,20 +615,16 @@
     <section id="download" class="py-20 md:py-28" aria-labelledby="downloadTitle">
       <div class="max-w-5xl mx-auto px-6">
         <div
-          class="relative overflow-hidden rounded-3xl border border-[#f95106]/20 bg-gradient-to-br from-orange-900/40 to-[#111]/80 p-10 md:p-16 text-center reveal">
-          <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
-            <div class="absolute -top-24 -right-24 w-64 h-64 bg-[#f95106]/20 rounded-full blur-3xl"></div>
-            <div class="absolute -bottom-24 -left-24 w-64 h-64 bg-[#ff7a3c]/20 rounded-full blur-3xl"></div>
-          </div>
+          class="relative overflow-hidden rounded-3xl border border-[#f95106]/20 bg-[#101113] p-10 md:p-16 text-center reveal">
           <div class="relative">
             <h2 id="downloadTitle" class="text-3xl md:text-5xl font-bold mb-4">准备好找回你的灵感了吗？</h2>
-            <p class="text-slate-300 text-lg md:text-xl max-w-2xl mx-auto mb-8">下载素刀，让你的图片与视频素材用自然语言搜索。</p>
+            <p class="text-[#c5c8d0] text-lg md:text-xl max-w-2xl mx-auto mb-8">下载素刀，让你的图片与视频素材用自然语言搜索。</p>
             <div>
               <div class="rounded-[10px] mb-[16px] bg-[#f95106] py-[16px]">素刀V2版本已发布，公测期间完全免费！暂时没有收费计划</div>
               <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
                 <a href="https://atomgit.com/gcw_DvNLXsnW/ClipKnife/releases/download/v2.0.0/%E7%B4%A0%E5%88%80_2.5.0_x64-setup.exe"
                   target="_blank" rel="noopener noreferrer"
-                  class="inline-flex items-center justify-center gap-2 w-full sm:w-auto px-7 py-3.5 rounded-full bg-[#f95106] hover:bg-[#d94605] text-white font-semibold transition-all shadow-lg shadow-[#f95106]/25 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#f95106] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0a]">
+                  class="inline-flex items-center justify-center gap-2 w-full sm:w-auto px-7 py-3.5 rounded-full bg-[#f95106] hover:bg-[#d94605] text-white font-semibold transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#f95106] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0a]">
                   <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                     stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                     <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
@@ -745,7 +646,7 @@
                 </button>
               </div>
             </div>
-            <div class="mt-8 flex flex-wrap items-center justify-center gap-4 text-sm text-slate-400">
+            <div class="mt-8 flex flex-wrap items-center justify-center gap-4 text-sm text-[#9ca0a9]">
               <span class="flex items-center gap-2"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none"
                   stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                   aria-hidden="true">
@@ -780,12 +681,12 @@
     <div class="absolute inset-0 bg-black/70 backdrop-blur-sm transition-opacity opacity-0" data-modal-backdrop></div>
     <div class="relative z-10 flex min-h-full items-center justify-center p-4">
       <div
-        class="w-full max-w-md transform scale-95 opacity-0 transition-all duration-200 rounded-2xl border border-white/10 bg-[#111] p-6 shadow-2xl"
+        class="w-full max-w-md transform scale-95 opacity-0 transition-all duration-200 rounded-2xl border border-white/10 bg-[#0b0c0e] p-6 shadow-2xl"
         data-modal-panel>
         <div class="flex items-center justify-between mb-4">
           <h3 id="downloadModalTitle" class="text-lg font-semibold text-white">V2离线包下载</h3>
           <button type="button" data-modal-close
-            class="p-2 -mr-2 rounded-lg text-slate-400 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-[#f95106]"
+            class="p-2 -mr-2 rounded-lg text-[#9ca0a9] hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-[#f95106]"
             aria-label="关闭">
             <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
               stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -794,7 +695,7 @@
             </svg>
           </button>
         </div>
-        <p class="text-slate-400 text-sm mb-4"></p>
+        <p class="text-[#9ca0a9] text-sm mb-4"></p>
         <a href="https://pan.baidu.com/s/1jdUj8FZCE7Td8KqfQAQ3PQ?pwd=kjkc" target="_blank" rel="noopener noreferrer"
           class="flex items-center gap-3 w-full px-4 py-3 rounded-xl border border-white/10 bg-white/[0.03] hover:bg-[#f95106]/10 hover:border-[#f95106]/50 transition-all">
           <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -805,7 +706,7 @@
           </svg>
           百度网盘下载
         </a>
-        <p class="text-slate-400 text-sm mb-4"></p>
+        <p class="text-[#9ca0a9] text-sm mb-4"></p>
 
       </div>
     </div>
@@ -816,12 +717,12 @@
     <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
       <a href="#" class="flex items-center gap-2 font-bold text-lg" aria-label="ClipKnife 首页">
         <img src="assets/icon.png" alt="" class="w-6 h-6 rounded-md" />
-        <span class="bg-clip-text text-transparent bg-gradient-to-r from-[#f95106] to-[#ff7a3c]">素刀</span>
+        <span class="text-[#f95106]">素刀</span>
       </a>
       <nav aria-label="页脚导航">
-        <ul class="flex flex-wrap items-center justify-center gap-6 text-sm text-slate-400">
+        <ul class="flex flex-wrap items-center justify-center gap-6 text-sm text-[#9ca0a9]">
           <li><a href="#features" class="hover:text-white transition-colors">功能</a></li>
-          <li><a href="#creation" class="hover:text-white transition-colors">创作能力</a></li>
+          <li><a href="#creation" class="hover:text-white transition-colors">创作工具</a></li>
           <li><a href="#workflow" class="hover:text-white transition-colors">流程</a></li>
           <li><a href="manual/" class="hover:text-white transition-colors">使用手册</a></li>
           <li><a href="scenes/search-video-content/" class="hover:text-white transition-colors">按内容搜索</a></li>
@@ -830,7 +731,7 @@
           <li><a href="#download" class="hover:text-white transition-colors">下载</a></li>
         </ul>
       </nav>
-      <p class="text-sm text-slate-500">&copy; <span id="year"></span> 素刀，创作者的生产力工具，素材界的瑞士军刀。</p>
+      <p class="text-sm text-[#7c818c]">&copy; <span id="year"></span> 素刀，创作者的生产力工具，素材界的瑞士军刀。</p>
     </div>
   </footer>
 
