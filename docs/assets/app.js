@@ -128,9 +128,18 @@
     });
   });
 
-  // Scroll reveal
+  // Prepare only offscreen sections; visible content must never fade back out.
   const revealElements = document.querySelectorAll('.reveal');
-  if ('IntersectionObserver' in window && revealElements.length) {
+  const reducedMotion = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : null;
+
+  function showWithoutMotion(el) {
+    el.classList.remove('reveal-motion');
+    el.classList.add('is-visible');
+  }
+
+  if ('IntersectionObserver' in window && revealElements.length && !(reducedMotion && reducedMotion.matches)) {
+    const lead = 120;
+    const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
     const observer = new IntersectionObserver(
       function (entries) {
         entries.forEach(function (entry) {
@@ -142,17 +151,40 @@
       },
       {
         root: null,
-        rootMargin: '0px 0px -50px 0px',
-        threshold: 0.1
+        rootMargin: '0px 0px ' + lead + 'px 0px',
+        threshold: 0
       }
     );
     revealElements.forEach(function (el) {
-      observer.observe(el);
+      if (el.getBoundingClientRect().top <= viewportHeight + lead) {
+        showWithoutMotion(el);
+      } else {
+        el.classList.add('reveal-motion');
+        observer.observe(el);
+      }
+    });
+
+    function finishReveals() {
+      observer.disconnect();
+      revealElements.forEach(showWithoutMotion);
+    }
+
+    document.addEventListener('focusin', function (event) {
+      const target = event.target.closest ? event.target.closest('.reveal') : null;
+      if (!target || !target.classList.contains('reveal-motion')) return;
+      showWithoutMotion(target);
+      observer.unobserve(target);
+    });
+    if (reducedMotion && reducedMotion.addEventListener) {
+      reducedMotion.addEventListener('change', function (event) {
+        if (event.matches) finishReveals();
+      });
+    }
+    window.addEventListener('pagehide', function () { observer.disconnect(); });
+    window.addEventListener('pageshow', function (event) {
+      if (event.persisted) finishReveals();
     });
   } else {
-    // Fallback for older browsers
-    revealElements.forEach(function (el) {
-      el.classList.add('is-visible');
-    });
+    revealElements.forEach(showWithoutMotion);
   }
 })();

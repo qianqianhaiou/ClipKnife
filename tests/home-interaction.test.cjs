@@ -86,3 +86,98 @@ test('homepage anchor navigation respects the reduced-motion preference', () => 
   assert.equal(calls[1].behavior, 'auto');
   assert.equal(calls[1].top, 0);
 });
+
+function setupReveals({ reduced = false, supported = true } = {}) {
+  const nodes = [-200, 240, 850, 1400, 2200].map(top => {
+    const node = element(['reveal']);
+    node.getBoundingClientRect = () => ({ top, bottom: top + 120 });
+    return node;
+  });
+  const observed = new Set();
+  const events = new Map();
+  const preferenceEvents = new Map();
+  let notify;
+  let disconnected = false;
+  let observerCount = 0;
+  const motion = { matches: reduced, addEventListener: (name, callback) => preferenceEvents.set(name, callback) };
+  class Observer {
+    constructor(callback) { notify = callback; observerCount++; }
+    observe(node) { observed.add(node); }
+    unobserve(node) { observed.delete(node); }
+    disconnect() { disconnected = true; observed.clear(); }
+  }
+  const document = {
+    body: { style: {} },
+    documentElement: { clientHeight: 800 },
+    getElementById: () => null,
+    querySelector: () => null,
+    querySelectorAll: selector => selector === '.reveal' ? nodes : [],
+    addEventListener: (name, callback) => events.set(name, callback),
+  };
+  const window = {
+    innerHeight: 800,
+    matchMedia: () => motion,
+    addEventListener: (name, callback) => events.set(name, callback),
+  };
+  if (supported) window.IntersectionObserver = Observer;
+  vm.runInNewContext(script, { document, window, IntersectionObserver: Observer, setTimeout });
+  return { nodes, observed, events, preferenceEvents, notify, get disconnected() { return disconnected; }, get observerCount() { return observerCount; } };
+}
+
+test('scroll entrance never re-hides content already visible or near the viewport', () => {
+  const context = setupReveals();
+  for (const node of context.nodes.slice(0, 3)) {
+    assert.equal(node.classList.contains('is-visible'), true);
+    assert.equal(node.classList.contains('reveal-motion'), false);
+    assert.equal(context.observed.has(node), false);
+  }
+  for (const node of context.nodes.slice(3)) {
+    assert.equal(node.classList.contains('reveal-motion'), true);
+    assert.equal(node.classList.contains('is-visible'), false);
+    assert.equal(context.observed.has(node), true);
+  }
+});
+
+test('offscreen sections enter once and are released from observation', () => {
+  const context = setupReveals();
+  const node = context.nodes[3];
+  context.notify([{ target: node, isIntersecting: false }]);
+  assert.equal(node.classList.contains('is-visible'), false);
+  context.notify([{ target: node, isIntersecting: true }]);
+  assert.equal(node.classList.contains('is-visible'), true);
+  assert.equal(context.observed.has(node), false);
+  context.notify([{ target: node, isIntersecting: false }]);
+  assert.equal(node.classList.contains('is-visible'), true);
+});
+
+test('reduced motion and unavailable observers keep all content immediately readable', () => {
+  for (const options of [{ reduced: true }, { supported: false }]) {
+    const context = setupReveals(options);
+    assert.equal(context.observerCount, 0);
+    assert.ok(context.nodes.every(node => node.classList.contains('is-visible') && !node.classList.contains('reveal-motion')));
+  }
+});
+
+test('enabling reduced motion during scrolling finishes every pending entrance', () => {
+  const context = setupReveals();
+  context.preferenceEvents.get('change')({ matches: true });
+  assert.equal(context.disconnected, true);
+  assert.ok(context.nodes.every(node => node.classList.contains('is-visible') && !node.classList.contains('reveal-motion')));
+});
+
+test('keyboard focus makes an offscreen target visible without an entrance delay', () => {
+  const context = setupReveals();
+  const node = context.nodes[3];
+  context.events.get('focusin')({ target: { closest: () => node } });
+  assert.equal(node.classList.contains('is-visible'), true);
+  assert.equal(node.classList.contains('reveal-motion'), false);
+  assert.equal(context.observed.has(node), false);
+});
+
+test('history restoration releases observers and never replays section entrances', () => {
+  const context = setupReveals();
+  context.events.get('pagehide')();
+  assert.equal(context.disconnected, true);
+  context.events.get('pageshow')({ persisted: true });
+  assert.ok(context.nodes.every(node => node.classList.contains('is-visible') && !node.classList.contains('reveal-motion')));
+});

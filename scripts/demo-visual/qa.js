@@ -44,6 +44,67 @@
   const state = () => JSON.parse(sessionStorage.getItem('clipknife:website-demo:v1'));
 
   async function run() {
+    if (scenario === 'homepage-scroll') {
+      document.documentElement.style.scrollBehavior = 'auto';
+      await document.fonts.ready;
+      const reveals = $$('.home-section .reveal');
+      const previous = new Map();
+      const drops = new Set();
+      const replayed = new Set();
+      const frame = () => new Promise(resolve => requestAnimationFrame(resolve));
+      function sample(repeat) {
+        reveals.forEach(node => {
+          const bounds = node.getBoundingClientRect();
+          const visible = bounds.top < innerHeight && bounds.bottom > 64;
+          const opacity = Number(getComputedStyle(node).opacity);
+          const last = previous.get(node);
+          if (visible && last?.visible && opacity < last.opacity - .02) drops.add(node);
+          if (repeat && visible && opacity < .99) replayed.add(node);
+          previous.set(node, { visible, opacity });
+        });
+      }
+      async function scrollThrough(repeat) {
+        const end = document.documentElement.scrollHeight - innerHeight;
+        for (let top = 0; top < end + 80; top += 80) {
+          window.scrollTo({ top, behavior: 'instant' });
+          await frame(); sample(repeat);
+          await frame(); sample(repeat);
+        }
+        await pause(550);
+      }
+      await scrollThrough(false);
+      check('visible sections never fade back out while scrolling (' + drops.size + ' regressions)', drops.size === 0);
+      check('every section remains readable after its first entrance', reveals.every(node => getComputedStyle(node).opacity === '1'));
+      await scrollThrough(true);
+      check('scrolling back and down does not replay entrances', replayed.size === 0);
+      if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        check('reduced motion keeps sections static', reveals.every(node => getComputedStyle(node).transform === 'none' && getComputedStyle(node).transitionDuration === '0s'));
+      }
+      $('#features').scrollIntoView({ block: 'start', behavior: 'instant' });
+      await pause(200);
+      return;
+    }
+    if (scenario === 'home-demo-transition') {
+      const host = $('[data-demo-host]');
+      const poster = $('.site-demo-poster');
+      const live = $('[data-demo-live]');
+      const coverage = [];
+      const deadline = performance.now() + 12000;
+      do {
+        await new Promise(resolve => requestAnimationFrame(resolve));
+        const posterStyle = getComputedStyle(poster);
+        const liveOpacity = Number(getComputedStyle(live).opacity);
+        const posterOpacity = posterStyle.display === 'none' || posterStyle.visibility === 'hidden' ? 0 : Number(posterStyle.opacity);
+        coverage.push(liveOpacity + (1 - liveOpacity) * posterOpacity);
+        if (host.dataset.ready === 'true' && liveOpacity === 1) break;
+      } while (performance.now() < deadline);
+      check('demo becomes ready during the handoff', host.dataset.ready === 'true' && getComputedStyle(live).opacity === '1');
+      check('poster or live demo covers every handoff frame (minimum ' + Math.min(...coverage).toFixed(2) + ')', coverage.every(value => value >= .99));
+      await pause(300);
+      check('completed handoff hides the inactive poster', getComputedStyle(poster).visibility === 'hidden');
+      $('#demo').scrollIntoView({ block: 'start', behavior: 'instant' });
+      return;
+    }
     if (scenario.startsWith('homepage-')) {
       await until(() => $('.home-page'), 'homepage content');
       // Capture a stable section after exercising focus, independently of smooth scrolling.

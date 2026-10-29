@@ -179,7 +179,8 @@
   .hero-copy { animation:home-enter 620ms cubic-bezier(.2,.7,.2,1) both; }
   .hero-visual { animation:hero-reel-enter 900ms cubic-bezier(.2,.7,.2,1) both; }
   .home-page .site-demo { animation:home-enter 720ms cubic-bezier(.2,.7,.2,1) both; }
-  .home-page[data-home-ready] .reveal.is-visible { animation:home-enter 520ms cubic-bezier(.2,.7,.2,1) both; }
+  .home-page .reveal.reveal-motion { opacity:0; transform:translateY(12px); }
+  .home-page .reveal.reveal-motion.is-visible { opacity:1; transform:none; transition:opacity 320ms ease-out,transform 420ms cubic-bezier(.2,.7,.2,1); }
   .home-showcase[data-enhanced] .showcase-panel:not([hidden]) { animation:home-panel-enter 280ms ease-out both; }
 }
 @keyframes home-enter { from { opacity:0; transform:translateY(16px); } to { opacity:1; transform:none; } }
