@@ -6,13 +6,13 @@ import { Check, ChevronDown, ImageOff, RefreshCw, X } from "lucide-react";
 const photos = import.meta.glob<string>("../assets/*.webp", { eager: true, query: "?url", import: "default" });
 const photoFocus: Record<string, string> = { traveler: "72% center" };
 export function photoUrl(name: string, full = false) { return photos[`../assets/${name}${full ? "" : "-thumb"}.webp`]; }
-export function Photo({ name, alt, full = false, eager = false, retry = false }: { name: string; alt: string; full?: boolean; eager?: boolean; retry?: boolean }) {
+export function Photo({ name, alt, full = false, eager = false, retry = false, onLoad, onError }: { name: string; alt: string; full?: boolean; eager?: boolean; retry?: boolean; onLoad?: () => void; onError?: () => void }) {
   const [failed, setFailed] = useState(false);
   const [attempt, setAttempt] = useState(0);
   useEffect(() => { setFailed(false); setAttempt(0); }, [name, full]);
   const url = photoUrl(name, full);
   return failed || !url ? <span className="photo-error" aria-label={`${alt}，图片暂未加载`}><ImageOff /><span>图片暂未加载</span>{retry && <button type="button" onClick={event => { event.stopPropagation(); setFailed(false); setAttempt(value => value + 1); }} aria-label={`重新加载${alt}`}><RefreshCw />重试</button>}</span>
-    : <img key={`${name}-${full}-${attempt}`} src={url} alt={alt} style={{ objectPosition: photoFocus[name] }} loading={eager ? "eager" : "lazy"} decoding="async" onError={() => setFailed(true)} />;
+    : <img key={`${name}-${full}-${attempt}`} src={url} alt={alt} style={{ objectPosition: photoFocus[name] }} loading={eager ? "eager" : "lazy"} decoding="async" onLoad={onLoad} onError={() => { setFailed(true); onError?.(); }} />;
 }
 export function Modal({ open, title, description, children, onClose, className = "", returnFocus, initialFocus }: {
   open: boolean; title: string; description: string; children: ReactNode; onClose: () => void;

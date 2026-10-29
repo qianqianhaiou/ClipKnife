@@ -50,7 +50,7 @@
       check('document loaded over HTTP', document.body.textContent.length > 500);
       return;
     }
-    if (scenario === 'home' || scenario === 'home-mobile') {
+    if (scenario === 'home' || scenario === 'home-mobile' || scenario === 'home-video') {
       await until(() => $('[data-demo-host]'), 'homepage');
       $('#demo').scrollIntoView({ block: 'start' });
       if (innerWidth < 1200) {
@@ -73,6 +73,17 @@
         await pause(400); return;
       }
       check('embedded demo mounted', $('.demo-app', frame.contentDocument));
+      if (scenario === 'home-video') {
+        const inside = frame.contentDocument;
+        await click('[data-asset="coast-film"] .preview-button', inside);
+        await until(() => $('.video-preview', inside)?.dataset.playing === 'true', 'embedded playback');
+        const before = Number($('.video-progress', inside).value); await pause(350);
+        check('embedded player advances', Number($('.video-progress', inside).value) > before);
+        check('embedded player keeps footer reachable', $('.preview-footer', inside).getBoundingClientRect().bottom <= frame.clientHeight);
+        await click('.playback-toggle', inside);
+        check('embedded player pauses', $('.video-preview', inside).dataset.playing === 'false');
+        return;
+      }
       await click('.desktop-nav-link:nth-child(2)', frame.contentDocument);
       check('embedded search responds', $('.search-intro', frame.contentDocument));
       await click('.desktop-nav-link:first-child', frame.contentDocument);
@@ -132,6 +143,76 @@
     if (scenario === 'groups') { await click('[role="tab"]:nth-child(3)'); return; }
     if (scenario === 'advanced') { await search('海边日落'); await click('.advanced-button'); await key('ArrowDown', $('[aria-label="素材来源"]')); return; }
     if (scenario === 'detail') { await click('[data-asset="coast-film"] .tile-hit'); return; }
+    if (scenario === 'image-preview') {
+      await click('[data-asset="mountain"] .preview-button');
+      check('image preview stays separate from video controls', !$('.video-preview') && $('.preview-stage img'));
+      await click('.preview-controls .text-button');
+      check('image zoom still works', $('.preview-stage.zoomed'));
+      await key('Escape');
+      await click('[data-asset="voice"] .preview-button');
+      check('audio stays metadata-only', $('.audio-dialog') && !$('.video-preview'));
+      return;
+    }
+    if (['video-playback', 'video-reduced', 'video-portrait', 'video-snapshot'].includes(scenario)) {
+      const portrait = scenario === 'video-portrait';
+      await click(`[data-asset="${portrait ? 'coast-walk' : 'coast-film'}"] .preview-button`);
+      await until(() => $('.playback-toggle') && !$('.playback-toggle').disabled, 'video frame ready');
+      const head = () => Number($('.video-progress').value);
+      const moving = () => $('.video-preview').dataset.playing === 'true';
+      const transform = () => getComputedStyle($('.video-frame')).transform;
+      if (portrait) {
+        check('portrait video keeps a portrait canvas', $('.video-canvas').clientHeight > $('.video-canvas').clientWidth);
+        check('portrait video plays', moving());
+        return;
+      }
+      if (scenario === 'video-reduced') {
+        check('reduced motion starts paused', matchMedia('(prefers-reduced-motion: reduce)').matches && !moving());
+        check('reduced motion disables camera transforms', transform() === 'none');
+        await click('.playback-toggle'); const before = head(); await pause(350);
+        check('explicit play still advances time', head() > before);
+        check('explicit play keeps camera still', transform() === 'none');
+        check('reduced motion removes shot fade', getComputedStyle($('.video-frame')).animationName === 'none');
+        return;
+      }
+      if (scenario === 'video-snapshot') {
+        await click('.playback-toggle'); await textInput('.video-progress', '8'); return;
+      }
+      check('video opens playing after the frame loads', moving());
+      const before = head(), firstTransform = transform(); await pause(450);
+      check('play advances the timeline', head() > before);
+      check('play moves the still image', transform() !== firstTransform);
+      await click('.playback-toggle'); const paused = head(), pausedTransform = transform(); await pause(300);
+      check('pause freezes time and camera', head() === paused && transform() === pausedTransform && !moving());
+      await textInput('.video-progress', '11.8'); await click('.playback-toggle');
+      await until(() => $('.preview-shots>button:nth-of-type(2)').getAttribute('aria-pressed') === 'true', 'automatic shot cut');
+      check('play automatically advances the shot', head() >= 12);
+      await until(moving, 'next frame ready');
+      const panStart = transform(); await pause(250);
+      check('second shot pans across the image', transform() !== panStart);
+      await click('.preview-footer .primary'); const nestedTime = head(); await pause(220);
+      check('group dialog pauses playback', !moving() && head() === nestedTime);
+      await click('.group-picker button:first-child');
+      check('group receives the visible shot', state().groups[0].members.some(ref => ref.assetId === 'coast-film' && ref.shotId === 'coast-film-shot-2'));
+      await key('Escape');
+      check('closing nested dialog restores focus and stays paused', document.activeElement === $('.preview-footer .primary') && !moving());
+      await click('.playback-toggle');
+      Object.defineProperty(document, 'hidden', { configurable: true, value: true });
+      document.dispatchEvent(new Event('visibilitychange')); await pause();
+      check('hidden page pauses the player', !moving());
+      delete document.hidden;
+      document.dispatchEvent(new Event('visibilitychange'));
+      await textInput('.video-progress', '47.8');
+      await until(() => !$('.playback-toggle').disabled, 'last frame ready'); await click('.playback-toggle');
+      await until(() => $('.playback-toggle').getAttribute('aria-label') === '重播演示', 'playback end');
+      check('end stops exactly at duration', head() === 48 && !moving());
+      await click('.playback-toggle');
+      await until(moving, 'replay ready'); check('replay starts at the first shot', head() < 2);
+      await key('Escape'); check('close removes the playback surface', !$('.video-preview'));
+      await click('[data-asset="coast-film"] .preview-button');
+      await until(() => !$('.playback-toggle').disabled, 'reopened frame ready');
+      check('reopening starts a fresh preview', head() < 2);
+      return;
+    }
     if (scenario === 'preview' || scenario === 'nested' || scenario === 'image-error') {
       await click('[data-asset="coast-film"] .preview-button');
       await click('[aria-label="下一分镜"]');
@@ -147,6 +228,7 @@
       if (scenario === 'image-error') {
         $('.preview-stage img').dispatchEvent(new Event('error')); await pause();
         check('image failure shows fallback', $('.preview-stage .photo-error'));
+        check('failed video frame pauses playback', $('.video-preview').dataset.playing === 'false');
         await click('.preview-stage .photo-error button');
         await until(() => $('.preview-stage img')?.complete, 'image retry');
         check('image retry recovers', !$('.preview-stage .photo-error'));

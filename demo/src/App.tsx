@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useReducer, useRef, useState, type Dispatch, type RefObject } from "react";
-import { ArrowDownToLine, ArrowLeft, ArrowRight, AudioLines, Check, ChevronLeft, ChevronRight,
+import { ArrowDownToLine, ArrowLeft, ArrowRight, AudioLines, Check, ChevronRight,
   Compass, Expand, Film, FolderClosed, FolderOpen, FolderPlus, Image, Info, LayoutGrid, Maximize2,
-  Music2, PanelLeftClose, PanelLeftOpen, Plus, RefreshCw, RotateCcw, Search, Settings, SlidersHorizontal,
+  Music2, PanelLeftClose, PanelLeftOpen, Play, Plus, RefreshCw, RotateCcw, Search, Settings, SlidersHorizontal,
   Sparkles, Tag, Trash2, X } from "lucide-react";
 import { assets, folders, importAssets, sampleQueries } from "./data";
 import { assetFor, demoReducer, filterLibrary, inFolder, initialState, libraryAssets, refKey, restoreState, searchAssets, shotFor, STORAGE_KEY, timeLabel, type Action } from "./model";
@@ -9,6 +9,7 @@ import type { DemoAsset, DemoGroup, DemoState, MediaFilter, MediaRef, SearchResu
 import { NavigationIcon } from "./components/NavigationIcon";
 import { MaterialLibraryIcon } from "./components/MaterialLibraryIcon";
 import { Choice, Empty, Modal, Photo } from "./components/ui";
+import { VideoPreview } from "./components/VideoPreview";
 import previewUrl from "./assets/preview.webp";
 
 type ControlDialog = "import" | "reset" | "stats" | "advanced" | "create" | { title: string; text: string };
@@ -182,7 +183,7 @@ export function App({ embed }: { embed: boolean }) {
 
           {state.selected && selectedAsset && !compactInspector && <aside className="inspector" aria-label="素材详情"><Inspector reference={state.selected} asset={selectedAsset} onClose={closeInspector} closeRef={inspectorClose} onPreview={() => { if (state.selected) showPreview(state.selected); }} onAdd={() => { if (state.selected) addToGroup(state.selected); }} onSimilar={() => { runSearch("", selectedAsset.id); }} onShot={ref => showPreview(ref)} /></aside>}
         </div>
-        <footer className="desktop-statusbar"><span className="status-ready"><i />示例素材已就绪</span><span className="status-hint">{state.page === "search" ? "描述画面，发现相关素材" : isGroups ? "分组只整理关系，不改变素材" : "点击素材查看详情，点击分组按钮整理素材"}</span><div><span>{items.length} 项素材</span><span>{state.groups.length} 个分组</span><button type="button" onClick={event => control({ title: "关于在线体验", text: "这是按素刀当前开发界面制作的交互示例。所有文件名、索引、描述和搜索结果均为示例数据；视频仅提供分镜静帧，音频仅展示元信息。完整功能以下载的桌面版本为准。" }, event.currentTarget)}><Info />演示说明</button></div></footer>
+        <footer className="desktop-statusbar"><span className="status-ready"><i />示例素材已就绪</span><span className="status-hint">{state.page === "search" ? "描述画面，发现相关素材" : isGroups ? "分组只整理关系，不改变素材" : "点击素材查看详情，点击分组按钮整理素材"}</span><div><span>{items.length} 项素材</span><span>{state.groups.length} 个分组</span><button type="button" onClick={event => control({ title: "关于在线体验", text: "这是按素刀当前开发界面制作的交互示例。所有文件名、索引、描述和搜索结果均为示例数据；视频以分镜静帧模拟动态播放，音频仅展示元信息。完整功能以下载的桌面版本为准。" }, event.currentTarget)}><Info />演示说明</button></div></footer>
       </section>
       {notice && <div className="toast" role="status"><Check />{notice}<button type="button" aria-label="关闭提示" onClick={() => setNotice("")}><X /></button></div>}
     </div>
@@ -192,7 +193,7 @@ export function App({ embed }: { embed: boolean }) {
     <Modal open={desktop && compactInspector && Boolean(state.selected)} title="素材详情" description="查看示例素材信息与静帧" onClose={closeInspector} returnFocus={selectionTrigger} className="compact-inspector-dialog">
       {state.selected && selectedAsset && <Inspector reference={state.selected} asset={selectedAsset} onPreview={() => { if (state.selected) showPreview(state.selected); }} onAdd={() => { if (state.selected) addToGroup(state.selected); }} onSimilar={() => runSearch("", selectedAsset.id)} onShot={ref => showPreview(ref)} />}
     </Modal>
-    <Preview reference={preview} onClose={() => setPreview(null)} onChange={setPreview} onAdd={ref => addToGroup(ref)} onSimilar={id => { setPreview(null); dispatch({ type: "select", ref: null }); runSearch("", id); }} returnFocus={previewTrigger} />
+    <Preview reference={preview} onClose={() => setPreview(null)} suspended={Boolean(groupTarget)} onAdd={ref => addToGroup(ref)} onSimilar={id => { setPreview(null); dispatch({ type: "select", ref: null }); runSearch("", id); }} returnFocus={previewTrigger} />
     <Modal open={Boolean(groupTarget)} title="添加到分组" description="选择分组立即添加，重复添加不会产生重复成员。" onClose={() => setGroupTarget(null)} returnFocus={groupTrigger}>
       {groupTarget && <GroupPicker groups={state.groups} reference={groupTarget} create={createGroup} onAdd={id => {
         const existing = state.groups.find(group => group.id === id)?.members.some(member => refKey(member) === refKey(groupTarget));
@@ -239,7 +240,7 @@ function MediaCard({ item, reference, selected, result, index, onSelect, onPrevi
       {item.kind === "audio" ? <AudioArt /> : <Photo key={`${item.id}-${shot?.id ?? ""}`} name={shot?.photo ?? item.photo} alt={shot?.description ?? item.description} eager={index < 8} />}
       <button type="button" className="tile-hit" onClick={event => onSelect(event.currentTarget)} aria-label={`查看详情：${item.name}`} aria-pressed={selected} />
       {item.kind !== "image" && <span className="duration-badge">{item.kind === "audio" ? <AudioLines /> : <Film />}{shot ? `${timeLabel(shot.start)}–${timeLabel(shot.end)}` : timeLabel(item.duration)}</span>}
-      <button type="button" className="preview-button" aria-label={`预览：${item.name}`} onClick={event => onPreview(event.currentTarget)}><Expand />{item.kind === "video" ? "静帧预览" : "预览"}</button>
+      <button type="button" className="preview-button" aria-label={`预览：${item.name}`} onClick={event => onPreview(event.currentTarget)}>{item.kind === "video" ? <Play /> : <Expand />}{item.kind === "video" ? "播放演示" : "预览"}</button>
       {selected && <span className="selection-check"><Check /></span>}
     </div>
     <div className="media-caption"><button type="button" className="file-title" title={item.name} onClick={event => onSelect(event.currentTarget)}>{item.name}</button>{onRemove ? <button type="button" className="card-action remove-member" aria-label={`从分组移出：${item.name}`} onClick={onRemove}><Trash2 /></button> : <button type="button" className="card-action" aria-label={`添加到分组：${item.name}`} onClick={event => onAdd(event.currentTarget)}><FolderPlus /></button>}</div>
@@ -255,7 +256,7 @@ function Inspector({ reference, asset, onClose, closeRef, onPreview, onAdd, onSi
 }) {
   const shot = shotFor(reference);
   return <><div className="inspector-title"><span>素材详情</span>{onClose && <button ref={closeRef} type="button" className="icon-button" aria-label="关闭素材详情" onClick={onClose}><X /></button>}</div><div className="inspector-scroll">
-    <div className="inspector-preview">{asset.kind === "audio" ? <AudioArt /> : <Photo key={asset.id} name={shot?.photo ?? asset.photo} alt={asset.description} full retry />}<button type="button" onClick={onPreview} className="button preview-inspector"><Expand />{asset.kind === "video" ? "查看分镜静帧" : asset.kind === "audio" ? "查看音频信息" : "放大预览"}</button></div>
+    <div className="inspector-preview">{asset.kind === "audio" ? <AudioArt /> : <Photo key={asset.id} name={shot?.photo ?? asset.photo} alt={asset.description} full retry />}<button type="button" onClick={onPreview} className="button preview-inspector">{asset.kind === "video" ? <Play /> : <Expand />}{asset.kind === "video" ? "播放视频演示" : asset.kind === "audio" ? "查看音频信息" : "放大预览"}</button></div>
     <div className="inspector-name"><h2>{asset.name}</h2><span className="indexed"><Check />示例已索引</span></div>
     <dl className="file-information"><div><dt>类型</dt><dd>{kindLabel(asset.kind)}</dd></div>{asset.kind !== "audio" && <div><dt>分辨率</dt><dd>{asset.width} × {asset.height}</dd></div>}<div><dt>大小</dt><dd>{asset.size}</dd></div>{asset.duration > 0 && <div><dt>时长</dt><dd>{timeLabel(asset.duration)}</dd></div>}<div><dt>所在目录</dt><dd>{folders.find(folder => folder.id === asset.folder)?.name}</dd></div></dl>
     <section className="inspector-section"><h3><Tag />自定义标签</h3><div className="tags">{asset.tags.map(tag => <span key={tag}>{tag}</span>)}</div></section>
@@ -265,21 +266,30 @@ function Inspector({ reference, asset, onClose, closeRef, onPreview, onAdd, onSi
   </div><footer className="inspector-actions"><button type="button" className="button primary" onClick={onAdd}><FolderPlus />添加到分组</button>{asset.kind !== "audio" && <button type="button" className="button" onClick={onSimilar}><Search />查找相似</button>}</footer></>;
 }
 
-function Preview({ reference, onClose, onChange, onAdd, onSimilar, returnFocus }: { reference: MediaRef | null; onClose: () => void; onChange: (ref: MediaRef) => void; onAdd: (ref: MediaRef) => void; onSimilar: (id: string) => void; returnFocus: RefObject<HTMLElement | null> }) {
+function Preview({ reference, suspended, onClose, onAdd, onSimilar, returnFocus }: {
+  reference: MediaRef | null; suspended: boolean; onClose: () => void; onAdd: (ref: MediaRef) => void;
+  onSimilar: (id: string) => void; returnFocus: RefObject<HTMLElement | null>;
+}) {
   const asset = reference ? assetFor(reference) : undefined;
-  const shot = reference ? shotFor(reference) ?? asset?.shots[0] : undefined;
-  const index = shot && asset ? asset.shots.indexOf(shot) : 0;
   const [zoom, setZoom] = useState(false);
   useEffect(() => setZoom(false), [reference?.assetId]);
-  const selectedRef = asset && shot ? { assetId: asset.id, shotId: shot.id } : reference;
-  return <Modal open={Boolean(asset)} title={asset?.name ?? "素材预览"} description={asset?.kind === "video" ? "分镜静帧预览 · 点击分镜查看画面与时间范围" : asset?.kind === "audio" ? "音频元信息示例，不播放音频" : "示例图片预览"} onClose={onClose} returnFocus={returnFocus} className={`preview-dialog${asset?.kind === "audio" ? " audio-dialog" : ""}`}>
-    {asset && reference && <><div className={`preview-workspace${asset.kind === "video" ? " has-shots" : ""}`}><div className="preview-main">
-      <div className={`preview-stage${zoom ? " zoomed" : ""}`}>{asset.kind === "audio" ? <AudioArt /> : <Photo key={`${asset.id}-${shot?.id ?? ""}`} name={shot?.photo ?? asset.photo} alt={shot?.description ?? asset.description} full eager retry />}</div>
-      <div className="preview-controls">{asset.kind === "video" ? <><span className="still-badge"><Film />静帧</span><button type="button" className="icon-button" disabled={index === 0} aria-label="上一分镜" onClick={() => { const previous = asset.shots[index - 1]; if (previous) onChange({ assetId: asset.id, shotId: previous.id }); }}><ChevronLeft /></button><span>分镜 {index + 1} / {asset.shots.length}</span><button type="button" className="icon-button" disabled={index === asset.shots.length - 1} aria-label="下一分镜" onClick={() => { const next = asset.shots[index + 1]; if (next) onChange({ assetId: asset.id, shotId: next.id }); }}><ChevronRight /></button><span className="preview-time">{timeLabel(shot?.start ?? 0)} – {timeLabel(shot?.end ?? asset.duration)}</span></> : asset.kind === "image" ? <><span>{asset.width} × {asset.height} · {asset.size}</span><button type="button" className="text-button" aria-pressed={zoom} onClick={() => setZoom(value => !value)}><Maximize2 />{zoom ? "适应窗口" : "放大查看"}</button></> : <span>{timeLabel(asset.duration)} · {asset.size} · 音频示例</span>}</div>
-      <div className="preview-description"><span>{asset.kind === "audio" ? "内容说明" : "画面描述"}</span><p>{shot?.description ?? asset.description}</p></div>
-    </div>{asset.kind === "video" && <aside className="preview-shots"><h3>视频分镜<span>{asset.shots.length} 个</span></h3>{asset.shots.map((item, i) => <button type="button" key={item.id} aria-pressed={shot?.id === item.id} className={shot?.id === item.id ? "selected" : ""} onClick={() => onChange({ assetId: asset.id, shotId: item.id })}><div className="shot-image"><Photo name={item.photo} alt={item.description} /><span>{String(i + 1).padStart(2, "0")}</span></div><strong>{timeLabel(item.start)} – {timeLabel(item.end)}</strong><p>{item.description}</p></button>)}</aside>}</div>
-      <footer className="preview-footer"><span><Info />{asset.kind === "video" ? "示例分镜静帧，不播放原视频" : "示例素材，不读取本机文件"}</span><div>{asset.kind !== "audio" && <button type="button" className="button" onClick={() => onSimilar(asset.id)}><Search />查找相似</button>}<button type="button" className="button primary" onClick={() => { if (selectedRef) onAdd(selectedRef); }}><FolderPlus />{asset.kind === "video" ? "添加当前分镜到分组" : "添加到分组"}</button></div></footer>
-    </>}
+  return <Modal open={Boolean(asset)} title={asset?.name ?? "素材预览"} description={asset?.kind === "video"
+    ? "动态演示 · 播放、拖动进度或选择分镜" : asset?.kind === "audio" ? "音频元信息示例，不播放音频" : "示例图片预览"}
+    onClose={onClose} returnFocus={returnFocus} className={`preview-dialog${asset?.kind === "audio" ? " audio-dialog" : ""}`}>
+    {asset && reference && (asset.kind === "video" ? <VideoPreview key={`${asset.id}:${reference.shotId ?? ""}`} asset={asset}
+      initialShotId={reference.shotId} suspended={suspended} onAdd={onAdd} onSimilar={onSimilar} /> : <>
+      <div className="preview-workspace"><div className="preview-main">
+        <div className={`preview-stage${zoom ? " zoomed" : ""}`}>{asset.kind === "audio" ? <AudioArt /> : <Photo key={asset.id} name={asset.photo} alt={asset.description} full eager retry />}</div>
+        <div className="preview-controls">{asset.kind === "image" ? <><span>{asset.width} × {asset.height} · {asset.size}</span>
+          <button type="button" className="text-button" aria-pressed={zoom} onClick={() => setZoom(value => !value)}><Maximize2 />{zoom ? "适应窗口" : "放大查看"}</button></>
+          : <span>{timeLabel(asset.duration)} · {asset.size} · 音频示例</span>}</div>
+        <div className="preview-description"><span>{asset.kind === "audio" ? "内容说明" : "画面描述"}</span><p>{asset.description}</p></div>
+      </div></div>
+      <footer className="preview-footer"><span><Info />示例素材，不读取本机文件</span><div>
+        {asset.kind !== "audio" && <button type="button" className="button" onClick={() => onSimilar(asset.id)}><Search />查找相似</button>}
+        <button type="button" className="button primary" onClick={() => onAdd(reference)}><FolderPlus />添加到分组</button>
+      </div></footer>
+    </>)}
   </Modal>;
 }
 function GroupPicker({ groups, reference, create, onAdd }: { groups: DemoGroup[]; reference: MediaRef; create: (name: string) => string | null; onAdd: (id: string) => void }) {
