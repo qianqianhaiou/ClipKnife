@@ -11,6 +11,15 @@ const stage = path.join(demo, '.build');
 const manifestPath = path.join(docs, 'assets/demo/build-manifest.json');
 const check = process.argv.includes('--check');
 await build({ configFile: path.join(demo, 'vite.config.ts') });
+await build({ configFile: path.join(demo, 'vite.config.ts'), mode: 'demo-runtime' });
+// Vite processes the source as a module, but publishes a classic IIFE so local
+// file previews do not require a CORS-enabled HTTP server. Keep script ordering.
+const entryHtmlPath = path.join(stage, 'demo/index.html');
+const entryHtml = await readFile(entryHtmlPath, 'utf8');
+const moduleEntry = /<script type="module" crossorigin src="(\.\.\/assets\/demo\/entry\.js)"><\/script>/g;
+if ([...entryHtml.matchAll(moduleEntry)].length !== 1) throw new Error('Missing expected demo entry script.');
+await writeFile(entryHtmlPath, entryHtml.replace(moduleEntry, '<script defer src="$1"></script>')
+  .replace('<link rel="stylesheet" crossorigin ', '<link rel="stylesheet" '), 'utf8');
 await writeFile(path.join(stage, 'assets/demo/third-party-notices.txt'), await runtimeNotices(demo), 'utf8');
 
 async function files(dir, relative = '') {

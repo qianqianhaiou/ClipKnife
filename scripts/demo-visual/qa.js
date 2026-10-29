@@ -63,6 +63,15 @@
       if (scenario === 'home-mobile') { await pause(600); check('mobile has no iframe', !$('[data-demo-live] iframe')); return; }
       await until(() => $('[data-demo-host][data-ready="true"]'), 'embedded ready');
       const frame = $('[data-demo-live] iframe');
+      if (location.protocol === 'file:') {
+        // Chromium isolates local documents; never bypass origin protections.
+        // App sends readiness only after React commits; its interactions run in
+        // the separate file:// workflow scenario, within that document's origin.
+        check('local iframe targets an explicit HTML document', /\/demo\/index\.html\?embed=1$/.test(frame.src));
+        await until(() => getComputedStyle($('[data-demo-live]')).opacity === '1', 'embedded fade-in complete');
+        check('local iframe is visible after readiness', getComputedStyle($('[data-demo-live]')).opacity === '1');
+        await pause(400); return;
+      }
       check('embedded demo mounted', $('.demo-app', frame.contentDocument));
       await click('.desktop-nav-link:nth-child(2)', frame.contentDocument);
       check('embedded search responds', $('.search-intro', frame.contentDocument));
@@ -214,6 +223,9 @@
     const report = { scenario, width: innerWidth, height: innerHeight, dpr: devicePixelRatio, errors, interactions,
       reducedMotion: matchMedia('(prefers-reduced-motion: reduce)').matches,
       imageCount: $$('img').length, imageFailures: $$('img').filter(img => img.complete && !img.naturalWidth).map(img => img.getAttribute('src')) };
-    if (window.ipc) window.ipc.postMessage(JSON.stringify(report));
+    // Wry 0.55's IPC URI parser rejects file URLs. The isolated file host reads
+    // the title instead; this does not change the page's origin or security flags.
+    if (location.protocol === 'file:') document.title = 'demo-qa:' + JSON.stringify(report);
+    else if (window.ipc) window.ipc.postMessage(JSON.stringify(report));
   });
 })();

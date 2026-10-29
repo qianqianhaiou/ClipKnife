@@ -29,14 +29,15 @@
     message.textContent = '正在准备示例素材…';
     frame = document.createElement('iframe');
     frame.title = '素刀可交互示例：素材浏览、智能搜索与分组';
-    frame.src = 'demo/?embed=1';
+    frame.src = 'demo/index.html?embed=1';
     frame.setAttribute('referrerpolicy', 'same-origin');
     frame.addEventListener('error', fail, { once: true });
     live.appendChild(frame);
     timeout = window.setTimeout(fail, 20000);
   }
   window.addEventListener('message', function (event) {
-    if (!frame || event.origin !== window.location.origin || event.source !== frame.contentWindow
+    const expectedOrigin = window.location.protocol === 'file:' ? 'null' : window.location.origin;
+    if (!frame || event.origin !== expectedOrigin || event.source !== frame.contentWindow
       || !event.data || event.data.type !== 'clipknife-demo-ready') return;
     ready = true;
     host.setAttribute('data-ready', 'true');

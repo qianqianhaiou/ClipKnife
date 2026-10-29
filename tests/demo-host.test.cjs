@@ -5,7 +5,7 @@ const test = require('node:test');
 const vm = require('node:vm');
 const script = fs.readFileSync(path.join(__dirname, '../docs/assets/demo-host.js'), 'utf8');
 
-function fixture({ wide = true, observer = true } = {}) {
+function fixture({ wide = true, observer = true, local = false } = {}) {
   const timers = new Map();
   let timerId = 0;
   const events = new Map();
@@ -27,7 +27,7 @@ function fixture({ wide = true, observer = true } = {}) {
     observe() { intersection.active = true; }
     disconnect() { intersection.active = false; }
   }
-  const window = { location: { origin: 'https://clipknife.test' }, matchMedia: () => media,
+  const window = { location: { origin: local ? 'null' : 'https://clipknife.test', protocol: local ? 'file:' : 'https:' }, matchMedia: () => media,
     addEventListener: (name, callback) => events.set(name, callback),
     setTimeout: callback => { timers.set(++timerId, callback); return timerId; },
     clearTimeout: id => timers.delete(id), ...(observer ? { IntersectionObserver } : {}) };
@@ -51,10 +51,25 @@ test('demo iframe loads lazily once and accepts only its own ready message', () 
   assert.equal(f.frames.length, 0);
   f.enter(); f.enter(); f.click();
   assert.equal(f.frames.length, 1);
-  assert.equal(f.frames[0].src, 'demo/?embed=1');
+  assert.equal(f.frames[0].src, 'demo/index.html?embed=1');
   f.ready({ origin: 'https://foreign.test' });
+  f.ready({ origin: 'null' });
   f.ready({ source: {} });
   f.ready({ data: { type: 'unrelated' } });
+  assert.equal(f.host.attributes.has('data-ready'), false);
+  f.ready();
+  assert.equal(f.host.attributes.get('data-ready'), 'true');
+  assert.equal(f.timers.size, 0);
+});
+
+test('file preview accepts opaque origin only from the current demo frame', () => {
+  const f = fixture({ local: true }); f.enter();
+  f.ready({ origin: 'https://foreign.test' });
+  f.ready({ origin: 'null', source: {} });
+  assert.equal(f.host.attributes.has('data-ready'), false);
+  const oldFrame = f.frames[0].contentWindow;
+  [...f.timers.values()][0](); f.click();
+  f.ready({ source: oldFrame });
   assert.equal(f.host.attributes.has('data-ready'), false);
   f.ready();
   assert.equal(f.host.attributes.get('data-ready'), 'true');

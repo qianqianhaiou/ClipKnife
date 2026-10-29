@@ -40,9 +40,11 @@ test('mobile entry stays small and only loads React after the viewport gate', ()
   const entry = fs.readFileSync(path.join(docs, 'assets/demo/entry.js'), 'utf8');
   assert.ok(Buffer.byteLength(entry) < 10000);
   assert.match(entry, /matchMedia/);
-  assert.match(entry, /import\(/);
+  assert.match(entry, /main\.js/);
+  assert.doesNotMatch(entry, /import\(|import\.meta/);
   const html = fs.readFileSync(path.join(docs, 'demo/index.html'), 'utf8');
-  assert.doesNotMatch(html, /modulepreload[^>]+main\.js/);
+  assert.doesNotMatch(html, /type="module"|modulepreload|crossorigin|<script[^>]+main\.js/);
+  assert.match(html, /<script defer src="\.\.\/assets\/demo\/entry\.js"><\/script>/);
   assert.match(html, /noscript/);
   assert.match(html, /canonical[^>]+https:\/\/clipknife.cn\/demo\//);
 });

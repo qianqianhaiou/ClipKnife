@@ -8,6 +8,7 @@ ROOT = Path(__file__).resolve().parents[2]
 parser = argparse.ArgumentParser()
 parser.add_argument("--port", type=int, default=41387, choices=[41387, 41388])
 parser.add_argument("--fail-module", action="store_true")
+parser.add_argument("--fail-style", action="store_true")
 args = parser.parse_args()
 
 
@@ -20,7 +21,7 @@ class Handler(SimpleHTTPRequestHandler):
         if parsed.path == "/__demo-qa.js":
             self.send_bytes((ROOT / "scripts/demo-visual/qa.js").read_bytes(), "text/javascript")
             return
-        if args.fail_module and parsed.path == "/assets/demo/main.js":
+        if (args.fail_module and parsed.path == "/assets/demo/main.js") or (args.fail_style and parsed.path == "/assets/demo/main.css"):
             self.send_error(503, "Intentional local QA failure")
             return
         path = Path(self.translate_path(self.path)).resolve()

@@ -1,0 +1,618 @@
+{
+  "date": "2026-10-29",
+  "host": "Wry 0.55.1 / Windows WebView2",
+  "productionFiles": "docs/",
+  "runs": [
+    {
+      "access": "file",
+      "scenario": "workflow",
+      "width": 1440,
+      "height": 900,
+      "dpr": 1,
+      "errors": [],
+      "interactions": [
+        {
+          "name": "initial library has 24 fixtures",
+          "passed": true
+        },
+        {
+          "name": "type labels stay on one line",
+          "passed": true
+        },
+        {
+          "name": "summary has no conditional zero",
+          "passed": true
+        },
+        {
+          "name": "detail opens",
+          "passed": true
+        },
+        {
+          "name": "Escape closes detail",
+          "passed": true
+        },
+        {
+          "name": "detail restores focus",
+          "passed": true
+        },
+        {
+          "name": "preview advances still frame",
+          "passed": true
+        },
+        {
+          "name": "dialog traps forward Tab",
+          "passed": true
+        },
+        {
+          "name": "repeated add is idempotent",
+          "passed": true
+        },
+        {
+          "name": "nested focus restoration",
+          "passed": true
+        },
+        {
+          "name": "preview closed",
+          "passed": true
+        },
+        {
+          "name": "relevant results",
+          "passed": true
+        },
+        {
+          "name": "Radix select updates state",
+          "passed": true
+        },
+        {
+          "name": "portrait filter intersects query",
+          "passed": true
+        },
+        {
+          "name": "unmatched query is recoverable",
+          "passed": true
+        },
+        {
+          "name": "empty state recovery",
+          "passed": true
+        },
+        {
+          "name": "blank group cannot submit",
+          "passed": true
+        },
+        {
+          "name": "new group is selected and empty",
+          "passed": true
+        },
+        {
+          "name": "sample import adds exactly three",
+          "passed": true
+        },
+        {
+          "name": "repeat import disabled",
+          "passed": true
+        },
+        {
+          "name": "reset restores fixture data",
+          "passed": true
+        },
+        {
+          "name": "no horizontal page overflow",
+          "passed": true
+        }
+      ],
+      "reducedMotion": false,
+      "imageCount": 22,
+      "imageFailures": []
+    },
+    {
+      "access": "file",
+      "scenario": "home",
+      "width": 1440,
+      "height": 900,
+      "dpr": 1,
+      "errors": [],
+      "interactions": [
+        {
+          "name": "local iframe targets an explicit HTML document",
+          "passed": true
+        },
+        {
+          "name": "local iframe is visible after readiness",
+          "passed": true
+        },
+        {
+          "name": "no horizontal page overflow",
+          "passed": true
+        }
+      ],
+      "reducedMotion": false,
+      "imageCount": 9,
+      "imageFailures": []
+    },
+    {
+      "access": "file",
+      "scenario": "home",
+      "width": 1024,
+      "height": 768,
+      "dpr": 1,
+      "errors": [],
+      "interactions": [
+        {
+          "name": "narrow homepage uses compact navigation",
+          "passed": true
+        },
+        {
+          "name": "compact menu opens",
+          "passed": true
+        },
+        {
+          "name": "compact menu closes",
+          "passed": true
+        },
+        {
+          "name": "local iframe targets an explicit HTML document",
+          "passed": true
+        },
+        {
+          "name": "local iframe is visible after readiness",
+          "passed": true
+        },
+        {
+          "name": "no horizontal page overflow",
+          "passed": true
+        }
+      ],
+      "reducedMotion": false,
+      "imageCount": 9,
+      "imageFailures": []
+    },
+    {
+      "access": "file",
+      "scenario": "mobile",
+      "width": 390,
+      "height": 844,
+      "dpr": 1,
+      "errors": [],
+      "interactions": [
+        {
+          "name": "static mobile preview",
+          "passed": true
+        },
+        {
+          "name": "React chunk not fetched on mobile",
+          "passed": true
+        },
+        {
+          "name": "no horizontal page overflow",
+          "passed": true
+        }
+      ],
+      "reducedMotion": false,
+      "imageCount": 1,
+      "imageFailures": []
+    },
+    {
+      "access": "file",
+      "scenario": "workflow",
+      "width": 1024,
+      "height": 768,
+      "dpr": 1,
+      "errors": [],
+      "interactions": [
+        {
+          "name": "initial library has 24 fixtures",
+          "passed": true
+        },
+        {
+          "name": "type labels stay on one line",
+          "passed": true
+        },
+        {
+          "name": "summary has no conditional zero",
+          "passed": true
+        },
+        {
+          "name": "detail opens",
+          "passed": true
+        },
+        {
+          "name": "Escape closes detail",
+          "passed": true
+        },
+        {
+          "name": "detail restores focus",
+          "passed": true
+        },
+        {
+          "name": "preview advances still frame",
+          "passed": true
+        },
+        {
+          "name": "dialog traps forward Tab",
+          "passed": true
+        },
+        {
+          "name": "repeated add is idempotent",
+          "passed": true
+        },
+        {
+          "name": "nested focus restoration",
+          "passed": true
+        },
+        {
+          "name": "preview closed",
+          "passed": true
+        },
+        {
+          "name": "relevant results",
+          "passed": true
+        },
+        {
+          "name": "Radix select updates state",
+          "passed": true
+        },
+        {
+          "name": "portrait filter intersects query",
+          "passed": true
+        },
+        {
+          "name": "unmatched query is recoverable",
+          "passed": true
+        },
+        {
+          "name": "empty state recovery",
+          "passed": true
+        },
+        {
+          "name": "blank group cannot submit",
+          "passed": true
+        },
+        {
+          "name": "new group is selected and empty",
+          "passed": true
+        },
+        {
+          "name": "sample import adds exactly three",
+          "passed": true
+        },
+        {
+          "name": "repeat import disabled",
+          "passed": true
+        },
+        {
+          "name": "reset restores fixture data",
+          "passed": true
+        },
+        {
+          "name": "no horizontal page overflow",
+          "passed": true
+        }
+      ],
+      "reducedMotion": false,
+      "imageCount": 22,
+      "imageFailures": []
+    },
+    {
+      "access": "file",
+      "scenario": "session",
+      "width": 1440,
+      "height": 900,
+      "dpr": 1,
+      "errors": [],
+      "interactions": [
+        {
+          "name": "import survives a real reload",
+          "passed": true
+        },
+        {
+          "name": "custom group survives a real reload",
+          "passed": true
+        },
+        {
+          "name": "selected group restored",
+          "passed": true
+        },
+        {
+          "name": "no horizontal page overflow",
+          "passed": true
+        }
+      ],
+      "reducedMotion": false,
+      "imageCount": 0,
+      "imageFailures": []
+    },
+    {
+      "access": "http",
+      "scenario": "workflow",
+      "width": 1440,
+      "height": 900,
+      "dpr": 1,
+      "errors": [],
+      "interactions": [
+        {
+          "name": "initial library has 24 fixtures",
+          "passed": true
+        },
+        {
+          "name": "type labels stay on one line",
+          "passed": true
+        },
+        {
+          "name": "summary has no conditional zero",
+          "passed": true
+        },
+        {
+          "name": "detail opens",
+          "passed": true
+        },
+        {
+          "name": "Escape closes detail",
+          "passed": true
+        },
+        {
+          "name": "detail restores focus",
+          "passed": true
+        },
+        {
+          "name": "preview advances still frame",
+          "passed": true
+        },
+        {
+          "name": "dialog traps forward Tab",
+          "passed": true
+        },
+        {
+          "name": "repeated add is idempotent",
+          "passed": true
+        },
+        {
+          "name": "nested focus restoration",
+          "passed": true
+        },
+        {
+          "name": "preview closed",
+          "passed": true
+        },
+        {
+          "name": "relevant results",
+          "passed": true
+        },
+        {
+          "name": "Radix select updates state",
+          "passed": true
+        },
+        {
+          "name": "portrait filter intersects query",
+          "passed": true
+        },
+        {
+          "name": "unmatched query is recoverable",
+          "passed": true
+        },
+        {
+          "name": "empty state recovery",
+          "passed": true
+        },
+        {
+          "name": "blank group cannot submit",
+          "passed": true
+        },
+        {
+          "name": "new group is selected and empty",
+          "passed": true
+        },
+        {
+          "name": "sample import adds exactly three",
+          "passed": true
+        },
+        {
+          "name": "repeat import disabled",
+          "passed": true
+        },
+        {
+          "name": "reset restores fixture data",
+          "passed": true
+        },
+        {
+          "name": "no horizontal page overflow",
+          "passed": true
+        }
+      ],
+      "reducedMotion": false,
+      "imageCount": 22,
+      "imageFailures": []
+    },
+    {
+      "access": "http",
+      "scenario": "home",
+      "width": 1440,
+      "height": 900,
+      "dpr": 1,
+      "errors": [],
+      "interactions": [
+        {
+          "name": "embedded demo mounted",
+          "passed": true
+        },
+        {
+          "name": "embedded search responds",
+          "passed": true
+        },
+        {
+          "name": "no horizontal page overflow",
+          "passed": true
+        }
+      ],
+      "reducedMotion": false,
+      "imageCount": 9,
+      "imageFailures": []
+    },
+    {
+      "access": "http-script-503",
+      "scenario": "module-error",
+      "width": 1440,
+      "height": 900,
+      "dpr": 1,
+      "errors": [],
+      "interactions": [
+        {
+          "name": "module error offers retry",
+          "passed": true
+        },
+        {
+          "name": "retry is visible without scrolling",
+          "passed": true
+        },
+        {
+          "name": "module error keeps preview",
+          "passed": true
+        },
+        {
+          "name": "module failure was observed",
+          "passed": true
+        },
+        {
+          "name": "no horizontal page overflow",
+          "passed": true
+        }
+      ],
+      "reducedMotion": false,
+      "imageCount": 1,
+      "imageFailures": []
+    },
+    {
+      "access": "http-style-503",
+      "scenario": "module-error",
+      "width": 1440,
+      "height": 900,
+      "dpr": 1,
+      "errors": [],
+      "interactions": [
+        {
+          "name": "module error offers retry",
+          "passed": true
+        },
+        {
+          "name": "retry is visible without scrolling",
+          "passed": true
+        },
+        {
+          "name": "module error keeps preview",
+          "passed": true
+        },
+        {
+          "name": "module failure was observed",
+          "passed": true
+        },
+        {
+          "name": "no horizontal page overflow",
+          "passed": true
+        }
+      ],
+      "reducedMotion": false,
+      "imageCount": 1,
+      "imageFailures": []
+    },
+    {
+      "access": "vite-development",
+      "scenario": "workflow",
+      "width": 1440,
+      "height": 900,
+      "dpr": 1,
+      "errors": [],
+      "interactions": [
+        {
+          "name": "initial library has 24 fixtures",
+          "passed": true
+        },
+        {
+          "name": "type labels stay on one line",
+          "passed": true
+        },
+        {
+          "name": "summary has no conditional zero",
+          "passed": true
+        },
+        {
+          "name": "detail opens",
+          "passed": true
+        },
+        {
+          "name": "Escape closes detail",
+          "passed": true
+        },
+        {
+          "name": "detail restores focus",
+          "passed": true
+        },
+        {
+          "name": "preview advances still frame",
+          "passed": true
+        },
+        {
+          "name": "dialog traps forward Tab",
+          "passed": true
+        },
+        {
+          "name": "repeated add is idempotent",
+          "passed": true
+        },
+        {
+          "name": "nested focus restoration",
+          "passed": true
+        },
+        {
+          "name": "preview closed",
+          "passed": true
+        },
+        {
+          "name": "relevant results",
+          "passed": true
+        },
+        {
+          "name": "Radix select updates state",
+          "passed": true
+        },
+        {
+          "name": "portrait filter intersects query",
+          "passed": true
+        },
+        {
+          "name": "unmatched query is recoverable",
+          "passed": true
+        },
+        {
+          "name": "empty state recovery",
+          "passed": true
+        },
+        {
+          "name": "blank group cannot submit",
+          "passed": true
+        },
+        {
+          "name": "new group is selected and empty",
+          "passed": true
+        },
+        {
+          "name": "sample import adds exactly three",
+          "passed": true
+        },
+        {
+          "name": "repeat import disabled",
+          "passed": true
+        },
+        {
+          "name": "reset restores fixture data",
+          "passed": true
+        },
+        {
+          "name": "no horizontal page overflow",
+          "passed": true
+        }
+      ],
+      "reducedMotion": false,
+      "imageCount": 22,
+      "imageFailures": []
+    }
+  ]
+}

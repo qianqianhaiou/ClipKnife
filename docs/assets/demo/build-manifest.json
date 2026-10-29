@@ -12,12 +12,12 @@
   "assets/demo/coffee.webp": "ca22d57b56303e24302beecdb2dd5c7b085f5b09c56b7499b7bc69043095a050",
   "assets/demo/dog-thumb.webp": "609893ab7513adc22e821539265f888a09110c76cfc529b018dbc44c86a554b8",
   "assets/demo/dog.webp": "0cf2922254d4fc9ac0c6b4d735f98ee13e3564e619c5e49efed81fef22e39558",
-  "assets/demo/entry.js": "c60fb9e7827d8e598ca6fb6107f4bbe8e8689e7715fd87218aeb3e527bfb1920",
+  "assets/demo/entry.js": "eca4712c3a69e7346e517b4e90af08fcdb9f63d33f740f391285a16819f74096",
   "assets/demo/forest-thumb.webp": "0984c960f1aa60187722c13ab5da5199ac97c51168395a5a1f033b6eb4028fcf",
   "assets/demo/forest.webp": "ed97a6c6950dc6776817392b09b03c13728b55e28a6a15b05d3451b9979c2c84",
-  "assets/demo/index.css": "e755a5d60f9e59ed0557fe414622011b999bbf3d31aca85f8a022882e3efafd6",
-  "assets/demo/main.css": "79bcfe33e2c9c59a101d6afea1a230ae2dba0c92e0792a83d39ec4f5d901107c",
-  "assets/demo/main.js": "8841135e6a2333fe0adcf2300d751c7f237702fad3e65f84285721f264d7dd5b",
+  "assets/demo/index.css": "daa9b79cc65fffc755a09ab6c17fcf64fdce2ccbe3f73017c1c351543ac3ba2b",
+  "assets/demo/main.css": "0c0cbd191d96524657e5b19d3046187148b39bb8502b5fc5e4c0842c040694a4",
+  "assets/demo/main.js": "fdbe73e3a9f95def8f8b457902a59e9f5e34e450a5cf6fefc5b0202c3e1e24b6",
   "assets/demo/maple-thumb.webp": "300f5d75a0470c87b074eaf60a27b20af582a9884a2d0830e4c2b04e35069da0",
   "assets/demo/maple.webp": "388af4f2b4ba64f001074f2f676974535d6211e64d611d48c4ef52671496c904",
   "assets/demo/mountain-thumb.webp": "4331d8f4a3d5ff0da8aa9c38eeadcc24cd57a1a2871f78af38aab2924a64fbfb",
@@ -30,5 +30,5 @@
   "assets/demo/third-party-notices.txt": "0f7124a84d1c8ec024301bbd87be49874bff03700c1430033ffd8e28e880cbec",
   "assets/demo/traveler-thumb.webp": "b16dcc3246301b9985b1bdc9f532bf3adc37dc38931c152d80fb997a2de018ca",
   "assets/demo/traveler.webp": "73fb82a37221140baca67b78ce85d31bb43d4bb1c7055b7270e33e7e663f0c2e",
-  "demo/index.html": "78b46c95b6a0853141a8e68b67f7ba767b93da90ecd80f7d3c93017643cb1d14"
+  "demo/index.html": "91af62f20023eee40e0cfcd45b87175ee79bc1178eecd57737d172d62ec69b9d"
 }

@@ -57,7 +57,9 @@ export function App({ embed }: { embed: boolean }) {
 
   useEffect(() => {
     document.documentElement.dataset.demoReady = "true";
-    if (window.parent !== window) window.parent.postMessage({ type: "clipknife-demo-ready" }, window.location.origin);
+    // Local files have opaque origins; the parent still checks this frame's identity.
+    const target = window.location.protocol === "file:" ? "*" : window.location.origin;
+    if (window.parent !== window) window.parent.postMessage({ type: "clipknife-demo-ready" }, target);
   }, []);
   useEffect(() => { try { sessionStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch { /* Memory state remains fully usable when storage is denied or full. */ } }, [state]);
   useEffect(() => { if (!notice) return; const timer = setTimeout(() => setNotice(""), 3500); return () => clearTimeout(timer); }, [notice]);
@@ -104,8 +106,8 @@ export function App({ embed }: { embed: boolean }) {
   return <>
     <div className={`demo-app${embed ? " is-embedded" : ""}`} hidden={!desktop} data-view={state.page} data-library-tab={state.libraryTab}>
       <header className="experience-bar">
-        <div>{!embed && <a className="back-home" href="../#demo"><ArrowLeft />返回官网</a>}<span className="demo-label"><span />在线体验</span><span className="experience-note">示例数据 · 不读取本机文件</span></div>
-        <div><button type="button" className="text-button" onClick={event => control("reset", event.currentTarget)}><RotateCcw />重置演示</button>{embed ? <a href="./" target="_top" className="text-button"><Maximize2 />展开体验</a> : <a className="download-link" href="../#download"><ArrowDownToLine />下载桌面版</a>}</div>
+        <div>{!embed && <a className="back-home" href="../index.html#demo"><ArrowLeft />返回官网</a>}<span className="demo-label"><span />在线体验</span><span className="experience-note">示例数据 · 不读取本机文件</span></div>
+        <div><button type="button" className="text-button" onClick={event => control("reset", event.currentTarget)}><RotateCcw />重置演示</button>{embed ? <a href="./index.html" target="_top" className="text-button"><Maximize2 />展开体验</a> : <a className="download-link" href="../index.html#download"><ArrowDownToLine />下载桌面版</a>}</div>
       </header>
       <section className="desktop-shell" aria-label="素刀示例工作区">
         <header className="desktop-titlebar"><nav className="desktop-nav" aria-label="软件主导航">
@@ -185,7 +187,7 @@ export function App({ embed }: { embed: boolean }) {
       {notice && <div className="toast" role="status"><Check />{notice}<button type="button" aria-label="关闭提示" onClick={() => setNotice("")}><X /></button></div>}
     </div>
 
-    {!desktop && <main className="demo-fallback"><a className="fallback-brand" href="../">素刀 <span>ClipKnife</span></a><span className="eyebrow">交互体验 · 示例数据</span><h1>先试着，找回一帧灵感。</h1><p>浏览素材、搜索画面、查看分镜，再把喜欢的素材放进分组。</p><div className="fallback-visual"><img src={previewUrl} width="1440" height="900" alt="素刀素材库交互演示预览" /></div><p>请在电脑上打开此页，体验完整操作。</p><a className="fallback-download" href="../#download">下载 Windows 版 ↗</a></main>}
+    {!desktop && <main className="demo-fallback"><a className="fallback-brand" href="../index.html">素刀 <span>ClipKnife</span></a><span className="eyebrow">交互体验 · 示例数据</span><h1>先试着，找回一帧灵感。</h1><p>浏览素材、搜索画面、查看分镜，再把喜欢的素材放进分组。</p><div className="fallback-visual"><img src={previewUrl} width="1440" height="900" alt="素刀素材库交互演示预览" /></div><p>请在电脑上打开此页，体验完整操作。</p><a className="fallback-download" href="../index.html#download">下载 Windows 版 ↗</a></main>}
 
     <Modal open={desktop && compactInspector && Boolean(state.selected)} title="素材详情" description="查看示例素材信息与静帧" onClose={closeInspector} returnFocus={selectionTrigger} className="compact-inspector-dialog">
       {state.selected && selectedAsset && <Inspector reference={state.selected} asset={selectedAsset} onPreview={() => { if (state.selected) showPreview(state.selected); }} onAdd={() => { if (state.selected) addToGroup(state.selected); }} onSimilar={() => runSearch("", selectedAsset.id)} onShot={ref => showPreview(ref)} />}
@@ -204,7 +206,7 @@ export function App({ embed }: { embed: boolean }) {
       {dialog === "stats" && <div className="stats-grid">{types.map(type => <div key={type.kind}><MaterialLibraryIcon kind={type.kind} /><span>{type.label === "全部" ? "全部素材" : type.label}</span><strong>{countByKind(type.kind)}</strong></div>)}</div>}
       {dialog === "advanced" && <><div className="advanced-fields"><label>素材来源<Choice label="素材来源" value={state.search.folder} onChange={folder => dispatch({ type: "search-filter", value: { folder } })} options={[{ value: "", label: "全部来源" }, ...folders.filter(folder => !folder.parent && (folder.id !== "imported" || state.imported)).map(folder => ({ value: folder.id, label: folder.name }))]} /></label><label>画面方向<Choice label="画面方向" value={state.search.orientation} onChange={orientation => { if (orientation === "all" || orientation === "landscape" || orientation === "portrait") dispatch({ type: "search-filter", value: { orientation } }); }} options={[{ value: "all", label: "不限方向" }, { value: "landscape", label: "横屏" }, { value: "portrait", label: "竖屏" }]} /></label></div><p className="inline-note"><Info />示例搜索按内容相关性排列，不运行真实模型推理。</p><div className="dialog-actions"><button type="button" className="button" onClick={() => dispatch({ type: "search-filter", value: { folder: "", orientation: "all", kind: "all" } })}>清除条件</button><button type="button" className="button primary" onClick={() => setDialog(null)}>完成</button></div></>}
       {dialog === "create" && <GroupForm limit={state.groups.length >= 20} onCreate={name => { const id = createGroup(name); if (id) { dispatch({ type: "select-group", id }); setDialog(null); setNotice("分组已创建"); } }} />}
-      {typeof dialog === "object" && dialog && <><p className="info-description">{dialog.text}</p>{dialog.title === "从一张图片开始" && <div className="sample-picker">{assets.filter(asset => ["mountain", "traveler", "coffee", "dog"].includes(asset.id)).map(asset => <button type="button" key={asset.id} onClick={() => { setDialog(null); runSearch("", asset.id); }}><Photo name={asset.photo} alt={asset.name} /><span>{asset.name}</span></button>)}</div>}<div className="dialog-actions"><button type="button" className="button" onClick={() => setDialog(null)}>继续体验</button><a className="button primary" href="../#download" target={embed ? "_top" : undefined}>下载桌面版<ArrowRight /></a></div></>}
+      {typeof dialog === "object" && dialog && <><p className="info-description">{dialog.text}</p>{dialog.title === "从一张图片开始" && <div className="sample-picker">{assets.filter(asset => ["mountain", "traveler", "coffee", "dog"].includes(asset.id)).map(asset => <button type="button" key={asset.id} onClick={() => { setDialog(null); runSearch("", asset.id); }}><Photo name={asset.photo} alt={asset.name} /><span>{asset.name}</span></button>)}</div>}<div className="dialog-actions"><button type="button" className="button" onClick={() => setDialog(null)}>继续体验</button><a className="button primary" href="../index.html#download" target={embed ? "_top" : undefined}>下载桌面版<ArrowRight /></a></div></>}
     </Modal>
   </>;
 }

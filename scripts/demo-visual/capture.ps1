@@ -8,7 +8,8 @@ param(
   [ValidateSet(41387,41388)][int]$Port=41387,
   [ValidatePattern('^[a-zA-Z0-9/.-]*$')][string]$Page='demo/',
   [ValidateRange(0,2)][double]$Scale=0,
-  [switch]$ReducedMotion
+  [switch]$ReducedMotion,
+  [switch]$LocalFile
 )
 $ErrorActionPreference="Stop"
 $projectRoot=[IO.Path]::GetFullPath((Join-Path $PSScriptRoot "../.."))
@@ -132,9 +133,19 @@ function Test-CaptureHasContent([Drawing.Bitmap]$Bitmap) {
 if(Test-Path -LiteralPath $picture){Remove-Item -LiteralPath $picture -Force}
 $started=Get-Date
 $previewUrl="http://127.0.0.1:$Port/${Page}?qa=$Scenario"
+if($LocalFile){
+  $docsRoot=[IO.Path]::GetFullPath((Join-Path $projectRoot 'docs'))
+  $localPage=[IO.Path]::GetFullPath((Join-Path $docsRoot $Page))
+  if($localPage -ne $docsRoot -and -not $localPage.StartsWith($docsRoot + [IO.Path]::DirectorySeparatorChar)){throw 'File preview must stay inside docs.'}
+  if(Test-Path -LiteralPath $localPage -PathType Container){$localPage=Join-Path $localPage 'index.html'}
+  if(-not(Test-Path -LiteralPath $localPage -PathType Leaf)){throw 'File preview page not found.'}
+  $previewUrl=([Uri]::new($localPage)).AbsoluteUri + "?qa=$Scenario"
+}
 $launchWidth=$Width
 $launchHeight=$Height
 $oldArguments=$env:WEBVIEW2_ADDITIONAL_BROWSER_ARGUMENTS
+$oldFileRoot=$env:CLIPKNIFE_DEMO_FILE_ROOT
+$oldQaScript=$env:CLIPKNIFE_DEMO_QA_SCRIPT
 $arguments=$oldArguments
 if($ReducedMotion){$arguments += ' --force-prefers-reduced-motion'}
 if($Scale -gt 0){
@@ -147,8 +158,16 @@ if($Scale -gt 0){
 }
 try {
   $env:WEBVIEW2_ADDITIONAL_BROWSER_ARGUMENTS=$arguments
+  if($LocalFile){
+    $env:CLIPKNIFE_DEMO_FILE_ROOT=([Uri]::new($docsRoot + [IO.Path]::DirectorySeparatorChar)).AbsoluteUri
+    $env:CLIPKNIFE_DEMO_QA_SCRIPT=Join-Path $PSScriptRoot 'qa.js'
+  }
   $process=Start-Process -FilePath $exe -ArgumentList @($previewUrl,$launchWidth,$launchHeight,('"' + $report + '"'),('"' + $data + '"')) -WindowStyle Hidden -PassThru
-} finally {$env:WEBVIEW2_ADDITIONAL_BROWSER_ARGUMENTS=$oldArguments}
+} finally {
+  $env:WEBVIEW2_ADDITIONAL_BROWSER_ARGUMENTS=$oldArguments
+  $env:CLIPKNIFE_DEMO_FILE_ROOT=$oldFileRoot
+  $env:CLIPKNIFE_DEMO_QA_SCRIPT=$oldQaScript
+}
 $handle=[IntPtr]::Zero
 $previousDpiContext=[IntPtr]::Zero
 $previewTitle="素刀 UI 对照 — 隔离预览"
