@@ -20,6 +20,14 @@ function Assert-TextContains {
 
 $requiredFiles = @(
   'docs/index.html',
+  'docs/compare/eagle/index.html',
+  'docs/compare/billfish/index.html',
+  'docs/assets/compare.css',
+  'docs/assets/compare.js',
+  'docs/assets/compare/icons.svg',
+  'docs/assets/compare/NOTICE.txt',
+  'docs/assets/compare/sources.json',
+  'docs/assets/compare/coastal-voice.mp3',
   'docs/content/manual.md',
   'docs/content/faq.md',
   'docs/content/changelog/v1.0.1.md',
@@ -180,7 +188,7 @@ Assert-FileExists 'docs/assets/home.js'
 Assert-TextContains 'docs/sitemap.xml' 'https://clipknife.cn/demo/'
 Assert-TextContains 'docs/robots.txt' 'Allow: /assets/demo/'
 
-& node --test 'tests/docs-anchor.test.cjs' 'tests/docs-changelog.test.cjs' 'tests/home-interaction.test.cjs' 'tests/home-showcase.test.cjs' 'tests/demo-host.test.cjs' 'tests/demo-site.test.cjs' 'tests/demo-loader.test.cjs'
+& node --test 'tests/docs-compare.test.cjs' 'tests/home-compare.test.cjs' 'tests/docs-anchor.test.cjs' 'tests/docs-changelog.test.cjs' 'tests/home-interaction.test.cjs' 'tests/home-showcase.test.cjs' 'tests/demo-host.test.cjs' 'tests/demo-site.test.cjs' 'tests/demo-loader.test.cjs'
 if ($LASTEXITCODE -ne 0) {
   throw "Documentation tests failed with exit code $LASTEXITCODE"
 }

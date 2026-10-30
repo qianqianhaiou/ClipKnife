@@ -1,0 +1,22 @@
+{
+  "reviewedAt": "2026-10-30",
+  "icons": {
+    "file": "icons.svg",
+    "source": "https://registry.npmjs.org/lucide-react/1.17.0",
+    "license": "ISC (NOTICE.txt)",
+    "note": "Static SVG subset of the same icon family used by the site's demo. Glyph geometry is embedded directly in index.html for reliable file and HTTP previews; icons.svg is the source reference, not a runtime dependency. No new runtime dependency."
+  },
+  "brandImages": [
+    { "file": "eagle.png", "source": "https://cn.eagle.cool/images/favicon.png" },
+    { "file": "billfish.ico", "source": "https://www.billfish.cn/favicon.ico" },
+    { "file": "jianying.ico", "source": "https://lf3-s.vlabstatic.com/obj/vilab-static/ies/ulike/web/resource/fe_official/assets/imgs/lv/favicon.ico", "linkedFrom": "https://www.capcut.cn/" }
+  ],
+  "brandNote": "Brand images identify the products being discussed. Trademarks remain with their respective owners; the Lucide license does not cover brand images.",
+  "sampleAudio": {
+    "file": "coastal-voice.mp3",
+    "text": "沿着海岸，走向落日。",
+    "source": "Locally synthesized with Microsoft Huihui Desktop, rate -1; MP3 24 kHz / 64 kbps. No user recording.",
+    "waveform": "35 central RMS bins from the synthesized sample, displayed decoratively."
+  },
+  "sampleImages": ["../demo/traveler.webp", "../demo/sunset.webp", "../demo/traveler-thumb.webp", "../demo/sunset-thumb.webp"]
+}

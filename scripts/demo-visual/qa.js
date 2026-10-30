@@ -44,6 +44,141 @@
   const state = () => JSON.parse(sessionStorage.getItem('clipknife:website-demo:v1'));
 
   async function run() {
+    if (scenario.startsWith('compare-') || scenario.startsWith('home-compare')) {
+      const isHome = scenario.startsWith('home-compare');
+      await until(() => $('.compare-table-scroll'), 'comparison content');
+      await document.fonts.ready;
+      const region = $('.compare-table-scroll');
+      const table = $('table', region);
+      const section = isHome ? $('#compare') : $('#capabilities');
+      check('comparison table exposes a caption and scoped headers', Boolean($('caption', table)) && $$('th', table).every(th => th.hasAttribute('scope')));
+      check('comparison is keyboard focusable', region.tabIndex === 0 && region.getAttribute('role') === 'region');
+      check('complete comparison rows are present', $$('tbody tr', table).length === (isHome ? 3 : 9));
+      check('table region fits the viewport', region.getBoundingClientRect().width <= innerWidth);
+      if (innerWidth < 600) check('first product is readable beside the fixed label', $('tbody tr', table).children[1].getBoundingClientRect().right <= region.getBoundingClientRect().right + 2);
+      check('local references resolve', $$('a[href^="#source-"]').every(link => document.getElementById(link.hash.slice(1))));
+      if (scenario.endsWith('-long')) {
+        $('tbody td', table).append(' 这是一段用于检查窄窗口换行的较长中文补充说明，原文件与索引的使用条件应始终完整可读。'.repeat(6));
+        await pause();
+        check('long text remains inside its cell', $('tbody td', table).scrollWidth <= $('tbody td', table).clientWidth + 1);
+      }
+      region.focus({ preventScroll:true });
+      check('table focus has a visible outline', document.activeElement === region && getComputedStyle(region).outlineStyle !== 'none');
+      if (region.scrollWidth > region.clientWidth) {
+        const first = $('tbody th', table);
+        const initialLeft = first.getBoundingClientRect().left;
+        region.scrollLeft = region.scrollWidth;
+        await pause();
+        check('wide table can scroll independently', region.scrollLeft > 0);
+        check('dimension column stays in place', Math.abs(first.getBoundingClientRect().left - initialLeft) < 2);
+        check('last product column is reachable', $('tbody tr', table).lastElementChild.getBoundingClientRect().right <= region.getBoundingClientRect().right + 2);
+        region.scrollLeft = 0;
+      }
+      region.blur();
+      if (isHome) {
+        await until(() => $('[data-comparison-scene][data-enhanced="true"]'), 'comparison scene controls');
+        const scene = $('[data-comparison-scene]');
+        const cards = $$('[data-compare-result]', scene);
+        await Promise.all($$('img', scene).map(async img => { img.loading = 'eager'; await img.decode(); }));
+        check('five advantages follow the selected design', $$('.comparison-benefits li').length === 5);
+        check('product rows compare all five capabilities', $$('tbody tr', table).every(row => $$('td', row).length === 5));
+        check('competition labels use the approved wording', !/未确认|待确认/.test(section.textContent) && section.textContent.includes('官网未提及'));
+        if (innerWidth >= 1200) {
+          const list = $('.comparison-benefits').getBoundingClientRect();
+          const panel = scene.getBoundingClientRect();
+          check('scene and benefits share the same row and height', Math.abs(list.top - panel.top) < 2 && Math.abs(list.height - panel.height) < 2 && list.left > panel.right);
+          check('scene keeps the approved visual proportion', panel.width / list.width > 1.7 && panel.width / list.width < 1.85);
+        }
+        if (scenario === 'home-compare-interactions') {
+          await textInput('[data-compare-query]', '海浪');
+          await click('.comparison-search-submit');
+          check('sample search filters to the matching picture', cards[0].hidden && !cards[1].hidden);
+          await textInput('[data-compare-query]', '不存在的示例');
+          await click('.comparison-search-submit');
+          check('unknown sample search shows an honest empty state', !$('[data-compare-empty]').hidden && $('[data-compare-selection]').hidden);
+          await click('[data-compare-clear]');
+          check('clearing restores both sample pictures', cards.every(card => !card.hidden) && !$('[data-compare-selection]').hidden);
+          await click('[data-compare-result="traveler"]');
+          check('picture selection updates the clip range', $('[data-compare-range]').textContent === '00:10 — 00:18');
+          await key('ArrowRight', cards[0]);
+          check('keyboard selection moves focus and range together', document.activeElement === cards[1] && $('[data-compare-range]').textContent === '00:18 — 00:26');
+          const audio = $('[data-compare-audio]');
+          audio.muted = true;
+          await click('[data-compare-play]');
+          await until(() => $('[data-compare-player]').dataset.state === 'playing', 'local sample audio playback');
+          check('sample audio starts only after a play action', !audio.paused);
+          await click('[data-compare-play]');
+          check('sample audio can be paused', audio.paused && $('[data-compare-play]').getAttribute('aria-pressed') === 'false');
+          await textInput('[data-compare-query]', '海边日落，人物沿着海岸行走');
+          await click('.comparison-search-submit');
+        }
+        check('homepage offers content search and detailed comparisons', Boolean($('a[href="demo/"]', section)) && Boolean($('a[href="compare/eagle/"]', section)) && Boolean($('a[href="compare/billfish/"]', section)));
+        const menuVisible = getComputedStyle($('#menuBtn')).display !== 'none';
+        if (menuVisible) {
+          await click('#menuBtn');
+          check('compact navigation exposes comparison link', !$('#mobileMenu').classList.contains('hidden') && Boolean($('#mobileMenu a[href="#compare"]')));
+          await click('#mobileMenu a[href="#compare"]');
+          check('choosing comparison closes the compact menu', $('#mobileMenu').classList.contains('hidden'));
+        } else {
+          const header = $('.site-header nav');
+          const children = [...header.children].filter(el => getComputedStyle(el).display !== 'none');
+          check('desktop navigation items do not overlap', children.every((el, i) => i === 0 || children[i - 1].getBoundingClientRect().right <= el.getBoundingClientRect().left + 1));
+          check('desktop navigation fits with breathing room', children.every((el, i) => el.getBoundingClientRect().right <= innerWidth - 16 && (i === 0 || el.getBoundingClientRect().left - children[i - 1].getBoundingClientRect().right >= 16)));
+        }
+      } else {
+        check('article is present without a runtime renderer', !$$('script').some(script => script.type !== 'application/ld+json' && !script.src.endsWith('/__demo-qa.js')));
+        check('both conversion links are available', Boolean($('a[href="../../demo/"]')) && Boolean($('a[href="../../#download"]')));
+        const figure = $('.compare-hero figure');
+        const img = $('img', figure);
+        await until(() => img.complete && img.naturalWidth > 0, 'real product screenshot');
+        check('product image preserves its aspect ratio', Math.abs(img.width / img.height - 1440 / 900) < 0.02);
+        if (scenario === 'compare-faq') {
+          const summary = $('.compare-faq summary');
+          summary.focus(); summary.click(); await pause();
+          check('native FAQ disclosure opens', summary.parentElement.open);
+          summary.click(); await pause();
+          check('native FAQ disclosure closes', !summary.parentElement.open);
+          check('closed FAQ answers are hidden', $$('.compare-faq details').every(detail => $('p', detail).getClientRects().length === 0));
+          check('closed FAQ summaries stay inside their rows', $$('.compare-faq details').every(detail => $('summary', detail).getBoundingClientRect().bottom <= detail.getBoundingClientRect().bottom + 1));
+          summary.click(); await pause();
+          check('open FAQ answer follows its summary', $('p', summary.parentElement).getBoundingClientRect().top >= summary.getBoundingClientRect().bottom);
+        }
+        if (scenario === 'compare-sources') {
+          const sourceLink = $('a[href^="#source-"]');
+          sourceLink.click(); await pause();
+          check('source link navigates to the intended note', location.hash === sourceLink.hash && Boolean(document.getElementById(location.hash.slice(1))));
+        }
+      }
+      if (scenario.endsWith('-reduced')) {
+        check('reduced motion preference is honored', matchMedia('(prefers-reduced-motion: reduce)').matches);
+        check('comparison content is not animated', getComputedStyle(table).animationName === 'none');
+      }
+      let target = section;
+      if (scenario === 'home-compare-end') target = $('.comparison-footnotes', section);
+      if (scenario === 'home-compare-matrix') target = region;
+      if (scenario === 'home-compare-benefits') target = $('.comparison-benefits', section);
+      if (scenario === 'compare-overview' || scenario === 'compare-reduced') target = $('.compare-hero');
+      if (scenario === 'compare-faq') target = $('.compare-faq');
+      if (scenario === 'compare-workflow') target = $('#scenarios');
+      if (scenario === 'compare-conditions') target = $('#conditions');
+      if (scenario === 'compare-sources') target = $('#sources');
+      const scrollToTarget = () => window.scrollTo({ top: scenario === 'compare-overview' || scenario === 'compare-reduced' ? 0 : target.getBoundingClientRect().top + scrollY - (isHome ? (target === section ? 64 : 84) : 24), behavior:'instant' });
+      scrollToTarget();
+      document.activeElement?.blur();
+      await pause(700);
+      // Earlier lazy images can settle while the compact navigation scrolls.
+      scrollToTarget();
+      await pause(150);
+      if (isHome && target !== section) check('capture target clears the fixed header', target.getBoundingClientRect().top >= 64);
+      if (isHome) {
+        const icons = $$('.comparison-icon', section).filter(icon => icon.getClientRects().length > 0 && getComputedStyle(icon).display !== 'none');
+        check('comparison icons have rendered geometry', icons.length >= 20 && icons.every(icon => {
+          const bounds = icon.getBBox();
+          return bounds.width > 0 && bounds.height > 0;
+        }));
+      }
+      return;
+    }
     if (scenario === 'homepage-scroll') {
       document.documentElement.style.scrollBehavior = 'auto';
       await document.fonts.ready;

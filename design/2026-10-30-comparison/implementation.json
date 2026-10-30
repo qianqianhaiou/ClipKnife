@@ -1,0 +1,224 @@
+{
+  "date": "2026-10-30",
+  "reference": "reference.png",
+  "scope": "ClipKnifeDoc homepage software comparison, approved variant B",
+  "captureMethod": "Local HTTP server + native Wry/WebView2 preview; no browser instance",
+  "referenceAdaptations": [
+    "Existing website navigation destinations retained.",
+    "Approved unknown label changed to 官网未提及; Billfish image search retains a delivery-scope qualifier.",
+    "Existing coastal sample images and current official product icons used.",
+    "Search illustration matches two fixed local examples; the primary CTA opens the online demo.",
+    "Mobile layout stacks the scene and benefits; comparison table scrolls with a sticky product column."
+  ],
+  "validation": {
+    "site": {
+      "command": "powershell -ExecutionPolicy Bypass -File tests/docs-site.test.ps1",
+      "passed": 78,
+      "failed": 0
+    },
+    "comparison": {
+      "command": "node --test tests/docs-compare.test.cjs tests/home-compare.test.cjs",
+      "passed": 21,
+      "failed": 0
+    },
+    "fullSuite": {
+      "command": "node --test --test-reporter=tap tests/*.test.cjs",
+      "passed": 224,
+      "failed": 3,
+      "preExistingFailures": [
+        "v2.6.0 has a complete static body, directory, one canonical and current source fingerprint",
+        "homepage scopes CPU support and separates local, LAN and external-model data",
+        "homepage contact QR images have meaningful alternative text"
+      ]
+    },
+    "native": [
+      {
+        "image": "desktop.png",
+        "scenario": "home-compare-interactions",
+        "viewport": [
+          1536,
+          1040
+        ],
+        "devicePixelRatio": 1,
+        "reducedMotion": false,
+        "passedChecks": [
+          "comparison table exposes a caption and scoped headers",
+          "comparison is keyboard focusable",
+          "complete comparison rows are present",
+          "table region fits the viewport",
+          "local references resolve",
+          "table focus has a visible outline",
+          "five advantages follow the selected design",
+          "product rows compare all five capabilities",
+          "competition labels use the approved wording",
+          "scene and benefits share the same row and height",
+          "scene keeps the approved visual proportion",
+          "sample search filters to the matching picture",
+          "unknown sample search shows an honest empty state",
+          "clearing restores both sample pictures",
+          "picture selection updates the clip range",
+          "keyboard selection moves focus and range together",
+          "sample audio starts only after a play action",
+          "sample audio can be paused",
+          "homepage offers content search and detailed comparisons",
+          "desktop navigation items do not overlap",
+          "desktop navigation fits with breathing room",
+          "no horizontal page overflow"
+        ],
+        "errors": [],
+        "failedImages": []
+      },
+      {
+        "image": "mobile.png",
+        "scenario": "home-compare-reduced",
+        "viewport": [
+          390,
+          900
+        ],
+        "devicePixelRatio": 1,
+        "reducedMotion": true,
+        "passedChecks": [
+          "comparison table exposes a caption and scoped headers",
+          "comparison is keyboard focusable",
+          "complete comparison rows are present",
+          "table region fits the viewport",
+          "first product is readable beside the fixed label",
+          "local references resolve",
+          "table focus has a visible outline",
+          "wide table can scroll independently",
+          "dimension column stays in place",
+          "last product column is reachable",
+          "five advantages follow the selected design",
+          "product rows compare all five capabilities",
+          "competition labels use the approved wording",
+          "homepage offers content search and detailed comparisons",
+          "compact navigation exposes comparison link",
+          "choosing comparison closes the compact menu",
+          "reduced motion preference is honored",
+          "comparison content is not animated",
+          "no horizontal page overflow"
+        ],
+        "errors": [],
+        "failedImages": []
+      },
+      {
+        "image": "mobile-benefits.png",
+        "scenario": "home-compare-benefits",
+        "viewport": [
+          390,
+          900
+        ],
+        "devicePixelRatio": 1,
+        "reducedMotion": false,
+        "passedChecks": [
+          "comparison table exposes a caption and scoped headers",
+          "comparison is keyboard focusable",
+          "complete comparison rows are present",
+          "table region fits the viewport",
+          "first product is readable beside the fixed label",
+          "local references resolve",
+          "table focus has a visible outline",
+          "wide table can scroll independently",
+          "dimension column stays in place",
+          "last product column is reachable",
+          "five advantages follow the selected design",
+          "product rows compare all five capabilities",
+          "competition labels use the approved wording",
+          "homepage offers content search and detailed comparisons",
+          "compact navigation exposes comparison link",
+          "choosing comparison closes the compact menu",
+          "capture target clears the fixed header",
+          "no horizontal page overflow"
+        ],
+        "errors": [],
+        "failedImages": []
+      },
+      {
+        "image": "mobile-table.png",
+        "scenario": "home-compare-matrix",
+        "viewport": [
+          390,
+          900
+        ],
+        "devicePixelRatio": 1,
+        "reducedMotion": false,
+        "passedChecks": [
+          "comparison table exposes a caption and scoped headers",
+          "comparison is keyboard focusable",
+          "complete comparison rows are present",
+          "table region fits the viewport",
+          "first product is readable beside the fixed label",
+          "local references resolve",
+          "table focus has a visible outline",
+          "wide table can scroll independently",
+          "dimension column stays in place",
+          "last product column is reachable",
+          "five advantages follow the selected design",
+          "product rows compare all five capabilities",
+          "competition labels use the approved wording",
+          "homepage offers content search and detailed comparisons",
+          "compact navigation exposes comparison link",
+          "choosing comparison closes the compact menu",
+          "capture target clears the fixed header",
+          "no horizontal page overflow"
+        ],
+        "errors": [],
+        "failedImages": []
+      },
+      {
+        "image": "tablet.png",
+        "scenario": "home-compare",
+        "viewport": [
+          768,
+          1000
+        ],
+        "devicePixelRatio": 1,
+        "reducedMotion": false,
+        "passedChecks": [
+          "comparison table exposes a caption and scoped headers",
+          "comparison is keyboard focusable",
+          "complete comparison rows are present",
+          "table region fits the viewport",
+          "local references resolve",
+          "table focus has a visible outline",
+          "wide table can scroll independently",
+          "dimension column stays in place",
+          "last product column is reachable",
+          "five advantages follow the selected design",
+          "product rows compare all five capabilities",
+          "competition labels use the approved wording",
+          "homepage offers content search and detailed comparisons",
+          "compact navigation exposes comparison link",
+          "choosing comparison closes the compact menu",
+          "no horizontal page overflow"
+        ],
+        "errors": [],
+        "failedImages": []
+      }
+    ],
+    "extraNativeChecks": [
+      {
+        "scenario": "320px homepage benefits and matrix",
+        "passed": 17,
+        "errors": 0
+      },
+      {
+        "scenario": "Eagle detail table, 1440px",
+        "passed": 10,
+        "errors": 0
+      },
+      {
+        "scenario": "Billfish detail table, 390px",
+        "passed": 14,
+        "errors": 0
+      }
+    ]
+  },
+  "sourceSha256": {
+    "docs/index.html": "a9a134e542fd5dceadd3ce312c03be34c37e6d968546ef4c569d0fc3f4031062",
+    "docs/assets/compare.css": "bc28f48700f55d2adb5a46be7e170c3f7a620be93399000290d5651152c1bbe8",
+    "docs/assets/compare.js": "81e40b117a255267023a6763cbfcecdbf2fde26e38950da81f255c92413831b1",
+    "docs/compare/eagle/index.html": "405e65a0444f3d5636c06030e3c8bb7de014015b617d90cabbde20d621ef1487",
+    "docs/compare/billfish/index.html": "9ddd14d555cbdccb202501948f065602da13c1a32d0bb43ec66dc93c6cc3a653"
+  }
+}

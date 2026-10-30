@@ -23,6 +23,8 @@
   <link rel="stylesheet" href="assets/styles.css" />
   <link rel="stylesheet" href="assets/demo-host.css" />
   <link rel="stylesheet" href="assets/home.css" />
+  <link rel="stylesheet" href="assets/compare.css" />
+  <script src="assets/compare.js" defer></script>
   <meta name="msvalidate.01" content="1808C42E407C60B9A38C8FC1255A2801" />
   <link rel="canonical" href="https://clipknife.cn/" />
 
@@ -59,7 +61,7 @@
       "name": "qianqianhaiou",
       "url": "https://github.com/qianqianhaiou"
     },
-    "softwareVersion": "2.4.4"
+    "softwareVersion": "2.6.0"
   }
   </script>
 </head>
@@ -81,6 +83,7 @@
       <ul class="hidden md:flex items-center gap-6 text-sm font-medium text-[#c5c8d0]">
         <li><a href="#demo" class="hover:text-white transition-colors demo-nav-link">在线体验</a></li>
         <li><a href="#features" class="hover:text-white transition-colors">功能特性</a></li>
+        <li><a href="#compare" class="hover:text-white transition-colors">软件对比</a></li>
         <li><a href="#creation" class="hover:text-white transition-colors">创作工具</a></li>
         <li><a href="#workflow" class="hover:text-white transition-colors">使用流程</a></li>
         <li><a href="manual/" class="hover:text-white transition-colors">使用手册</a></li>
@@ -132,6 +135,7 @@
       <ul class="px-6 py-4 space-y-3 text-[#c5c8d0]">
         <li><a href="#demo" class="block py-2 hover:text-white">在线体验</a></li>
         <li><a href="#features" class="block py-2 hover:text-white">功能特性</a></li>
+        <li><a href="#compare" class="block py-2 hover:text-white">软件对比</a></li>
         <li><a href="#creation" class="block py-2 hover:text-white">创作工具</a></li>
         <li><a href="#workflow" class="block py-2 hover:text-white">使用流程</a></li>
         <li><a href="manual/" class="block py-2 hover:text-white">使用手册</a></li>
@@ -408,6 +412,113 @@
         </div>
       </div>
     </section>
+
+    <!-- Software comparison: approved scene-led design. Lucide glyphs are inline for file previews; source and license: assets/compare/icons.svg, assets/compare/NOTICE.txt. -->
+    <section id="compare" class="home-section comparison-section" aria-labelledby="compareTitle">
+      <div class="home-shell">
+        <div class="comparison-heading">
+          <div>
+            <p class="compare-kicker">素刀，能多做什么</p>
+            <h2 id="compareTitle">搜画面、找台词，<br />直接用上视频里的那一段。</h2>
+          </div>
+          <div class="comparison-heading-actions">
+            <a class="home-button home-button-primary comparison-try" href="demo/"><svg class="comparison-icon" aria-hidden="true" viewBox="0 0 24 24" data-comparison-icon="search"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>体验内容搜索</a>
+            <nav class="comparison-links" aria-label="阅读完整软件对比"><a href="compare/eagle/">vs Eagle <svg class="comparison-icon" aria-hidden="true" viewBox="0 0 24 24" data-comparison-icon="chevron"><path d="m9 18 6-6-6-6"/></svg></a><a href="compare/billfish/">vs Billfish <svg class="comparison-icon" aria-hidden="true" viewBox="0 0 24 24" data-comparison-icon="chevron"><path d="m9 18 6-6-6-6"/></svg></a></nav>
+          </div>
+        </div>
+        <p class="comparison-description">用画面描述找图片与视频镜头，用说话内容定位音视频，按人物归集素材，再把选中的分镜送入剪辑。</p>
+
+        <div class="comparison-showcase">
+          <figure class="comparison-scene" data-comparison-scene aria-labelledby="comparisonSceneTitle">
+            <figcaption class="comparison-scene-caption"><span id="comparisonSceneTitle">能力示意</span><span>基于真实界面风格的功能示意</span></figcaption>
+            <form class="comparison-search" data-compare-search action="demo/" method="get" role="search" aria-label="搜索示例素材">
+              <div class="comparison-search-field">
+                <svg class="comparison-icon" aria-hidden="true" viewBox="0 0 24 24" data-comparison-icon="search"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+                <input data-compare-query name="q" value="海边日落，人物沿着海岸行走" aria-label="搜索示例素材中的画面" aria-describedby="comparisonSearchHelp" maxlength="160" autocomplete="off" />
+                <button class="comparison-clear" data-compare-clear type="button" aria-label="清空示例查询" hidden><svg class="comparison-icon" aria-hidden="true" viewBox="0 0 24 24" data-comparison-icon="close"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button>
+              </div>
+              <button class="comparison-search-submit" type="submit"><svg class="comparison-icon" aria-hidden="true" viewBox="0 0 24 24" data-comparison-icon="search"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg><span>搜索</span></button>
+            </form>
+            <p id="comparisonSearchHelp" class="comparison-visually-hidden">此处在两项预设示例中匹配关键词，不运行 AI 检索。可以试试“人物”或“海浪”；更多素材见在线体验。</p>
+            <div class="comparison-results" role="group" aria-label="选择示例分镜">
+              <button type="button" class="comparison-result" data-compare-result="traveler" data-keywords="海边 海岸 日落 人物 行走 人 旅行 旅人" data-title="人物沿着海岸行走" data-range="00:10 — 00:18" aria-label="选择人物沿着海岸行走的示例分镜" aria-pressed="false" disabled>
+                <img src="assets/demo/traveler.webp" width="1280" height="720" alt="日落时一位身着白衣的旅人沿着海岸行走，示例画面" loading="lazy" decoding="async" />
+                <span class="comparison-selected-mark" aria-hidden="true"><svg class="comparison-icon" viewBox="0 0 24 24" data-comparison-icon="check"><path d="M20 6 9 17l-5-5"/></svg></span>
+              </button>
+              <button type="button" class="comparison-result" data-compare-result="sunset" data-keywords="海边 海岸 日落 海浪 夕阳 礁石 落日 海面 海水" data-title="日落时海浪拍打礁石" data-range="00:18 — 00:26" aria-label="选择日落时海浪拍打礁石的示例分镜" aria-pressed="true" disabled>
+                <img src="assets/demo/sunset.webp" width="1280" height="720" alt="橙色落日照亮海面，海浪拍打岸边礁石，示例画面" loading="lazy" decoding="async" />
+                <span class="comparison-selected-mark" aria-hidden="true"><svg class="comparison-icon" viewBox="0 0 24 24" data-comparison-icon="check"><path d="M20 6 9 17l-5-5"/></svg></span>
+              </button>
+              <div class="comparison-empty" data-compare-empty hidden><span>示例中暂无匹配画面</span><a href="demo/">前往在线体验，查看更多素材 <span aria-hidden="true">→</span></a></div>
+            </div>
+            <p class="comparison-visually-hidden" data-compare-status role="status" aria-live="polite"></p>
+            <div class="comparison-selection" data-compare-selection>
+              <p class="comparison-range">选中分镜 <span data-compare-range>00:18 — 00:26</span></p>
+              <div class="comparison-clip-row">
+                <div class="comparison-filmstrip" data-compare-filmstrip data-selected="sunset" role="img" aria-label="示例分镜时间条，当前选中 00:18 至 00:26">
+                  <div class="comparison-film-frames" aria-hidden="true"><img src="assets/demo/traveler-thumb.webp" width="320" height="180" alt="" loading="lazy" /><img src="assets/demo/sunset-thumb.webp" width="320" height="180" alt="" loading="lazy" /><img src="assets/demo/traveler-thumb.webp" width="320" height="180" alt="" loading="lazy" /><img src="assets/demo/sunset-thumb.webp" width="320" height="180" alt="" loading="lazy" /><img src="assets/demo/traveler-thumb.webp" width="320" height="180" alt="" loading="lazy" /><img src="assets/demo/sunset-thumb.webp" width="320" height="180" alt="" loading="lazy" /></div>
+                  <span class="comparison-film-range" aria-hidden="true"></span>
+                </div>
+                <a class="comparison-editor-link" href="changelog/v2.4.0/#一键添加到剪辑软件" aria-label="查看分镜添加到剪映和 Premiere 的使用条件"><span>选中分镜</span><svg class="comparison-icon" aria-hidden="true" viewBox="0 0 24 24" data-comparison-icon="arrow"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg><span class="comparison-editor-name"><img src="assets/compare/jianying.ico" width="28" height="28" alt="" loading="lazy" />剪映</span><span aria-hidden="true">/</span><span class="comparison-editor-name"><span class="comparison-pr-mark" aria-hidden="true">Pr</span>PR</span></a>
+              </div>
+            </div>
+            <div class="comparison-audio" data-compare-player data-state="idle">
+              <button class="comparison-audio-toggle" data-compare-play type="button" aria-label="播放示例旁白" aria-pressed="false" disabled><svg class="comparison-icon comparison-play-icon" aria-hidden="true" viewBox="0 0 24 24" data-comparison-icon="play"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"/></svg><svg class="comparison-icon comparison-pause-icon" aria-hidden="true" viewBox="0 0 24 24" data-comparison-icon="pause"><rect x="14" y="3" width="5" height="18" rx="1"/><rect x="5" y="3" width="5" height="18" rx="1"/></svg></button>
+              <div class="comparison-waveform" aria-hidden="true"><span style="--bar:7"></span><span style="--bar:16"></span><span style="--bar:11"></span><span style="--bar:6"></span><span style="--bar:19"></span><span style="--bar:9"></span><span style="--bar:7"></span><span style="--bar:20"></span><span style="--bar:13"></span><span style="--bar:9"></span><span style="--bar:30"></span><span style="--bar:26"></span><span style="--bar:9"></span><span style="--bar:4"></span><span style="--bar:4"></span><span style="--bar:4"></span><span style="--bar:4"></span><span style="--bar:4"></span><span style="--bar:4"></span><span style="--bar:4"></span><span style="--bar:4"></span><span style="--bar:12"></span><span style="--bar:16"></span><span style="--bar:7"></span><span style="--bar:9"></span><span style="--bar:31"></span><span style="--bar:12"></span><span style="--bar:6"></span><span style="--bar:15"></span><span style="--bar:17"></span><span style="--bar:6"></span><span style="--bar:8"></span><span style="--bar:9"></span><span style="--bar:5"></span><span style="--bar:4"></span></div>
+              <q>沿着海岸，走向落日。</q>
+              <audio data-compare-audio src="assets/compare/coastal-voice.mp3" preload="none" aria-label="合成示例旁白：沿着海岸，走向落日"></audio>
+            </div>
+            <p class="comparison-audio-error" data-compare-audio-error role="status" hidden></p>
+          </figure>
+
+          <ol class="comparison-benefits" aria-label="素刀的五项内容检索与创作能力">
+            <li><span class="comparison-benefit-icon"><svg class="comparison-icon" aria-hidden="true" viewBox="0 0 24 24" data-comparison-icon="image"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg></span><span class="comparison-benefit-number" aria-hidden="true">01</span><h3>按画面搜索</h3><p>无需先打标签，<br />直接搜图片与视频分镜。</p></li>
+            <li><span class="comparison-benefit-icon"><svg class="comparison-icon" aria-hidden="true" viewBox="0 0 24 24" data-comparison-icon="target"><circle cx="12" cy="12" r="10"/><line x1="22" x2="18" y1="12" y2="12"/><line x1="6" x2="2" y1="12" y2="12"/><line x1="12" x2="12" y1="6" y2="2"/><line x1="12" x2="12" y1="22" y2="18"/></svg></span><span class="comparison-benefit-number" aria-hidden="true">02</span><h3>自动分镜定位</h3><p>搜索视频镜头，<br />结果带起止时间。</p></li>
+            <li><span class="comparison-benefit-icon"><svg class="comparison-icon" aria-hidden="true" viewBox="0 0 24 24" data-comparison-icon="audio"><path d="M2 10v3"/><path d="M6 6v11"/><path d="M10 3v18"/><path d="M14 8v7"/><path d="M18 5v13"/><path d="M22 10v3"/></svg></span><span class="comparison-benefit-number" aria-hidden="true">03</span><h3>搜台词找片段</h3><p>开启转写后，<br />按说话内容定位。</p></li>
+            <li><span class="comparison-benefit-icon"><svg class="comparison-icon" aria-hidden="true" viewBox="0 0 24 24" data-comparison-icon="person"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 0 0-16 0"/></svg></span><span class="comparison-benefit-number" aria-hidden="true">04</span><h3>人物自动归组</h3><p>图片与分镜按人物归集，<br />可修正。</p></li>
+            <li><span class="comparison-benefit-icon"><svg class="comparison-icon" aria-hidden="true" viewBox="0 0 24 24" data-comparison-icon="scissors"><circle cx="6" cy="6" r="3"/><path d="M8.12 8.12 12 12"/><path d="M20 4 8.12 15.88"/><circle cx="6" cy="18" r="3"/><path d="M14.8 14.8 20 20"/></svg></span><span class="comparison-benefit-number" aria-hidden="true">05</span><h3>分镜直送剪辑</h3><p>携带原片与选中范围，<br />衔接剪映 / PR。</p></li>
+          </ol>
+        </div>
+
+        <p id="homeCompareHint" class="comparison-table-hint">横向滑动查看五项能力，左侧保留产品名称。</p>
+        <div class="compare-table-scroll" role="region" tabindex="0" aria-label="素刀与 Eagle、Billfish 的五项能力对照" aria-describedby="homeCompareHint homeCompareScope">
+          <table class="compare-table compare-matrix">
+            <caption class="comparison-visually-hidden">五项内容检索与创作能力，三款软件的支持方式对比</caption>
+            <colgroup><col class="compare-product-col" /><col /><col /><col /><col /><col /></colgroup>
+            <thead><tr><th scope="col">产品</th><th scope="col"><span class="comparison-column-label"><svg class="comparison-icon" aria-hidden="true" viewBox="0 0 24 24" data-comparison-icon="image"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>画面搜索</span></th><th scope="col"><span class="comparison-column-label"><svg class="comparison-icon" aria-hidden="true" viewBox="0 0 24 24" data-comparison-icon="target"><circle cx="12" cy="12" r="10"/><line x1="22" x2="18" y1="12" y2="12"/><line x1="6" x2="2" y1="12" y2="12"/><line x1="12" x2="12" y1="6" y2="2"/><line x1="12" x2="12" y1="22" y2="18"/></svg>分镜定位</span></th><th scope="col"><span class="comparison-column-label"><svg class="comparison-icon" aria-hidden="true" viewBox="0 0 24 24" data-comparison-icon="audio"><path d="M2 10v3"/><path d="M6 6v11"/><path d="M10 3v18"/><path d="M14 8v7"/><path d="M18 5v13"/><path d="M22 10v3"/></svg>语音检索</span></th><th scope="col"><span class="comparison-column-label"><svg class="comparison-icon" aria-hidden="true" viewBox="0 0 24 24" data-comparison-icon="person"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 0 0-16 0"/></svg>人物归组</span></th><th scope="col"><span class="comparison-column-label"><svg class="comparison-icon" aria-hidden="true" viewBox="0 0 24 24" data-comparison-icon="scissors"><circle cx="6" cy="6" r="3"/><path d="M8.12 8.12 12 12"/><path d="M20 4 8.12 15.88"/><circle cx="6" cy="18" r="3"/><path d="M14.8 14.8 20 20"/></svg>剪辑衔接</span></th></tr></thead>
+            <tbody>
+              <tr class="compare-product-own">
+                <th scope="row"><span class="comparison-product"><img src="assets/icon.png" width="28" height="28" alt="" loading="lazy" /><span>素刀 <small>ClipKnife</small></span></span></th>
+                <td><span class="comparison-support"><svg class="comparison-icon" aria-hidden="true" viewBox="0 0 24 24" data-comparison-icon="check"><path d="M20 6 9 17l-5-5"/></svg>无需先打标签</span></td>
+                <td><span class="comparison-support"><svg class="comparison-icon" aria-hidden="true" viewBox="0 0 24 24" data-comparison-icon="check"><path d="M20 6 9 17l-5-5"/></svg>结果带起止时间</span></td>
+                <td><span class="comparison-support"><svg class="comparison-icon" aria-hidden="true" viewBox="0 0 24 24" data-comparison-icon="check"><path d="M20 6 9 17l-5-5"/></svg>按说话内容定位</span></td>
+                <td><span class="comparison-support"><svg class="comparison-icon" aria-hidden="true" viewBox="0 0 24 24" data-comparison-icon="check"><path d="M20 6 9 17l-5-5"/></svg>按人物归集，可修正</span></td>
+                <td><span class="comparison-support"><svg class="comparison-icon" aria-hidden="true" viewBox="0 0 24 24" data-comparison-icon="check"><path d="M20 6 9 17l-5-5"/></svg>衔接剪映 / PR</span></td>
+              </tr>
+              <tr>
+                <th scope="row"><span class="comparison-product"><img src="assets/compare/eagle.png" width="28" height="28" alt="" loading="lazy" /><span>Eagle</span></span></th>
+                <td><a href="compare/eagle/#source-eagle-search" aria-label="Eagle AI Search 的文字搜索依赖已有文字，查看说明">依赖已有文字</a></td>
+                <td>官网未提及</td><td>官网未提及</td><td>官网未提及</td>
+                <td><a href="compare/eagle/#source-eagle-video-editor" aria-label="Eagle 可通过视频与音频剪辑器插件手动选区导出，查看说明">插件选段导出</a></td>
+              </tr>
+              <tr>
+                <th scope="row"><span class="comparison-product"><img src="assets/compare/billfish.ico" width="28" height="28" alt="" loading="lazy" /><span>Billfish</span></span></th>
+                <td><a href="compare/billfish/#source-billfish-home" aria-label="Billfish 官网展示图像内容搜索与以图搜图，但交付版本与使用条件未提及，查看说明">交付范围未提及</a></td>
+                <td>官网未提及</td><td>官网未提及</td><td>官网未提及</td><td>官网未提及</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="comparison-footnotes">
+          <p id="homeCompareScope"><svg class="comparison-icon" aria-hidden="true" viewBox="0 0 24 24" data-comparison-icon="info"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg><span>官网未提及：所引官方资料未说明该完整流程，不等于不支持。</span></p>
+          <p>需建立索引；转写、人物按需启用；剪辑需配套环境。</p>
+          <p>核对日期 <time datetime="2026-10-30">2026.10.30</time></p>
+          <nav class="comparison-links" aria-label="查看对比详情与来源"><a href="compare/eagle/">vs Eagle <span aria-hidden="true">›</span></a><a href="compare/billfish/">vs Billfish <span aria-hidden="true">›</span></a></nav>
+        </div>
+        <p class="comparison-review-date">素刀 v2.6.0 / Eagle 4.0.0 Build23 与所列插件 / Billfish 公开资料。<a href="compare/eagle/#conditions">查看使用条件</a></p>
+      </div>
+    </section>
+
 
     <!-- Local creative tools -->
     <section id="creation" class="home-section home-toolbox" aria-labelledby="toolboxTitle">
@@ -730,6 +841,8 @@
           <li><a href="#features" class="hover:text-white transition-colors">功能</a></li>
           <li><a href="#creation" class="hover:text-white transition-colors">创作工具</a></li>
           <li><a href="#workflow" class="hover:text-white transition-colors">流程</a></li>
+          <li><a href="compare/eagle/" class="hover:text-white transition-colors">vs Eagle</a></li>
+          <li><a href="compare/billfish/" class="hover:text-white transition-colors">vs Billfish</a></li>
           <li><a href="manual/" class="hover:text-white transition-colors">使用手册</a></li>
           <li><a href="scenes/search-video-content/" class="hover:text-white transition-colors">按内容搜索</a></li>
           <li><a href="changelog/" class="hover:text-white transition-colors">更新日志</a></li>

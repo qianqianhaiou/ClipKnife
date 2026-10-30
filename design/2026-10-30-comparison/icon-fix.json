@@ -1,0 +1,116 @@
+{
+  "date": "2026-10-30",
+  "baseReview": "implementation.json",
+  "fix": "Embed the existing Lucide geometry directly in all 27 homepage comparison icons, preserving the approved layout and icon design.",
+  "reproduction": "Native local-file preview reproduced the blank external SVG use references. The new rendered-geometry check failed before the fix and passes after it.",
+  "validation": {
+    "command": "powershell -ExecutionPolicy Bypass -File tests/docs-site.test.ps1",
+    "passed": 79,
+    "failed": 0,
+    "nativeMethod": "Wry/WebView2 preview, without a browser instance",
+    "cases": [
+      {
+        "mode": "file",
+        "image": "desktop-icons-fixed.png",
+        "scenario": "home-compare",
+        "viewport": [
+          1536,
+          1040
+        ],
+        "passedChecks": [
+          "comparison table exposes a caption and scoped headers",
+          "comparison is keyboard focusable",
+          "complete comparison rows are present",
+          "table region fits the viewport",
+          "local references resolve",
+          "table focus has a visible outline",
+          "five advantages follow the selected design",
+          "product rows compare all five capabilities",
+          "competition labels use the approved wording",
+          "scene and benefits share the same row and height",
+          "scene keeps the approved visual proportion",
+          "homepage offers content search and detailed comparisons",
+          "desktop navigation items do not overlap",
+          "desktop navigation fits with breathing room",
+          "comparison icons have rendered geometry",
+          "no horizontal page overflow"
+        ],
+        "errors": []
+      },
+      {
+        "mode": "file",
+        "image": "mobile-icons-fixed.png",
+        "scenario": "home-compare-benefits",
+        "viewport": [
+          390,
+          900
+        ],
+        "passedChecks": [
+          "comparison table exposes a caption and scoped headers",
+          "comparison is keyboard focusable",
+          "complete comparison rows are present",
+          "table region fits the viewport",
+          "first product is readable beside the fixed label",
+          "local references resolve",
+          "table focus has a visible outline",
+          "wide table can scroll independently",
+          "dimension column stays in place",
+          "last product column is reachable",
+          "five advantages follow the selected design",
+          "product rows compare all five capabilities",
+          "competition labels use the approved wording",
+          "homepage offers content search and detailed comparisons",
+          "compact navigation exposes comparison link",
+          "choosing comparison closes the compact menu",
+          "capture target clears the fixed header",
+          "comparison icons have rendered geometry",
+          "no horizontal page overflow"
+        ],
+        "errors": []
+      },
+      {
+        "mode": "http",
+        "image": null,
+        "scenario": "home-compare-interactions",
+        "viewport": [
+          1536,
+          1040
+        ],
+        "passedChecks": [
+          "comparison table exposes a caption and scoped headers",
+          "comparison is keyboard focusable",
+          "complete comparison rows are present",
+          "table region fits the viewport",
+          "local references resolve",
+          "table focus has a visible outline",
+          "five advantages follow the selected design",
+          "product rows compare all five capabilities",
+          "competition labels use the approved wording",
+          "scene and benefits share the same row and height",
+          "scene keeps the approved visual proportion",
+          "sample search filters to the matching picture",
+          "unknown sample search shows an honest empty state",
+          "clearing restores both sample pictures",
+          "picture selection updates the clip range",
+          "keyboard selection moves focus and range together",
+          "sample audio starts only after a play action",
+          "sample audio can be paused",
+          "homepage offers content search and detailed comparisons",
+          "desktop navigation items do not overlap",
+          "desktop navigation fits with breathing room",
+          "comparison icons have rendered geometry",
+          "no horizontal page overflow"
+        ],
+        "errors": []
+      }
+    ],
+    "scope": "Site suite and native icon regression. The unrelated full suite was not rerun."
+  },
+  "sourceSha256": {
+    "docs/index.html": "718ed18a93199ebea33034a919b8144adfe031fcf6df7a6a656a689cf4a5dbdb",
+    "docs/assets/compare/icons.svg": "ef2ae795fee87dbf21e6636e0328b1b922cf8aaae13f6b7374d9e4caf147a993",
+    "docs/assets/compare/sources.json": "90c17dc1f54cd634e911cf9fe6b007ca3e3ee4d00be0f8414da71911d48d147e",
+    "tests/docs-compare.test.cjs": "763d17176b0cfa64c004006415494ba90467f0b5cbe65f284b3bd986955ed6aa",
+    "scripts/demo-visual/qa.js": "1fe55c82c3cf3dd81a478439ec8dce93c0958d0b1b5b59bcd1e16a20968dabc9"
+  }
+}
