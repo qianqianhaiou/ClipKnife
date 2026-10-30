@@ -10,6 +10,18 @@ Allow: /assets/styles.css
 Allow: /assets/demo-host.js
 Allow: /assets/demo-host.css
 Allow: /assets/demo/
+# Exact public homepage/compare resources; other assets stay restricted.
+Allow: /assets/home.css$
+Allow: /assets/home.js$
+Allow: /assets/compare.css$
+Allow: /assets/compare.js$
+Allow: /assets/screenshots/material-library.webp$
+Allow: /assets/screenshots/smart-search.webp$
+Allow: /assets/screenshots/video-storyboard.webp$
+Allow: /assets/screenshots/creative-tools.webp$
+Allow: /assets/compare/jianying.ico$
+Allow: /assets/compare/eagle.png$
+Allow: /assets/compare/billfish.ico$
 Disallow: /assets/
 
 Sitemap: https://clipknife.cn/sitemap.xml

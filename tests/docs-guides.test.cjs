@@ -121,7 +121,7 @@ test('CRLF-only checkout differences are not stale and never trigger rewriting',
 const writeArgs = (auditFile, date = '2020-01-02') => ['--write', '--date', date, '--source-audit', auditFile];
 function writeAudit(fixture, transform = (audit) => audit) {
   const audit = {
-    approved_version: '2.3.0',
+    approved_version: '2.6.0',
     rows: fixture.pages.map(({ page, source }) => ({ page, source, local_sha256: hash(fs.readFileSync(path.join(fixture.root, source))) })),
   };
   const file = path.join(fixture.root, 'audit.json');
@@ -151,9 +151,10 @@ test('audited write updates only changed guides and sitemap dates, preserving ra
 test('write rejects unaudited bytes and malformed or non-exact two-page audits before any output', async (t) => {
   const changes = [
     ['wrong version', (a) => ({ ...a, approved_version: '2.2.1' })],
+    ['previous approval is not current approval', (a) => ({ ...a, approved_version: '2.3.0' })],
     ['missing version', (a) => ({ rows: a.rows })],
     ['null audit', () => null],
-    ['missing rows', () => ({ approved_version: '2.3.0' })],
+    ['missing rows', () => ({ approved_version: '2.6.0' })],
     ['missing row', (a) => ({ ...a, rows: a.rows.slice(0, 1) })],
     ['duplicate row', (a) => ({ ...a, rows: [a.rows[0], a.rows[0]] })],
     ['extra row', (a) => ({ ...a, rows: [...a.rows, a.rows[0]] })],

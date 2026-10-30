@@ -28,7 +28,7 @@ function run(args, { root = path.resolve(__dirname, '..'), now = () => new Date(
     const ceiling = [today.getFullYear(), String(today.getMonth() + 1).padStart(2, '0'), String(today.getDate()).padStart(2, '0')].join('-');
     if (!/^\d{4}-\d{2}-\d{2}$/.test(date) || !Number.isFinite(Date.parse(date)) || new Date(date).toISOString().slice(0, 10) !== date || date > ceiling) throw new Error('Date must be valid and not in the future');
     audit = JSON.parse(fs.readFileSync(readOption('--source-audit'), 'utf8'));
-    if (!audit || audit.approved_version !== '2.3.0' || !Array.isArray(audit.rows) || audit.rows.length !== targets.length) throw new Error('Invalid source audit: expected approved_version 2.3.0 and exactly two rows');
+    if (!audit || audit.approved_version !== '2.6.0' || !Array.isArray(audit.rows) || audit.rows.length !== targets.length) throw new Error('Invalid source audit: expected approved_version 2.6.0 and exactly two rows');
     const seen = new Set();
     for (const row of audit.rows) {
       if (!row || !targets.some((target) => target.page === row.page && target.source === row.source) || seen.has(row.page) || typeof row.local_sha256 !== 'string' || !/^[a-f0-9]{64}$/.test(row.local_sha256)) throw new Error('Invalid source audit: paths, duplicates or SHA-256');
