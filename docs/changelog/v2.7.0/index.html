@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="素刀 ClipKnife v2.7.0 更新日志，发布于 2026 年 11 月 2 日：新增图片查找相似与视频悬停预览，支持批量分镜任务搜索和历史视觉描述补建确认，改进索引检查恢复、大任务队列响应与启动体验。" />
+  <title>素刀 ClipKnife v2.7.0 更新日志</title>
+  <meta name="theme-color" content="#0a0a0a" />
+  <link rel="icon" type="image/png" href="../../assets/icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="../../assets/styles.css" />
+  <link rel="canonical" href="https://clipknife.cn/changelog/v2.7.0/" />
+</head>
+<body class="bg-[#0a0a0a] text-slate-100 antialiased">
+  <header class="doc-header">
+    <a href="../../" class="doc-brand" aria-label="返回 ClipKnife 首页">
+      <img src="../../assets/icon.png" alt="" />
+      <span>素刀-ClipKnife</span>
+    </a>
+    <nav class="doc-nav" aria-label="文档导航">
+      <a href="../../manual/">使用手册</a>
+      <a href="../../changelog/" aria-current="page">更新日志</a>
+      <a href="../../faq/">常见问题</a>
+      <a href="../../#download">下载</a>
+    </nav>
+  </header>
+  <main class="doc-shell">
+    <aside class="doc-sidebar" aria-label="页面目录">
+      <p class="doc-sidebar-title">目录</p>
+      <nav id="docToc"><a class="toc-link toc-level-2" href="#%E5%9B%BE%E7%89%87%E6%9F%A5%E6%89%BE%E7%9B%B8%E4%BC%BC">图片查找相似</a>
+<a class="toc-link toc-level-2" href="#%E8%A7%86%E9%A2%91%E6%82%AC%E5%81%9C%E9%A2%84%E8%A7%88">视频悬停预览</a>
+<a class="toc-link toc-level-2" href="#%E6%89%B9%E9%87%8F%E5%88%86%E9%95%9C%E4%B8%8E%E8%A7%86%E8%A7%89%E6%8F%8F%E8%BF%B0">批量分镜与视觉描述</a>
+<a class="toc-link toc-level-2" href="#%E7%B4%A2%E5%BC%95%E6%A3%80%E6%9F%A5%E4%B8%8E%E6%81%A2%E5%A4%8D">索引检查与恢复</a>
+<a class="toc-link toc-level-2" href="#%E4%BB%BB%E5%8A%A1%E5%90%AF%E5%8A%A8%E4%B8%8E%E5%85%BC%E5%AE%B9%E6%80%A7">任务、启动与兼容性</a>
+<a class="toc-link toc-level-2" href="#%E5%8D%87%E7%BA%A7%E8%AF%B4%E6%98%8E">升级说明</a></nav>
+    </aside>
+    <article class="doc-article">
+      <p class="doc-kicker"><a href="../../">首页</a> / <a href="../">更新日志</a> / v2.7.0</p>
+      <div id="docStatus" class="doc-status" hidden>正在加载更新日志...</div>
+      <div class="doc-content" data-doc-src="../../content/changelog/v2.7.0.md" data-doc-prerendered="true" data-doc-source-sha256="8bee07db36cbf08a46a066655fa43e943430d6a5122b160147366b1cf8e29e39">
+<h1 id="v2.7.0">v2.7.0</h1>
+<p>发布时间：2026-11-02</p>
+<p>适用系统：Windows x64</p>
+<p>发布通道：stable</p>
+<p>发布状态：已发布</p>
+<p>本次更新让素材查找与预览更直接：图片可从素材库查找相似内容，视频缩略图支持悬停定位与预览；同时改进批量分镜任务、历史视觉描述补建、索引检查恢复和启动体验。</p>
+<h2 id="图片查找相似">图片查找相似</h2>
+<ul>
+<li>素材库图片的右键菜单和“更多”菜单新增“查找相似”，可在弹窗中查找本机素材库里的相似图片与视频，继续筛选、预览或从结果再次查找相似；关闭弹窗后回到原来的素材库位置。</li>
+<li>使用图片已有的 AI 索引，未完成索引时会提示先构建索引。该入口始终查询本机素材库，不受智能搜索中已选共享库影响；原文件不可用时禁用入口。</li>
+</ul>
+<h2 id="视频悬停预览">视频悬停预览</h2>
+<ul>
+<li>素材库时间线与灵感漫游中的视频缩略图支持悬停预览：鼠标左右移动定位画面，停留后静音播放；点击播放按钮或双击可从当前预览位置打开视频详情。位置线随预览移动，方便快速浏览长视频。</li>
+<li>本机文字搜索、以图搜图和相似搜索的视频结果也支持悬停预览，定位与播放限定在命中片段内，到片段末尾停止，时间标签显示原视频时间。共享素材暂不启用这项能力。</li>
+<li>支持键盘左右键定位、Esc 退出；启用系统“减少动态效果”时只定位画面。不支持内嵌播放的格式回退为按需采样画面；移出、滚动或打开详情后停止预览，避免多个视频同时加载。</li>
+</ul>
+<h2 id="批量分镜与视觉描述">批量分镜与视觉描述</h2>
+<ul>
+<li>“批量视频拆分镜”任务列表支持按文件名即时搜索，覆盖历史记录和所有任务状态，显示匹配数量与总数。搜索只筛选显示，“取消全部”“重试失败”和“清空历史”仍作用于全部任务。</li>
+<li>“补建历史描述”先显示预计新增任务数，确认后才提交，取消不创建任务。统计会排除已有有效描述和队列中已有的任务，按图片或视频分镜分别计数；实际新增数量以提交结果为准。</li>
+</ul>
+<h2 id="索引检查与恢复">索引检查与恢复</h2>
+<ul>
+<li>配套更新图像索引组件后，常规启动和单纯异常退出后的启动改为轻量预检，全库检查由用户在“系统设置 → 诊断与修复 → 高级维护 → 索引检查”中手动发起。已有恢复保护、未完成的恢复操作或文件异常仍会提示处理。</li>
+<li>优化大素材库、多帧索引的检查效率，在任务中心展示数据库检查、向量分段校验和恢复复核等阶段及进度，减少诊断统计期间的界面等待。</li>
+<li>检查中退出应用后，下次启动会保留进度并提示手动继续；修复恢复完成后扫描仍停住、旧恢复任务干扰新恢复记录等问题，保留用户手动暂停的状态。</li>
+<li>“重试全部失败”不再把失败的索引检查放回普通任务队列，避免持续等待。失败详情引导到诊断页重新检查；暂停或中断的检查仍可在任务中心继续。</li>
+</ul>
+<h2 id="任务启动与兼容性">任务、启动与兼容性</h2>
+<ul>
+<li>改善大任务队列执行批量控制时的响应，减少暂停、继续等操作期间其他页面请求长时间等待的问题。</li>
+<li>启动更新期间收起“查看主窗口”入口；启动状态读取失败时同样保持入口关闭，避免提前进入尚未就绪的主界面。</li>
+<li>简易初始化的本地 AI 环境准备失败页新增“导出诊断包”，便于保留安装检查信息。诊断包不包含原始素材，不会自动上传。</li>
+<li>改进旧版素材盘快照导入兼容性，修复因旧快照缺少部分记录或字段不同而导入失败的问题。</li>
+</ul>
+<h2 id="升级说明">升级说明</h2>
+<ul>
+<li>在“系统设置”中检查软件及配套组件更新。索引启动与恢复改进需要同时更新桌面端和图像索引组件；升级前可备份应用数据，并保持素材源与数据磁盘可访问。</li>
+<li>索引检查与恢复仍保留确认边界，切换旧索引或重新建库需确认。本版本沿用此前的 <a href="../v2.4.0/">CUDA 13 显卡兼容要求</a>。</li>
+</ul>
+</div>
+    </article>
+  </main>
+  <script src="../../assets/docs.js"></script>
+</body>
+</html>

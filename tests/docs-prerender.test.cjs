@@ -444,7 +444,12 @@ test('historical log dates stay unchanged while newly optimized pages have valid
     assert.match(date, /^\d{4}-\d{2}-\d{2}$/);
     assert.equal(new Date(date).toISOString().slice(0, 10), date);
     assert.ok(date <= today, 'Sitemap cannot claim a future modification');
-    if (version === 'v2.6.0') {
+    if (version === 'v2.7.0') {
+      assert.equal(date, '2026-11-02');
+      const source = fs.readFileSync(path.join(docsRoot, 'content/changelog/v2.7.0.md'), 'utf8');
+      assert.match(source, /发布时间：2026-11-02/);
+    }
+    else if (version === 'v2.6.0') {
       assert.equal(date, '2026-10-30');
       const source = fs.readFileSync(path.join(docsRoot, 'content/changelog/v2.6.0.md'), 'utf8');
       assert.match(source, /发布时间：2026-10-30/);
