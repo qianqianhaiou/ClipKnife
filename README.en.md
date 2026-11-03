@@ -49,8 +49,10 @@ ClipKnife is not a full video editor. It does not provide cloud synchronization 
 The current public download targets **Windows 10 (version 1809 or later) or Windows 11, both x64**, with **at least 16GB RAM**. There are no macOS or Linux installers. Refer to the official download page for current requirements.
 
 - **Core local search can run on a CPU**; compatible GPUs can accelerate it. This does not mean every optional feature supports CPU execution.
-- **Local visual description** requires a compatible NVIDIA GPU with at least 4GB VRAM, with 6GB recommended, and has no CPU inference. The current CUDA 13 components require compute capability 7.5 or newer and a Windows driver of at least 580.88. Older incompatible cards cannot run this local vision component. These NVIDIA requirements do not apply to CPU or AMD core-search components.
+- **Local visual description** requires a compatible NVIDIA GPU with at least 4GB VRAM, with 6GB recommended, and has no CPU inference. The current CUDA 13 components require compute capability 7.5 or newer and a Windows driver of at least 580.88. Older incompatible cards cannot run this local vision component. These NVIDIA requirements do not apply to CPU or AMD core-search components in already released versions.
 - **Image and video enhancement** require a Vulkan-capable GPU. CPU support for core search does not extend to these tools.
+
+Future versions will stop distributing AMD GPU acceleration components and offer NVIDIA CUDA 13 and CPU components. This change has not been released and excludes image upscaling and video enhancement. It does not automatically change the component manifest of an installed version.
 
 Components, indexes and media processing require additional disk space. Actual compatibility depends on the release and component checks; no processing-speed or search-accuracy guarantees are made.
 
